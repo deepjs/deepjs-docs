@@ -38,8 +38,6 @@ define([
 						$("#reports-container").html("<pre>" + JSON.stringify(report, null, ' ') + '</pre>');
 					});
 			});
-
-			deep("json::")
 		};
 		return init;
 	});

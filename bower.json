@@ -23,7 +23,6 @@
     "tests"
   ],
   "dependencies": {
-    "ace": "~1.1.3",
     "bootstrap": "~3.1.1",
     "highlight": "~7.0.1",
     "jstorage": "~0.4.8",
@@ -38,6 +37,9 @@
     "deep-data-bind": "git@github.com:deepjs/deep-data-bind.git#master",
     "deep-local-storage": "git@github.com:deepjs/deep-local-storage.git#master",
     "deep-jquery": "git@github.com:deepjs/deep-jquery.git#master",
-    "deep-widgets": "git@github.com:deepjs/deep-widgets.git#master"
+    "deep-widgets": "git@github.com:deepjs/deep-widgets.git#master",
+    "ace-builds": "master",
+    "highlight-js-min":"http://yandex.st/highlightjs/8.0/highlight.min.js",
+    "highlight-css-min":"https://github.com/isagalaev/highlight.js/blob/master/src/styles/github.css"
   }
 }
