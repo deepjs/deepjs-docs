@@ -1,0 +1,27 @@
+{
+  "name": "deep-browser-sandbox",
+  "version": "0.1.0",
+  "description": "deepjs (browser) playground",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepjs/deep-browser-sandbox"
+  },
+  "keywords": [
+    "deepjs",
+    "browser",
+    "sandbox"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-requirejs": "~0.4.1",
+    "grunt-http-server": "0.0.4",
+    "grunt-processhtml": "~0.3.0",
+    "grunt-contrib-less": "^0.11.0"
+  },
+  "author": "Gilles Coomans <gilles.coomans@gmail.com>",
+  "license": "MIT"
+}

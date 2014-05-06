@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>deepjs browser sandbox</title>
+	 <meta charset="utf-8">
+	<link rel="stylesheet" href="./bower_components/highlight/src/styles/github.css">
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+	 <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+	<h1>deepjs browser sandbox</h1>
+
+	<div id="tests-bar">
+		<button id="run-core-units">tests</button>
+		<button id="run-core-units-verbose">tests (verbose)</button>
+	</div>
+
+	<div id="reports-container"></div>
+
+<h3>Chain examples</h3>
+	<pre dp-try class="code">
+deep(1).log();
+	</pre>
+	<pre dp-try class="code">
+deep([1,2,3]).log();
+	</pre>
+	<pre dp-try class="code">
+deep([1,2,3]).query("./*").log();
+	</pre>
+	<pre dp-try class="code">
+deep([1,2,3]).query("./0").log();
+	</pre>
+
+<h3>Collection through protocol</h3>
+	<pre dp-try class="code">
+deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
+//...
+deep("mycollec::").log();
+	</pre>
+	<pre dp-try class="code">
+deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
+//...
+deep("mycollec::").query("./0").log();
+	</pre>
+	<pre dp-try class="code">
+deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
+//...
+deep("mycollec::e1").log();
+	</pre>
+
+
+	
+	<h3>Restful API usage</h3>
+	<p>Post : The object is decorated by generated id. (you could provide yours)</p>
+	<pre dp-try class="code">
+deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
+//...
+deep.rest("mycollec")
+.post({ title:"new posted object title"})
+.log("> post result : ")
+
+.post({ title:"new posted object title 2", id:"e2" })
+.log("> post result : ")
+
+.get()
+.log("> all items from collection (after) : ");
+	</pre>
+	<p>Put : replaces entirely the old entry by the new one. Some datas could be loosed.</p>
+	<pre dp-try class="code">
+deep.Collection("mycollec", [{ id:"e1", title:"hello world", amount:3 }]);
+//...
+deep.rest("mycollec")
+.get()
+.log("> all items from Collection (before) : ")
+
+.put({ id:"e1", title:"hello deepjs"})
+.log("> put result : ")
+
+.get()
+.log("> all items from Collection (after) : ");
+	</pre>
+	<p>Patch : updates only provided properties.</p>
+	<pre dp-try class="code">
+deep.Collection("mycollec", [{ id:"e1", title:"hello world", amount:3 }]);
+//...
+deep.rest("mycollec")
+.get()
+.log("> all items from Collection (before) : ")
+
+.patch({ id:"e1", title:"hello deepjs"})
+.log("> patch result : ")
+
+.get()
+.log("> all items from Collection (after) : ");
+	</pre>
+	<p>Error management. use .slog (success log) and .elog (error log) to log properly error.</p>
+	<pre dp-try class="code">
+deep.Collection("mycollec", [{ id:"e1", title:"hello world", amount:3 }]);
+//...
+deep.rest("mycollec")
+.get()
+.slog("> all items from Collection : ")
+
+.put({ id:"e3", title:"hello deepjs"})
+.slog("> put result : ")
+
+.get()
+.slog("> all items from Collection : ")
+.elog("error : ");
+	</pre>
+	<h3>Views</h3>
+	<div id="view-example" class="dp-try-view">Nothing yet.</div>
+	<pre dp-try class="code" view="#view-example">
+deep.View({
+	how:'&lt;div&gt;hello&lt;/div&gt;',
+	where:'dom.htmlOf::#view-example'
+})
+.refresh()
+.log();
+	</pre>
+
+<h3>Modelisation example</h3>
+<pre dp-try class="code">
+//-----------------Models
+var land = {
+	location : "pls override this value with your own location",
+	watering : function () {
+		console.log("Water is applied on all the land");
+	}
+};
+//-----------------Aspects
+var orchard = {
+	plants : [{id:"appletree",growSpeed:10}],
+	watering : deep.compose.after(function () {
+		console.log("We put some mulch after watering");
+	})
+};
+
+var kitchenGarden = {
+	plants : [{id:"carrots",growSpeed:6}],
+	watering : deep.compose.before(function () {
+		console.log("We protect seedlings before watering");
+	})
+};
+//-----------------Implement
+
+var myOwnLand = {
+	location : "Sao Francisco do Guaporé",
+	plants : [{id:"grass",growSpeed:2}]
+};
+
+deep(myOwnLand)
+.bottom(land)
+.up(orchard, kitchenGarden)
+//Query based object modelisation
+.query("/plants/*")
+.up({
+	size : 0,
+	grow : function () {
+		this.size += this.growSpeed;
+	},
+	prune : function (heightpruned) {
+		this.size -= heightpruned;
+	}
+});
+
+deep(myOwnLand).log("myOwnLand is : ");
+	</pre>
+
+
+
+<div>
+<div class="col-sm-12 col-md-6" style="background-color:#999999;">I'm on the left</div>
+<div class="col-sm-12 col-md-6">I'm on the right</div>
+</div>
+
+
+
+
+	<script src="./bower_components/highlight/src/highlight.js"></script>
+	<script src="./bower_components/jquery/jquery.min.js"></script>
+	<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="./bower_components/jstorage/jstorage.min.js"></script>
+    <script data-main="main" src="./bower_components/requirejs/require.js"></script>
+	
+</body>
+</html>

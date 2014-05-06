@@ -1,0 +1,43 @@
+{
+  "name": "deep-browser sandbox",
+  "version": "0.1.0",
+  "homepage": "https://github.com/deepjs/deep-browser-playground",
+  "authors": [
+    "Gilles Coomans <gilles.coomans@gmail.com>"
+  ],
+  "description": "deepjs (browser) playground",
+  "main": "[\"./index.html\"]",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "deepjs",
+    "better-programming"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ace": "~1.1.3",
+    "bootstrap": "~3.1.1",
+    "highlight": "~7.0.1",
+    "jstorage": "~0.4.8",
+    "requirejs": "~2.1.11",
+    "jquery": "~1.9.1",
+    "swig": "~1.3.2",
+    "rql": ">= 0.3.1",
+    "deepjs": "git@github.com:deepjs/deepjs.git#master",
+    "deep-swig": "git@github.com:deepjs/deep-swig.git#master",
+    "deep-browser": "git@github.com:deepjs/deep-browser.git#master",
+    "deep-routes": "git@github.com:deepjs/deep-routes.git#master",
+    "deep-data-bind": "git@github.com:deepjs/deep-data-bind.git#master",
+    "deep-local-storage": "git@github.com:deepjs/deep-local-storage.git#master",
+    "deep-jquery": "git@github.com:deepjs/deep-jquery.git#master",
+    "deep-widgets": "git@github.com:deepjs/deep-widgets.git#master"
+  }
+}
