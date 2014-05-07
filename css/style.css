@@ -199,8 +199,6 @@ code, pre {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	overflow: scroll;
-	position: inherit;
-	clear:both;
 }
 
 .dp-try-view {
@@ -229,7 +227,9 @@ code, pre {
 	text-align:right;
 	padding-top: 10px;
 }
+
 .glyphicon.bigger { font-size: 30px; }
+
 .dp-download-button {
 	color: #fff;
 	cursor: pointer; cursor: hand;
