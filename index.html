@@ -1,72 +1,134 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<title>deepjs browser sandbox</title>
-	 <meta charset="utf-8">
-	<link rel="stylesheet" href="./bower_components/highlight-css-min/index.css">
-	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
-	 <link rel="stylesheet" type="text/css" href="./css/style.css">
-</head>
-<body>
-	<h1>deepjs browser sandbox</h1>
-
-	<div id="tests-bar">
-		<button id="run-core-units">tests</button>
-		<button id="run-core-units-verbose">tests (verbose)</button>
-	</div>
-
-	<div id="reports-container"></div>
-
-<h3>Chain examples</h3>
-	<pre dp-try class="code">
+	<head>
+		<title>deepjs browser sandbox</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="./highlight/styles/github.css">
+		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+	</head>
+	<body>
+		<div id="header">
+			<div class="row">
+				<div class="col-sm-3">
+					<span class="logo">deep<span style="font-size:25px; color:#ccc;">js</span></span>
+				</div>
+				<div class="col-sm-9" id="tools-bar">
+					<a class="dp-download-button"><i class="glyphicon glyphicon-download bigger"></i><a>
+					<a href="https://github.com/deepjs" id="github"> <img src="./img/GitHub-Mark-Light-32px.png"> </a>
+					<span class="glyphicon glyphicon-ok-sign bigger run-core-units-verbose"></span>
+				</div>
+			</div>
+		</div>
+		<div id="navi">
+			<div id="menu" class="top-header">
+				• sandbox •
+				<ul>
+					<li><a href="#">restful&nbsp;stores</a></li>
+					<li><a href="#">deep&nbsp;chain</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- *************************************** EXAMPLES -->
+		<div id="content">
+			<div id="submenu" class="submenu-moving">
+				<div class="dp-box shadowed submenu-block">
+					<ul>
+						<li><a href="#examples-chains">chaines</a></li>
+						<li><a href="#examples-collection">collection &amp; protocol</a></li>
+						<li><a href="#examples-rest">collection &amp; restufl</a></li>
+						<li><a href="#examples-view">views</a></li>
+						<li><a href="#examples-modelisation">simple modelisation</a></li>
+					</ul>
+				</div>
+				<div class="dp-box shadowed submenu-block">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+			</div>
+			<div id="examples">
+				<div id="reports-container"></div>
+				<h3 id="examples-chains">Chain examples</h3>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep(1).log();
-	</pre>
-	<pre dp-try class="code">
+</pre>
+				</div>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep([1,2,3]).log();
-	</pre>
-	<pre dp-try class="code">
+</pre>
+				</div>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep([1,2,3]).query("./*").log();
-	</pre>
-	<pre dp-try class="code">
+</pre>
+				</div>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep([1,2,3]).query("./0").log();
-	</pre>
-
-<h3>Collection through protocol</h3>
-	<pre dp-try class="code">
+</pre>
+				</div>
+				<h3 id="examples-collection">Collection through protocol</h3>
+				<div class="row">
+					<div class="col-sm-12 col-md-4">I'm on the left</div>
+					<div class="col-sm-12 col-md-8">
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
 //...
 deep("mycollec::").log();
-	</pre>
-	<pre dp-try class="code">
+</pre>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-4">I'm on the left</div>
+					<div class="col-sm-12 col-md-8">
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
 //...
 deep("mycollec::").query("./0").log();
-	</pre>
-	<pre dp-try class="code">
+</pre>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-4">I'm on the left</div>
+					<div class="col-sm-12 col-md-8">
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
 //...
 deep("mycollec::e1").log();
-	</pre>
-
-
-	
-	<h3>Restful API usage</h3>
-	<p>Post : The object is decorated by generated id. (you could provide yours)</p>
-	<pre dp-try class="code">
+</pre>
+						</div>
+					</div>
+				</div>
+				
+				<h3 id="examples-rest">Restful API usage</h3>
+				<p>Post : The object is decorated by generated id. (you could provide yours)</p>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep.Collection("mycollec", [{ id:"e1", title:"hello world" }]);
 //...
 deep.rest("mycollec")
 .post({ title:"new posted object title"})
 .log("> post result : ")
-
 .post({ title:"new posted object title 2", id:"e2" })
 .log("> post result : ")
-
 .get()
 .log("> all items from collection (after) : ");
-	</pre>
-	<p>Put : replaces entirely the old entry by the new one. Some datas could be loosed.</p>
-	<pre dp-try class="code">
+</pre>
+				</div>
+				<p>Put : replaces entirely the old entry by the new one. Some datas could be lost.</p>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep.Collection("mycollec", [{ id:"e1", title:"hello world", amount:3 }]);
 //...
 deep.rest("mycollec")
@@ -78,9 +140,11 @@ deep.rest("mycollec")
 
 .get()
 .log("> all items from Collection (after) : ");
-	</pre>
-	<p>Patch : updates only provided properties.</p>
-	<pre dp-try class="code">
+</pre>
+				</div>
+				<p>Patch : updates only provided properties.</p>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep.Collection("mycollec", [{ id:"e1", title:"hello world", amount:3 }]);
 //...
 deep.rest("mycollec")
@@ -92,9 +156,11 @@ deep.rest("mycollec")
 
 .get()
 .log("> all items from Collection (after) : ");
-	</pre>
-	<p>Error management. use .slog (success log) and .elog (error log) to log properly error.</p>
-	<pre dp-try class="code">
+</pre>
+				</div>
+				<p>Error management. use .slog (success log) and .elog (error log) to log properly error.</p>
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
 deep.Collection("mycollec", [{ id:"e1", title:"hello world", amount:3 }]);
 //...
 deep.rest("mycollec")
@@ -106,21 +172,27 @@ deep.rest("mycollec")
 
 .get()
 .slog("> all items from Collection : ")
+
 .elog("error : ");
-	</pre>
-	<h3>Views</h3>
-	<div id="view-example" class="dp-try-view">Nothing yet.</div>
-	<pre dp-try class="code" view="#view-example">
+</pre>
+				</div>
+				<h3 id="examples-view">Views</h3>
+				<div class="dp-example">
+					<div id="view-example" class="dp-try-view">Nothing yet.</div>
+<pre dp-try class="dp-box code" view="#view-example">
 deep.View({
 	how:'&lt;div&gt;hello&lt;/div&gt;',
 	where:'dom.htmlOf::#view-example'
 })
 .refresh()
 .log();
-	</pre>
-
-<h3>Modelisation example</h3>
-<pre dp-try class="code">
+</pre>
+				</div>
+				<h3 id="examples-modelisation">Modelisation example</h3>
+				<div class="row">
+					<div class="col-sm-12 col-md-6">
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
 //-----------------Models
 var land = {
 	location : "pls override this value with your own location",
@@ -135,7 +207,6 @@ var orchard = {
 		console.log("We put some mulch after watering");
 	})
 };
-
 var kitchenGarden = {
 	plants : [{id:"carrots",growSpeed:6}],
 	watering : deep.compose.before(function () {
@@ -143,12 +214,10 @@ var kitchenGarden = {
 	})
 };
 //-----------------Implement
-
 var myOwnLand = {
 	location : "Sao Francisco do Guaporé",
 	plants : [{id:"grass",growSpeed:2}]
 };
-
 deep(myOwnLand)
 .bottom(land)
 .up(orchard, kitchenGarden)
@@ -163,25 +232,22 @@ deep(myOwnLand)
 		this.size -= heightpruned;
 	}
 });
-
 deep(myOwnLand).log("myOwnLand is : ");
-	</pre>
-
-
-
-<div>
-<div class="col-sm-12 col-md-6" style="background-color:#999999;">I'm on the left</div>
-<div class="col-sm-12 col-md-6">I'm on the right</div>
-</div>
-
-
-
-
-	<script src="./bower_components/highlight-js-min/index.js"></script>
-	<script src="./bower_components/jquery/jquery.min.js"></script>
-	<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="./bower_components/jstorage/jstorage.min.js"></script>
-    <script data-main="main" src="./bower_components/requirejs/require.js"></script>
-	
-</body>
+</pre>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-6">Lorem ipsum dolor sit amet.</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			&nbsp;
+		</div>
+		<script src="./highlight/highlight.pack.js"></script>
+		<script src="./bower_components/jquery/jquery.min.js"></script>
+		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="./bower_components/jstorage/jstorage.min.js"></script>
+		<script data-main="main" src="./bower_components/requirejs/require.js"></script>
+		
+	</body>
 </html>

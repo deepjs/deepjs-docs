@@ -1,38 +1,180 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster|Titillium+Web:200);
 body {
 	font-family: "Lucida Sans Unicode";
 	background-color :#F9F9F9;
-	margin:50px;
-	margin-left:70px;
-	margin-right:70px;
+	font-size: 12px;
 }
 
-h1 {
-	color:#555555;
-	font-size: 30px;
+#header {
+	padding:50px 70px 0px 70px;
+	background-color: #3f3b36;
+	border-bottom: 1px dotted #888888;
 }
-#tests-bar {
-	margin-bottom:30px;
-	margin-top:30px;
+
+#header .logo {
+	/*font-family: 'Titillium Web', sans-serif;*/
+	margin: 0px;
+	font-family: 'Lobster', cursive;
+	color:#14a2c6;
+	font-size: 80px;
+	position:relative;
+	top:-40px;
 }
-.dp-try {
-	margin-bottom: 30px;
+
+#header h2 {
+	font-family: 'Titillium Web', sans-serif;
+	color:#c2b5ac;
+	margin: 0px;
+	font-size: 15px;
+	margin-left: 115px;
 }
+
+h3 {
+	margin-bottom:25px;
+	margin-top:70px;
+}
+
+#reports-container {
+	display: none;
+	margin:0px 0px 0px 70px;
+}
+#reports-container pre {
+	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+#footer {
+	margin-top: 30px;
+	padding:70px 70px 0px 70px;
+	background-color: #3f3b36;
+	-webkit-box-shadow: 0 -2px 2px #aaa;
+	-moz-box-shadow: 0 -2px 2px #aaa;
+	box-shadow: 0 -2px 2px #aaa;
+	border-top: 1px dotted #888888;
+	height:200px;
+}
+
+/*_________________ MENU _________________ */
+
+#tools-menu {
+	float:right;
+}
+
+
+#menu {
+	z-index: 100;
+	/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #302e25), color-stop(20%, #645953), color-stop(100%, #c7c1a5));
+	background: -moz-linear-gradient(top, #302e25, #3c3531, #52514a);*/
+
+	background-color: #22211a;
+
+	line-height: 40px;
+	margin: 0 auto;
+	padding: 0px 65px 0px;
+	-webkit-box-shadow: 0 2px 2px #888;
+	-moz-box-shadow: 0 2px 2px #888;
+	box-shadow: 0 2px 2px #888;
+	width:100%;
+	float:left;
+	border-bottom: 1px dotted #ccc;
+	color: #999999;
+	font-size: 14px;
+	text-align: left;
+}
+.top-header {
+	position:relative;
+	top:0px;
+}
+.top-fixed {
+	position: fixed;
+	top: 0px;
+	left: 0;
+	width: 100%;
+}
+
+#menu ul {
+	padding: 0;
+	margin:0 auto;
+	display: inline;
+	margin-left: 20px;
+}
+
+#menu ul li {
+	list-style-type: none;
+	display: inline;
+	margin-right: 10px;
+}
+
+#menu ul li a {
+	font-family: 'Titillium Web', sans-serif;
+	/*font-family: Georgia;*/
+	font-size: 14px;
+
+	color: #fff;
+	text-decoration: none;
+	padding: 3px 7px;
+}
+
+#menu ul li a:hover {
+	text-decoration: underline;
+	color: #ddd;
+}
+/*_____________________________________________ SUBMENU ____________________ */
+
+#submenu {
+	width: 300px;
+	padding-top:40px;
+	padding-left:40px;
+	padding-right:20px;
+	clear:both;
+}
+
+.submenu-moving {
+	position: relative;
+	float:left;
+}
+
+.submenu-fixed {
+	position: fixed;
+	top: 45px;
+	left: 0;
+}
+
+.submenu-block {
+	margin-bottom:20px;
+}
+
+
+/*___________________________________________ dp-try examples ______________ */
+
 code, pre {
 	font-size: 12px;
 	font-family: "Lucida Sans Unicode";
 }
-.code {
+
+#examples {
+	padding-right: 50px;
+	margin-left: 330px;
+	padding-top: 30px;
+}
+
+.dp-example {
+	margin-bottom:30px;
+}
+
+.dp-box {
 	background-color:#FFFFFF;
 	padding: 10px;
-	padding-bottom: 1px;
-	margin-top:7px;
-	margin-bottom:1px;
+	margin-bottom:0px;
 	/*border:1px solid #DDDDDD;*/
 	overflow: scroll;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+}
+
+
+.code {
 	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
+
 .dp-try-editor {
 	background-color:#FFFFFF;
 	padding: 10px;
@@ -43,17 +185,24 @@ code, pre {
 	font-size: 14px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+	border:1px solid #FFFFFF;
 }
+
+
 .dp-try-output {
 	background-color:#FFFFFF;
 	padding: 10px;
-	margin-top:2px;
+	margin-top:21px;
 	margin-bottom:1px;
 	border:1px solid #777777;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	overflow: scroll;
+	position: inherit;
+	clear:both;
 }
+
 .dp-try-view {
 	background-color:#FFFFFF;
 	padding: 10px;
@@ -66,6 +215,56 @@ code, pre {
 	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-button {
+.dp-button-row {
+	overflow: visible;
+	float:left;
+	width:100px;
+}
+
+.dp-button-row button {
 	font-size:10px;
+}
+
+#tools-bar {
+	text-align:right;
+	padding-top: 10px;
+}
+.glyphicon.bigger { font-size: 30px; }
+.dp-download-button {
+	color: #fff;
+	cursor: pointer; cursor: hand;
+}
+.dp-download-button a {
+	color: #fff;
+}
+a:hover {
+	color: #14a2c6;
+}
+a:focus {
+	color: #14a2c6;
+}
+.run-core-units-verbose {
+	color: #21ba03;
+	cursor: pointer; cursor: hand;
+}
+#github {
+	margin-right:20px;
+	margin-left:20px;
+	position: relative;
+	top: -10px;
+	text-decoration: none;
+}
+
+#content {
+
+}
+
+.shadowed {
+	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.rounded {
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }

@@ -16,28 +16,31 @@ define([
 			deep.jquery.set($);
 			deep.ui.enhance("body");
 			console.log("app-sndbx intialised");
-			$("#run-core-units").click(function(e) {
-				e.preventDefault();
-				deep.Unit.run(null, {
-					verbose: false
-				})
-					.done(function(report) {
-						console.log("report : ", report);
-						report.reports = null;
-						$("#reports-container").html("<pre>" + JSON.stringify(report, null, ' ') + '</pre>');
-					});
-			});
-			$("#run-core-units-verbose").click(function(e) {
+			$(".run-core-units-verbose").click(function(e) {
 				e.preventDefault();
 				deep.Unit.run(null, {
 					verbose: true
 				})
-					.done(function(report) {
-						console.log("report : ", report);
-						report.reports = null;
-						$("#reports-container").html("<pre>" + JSON.stringify(report, null, ' ') + '</pre>');
-					});
+				.done(function(report) {
+					console.log("report : ", report);
+					report.reports = null;
+					$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>').slideDown(50);
+				});
 			});
 		};
+		$(function(){
+			var menu = $('#menu'),
+				pos = menu.offset();
+			$(window).scroll(function(){
+				if($(this).scrollTop() > pos.top && menu.hasClass('top-header')){
+					console.log("menu out of screen")
+					$("#submenu").removeClass("submenu-moving").addClass('submenu-fixed');//.fadeIn('fast');
+					menu.removeClass("top-header").addClass('top-fixed');//.fadeIn('fast');
+				} else if($(this).scrollTop() <= pos.top && menu.hasClass('top-fixed')){
+					menu.removeClass('top-fixed').addClass("top-header");//.fadeIn('fast');
+					$("#submenu").addClass("submenu-moving").removeClass('submenu-fixed');//.fadeIn('fast');
+				}
+			});
+		});
 		return init;
 	});
