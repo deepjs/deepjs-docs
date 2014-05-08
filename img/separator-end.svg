@@ -35,9 +35,7 @@
 		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5376,2.5376" points="478,28.5 476.238,28.5 
 			474.646,27.07 		"/>
 		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="473.607,26.726 472.848,26.075 472.848,25.075 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="472.5,23 472.5,21.989 
-			473.669,20.306 		"/>
-		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="474.604" y1="19.479" x2="475.178" y2="18.659"/>
+		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="472.5" y1="23" x2="472.5" y2="22"/>
 	</g>
 </g>
 <g>
@@ -52,9 +50,7 @@
 		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5375,2.5375" points="22,28.5 23.473,28.5 
 			25.209,27.07 		"/>
 		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="26.105,26.726 26.864,26.075 26.864,25.075 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="26.5,23 26.5,21.989 
-			25.331,20.306 		"/>
-		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="25.107" y1="19.479" x2="24.534" y2="18.659"/>
+		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="26.5" y1="23" x2="26.5" y2="22"/>
 	</g>
 </g>
 <circle fill="#14A2C6" cx="255.09" cy="14.257" r="3.59"/>
