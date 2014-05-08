@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>deepjs.org</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="./highlight/styles/github.css">
+		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/home.css">
+	</head>
+	<body>
+		<div id="home" class="section">
+			<div class="logo">deep<span style="font-size:25px; color:#ccc;">js</span></div>
+			<div class="tools-bar">
+				<a title="introduction." href="#introduction"><i class="glyphicon glyphicon-info-sign huge"></i></a>
+				<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record huge"></i></a>
+				<a title="core docs." href="#getting-started"><i class="glyphicon glyphicon-cog huge"></i></a>
+				
+				<a title="tutorials." href="#getting-started"><i class="glyphicon glyphicon-play-circle huge"></i></a>
+				<a href="https://github.com/deepjs" title="go to github.com"> <img width="48" height="48" src="./img/GitHub-Mark-Light-120px-plus.png"> </a>
+			</div>
+			<div id="baseline">
+				<p>Better, faster, easier <strong>programming</strong>.</p>
+				<p>Simply made with <strong>love</strong>.</p>
+				<p class="deepjs-version-label">current version : <span class="deepjs-version"></span></p>
+			</div>
+		</div>
+		<div id="introduction"  class="section">
+			<a href="#introduction"><i class="glyphicon glyphicon-info-sign xxl"></i></a>
+			<h2>Introduction</h2>
+			<div class="instructions" >
+				<p><strong>deepjs</strong> is set of <strong>open-source isomorphic tools</strong> to manipulate <strong>javascript</strong> objects and functions. It tries first to answer modern architectural patterns problems and provides for this nothing less than a whole new way of coding.</p>
+
+				<p>It helps you in <strong>object, classes, views, services, routes (...)</strong> modelisation and/or to manage <strong>async runtime</strong> like a breeze.</p>
+
+				<p>If you searching a complete <strong>HTTP/Restful/Single Page/ThinServer/NoSQL</strong> framework, or simple tools for better architecture and modelisation, <strong>deepjs</strong> is what you need... </p>
+
+				As a <strong>bit of code</strong> is better than thousand words...
+			</div>
+			<div id="examples" class="section">
+				<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep(1).log();
+</pre>
+				</div>
+			</div>
+		</div>
+
+		<div id="getting-started"  class="section">
+			<a href="#getting-started"><i class="glyphicon glyphicon-record xxl"></i></a>
+			<h2>Getting started</h2>
+			<div class="instructions" >
+				<h3>Prerequired</h3>
+				<p>
+				Install nodejs and yo :
+<pre class="dp-box code" style="color:#222">
+> npm install -g yo-generator-deepjs-browser
+> mkdir YOUR_PROJECT_FOLDER
+> cd YOUR_PROJECT_FOLDER
+> yo deepjs-browser
+> grunt http-server
+</pre>
+</p>
+				<h3>Start</h3>
+				<p><strong>deepjs</strong> come with 4 workable environements. Please choose one below, install associated yo-generator, use it, and follow instructions. Each environement have it's own docs/tutorials namespace.</p>
+			</div>
+			<h2>Browser</h2>
+			<div class="instructions" >
+				<p>This generator provides you a full functionnal <strong>requirejs/jquery/deepjs/bootstrap</strong> environnement for browser. (<a href="https://github.com/deepjs/yo-generator-deepjs-browser">full documentation.</a>)</p>
+<pre class="dp-box code" style="color:#222">
+> npm install -g yo-generator-deepjs-browser
+> mkdir YOUR_PROJECT_FOLDER
+> cd YOUR_PROJECT_FOLDER
+> yo deepjs-browser
+> grunt http-server
+</pre>
+				<p>Then go to http://localhost:8282. And follow associated <a href="/tutorials/browser/">tutorials.</a></p>
+			</div>
+			<h2>Server</h2>
+			<div class="instructions" >
+<pre class="dp-box code" style="color:#222">
+> npm install -g yo-generator-deepjs-browser
+> mkdir YOUR_PROJECT_FOLDER
+> cd YOUR_PROJECT_FOLDER
+> yo deepjs-browser
+> grunt http-server
+</pre>
+			</div>
+			<h2>Adobe Air</h2>
+			<div class="instructions" >
+<pre class="dp-box code" style="color:#222">
+> npm install -g yo-generator-deepjs-browser
+> mkdir YOUR_PROJECT_FOLDER
+> cd YOUR_PROJECT_FOLDER
+> yo deepjs-browser
+> grunt http-server
+</pre>
+			</div>
+			<h2>node-webkit</h2>
+			<div class="instructions" >
+<pre class="dp-box code" style="color:#222">
+> npm install -g yo-generator-deepjs-browser
+> mkdir YOUR_PROJECT_FOLDER
+> cd YOUR_PROJECT_FOLDER
+> yo deepjs-browser
+> grunt http-server
+</pre>
+			</div>
+		</div>
+		<!-- <div id="authors" class="section">
+			<a href="#authors"><i class="glyphicon glyphicon-user xxl"></i></a>
+			<h2>Author</h2>
+			<div class="instructions" >
+				<p>Author : <strong>Gilles Coomans</strong> is an eclectic freaks</p>
+			</div>
+			<h2>Main Contributor</h2>
+			<div class="instructions" >
+				<p>Author : <strong>Gilles Coomans</strong> is an eclectic freaks</p>
+			</div>
+		</div> -->
+		<div id="footer">
+			<div class="tools-bar">
+				<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record bigger"></i></a>
+				<a title="core docs." href="#getting-started"><i class="glyphicon glyphicon-cog bigger"></i></a>
+				<a title="tutorials." href="#getting-started"><i class="glyphicon glyphicon-play-circle bigger"></i></a>
+				<a href="https://github.com/deepjs" title="go to github.com"> <img width="32" height="32" src="./img/GitHub-Mark-Light-64px.png"> </a>
+			</div>
+		</div>
+		<script src="./highlight/highlight.pack.js"></script>
+		<script src="./bower_components/jquery/jquery.min.js"></script>
+		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="./bower_components/jstorage/jstorage.min.js"></script>
+		<script data-main="main" src="./bower_components/requirejs/require.js"></script>
+	</body>
+</html>

@@ -4,6 +4,12 @@ body {
 	background-color :#F9F9F9;
 	font-size: 12px;
 }
+a:focus {
+    outline: 0;
+}
+#home {
+	padding:70px;
+}
 
 #header {
 	padding:50px 70px 0px 70px;
@@ -11,7 +17,7 @@ body {
 	border-bottom: 1px dotted #888888;
 }
 
-#header .logo {
+.logo {
 	/*font-family: 'Titillium Web', sans-serif;*/
 	margin: 0px;
 	font-family: 'Lobster', cursive;
@@ -19,14 +25,7 @@ body {
 	font-size: 80px;
 	position:relative;
 	top:-40px;
-}
-
-#header h2 {
-	font-family: 'Titillium Web', sans-serif;
-	color:#c2b5ac;
-	margin: 0px;
-	font-size: 15px;
-	margin-left: 115px;
+	text-shadow: 0px 0px 5px #111;
 }
 
 h3 {
@@ -45,10 +44,7 @@ h3 {
 	margin-top: 30px;
 	padding:70px 70px 0px 70px;
 	background-color: #3f3b36;
-	-webkit-box-shadow: 0 -2px 2px #aaa;
-	-moz-box-shadow: 0 -2px 2px #aaa;
-	box-shadow: 0 -2px 2px #aaa;
-	border-top: 1px dotted #888888;
+	border-top: 1px dotted #CCC;
 	height:200px;
 }
 
@@ -57,7 +53,6 @@ h3 {
 #tools-menu {
 	float:right;
 }
-
 
 #menu {
 	z-index: 100;
@@ -69,9 +64,9 @@ h3 {
 	line-height: 40px;
 	margin: 0 auto;
 	padding: 0px 65px 0px;
-	-webkit-box-shadow: 0 2px 2px #888;
-	-moz-box-shadow: 0 2px 2px #888;
-	box-shadow: 0 2px 2px #888;
+	-webkit-box-shadow: 0 1px 1px #888;
+	-moz-box-shadow: 0 1px 1px #888;
+	box-shadow: 0 1px 1px #888;
 	width:100%;
 	float:left;
 	border-bottom: 1px dotted #ccc;
@@ -117,6 +112,17 @@ h3 {
 	text-decoration: underline;
 	color: #ddd;
 }
+
+.dp-box {
+	background-color:#FFFFFF;
+	padding: 10px;
+	margin-bottom:0px;
+	/*border:1px solid #DDDDDD;*/
+	overflow: scroll;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 /*_____________________________________________ SUBMENU ____________________ */
 
 #submenu {
@@ -160,19 +166,9 @@ code, pre {
 	margin-bottom:30px;
 }
 
-.dp-box {
-	background-color:#FFFFFF;
-	padding: 10px;
-	margin-bottom:0px;
-	/*border:1px solid #DDDDDD;*/
-	overflow: scroll;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
-
 .code {
 	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+	text-align: left;
 }
 
 .dp-try-editor {
@@ -188,7 +184,6 @@ code, pre {
 	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 	border:1px solid #FFFFFF;
 }
-
 
 .dp-try-output {
 	background-color:#FFFFFF;
@@ -223,12 +218,16 @@ code, pre {
 	font-size:10px;
 }
 
-#tools-bar {
+.tools-bar {
 	text-align:right;
 	padding-top: 10px;
 }
 
-.glyphicon.bigger { font-size: 30px; }
+.glyphicon.bigger { font-size: 32px; }
+
+.glyphicon.huge { font-size: 48px; }
+
+.glyphicon.xxl { font-size: 120px; }
 
 .dp-download-button {
 	color: #fff;
@@ -238,7 +237,7 @@ code, pre {
 	color: #fff;
 }
 a:hover {
-	color: #14a2c6;
+	color: #74bf11;
 }
 a:focus {
 	color: #14a2c6;

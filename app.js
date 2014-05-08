@@ -8,12 +8,14 @@ define([
 		"deepjs/lib/stores/collection",
 		"deepjs/lib/stores/object",
 		"deepjs/lib/schema",
-		"deep-widgets/lib/deep-try"
+		"deep-widgets/lib/deep-try",
+		"deep-jquery/ajax/json"
 	],
 	function(require, deep) {
 		console.log("start app-sndbx");
 		var init = function() {
 			deep.jquery.set($);
+			deep.jquery.JSON.create();
 			deep.ui.enhance("body");
 			console.log("app-sndbx intialised");
 			$(".run-core-units-verbose").click(function(e) {
@@ -27,20 +29,39 @@ define([
 					$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>').slideDown(50);
 				});
 			});
+
+			deep.get("json::/bower_components/deepjs/package.json")
+			.done(function(s){
+				console.log("package : ", s)
+				$(".deepjs-version").text(s.version);
+				$(".deepjs-version-label").css("visibility","visible").hide().fadeIn();
+			})
+			.elog();
 		};
+
 		$(function(){
 			var menu = $('#menu'),
+				submenu = $("#submenu"),
 				pos = menu.offset();
-			$(window).scroll(function(){
+
+			if(!menu.length)
+				return;
+
+			var reposition = function(){
 				if($(this).scrollTop() > pos.top && menu.hasClass('top-header')){
 					console.log("menu out of screen")
-					$("#submenu").removeClass("submenu-moving").addClass('submenu-fixed');//.fadeIn('fast');
+					submenu.removeClass("submenu-moving").addClass('submenu-fixed');//.fadeIn('fast');
 					menu.removeClass("top-header").addClass('top-fixed');//.fadeIn('fast');
 				} else if($(this).scrollTop() <= pos.top && menu.hasClass('top-fixed')){
 					menu.removeClass('top-fixed').addClass("top-header");//.fadeIn('fast');
-					$("#submenu").addClass("submenu-moving").removeClass('submenu-fixed');//.fadeIn('fast');
+					submenu.addClass("submenu-moving").removeClass('submenu-fixed');//.fadeIn('fast');
 				}
-			});
+			};
+
+
+			$(window).scroll(reposition);
+
+			reposition();
 		});
 		return init;
 	});

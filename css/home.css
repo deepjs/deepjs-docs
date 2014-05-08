@@ -1,0 +1,228 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather:300);
+body {
+	background-color :#3f3b36;
+	/*"Palatino Linotype", "Book Antiqua", Palatino, serif*/
+	font-family: 'Merriweather', serif;
+}
+a:focus {
+    outline: 0;
+}
+/*_______________________________ VISUAL ________________ */
+
+.glyphicon.bigger { font-size: 32px; }
+
+.glyphicon.huge { font-size: 48px; }
+
+.glyphicon.xxl { font-size: 120px; }
+
+/* ______________________________ STRUCTURE ___________ */
+.section {
+	text-align:center;
+	margin-bottom:200px;
+	padding-top:30px;
+}
+.section p {
+	margin-bottom:30px;
+}
+.section a {
+	color:#14a2c6;
+}
+.section i {
+	margin-bottom:0px;
+}
+.instructions {
+	text-align: left;
+	width:500px;
+	margin: auto;
+	margin-bottom:20px;
+	padding:50px;
+	color: #222;
+	background-color: #F9F9F9;
+	border:1px solid #000;
+	-webkit-box-shadow: 0px 0px 5px #111;
+	-moz-box-shadow: 0px 0px 5px #111;
+	box-shadow: 0px 0px 5px #111;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.instructions .code {
+	margin: auto;
+	width: 400px;
+}
+
+.dp-example {
+	margin-bottom:30px;
+	padding: 0px;
+}
+.dp-box {
+	background-color:#FFFFFF;
+	padding: 10px;
+	margin-bottom:0px;
+	overflow: scroll;
+}
+.instructions .code {
+	margin-bottom: 20px;
+}
+
+/* ______________________________ TITLES ________________ */
+
+.logo {
+	margin: 0px;
+	font-family: 'Lobster', cursive;
+	color:#14a2c6;
+	font-size: 120px;
+	position:relative;
+	top:-40px;
+	text-shadow: 0px 0px 5px #111;
+}
+
+h2 {
+	font-family: 'Lobster', cursive;
+	margin-bottom:25px;
+	margin-top:30px;
+	color: #eee;
+}
+
+h3 {
+	font-family: 'Merriweather', serif;
+	margin-bottom:30px;
+	margin-top:0px;
+}
+
+.deepjs-version {
+	font-size: 12px;
+	color: #999;
+	font-weight: bold;
+}
+
+.deepjs-version-label {
+	color: #777;
+}
+
+#home {
+	color: #fff;
+	padding-top: 100px;
+}
+
+#baseline {
+	padding-top:0px;
+	margin-bottom:30px;
+}
+
+
+#examples {
+	text-align: left;
+	width: 500px;
+	margin: auto;
+	padding: 0px;
+}
+#footer {
+	margin-top: 30px;
+	padding:70px 70px 0px 70px;
+	border-top: 1px dotted #CCC;
+	height:200px;
+	background-color: #2c2925;
+	-webkit-box-shadow: 0 -2px 2px #333;
+	-moz-box-shadow: 0 -2px 2px #333;
+	box-shadow: 0 -2px 2px #333;
+}
+
+.tools-bar {
+	text-align:center;
+	margin-top: 30px;
+	margin-bottom:80px;
+}
+
+.tools-bar a {
+	margin-left:20px;
+	margin-right:20px;
+	color: #fff;
+}
+
+.tools-bar img {
+	position:relative;
+	top:-20px;
+}
+
+.tools-bar a:hover {
+	color: #fff;
+}
+.tools-bar a:focus {
+	color: #14a2c6;
+}
+
+
+#footer .tools-bar {
+	margin-top: 0px;
+	margin-bottom:0px;
+
+}
+#footer .tools-bar img {
+	position:relative;
+	top:-12px;
+}
+
+/*_____________________________ DP TRY __________________________________ */
+code, pre {
+	font-size: 12px;
+	font-family: "Lucida Sans Unicode";
+}
+
+.dp-try-editor {
+	overflow: scroll;
+
+	background-color:#FFFFFF;
+	padding: 10px;
+	padding-bottom: 1px;
+	padding-top: 7px;
+	margin-top:7px;
+	margin-bottom:1px;
+	font-size: 14px;
+	
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+
+	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+	border:1px solid #FFFFFF;
+}
+
+.dp-try-output {
+	overflow: scroll;
+
+	background-color:#FFFFFF;
+	padding: 10px;
+	margin-top:21px;
+	margin-bottom:1px;
+	border:1px solid #777777;
+	
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	clear: both;
+}
+
+.dp-try-view {
+	background-color:#FFFFFF;
+	padding: 10px;
+	margin-top:5px;
+	margin-bottom:1px;
+	border:1px solid #7eaabb;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	overflow: scroll;
+	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.dp-button-row {
+	overflow: visible;
+	float:left;
+	width:100px;
+}
+
+.dp-button-row button {
+	font-size:10px;
+}
+
+.deepjs-version-label {
+	visibility: hidden;
+}
