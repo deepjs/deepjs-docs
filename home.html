@@ -32,9 +32,9 @@
 
 				<p>It helps you in <strong>object, classes, views, services, routes (...)</strong> modelisation and/or to manage <strong>async runtime</strong> like a breeze.</p>
 
-				<p>If you searching a complete <strong>HTTP/Restful/Single Page/ThinServer/NoSQL</strong> framework, or simple tools for better architecture and modelisation, <strong>deepjs</strong> is what you need... </p>
+				<p>If you searching a <strong>HTTP/Restful/Single Page/ThinServer/NoSQL</strong> framework, just part of it, or simple but so powerful tools for better architecture and modelisation, you should definitly take a look at this. </p>
 
-				As a <strong>bit of code</strong> is better than thousand words...
+				As a <strong>bit of code</strong> is better than thousand words, and even if deepjs is to large to be contained in one example...
 			</div>
 			<div id="examples" class="section">
 				<div class="dp-example">
@@ -51,21 +51,38 @@ deep(1).log();
 			<div class="instructions" >
 				<h3>Prerequired</h3>
 				<p>
-				Install nodejs and yo :
+				Install <a href="http://www.nodejs.org/download/">nodejs</a> then yo (it will also install grunt and bower) :
 <pre class="dp-box code" style="color:#222">
-> npm install -g yo-generator-deepjs-browser
-> mkdir YOUR_PROJECT_FOLDER
-> cd YOUR_PROJECT_FOLDER
-> yo deepjs-browser
-> grunt http-server
+> npm install -g yo
 </pre>
 </p>
 				<h3>Start</h3>
-				<p><strong>deepjs</strong> come with 4 workable environements. Please choose one below, install associated yo-generator, use it, and follow instructions. Each environement have it's own docs/tutorials namespace.</p>
+				<p><strong>deepjs</strong> comes with 5 workable environements :
+
+				<ul>
+					<li><a href="#generator-browser">browser generator</a> : a browser oriented minimal single page app.</li>
+					<li><a href="#generator-server">server generator</a> : a minimal HTTP/Restful (expressjs/deepjs) server.</li>
+					<li><a href="#generator-air">air generator</a> : an adobe air minimal app.</li>
+					<li><a href="#generator-node-webkit">node-webkit generator</a> : an desktop/nodejs oriented minimal app.</li>
+					<li><a href="#deep-shell">deep-shell</a> : a deepjs/nodejs/shell cli and libraries (sh and ssh).</li>
+				</ul>
+			</p>
+				Please choose one below, install associated yo-generator, use it, and follow instructions. Each environement have it's own docs/tutorials namespace.
 			</div>
-			<h2>Browser</h2>
+			<h2 id="generator-browser"><span class="bullet-title">--</span> Browser <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
-				<p>This generator provides you a full functionnal <strong>requirejs/jquery/deepjs/bootstrap</strong> environnement for browser. (<a href="https://github.com/deepjs/yo-generator-deepjs-browser">full documentation.</a>)</p>
+				<p>A fully functionnal <strong>requirejs/jquery/deepjs/bootstrap</strong> environnement for browser. (<a href="https://github.com/deepjs/yo-generator-deepjs-browser">full documentation.</a>)</p>
+<pre class="dp-box code" style="color:#222">
+> npm install -g generator-deepjs-browser
+> mkdir YOUR_PROJECT_FOLDER
+> cd YOUR_PROJECT_FOLDER
+> yo deepjs-browser
+> grunt http-server
+</pre>
+				Then go to http://localhost:8282. And follow associated <a href="/tutorials/browser/">tutorials.</a>
+			</div>
+			<h2 id="generator-server"><span class="bullet-title">--</span> Server <span class="bullet-title">--</span></h2>
+			<div class="instructions" >
 <pre class="dp-box code" style="color:#222">
 > npm install -g yo-generator-deepjs-browser
 > mkdir YOUR_PROJECT_FOLDER
@@ -73,9 +90,8 @@ deep(1).log();
 > yo deepjs-browser
 > grunt http-server
 </pre>
-				<p>Then go to http://localhost:8282. And follow associated <a href="/tutorials/browser/">tutorials.</a></p>
 			</div>
-			<h2>Server</h2>
+			<h2 id="generator-air"><span class="bullet-title">--</span> Adobe Air <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
 <pre class="dp-box code" style="color:#222">
 > npm install -g yo-generator-deepjs-browser
@@ -85,7 +101,7 @@ deep(1).log();
 > grunt http-server
 </pre>
 			</div>
-			<h2>Adobe Air</h2>
+			<h2 id="generator-node-webkit"><span class="bullet-title">--</span> node-webkit <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
 <pre class="dp-box code" style="color:#222">
 > npm install -g yo-generator-deepjs-browser
@@ -95,7 +111,7 @@ deep(1).log();
 > grunt http-server
 </pre>
 			</div>
-			<h2>node-webkit</h2>
+			<h2 id="deep-shell"><span class="bullet-title">--</span> deep-shell <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
 <pre class="dp-box code" style="color:#222">
 > npm install -g yo-generator-deepjs-browser
@@ -106,17 +122,17 @@ deep(1).log();
 </pre>
 			</div>
 		</div>
-		<!-- <div id="authors" class="section">
+		<div id="authors" class="section">
 			<a href="#authors"><i class="glyphicon glyphicon-user xxl"></i></a>
 			<h2>Author</h2>
 			<div class="instructions" >
-				<p>Author : <strong>Gilles Coomans</strong> is an eclectic freaks</p>
+				<p><strong>Gilles Coomans</strong> is an eclectic freak</p>
 			</div>
 			<h2>Main Contributor</h2>
 			<div class="instructions" >
-				<p>Author : <strong>Gilles Coomans</strong> is an eclectic freaks</p>
+				<p><strong>Philippe Delabye</strong></p>
 			</div>
-		</div> -->
+		</div>
 		<div id="footer">
 			<div class="tools-bar">
 				<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record bigger"></i></a>

@@ -14,6 +14,10 @@ a:focus {
 .glyphicon.huge { font-size: 48px; }
 
 .glyphicon.xxl { font-size: 120px; }
+.bullet-title {
+	color: #14a2c6;
+	font-size: 20px;
+}
 
 /* ______________________________ STRUCTURE ___________ */
 .section {
@@ -27,27 +31,36 @@ a:focus {
 .section a {
 	color:#14a2c6;
 }
-.section i {
-	margin-bottom:0px;
-}
 .instructions {
 	text-align: left;
+	
 	width:500px;
 	margin: auto;
 	margin-bottom:20px;
 	padding:50px;
+	
 	color: #222;
-	background-color: #F9F9F9;
-	border:1px solid #000;
-	-webkit-box-shadow: 0px 0px 5px #111;
-	-moz-box-shadow: 0px 0px 5px #111;
-	box-shadow: 0px 0px 5px #111;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	background-color: #f6efe6;
+
+	border:2px solid #676658;
+
+	-webkit-box-shadow: 0px 0px 6px #1c1c1c;
+	-moz-box-shadow: 0px 0px 6px #1c1c1c;
+	box-shadow: 0px 0px 6px #1c1c1c;
+
+	-moz-border-radius: 8px;
+	border-radius: 8px;
 }
 .instructions .code {
 	margin: auto;
 	width: 400px;
+}
+
+.instructions li {
+	margin-bottom: 10px;
+}
+.instructions li a {
+	font-weight: bold;
 }
 
 .dp-example {
@@ -55,10 +68,12 @@ a:focus {
 	padding: 0px;
 }
 .dp-box {
-	background-color:#FFFFFF;
+	overflow: scroll;
+
 	padding: 10px;
 	margin-bottom:0px;
-	overflow: scroll;
+
+	background-color:#FFFFFF;
 }
 .instructions .code {
 	margin-bottom: 20px;
@@ -68,17 +83,18 @@ a:focus {
 
 .logo {
 	margin: 0px;
-	font-family: 'Lobster', cursive;
-	color:#14a2c6;
-	font-size: 120px;
 	position:relative;
 	top:-40px;
+
+	font-family: 'Lobster', cursive;
+	font-size: 120px;
 	text-shadow: 0px 0px 5px #111;
+	color:#14a2c6;
 }
 
 h2 {
 	font-family: 'Lobster', cursive;
-	margin-bottom:25px;
+	margin-bottom:30px;
 	margin-top:30px;
 	color: #eee;
 }
@@ -145,6 +161,7 @@ h3 {
 }
 
 .tools-bar a:hover {
+	text-decoration: underline;
 	color: #fff;
 }
 .tools-bar a:focus {
@@ -166,6 +183,7 @@ h3 {
 code, pre {
 	font-size: 12px;
 	font-family: "Lucida Sans Unicode";
+	border:none; /*1px dotted #aaa;*/
 }
 
 .dp-try-editor {
@@ -189,33 +207,38 @@ code, pre {
 
 .dp-try-output {
 	overflow: scroll;
+	clear: both;
 
-	background-color:#FFFFFF;
 	padding: 10px;
 	margin-top:21px;
 	margin-bottom:1px;
-	border:1px solid #777777;
-	
+
+	background-color:#FFFFFF;
+
+	border:1px solid #777777;	
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	clear: both;
 }
 
 .dp-try-view {
-	background-color:#FFFFFF;
+	overflow: scroll;
+
 	padding: 10px;
 	margin-top:5px;
 	margin-bottom:1px;
+
+	background-color:#FFFFFF;
+
 	border:1px solid #7eaabb;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	overflow: scroll;
 	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .dp-button-row {
 	overflow: visible;
 	float:left;
+
 	width:100px;
 }
 
