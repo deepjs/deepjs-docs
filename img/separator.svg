@@ -26,33 +26,33 @@
 <g>
 	<g>
 		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="162" y1="17.5" x2="163" y2="17.5"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" points="165,17.5 220.479,17.5 
-			223.333,19.78 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="224.061,20.635 224.836,21.266 224.836,22.266 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0238,2.0238" points="224.5,24 224.5,28.439 
-			222.453,30.396 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="222.083,31.266 221.385,31.98 220.385,31.98 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5376,2.5376" points="218,31.5 216.238,31.5 
-			214.646,30.07 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="213.607,29.727 212.848,29.075 212.848,28.075 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="212.5,26 212.5,24.989 
-			213.669,23.307 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" points="165,17.5 230.479,17.5 
+			233.333,19.78 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="234.061,20.635 234.836,21.266 234.836,22.266 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0238,2.0238" points="234.5,24 234.5,28.439 
+			232.453,30.396 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="232.083,31.266 231.385,31.98 230.385,31.98 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5376,2.5376" points="228,31.5 226.238,31.5 
+			224.646,30.07 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="223.607,29.727 222.848,29.075 222.848,28.075 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="222.5,26 222.5,24.989 
+			223.669,23.307 		"/>
 	</g>
 </g>
 <g>
 	<g>
 		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="148" y1="17.5" x2="147" y2="17.5"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" points="145,17.5 89.234,17.5 
-			86.523,19.78 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="85.651,20.635 84.875,21.266 84.875,22.266 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0239,2.0239" points="84.5,24 84.5,28.439 
-			86.547,30.396 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="87.629,31.266 88.327,31.98 89.327,31.98 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5375,2.5375" points="92,31.5 93.473,31.5 
-			95.209,30.07 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="96.105,29.727 96.864,29.075 96.864,28.075 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="96.5,26 96.5,24.989 
-			95.331,23.307 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" points="145,17.5 79.234,17.5 
+			76.523,19.78 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="75.651,20.635 74.875,21.266 74.875,22.266 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0239,2.0239" points="74.5,24 74.5,28.439 
+			76.547,30.396 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="77.629,31.266 78.327,31.98 79.327,31.98 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5375,2.5375" points="82,31.5 83.473,31.5 
+			85.209,30.07 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="86.105,29.727 86.864,29.075 86.864,28.075 		"/>
+		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="86.5,26 86.5,24.989 
+			85.331,23.307 		"/>
 	</g>
 </g>
 <circle fill="#14A2C6" cx="155.09" cy="17.257" r="3.59"/>
