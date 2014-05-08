@@ -17,6 +17,8 @@ a:focus {
 .bullet-title {
 	color: #14a2c6;
 	font-size: 20px;
+	margin-left:5px;
+	margin-right:5px;
 }
 
 /* ______________________________ STRUCTURE ___________ */
@@ -56,8 +58,20 @@ a:focus {
 	width: 400px;
 }
 
+.instructions ul {
+	overflow: scroll;
+	clear: both;
+
+	padding: 25px;
+
+	background-color:#FFFFFF;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 .instructions li {
-	margin-bottom: 10px;
+	margin-bottom: 14px;
+	margin-left: 20px;
 }
 .instructions li a {
 	font-weight: bold;
