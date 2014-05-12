@@ -1,3 +1,4 @@
+/**  @author Gilles Coomans <gilles.coomans@gmail.com> */
 module.exports = function (grunt) {
 
 	// Project configuration.

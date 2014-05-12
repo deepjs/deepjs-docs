@@ -1,3 +1,5 @@
+/**  @author Gilles Coomans <gilles.coomans@gmail.com> */
+
 // main.js : load all first dependencies
 require.config({
 	baseUrl: "./bower_components"
