@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
+	<!--  @author Gilles Coomans <gilles.coomans@gmail.com> -->
 	<head>
 		<title>deepjs.org</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./highlight/styles/github.css">
 		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/common.css">
 		<link rel="stylesheet" type="text/css" href="./css/home.css">
+		<link rel="stylesheet" type="text/css" href="./css/dp-try.css">
 	</head>
 	<body>
 		<div id="home" class="section">
@@ -21,26 +24,25 @@
 				<p>Better, faster, easier <strong>programming</strong>.</p>
 				<p>Simply made with <strong>love</strong>.</p>
 				<p class="deepjs-version-label">current version : <span class="deepjs-version"></span></p>
+				<div class="go-further"><a href="#introduction"><i class="glyphicon glyphicon-chevron-down" ></i></a></div>
 			</div>
 		</div>
-		<div class="separator">
-			<object data="./img/separator.svg" type="image/svg+xml">
-		  		<img src="yourfallback.jpg" />
-			</object>
-		</div>
+		<div class="separator"></div>
 		<div id="introduction"  class="section">
 			<a href="#introduction"><i class="glyphicon glyphicon-info-sign xxl"></i></a>
 			<h2>Introduction</h2>
 			<div class="instructions" >
-				<p><strong>deepjs</strong> is set of <strong>open-source isomorphic tools</strong> to manipulate <strong>javascript</strong> objects and functions. It tries first to answer modern architectural patterns problems and provides for this nothing less than a whole new way of coding.</p>
+				<div class="section-separator"></div>
+				<p><strong>deepjs</strong> is set of <strong>open-source isomorphic tools</strong> to manipulate <strong>javascript</strong> objects and functions. It tries first to answer modern architectural patterns problems and provides for this nothing less than a whole new way of coding : <strong><a href="/manifest.html">the space-time programmation paradigm</a></strong>.</p>
 
 				<p>It helps you in <strong>object, classes, views, services, routes (...)</strong> modelisation and/or to manage <strong>async runtime</strong> like a breeze.</p>
 
-				<p>If you searching a <strong>HTTP - Restful - Single Page - ThinServer - NoSQL</strong> framework, just part of it, or simple - but so powerful - tools for better architecture and modelisation, you should definitly take a look at this. </p>
+				<p>If you searching a <strong>HTTP - Restful - Single Page - ThinServer - NoSQL</strong> framework, just part of it, or simple - but so powerful - tools for <strong>better architecture and run-time management</strong>, you should definitly take a look at this. </p>
 
-				As a <strong>bit of code</strong> is better than thousand words, and even if deepjs is to large to be contained in one example...
+				As a <strong>bit of code</strong> is better than thousand words, and even if deepjs is to large to be contained in a single example...
+				<div class="section-separator-end"></div>
 			</div>
-			<div id="examples" class="section">
+			<div class="examples" class="section">
 				<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep(1).log();
@@ -48,23 +50,20 @@ deep(1).log();
 				</div>
 			</div>
 		</div>
-		<div class="separator">
-			<object data="./img/separator.svg" type="image/svg+xml">
-		  		<img src="yourfallback.jpg" />
-			</object>
-		</div>
+		<div class="separator"></div>
 		<div id="getting-started"  class="section">
 			<a href="#getting-started"><i class="glyphicon glyphicon-record xxl"></i></a>
 			<h2>Getting started</h2>
 			<div class="instructions" >
-				<h3><span class="bullet-title">•</span> Prerequired</h3>
+				<div class="section-separator"></div>
+				<h3><span class="bullet-title">&gt;</span> Prerequired</h3>
 				<p>
 				Install <a href="http://www.nodejs.org/download/">nodejs</a> then yo (it will also install grunt and bower) :
 <pre class="dp-box code" style="color:#222">
 > npm install -g yo
 </pre>
 </p>
-				<h3><span class="bullet-title">•</span> Start</h3>
+				<h3><span class="bullet-title">&gt;</span> Start</h3>
 				<p><strong>deepjs</strong> comes with 5 workable environnements :
 
 				<ul>
@@ -75,11 +74,13 @@ deep(1).log();
 					<li><a href="#deep-shell">deep-shell</a> : a deepjs/nodejs/shell cli and libraries (sh and ssh).</li>
 				</ul>
 			</p>
-				Please <strong>choose</strong> one below, <strong>install</strong> associated yo-generator, use it, and <strong>follow instructions</strong>.<br/> Each environnement has it's <strong>own tutorials namespace</strong>.
+				Please <strong>choose</strong> one below, <strong>install</strong> associated yo-generator, <strong>use</strong> it, and <strong>follow instructions</strong>.<br/> Each environnement has it's <strong>own tutorials namespace</strong>.
+				<div class="section-separator-end"></div>
 			</div>
 			<h2 id="generator-browser"><span class="bullet-title">--</span> Browser <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
-				<p>A fully functionnal <strong>requirejs/jquery/deepjs/bootstrap</strong> environnement for browser. (<a href="https://github.com/deepjs/yo-generator-deepjs-browser">full documentation.</a>)</p>
+				<div class="section-separator"></div>
+				<p>A fully functionnal <strong>requirejs/jquery/deepjs</strong> environnement for browser. (<a href="https://github.com/deepjs/generator-deepjs-browser">full documentation.</a>)</p>
 				Install the generator globally before :
 <pre class="dp-box code" style="color:#222">
 > npm install -g generator-deepjs-browser
@@ -92,70 +93,94 @@ Then anywhere in your terminal :
 > grunt http-server
 </pre>
 				Then go to http://localhost:8282. And follow associated <a href="/tutorials/browser/">tutorials.</a>
+				<div class="section-separator-end"></div>
 			</div>
 			<h2 id="generator-server"><span class="bullet-title">--</span> Server <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
+				<div class="section-separator"></div>
+				<p>A fully functionnal <strong>nodesjs/expressjs/deepjs</strong> environnement. (<a href="https://github.com/deepjs/generator-autobahn">full documentation.</a>)</p>
+				Install the generator globally before :
 <pre class="dp-box code" style="color:#222">
-> npm install -g yo-generator-deepjs-browser
+> npm install -g generator-autobahn
+</pre>
+Then anywhere in your terminal :
+<pre class="dp-box code" style="color:#222">
 > mkdir YOUR_PROJECT_FOLDER
 > cd YOUR_PROJECT_FOLDER
-> yo deepjs-browser
-> grunt http-server
+> yo autobahn
+> node index.js
 </pre>
+				Then go to http://localhost:3000. And follow associated <a href="/tutorials/autobahn/">tutorials.</a>
+				<div class="section-separator-end"></div>
 			</div>
 			<h2 id="generator-air"><span class="bullet-title">--</span> Adobe Air <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
+			<div class="section-separator"></div>
+			<p class="warning"><strong>Warning</strong> : still in stabilisation. (<a href="https://github.com/deepjs/generator-deepjs-air">full documentation.</a>)</p>
+			Install the generator globally before : 
 <pre class="dp-box code" style="color:#222">
-> npm install -g yo-generator-deepjs-browser
+> npm install -g generator-deepjs-air
+</pre>
+			Then anywhere in your terminal :
+<pre class="dp-box code" style="color:#222">
 > mkdir YOUR_PROJECT_FOLDER
 > cd YOUR_PROJECT_FOLDER
-> yo deepjs-browser
-> grunt http-server
+> yo deepjs-air
+> adl ...
 </pre>
+				Then follow associated <a href="/tutorials/air/">tutorials.</a>
+				<div class="section-separator-end"></div>
 			</div>
 			<h2 id="generator-node-webkit"><span class="bullet-title">--</span> node-webkit <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
+			<div class="section-separator"></div>
+			<p class="warning"><strong>Warning</strong> : still in stabilisation. (<a href="https://github.com/deepjs/generator-deepjs-node-webkit">full documentation.</a>)</p>
+			Install the generator globally before :
 <pre class="dp-box code" style="color:#222">
-> npm install -g yo-generator-deepjs-browser
+> npm install -g generator-deepjs-node-webkit
+</pre>
+			Then anywhere in your terminal :
+<pre class="dp-box code" style="color:#222">
 > mkdir YOUR_PROJECT_FOLDER
 > cd YOUR_PROJECT_FOLDER
-> yo deepjs-browser
-> grunt http-server
+> yo deepjs-node-webkit
+> nw
 </pre>
+				Then follow associated <a href="/tutorials/node-webkit/">tutorials.</a>
+				<div class="section-separator-end"></div>
 			</div>
 			<h2 id="deep-shell"><span class="bullet-title">--</span> deep-shell <span class="bullet-title">--</span></h2>
 			<div class="instructions" >
+				<div class="section-separator"></div>
+			Install the library globally before :
 <pre class="dp-box code" style="color:#222">
-> npm install -g yo-generator-deepjs-browser
-> mkdir YOUR_PROJECT_FOLDER
-> cd YOUR_PROJECT_FOLDER
-> yo deepjs-browser
-> grunt http-server
+> npm install -g deep-shell
 </pre>
+			Then anywhere in your terminal :
+<pre class="dp-box code" style="color:#222">
+> dpsh
+</pre>
+				Then follow associated <a href="/tutorials/deep-shell/">tutorials.</a>
+				<div class="section-separator-end"></div>
 			</div>
 		</div>
-		<div class="separator">
-			<object data="./img/separator.svg" type="image/svg+xml">
-		  		<img src="yourfallback.jpg" />
-			</object>
-		</div>
+		<div class="separator"></div>
 		<div id="how-to" class="section">
 			<a href="#how-to"><i class="glyphicon glyphicon-question-sign xxl"></i></a>
-			<h2>How-to</h2>
+			<h2>How to</h2>
 			<div class="instructions" >
-				<p>There is <strong>different kind of ressources</strong> that you could check to grasp the whole story :</p>
+				<div class="section-separator"></div>
+				<p>Before all, you could maybe read <a href="/manifest.html">deepjs manifest</a> that could enlightening you on the nature of deepjs.</p>
+				<p>After that, there is <strong>different kind of ressources</strong> that you could check to grasp the whole story :</p>
 				<ul>
 					<li><a href="/docs/">core documentations</a></li>
 					<li><a href="/tutorials/">dedicated tutorials</a></li>
 					<li><a href="/modules/">specific documentation by modules</a></li>
 				</ul>
+				<div class="section-separator-end"></div>
 			</div>
 		</div>
-		<!--<div class="separator">
-			<object data="./img/separator.svg" type="image/svg+xml">
-		  		<img src="yourfallback.jpg" />
-			</object>
-		</div>
+		<!--<div class="separator"> </div>
 		<div id="authors" class="section">
 			<a href="#authors"><i class="glyphicon glyphicon-user xxl"></i></a>
 			<h2>Author</h2>
@@ -167,25 +192,21 @@ Then anywhere in your terminal :
 				<p><strong>Philippe Delabye</strong></p>
 			</div>
 		</div>-->
-		<div class="separator-end">
-			<object data="./img/separator-end.svg" type="image/svg+xml">
-		  		<img src="yourfallback.jpg" />
-			</object>
-		</div>
+		<div class="go-further back"><a href="#home"><i class="glyphicon glyphicon-chevron-up" ></i></a></div>
+		<div class="separator-end">	</div>
 		<div id="footer">
 			<div class="tools-bar">
 				<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record bigger"></i></a>
-				<a title="core docs." href="#getting-started"><i class="glyphicon glyphicon-cog bigger"></i></a>
-				<a title="tutorials." href="#getting-started"><i class="glyphicon glyphicon-play-circle bigger"></i></a>
+				<a title="core docs." href="/docs/"><i class="glyphicon glyphicon-cog bigger"></i></a>
+				<a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle bigger"></i></a>
 				<a href="https://github.com/deepjs" title="go to github.com"><img width="32" height="32" src="./img/GitHub-Mark-Light-64px.png"></a>
-				<a href="https://github.com/deepjs" title="go to twitter"><img width="32" height="32" src="./img/Twitter_logo_white.png"></a>
+				<a href="https://github.com/deepjs" title="follow us on twitter"><img width="32" height="32" src="./img/Twitter_logo_white.png"></a>
 			</div>
 			<div id="copyright">All rights reserved. </div>
 		</div>
 		<script src="./highlight/highlight.pack.js"></script>
 		<script src="./bower_components/jquery/jquery.min.js"></script>
 		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="./bower_components/jstorage/jstorage.min.js"></script>
 		<script data-main="main" src="./bower_components/requirejs/require.js"></script>
 	</body>
 </html>
