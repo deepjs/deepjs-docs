@@ -3,7 +3,11 @@
 body {
 }
 
-
+#menu .title .bullet-title {
+	position:relative;
+	top:2px;
+	left:-10px;
+}
 #header {
 	padding:20px 50px 0px 50px;
 	background-color: #3f3b36;
@@ -28,6 +32,8 @@ body {
 
 
 /*_________________ MENU _________________ */
+#menu-container {
+}
 
 #menu {
 	/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #302e25), color-stop(20%, #645953), color-stop(100%, #c7c1a5));
@@ -62,7 +68,7 @@ body {
 	color: #eee;
 	display: inline;
 	font-size: 16px;
-	color: #7d7870;
+	color: #827c72;
 }
 #menu ul {
 	text-align: center;
@@ -112,32 +118,30 @@ body {
 /*_____________________________________________ SUBMENU ____________________ */
 
 #submenu {
-	float:left;
 	width: 300px;
 	padding-top:0px;
 	padding-left:40px;
 	padding-right:20px;
-	clear:both;
 	font-size: 12px;
+	float:left;
+	position: fixed;
+	top: 213px;
+	left: 0;
 }
 
 .submenu-moving {
-	position: relative;
-	float:left;
+
 }
 
 .submenu-fixed {
-	position: fixed;
-	top: 73px;
-	left: 0;
+
 }
 
 .submenu-block {
 	margin-bottom:20px;
 	
-	background-color: #3f3b36;
 	border-top: 1px solid #555;
-	background-color: #3f3b36;
+	background-color: #4b4641;
 
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -171,6 +175,12 @@ body {
     margin-right:10px;
 }
 
+#submenu h2 {
+	font-family: 'Lobster', cursive;
+	margin-bottom:10px;
+	margin-top:0px;
+	color: #eee;
+}
 
 /*___________________________________________ dp-try examples ______________ */
 
@@ -185,6 +195,10 @@ body {
 	width:95%;
 	border-top: 1px solid #555;
 	background-color: #3f3b36;
+	background-image:linear-gradient(#4b4641, #3f3b36);
+	height:150px;
+	margin-top:30px;
+	clear: both;
 }
 
 #content {
@@ -192,6 +206,7 @@ body {
 	color: #ddd;
 	padding-left:280px;
 	padding-right: 10px;
+	padding-top: 10px;
 	margin: auto;
 }
 

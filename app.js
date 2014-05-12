@@ -48,17 +48,22 @@ define([
 
 			if(!menu.length)
 				return;
+					var menuShift = $('#menu').outerHeight(true);
 
 			var reposition = function(){
-				if($(this).scrollTop() > pos.top && menu.hasClass('top-header')){
+				var scrollTop = $(this).scrollTop();
+				if(scrollTop >= pos.top && menu.hasClass('top-header')){
 					console.log("menu out of screen")
-					//header.css("margin-bottom", menu.height()+30);
+					content.css("margin-top", menuShift);
 					menu.removeClass("top-header").addClass('top-fixed');//.fadeIn('fast');
-					submenu.removeClass("submenu-moving").addClass('submenu-fixed');//.fadeIn('fast');
-				} else if($(this).scrollTop() <= pos.top && menu.hasClass('top-fixed')){
-					//header.css("margin-bottom", 0);
-					menu.removeClass('top-fixed').addClass("top-header");//.fadeIn('fast');
-					submenu.addClass("submenu-moving").removeClass('submenu-fixed');//.fadeIn('fast');
+					submenu.css("top", (menuShift)+"px");
+				} else if(scrollTop < pos.top)
+				{
+					if(menu.hasClass('top-fixed')){
+						content.css("margin-top", 0);
+						menu.removeClass('top-fixed').addClass("top-header");//.fadeIn('fast');
+					}
+					submenu.css("top", ((pos.top-scrollTop)+menuShift)+"px")
 				}
 			};
 
