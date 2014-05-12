@@ -1,37 +1,22 @@
-@import url(http://fonts.googleapis.com/css?family=Lobster|Titillium+Web:200);
+/* @author Gilles Coomans <gilles.coomans@gmail.com> */
+
 body {
-	font-family: "Lucida Sans Unicode";
-	background-color :#F9F9F9;
-	font-size: 12px;
-}
-a:focus {
-    outline: 0;
-}
-#home {
-	padding:70px;
 }
 
+
 #header {
-	padding:50px 70px 0px 70px;
+	padding:20px 50px 0px 50px;
 	background-color: #3f3b36;
-	border-bottom: 1px dotted #888888;
+	text-align: center;
 }
 
 .logo {
 	/*font-family: 'Titillium Web', sans-serif;*/
-	margin: 0px;
-	font-family: 'Lobster', cursive;
-	color:#14a2c6;
-	font-size: 80px;
+	font-size: 70px;
 	position:relative;
-	top:-40px;
-	text-shadow: 0px 0px 5px #111;
+	top:-20px;
 }
 
-h3 {
-	margin-bottom:25px;
-	margin-top:70px;
-}
 
 #reports-container {
 	display: none;
@@ -40,48 +25,59 @@ h3 {
 #reports-container pre {
 	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
-#footer {
-	margin-top: 30px;
-	padding:70px 70px 0px 70px;
-	background-color: #3f3b36;
-	border-top: 1px dotted #CCC;
-	height:200px;
-}
+
 
 /*_________________ MENU _________________ */
 
-#tools-menu {
-	float:right;
-}
-
 #menu {
-	z-index: 100;
 	/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #302e25), color-stop(20%, #645953), color-stop(100%, #c7c1a5));
 	background: -moz-linear-gradient(top, #302e25, #3c3531, #52514a);*/
 
-	background-color: #22211a;
+	background-color: #4b4641;
 
-	line-height: 40px;
-	margin: 0 auto;
-	padding: 0px 65px 0px;
-	-webkit-box-shadow: 0 1px 1px #888;
-	-moz-box-shadow: 0 1px 1px #888;
-	box-shadow: 0 1px 1px #888;
-	width:100%;
-	float:left;
-	border-bottom: 1px dotted #ccc;
+	line-height: 20px;
+	margin: auto;
+	padding:10px 30px 10px;
+
 	color: #999999;
 	font-size: 14px;
-	text-align: left;
+	width:95%;
+	
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-top: 1px solid #555;
+
+	-webkit-box-shadow: 0px 0px 6px #1c1c1c;
+	-moz-box-shadow: 0px 0px 6px #1c1c1c;
+	box-shadow: 0px 0px 6px #1c1c1c;
+
+	margin-bottom:30px;
+
+	float:center;
+}
+#menu .title {
+	font-family: 'Lobster', cursive;
+	margin-bottom:40px;
+	margin-top:30px;
+	color: #eee;
+	display: inline;
+	font-size: 16px;
+	color: #7d7870;
+}
+#menu ul {
+	text-align: center;
 }
 .top-header {
-	position:relative;
+	position: relative;
 	top:0px;
+	width: 100%;
+	z-index: 10000;
 }
 .top-fixed {
 	position: fixed;
 	top: 0px;
 	left: 0;
+	z-index: 10000;
 	width: 100%;
 }
 
@@ -99,9 +95,8 @@ h3 {
 }
 
 #menu ul li a {
-	font-family: 'Titillium Web', sans-serif;
 	/*font-family: Georgia;*/
-	font-size: 14px;
+	font-size: 12px;
 
 	color: #fff;
 	text-decoration: none;
@@ -113,24 +108,17 @@ h3 {
 	color: #ddd;
 }
 
-.dp-box {
-	background-color:#FFFFFF;
-	padding: 10px;
-	margin-bottom:0px;
-	/*border:1px solid #DDDDDD;*/
-	overflow: scroll;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
 
 /*_____________________________________________ SUBMENU ____________________ */
 
 #submenu {
+	float:left;
 	width: 300px;
-	padding-top:40px;
+	padding-top:0px;
 	padding-left:40px;
 	padding-right:20px;
 	clear:both;
+	font-size: 12px;
 }
 
 .submenu-moving {
@@ -140,130 +128,73 @@ h3 {
 
 .submenu-fixed {
 	position: fixed;
-	top: 45px;
+	top: 73px;
 	left: 0;
 }
 
 .submenu-block {
 	margin-bottom:20px;
+	
+	background-color: #3f3b36;
+	border-top: 1px solid #555;
+	background-color: #3f3b36;
+
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-top: 1px solid #555;
+
+	-webkit-box-shadow: 0px 0px 6px #222;
+	-moz-box-shadow: 0px 0px 6px #222;
+	box-shadow: 0px 0px 6px #222;
+
+	padding:20px;
+}
+
+#submenu a {
+	color:#eee;
+}
+#submenu a:hover {
+	color:#14a2c6;
+}
+
+
+#submenu ul {
+	list-style: none;
+	padding:0px;
+	margin:0px;
+}
+
+#submenu li:before {
+    content: "> ";
+    color: #14a2c6; /* or whatever color you prefer */
+    font-size: 10px;
+    margin-right:10px;
 }
 
 
 /*___________________________________________ dp-try examples ______________ */
 
-code, pre {
-	font-size: 12px;
-	font-family: "Lucida Sans Unicode";
-}
-
-#examples {
-	padding-right: 50px;
-	margin-left: 330px;
-	padding-top: 30px;
-}
-
-.dp-example {
-	margin-bottom:30px;
-}
-
-.code {
-	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
-	text-align: left;
-}
-
-.dp-try-editor {
-	background-color:#FFFFFF;
-	padding: 10px;
-	padding-bottom: 1px;
-	padding-top: 7px;
-	margin-top:7px;
-	margin-bottom:1px;
-	font-size: 14px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
-	border:1px solid #FFFFFF;
-}
-
-.dp-try-output {
-	background-color:#FFFFFF;
-	padding: 10px;
-	margin-top:21px;
-	margin-bottom:1px;
-	border:1px solid #777777;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	overflow: scroll;
-}
-
-.dp-try-view {
-	background-color:#FFFFFF;
-	padding: 10px;
-	margin-top:5px;
-	margin-bottom:1px;
-	border:1px solid #7eaabb;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	overflow: scroll;
-	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-.dp-button-row {
-	overflow: visible;
-	float:left;
-	width:100px;
-}
-
-.dp-button-row button {
-	font-size:10px;
-}
-
-.tools-bar {
-	text-align:right;
-	padding-top: 10px;
-}
-
-.glyphicon.bigger { font-size: 32px; }
-
-.glyphicon.huge { font-size: 48px; }
-
-.glyphicon.xxl { font-size: 120px; }
-
-.dp-download-button {
-	color: #fff;
-	cursor: pointer; cursor: hand;
-}
-.dp-download-button a {
-	color: #fff;
-}
-a:hover {
-	color: #74bf11;
-}
-a:focus {
-	color: #14a2c6;
-}
 .run-core-units-verbose {
 	color: #21ba03;
 	cursor: pointer; cursor: hand;
 }
-#github {
-	margin-right:20px;
-	margin-left:20px;
-	position: relative;
-	top: -10px;
-	text-decoration: none;
+
+#footer {
+	padding-left:20px;
+	padding-right:20px;
+	width:95%;
+	border-top: 1px solid #555;
+	background-color: #3f3b36;
 }
 
 #content {
-
+	width:95%;
+	color: #ddd;
+	padding-left:300px;
+	padding-right: 10px;
+	margin: auto;
 }
 
-.shadowed {
-	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
-}
-.rounded {
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+#content button {
+	color: #222;
 }
