@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<!--  @author Gilles Coomans <gilles.coomans@gmail.com> -->
+	<head>
+		<title>deepjs.org - Abstracts</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/common.css">
+		<link rel="stylesheet" type="text/css" href="./css/abstracts.css">
+	</head>
+	<body>
+			<div class="logo" id="logo"><a href="/">deep<span style="font-size:25px; color:#ccc;">js</span></a></div>
+		<div class="separator"></div>
+		<div id="abstracts" class="section">
+			<h2>Abstracts</h2>
+			<div class="instructions" >
+				<div class="section-separator"></div>
+				<h3><span class="bullet-title">&gt;</span> The core.</h3>
+<p>The ideas behind deepjs (core) try to provide new general ways of thinking and running code.</p>
+
+<p>In really few words, it could be defined as <strong>"space-time programmation"</strong>.</p>
+
+<h4>Space</h4> 
+ (i.e. taking care of the structure of - nested - objects that shape your app)
+<p><ul>
+ <li><strong>to design with "layers"</strong> : i.e. to design freely whatever object (OO meaning), as structured (functions, datas, ...) and deep as you want, by merging complex objects (seen as layers) together (kind of Aspect Oriented Programmation with deepness management) </li>
+
+<li><strong>to apply those "aspects" with  query</strong> : we could query existant structures before applying them some aspects at precise place depending on a more or less complex filter. Which gives by example some great tools as "code sheets" that could be compared with "styles sheets".</li>
+
+<li><strong>to use specific inheritance tools</strong> as "local internal inheritance" (an object could inherit locally from a brother, a oncle, or a mix of them, etc.) or by describing, at any structure deepness what are the objects/aspects "backgrounds".</li>
+</ul>
+</p>
+<h4>Time</h4>
+<p>(i.e. taking care of the (async) time management between function's calls)</p>
+
+<p>The core handle async promises "auto-magically" for you at almost any level... </p>
+
+<p><ul>
+<li>It use and abuse of the <a href="http://en.wikipedia.org/wiki/Futures_and_promises">Promise Pipelining</a> pattern (async programmation with "promises") and provides a set of 'async chains' (objects with specific chainable API to manage File System, a shell session (or ssh), a db transaction, a call to a services, etc. or simply datas transformations...<br/>
+Thanks to Promises : it hide differences between sync and async programmation.</li>
+
+<li>When merging two objects, deepjs also manages time sequence between merged functions/methods. It mimics the <a href="http://en.wikipedia.org/wiki/Futures_and_promises">Promise Pipelining</a> pattern and make function's composition a pleasure (sync or not) and provides nice way of errors handling.</li>
+
+<li>In addition, we could play with local concurrent contexts (particular namespace) that are associated to each asynch call and define their own context.<br/>
+Thanks to this pattern (that come from <a href="http://en.wikipedia.org/wiki/Futures_and_promises">Futures</a> and <a href="https://github.com/persvr">Kris Zyp</a> work) : it really makes concurrent programmation easier.</li>
+</ul></p>
+
+<h4>Object Capability Model</h4>
+<p>All this together (<strong>layer tools + query + inheritances + asynch/promises + concurrent context</strong>) plus another set of tools to manage "<strong>dependance injections</strong>" allow us to provide one of the most practical implementations of the <a href="http://en.wikipedia.org/wiki/Object-capability_model">OCM</a> (Object Capability Model) paradigm for javascript, which become suddenly really usable and elegant.</p>
+
+<p><strong><a href="http://en.wikipedia.org/wiki/Object-capability_model">OCM</a></strong> should be seen here as the capacity to produce dynamically objects (OO meaning - or even simple primitive value) with a structure that depends on environnement flags - user role(s), production/dev flags, particular modes, etc. - and as said before, the environnement itself could be concurrently managed.</p>
+
+<h4>All together</h4>
+<p>All those tools give <strong>"space-time programmation"</strong> paradigm (OCM is a part of it, and classical OO is a particular case of it), and has really positive and deep implications in security or achitecture of peace of code (an obviously of complex app).</p>
+
+<p>A poetic image could be :</p>
+<div class="dp-box code">The code is seen as landscape, with valleys and mountains (aka. stacks of 'aspects'), that we flatten in a big unique structure, which began to vibrate locally following async runs, with the possibility to create on the fly, at any point of this space, some parallels worlds depending of local environnement.</div>
+
+<p>Voilà, this is what deepjs core talking about.</p>
+			
+				<div class="section-separator"></div>
+<h3><span class="bullet-title">&gt;</span> The framework.</h3>
+
+Then, based on those tools, that are really generic, we've develop a framework that answer originaly to different problems that come with modern web app software engineering : <strong>management of routes and views, HTTP/Rest services design, homogeneous NoSQL ressources, browser/serveur isomorphism, ...</strong>. 
+				<div class="section-separator-end"></div>
+			</div>
+		</div>
+		<div class="go-further back"><a href="#logo"><i class="glyphicon glyphicon-chevron-up" ></i></a></div>
+		<div class="separator-end">	</div>
+		<div id="footer">
+			<div class="tools-bar">
+				<a title="getting started." href="/#getting-started"><i class="glyphicon glyphicon-record bigger"></i></a>
+				<a title="core docs." href="/docs/"><i class="glyphicon glyphicon-cog bigger"></i></a>
+				<a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle bigger"></i></a>
+				<a href="https://github.com/deepjs" title="go to github.com"><img width="32" height="32" src="./img/GitHub-Mark-Light-64px.png"></a>
+				<a href="https://github.com/deepjs" title="follow us on twitter"><img width="32" height="32" src="./img/Twitter_logo_white.png"></a>
+			</div>
+			<div id="copyright">All rights reserved. </div>
+		</div>
+	</body>
+</html>
