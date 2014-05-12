@@ -40,8 +40,10 @@ define([
 		};
 
 		$(function(){
-			var menu = $('#menu'),
+			var menu = $('#menu-container'),
 				submenu = $("#submenu"),
+				header = $("#header"),
+				content = $("#content"),
 				pos = menu.offset();
 
 			if(!menu.length)
@@ -50,9 +52,11 @@ define([
 			var reposition = function(){
 				if($(this).scrollTop() > pos.top && menu.hasClass('top-header')){
 					console.log("menu out of screen")
-					submenu.removeClass("submenu-moving").addClass('submenu-fixed');//.fadeIn('fast');
+					//header.css("margin-bottom", menu.height()+30);
 					menu.removeClass("top-header").addClass('top-fixed');//.fadeIn('fast');
+					submenu.removeClass("submenu-moving").addClass('submenu-fixed');//.fadeIn('fast');
 				} else if($(this).scrollTop() <= pos.top && menu.hasClass('top-fixed')){
+					//header.css("margin-bottom", 0);
 					menu.removeClass('top-fixed').addClass("top-header");//.fadeIn('fast');
 					submenu.addClass("submenu-moving").removeClass('submenu-fixed');//.fadeIn('fast');
 				}
