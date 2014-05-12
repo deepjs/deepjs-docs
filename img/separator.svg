@@ -5,55 +5,17 @@
 	 width="307px" height="41.5px" viewBox="0 0 307 41.5" enable-background="new 0 0 307 41.5" xml:space="preserve">
 <g>
 	<g>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="158.001,23.611 159.001,23.611 159.507,22.75 		"/>
-		
-			<line fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="1.7491,1.7491" x1="160.393" y1="21.241" x2="161.721" y2="18.978"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="162.162,18.224 162.668,17.361 162.178,16.489 		"/>
-		
-			<line fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="1.8287,1.8287" x1="161.283" y1="14.895" x2="159.939" y2="12.503"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="159.491,11.706 159.001,10.834 158.001,10.834 		"/>
-		<line fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2,2" x1="156" y1="10.5" x2="154" y2="10.5"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="152.668,10.834 151.668,10.834 151.179,11.706 		"/>
-		
-			<line fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="1.8287,1.8287" x1="150.283" y1="13.3" x2="148.939" y2="15.692"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="148.492,16.489 148.002,17.361 148.508,18.224 		"/>
-		
-			<line fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="1.7491,1.7491" x1="149.393" y1="19.732" x2="150.72" y2="21.995"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="151.163,22.75 151.668,23.611 152.668,23.611 		"/>
-		<line fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2,2" x1="154" y1="23.5" x2="157" y2="23.5"/>
-	</g>
-</g>
-<g>
-	<g>
-		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="162" y1="17.5" x2="163" y2="17.5"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" points="165,17.5 230.479,17.5 
-			233.333,19.78 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="234.061,20.635 234.836,21.266 234.836,22.266 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0238,2.0238" points="234.5,24 234.5,28.439 
-			232.453,30.396 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="232.083,31.266 231.385,31.98 230.385,31.98 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5376,2.5376" points="228,31.5 226.238,31.5 
-			224.646,30.07 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="223.607,29.727 222.848,29.075 222.848,28.075 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="222.5,26 222.5,24.989 
-			223.669,23.307 		"/>
-	</g>
-</g>
-<g>
-	<g>
 		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="148" y1="17.5" x2="147" y2="17.5"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" points="145,17.5 79.234,17.5 
-			76.523,19.78 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="75.651,20.635 74.875,21.266 74.875,22.266 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0239,2.0239" points="74.5,24 74.5,28.439 
-			76.547,30.396 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="77.629,31.266 78.327,31.98 79.327,31.98 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.5375,2.5375" points="82,31.5 83.473,31.5 
-			85.209,30.07 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" points="86.105,29.727 86.864,29.075 86.864,28.075 		"/>
-		<polyline fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0501,2.0501" points="86.5,26 86.5,24.989 
-			85.331,23.307 		"/>
+		<path fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" d="M145,17.5H79.234l-2.711,2.28
+			c0,0-1.91,5.19,3.852,5.22c4.25,0.021,3.5-5.22-0.625-4.25"/>
 	</g>
 </g>
-<circle fill="#14A2C6" cx="155.09" cy="17.257" r="3.59"/>
+<g>
+	<g>
+		<line fill="none" stroke="#969581" stroke-miterlimit="10" x1="163.219" y1="17.5" x2="162.219" y2="17.5"/>
+		<path fill="none" stroke="#969581" stroke-miterlimit="10" stroke-dasharray="2.0049,2.0049" d="M230.469,20.75
+			c-4.125-0.97-4.875,4.271-0.625,4.25c5.762-0.029,3.852-5.22,3.852-5.22l-2.711-2.28h-65.766"/>
+	</g>
+</g>
+<circle fill="none" stroke="#14A2C6" stroke-miterlimit="10" stroke-dasharray="2.0049,1" cx="155.09" cy="17.257" r="3.59"/>
 </svg>
