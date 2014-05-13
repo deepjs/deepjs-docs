@@ -16,16 +16,32 @@
 			<div class="instructions" >
 				<div class="section-separator"></div>
 				<h3><span class="bullet-title">&gt;</span> The core.</h3>
-<p>The ideas behind deepjs (core) try to provide new general ways of thinking and running code.</p>
+<p>The deepjs idea is to propose new generic ways of thinking and running javascript code.</p>
 
-<p>In really few words, it could be defined as <strong>"space-time programmation"</strong>.</p>
+<p>In 2 words, it could be defined as <strong>"space-time programming"</strong>.</p>
 
 <h4>Space</h4> 
  (i.e. taking care of the structure of - nested - objects that shape your app)
 <p><ul>
- <li><strong>to design with "layers"</strong> : i.e. to design freely whatever object (OO meaning), as structured (functions, datas, ...) and deep as you want, by merging complex objects (seen as layers) together (kind of Aspect Oriented Programmation with deepness management) </li>
+ <li><strong>to design objects like "layers"</strong> : <br><br>
+ Any js object (structured and deep as you want) is seen like what we called a "layer". You can merge layers to create more complexe objects helped by tools that manage possible collisions on datas (merging rules) or functions (composition rules).
+ <br>This vision of objects as layers tend to create more modular/reusable/maintainable objects or applications.
+ <br><br>
+  - we could apply layers on any objects by the bottom (like a background) : use it for classic OOP (inheritance, compostion).<br><br> 
+- And we could apply layers by the up (like a foreground) : use it to add aspects on your objects to specialise, add capabilities, modify or whatever.<br><br>
+Those easy manipulation of layers are also really great about metadata management (think about JSON) ! 
 
-<li><strong>to apply those "aspects" with  query</strong> : we could query existant structures before applying them some aspects at precise place depending on a more or less complex filter. Which gives by example some great tools as "code sheets" that could be compared with "styles sheets".</li>
+ 
+<br><br>
+
+ i.e. to design freely whatever object (OO meaning), as structured (functions, datas, ...) and deep as you want, by merging complex objects (seen as layers) together (kind of Aspect Oriented Programmation with deepness management) </li>
+
+<li><strong>to manipulate those "layers" with query</strong> : <br><br>
+We could query existant object structures before applying them some aspects at precise(s) place(s) depending on a more or less complex filter.
+<br><br>
+- It helps you modelise without knowing the complete structure of your objects/applications. Which gives by example some great tools as "code sheets" that could be compared with "styles sheets".
+<br><br> 
+- And it helps to select objects you want to manipulate in run-time ( could be compared to JQuery but with your code and not the DOM), that help about losing coupling.</li>
 
 <li><strong>to use specific inheritance tools</strong> as "local internal inheritance" (an object could inherit locally from a brother, a oncle, or a mix of them, etc.) or by describing, at any structure deepness what are the objects/aspects "backgrounds".</li>
 </ul>
