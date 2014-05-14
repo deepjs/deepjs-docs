@@ -25,6 +25,8 @@ define([
 			//deep.ui.enhance("body");
 			console.log("app-sndbx intialised");
 
+
+			//__________________________________________ ROUTES
 			deep.route.deepLink({ /* config */ });
 
 			deep.route(map)
@@ -32,30 +34,7 @@ define([
 					routes.init();
 				});
 
-			var nav = [];
-			for(var i in map)
-			{
-				var entry = map[i];
-				var navi = { label:i, entry:entry, subnav:null };
-				nav.push(navi);
-				if(entry.subs)
-				{
-					navi.subnav = [];
-					for(var j in entry.subs)
-					{
-						var subj = entry.subs[j];
-						navi.subnav.push({ label:j, entry:subj });
-					}
-				}
-			}
-
-			console.log("nav produced : ", nav);
-
-			nav.forEach(function(n){
-				$('#menu ul').append('<li><a href="#">'+n.label+'</a></li>');
-			})
-
-
+			//___________________________________________  VERSION
 			deep.get("json::/bower_components/deepjs/package.json")
 			.done(function(s) {
 				// console.log("package : ", s)
@@ -65,39 +44,44 @@ define([
 			.elog();
 		};
 
-		$(function() {
 
+		//_________________________________ NAVIGATION MOVING/FIXED
+		$(function() {
 			var dom = deep.globals.dom = {
 				menu : $('#menu-container'),
-				submenu : $("#submenu"),
+				submenu : null,
 				header : $("#header"),
-				content : $("#content"),
+				content : null,
 				menuShift : 0,
+				pos:null,
+				reconfigureMenu:function(){
+					this.submenu = $("#submenu"),
+					this.content = $("#content"),
+					this.menuShift = dom.menu.outerHeight(true);
+					this.submenu.addClass('submenu-fixed');
+					this.pos = this.menu.offset();
+				},
 				reposition : function() {
 					var scrollTop = $(window).scrollTop();
-					if (scrollTop >= pos.top)
+					if (scrollTop >= dom.pos.top)
 					{
 						if(dom.menu.hasClass('top-header')) {
 							dom.content.css("margin-top", dom.menuShift);
 							dom.menu.removeClass("top-header").addClass('top-fixed'); //.fadeIn('fast');
 						}
 						dom.submenu.css("top", (dom.menuShift) + "px");
-					} else if (scrollTop < pos.top) {
+					} else if (scrollTop < dom.pos.top) {
 						if (dom.menu.hasClass('top-fixed')) {
 							dom.content.css("margin-top", 0);
 							dom.menu.removeClass('top-fixed').addClass("top-header"); //.fadeIn('fast');
 						}
-						dom.submenu.css("top", ((pos.top - scrollTop) + dom.menuShift-1) + "px");
+						dom.submenu.css("top", ((dom.pos.top - scrollTop) + dom.menuShift-1) + "px");
 					}
 				}
 			}
-			dom.submenu.addClass('submenu-fixed');
-			dom.menuShift = dom.menu.outerHeight(true);
-			var pos = dom.menu.offset();
-
 			if (!dom.menu.length)
 				return;
-
+			dom.reconfigureMenu();
 			$(window).scroll(dom.reposition);
 			dom.reposition();
 		});

@@ -1,6 +1,7 @@
 /* @author Gilles Coomans <gilles.coomans@gmail.com> */
 
-@import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather:300);
+/*@import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather:300);*/
+@import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather+Sans);
 body {
 	background-color :#3f3b36;
 	font-family: 'Merriweather', serif;
