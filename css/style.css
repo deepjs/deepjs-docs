@@ -34,6 +34,9 @@ body {
 	font-weight: normal;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
+#menu-container a {
+
+}
 #menu {
 	/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #302e25), color-stop(20%, #645953), color-stop(100%, #c7c1a5));
 	background: -moz-linear-gradient(top, #302e25, #3c3531, #52514a);*/
@@ -143,8 +146,7 @@ body {
 }
 
 #menu-container ul li a:hover {
-	text-decoration: underline;
-	color: #ddd;
+	color: #29b7e4;
 }
 
 .content {
@@ -289,4 +291,7 @@ button {
 }
 #submenu a.active {
 	color: #14a2c6;
+}
+#submenu a:hover {
+	color: #26b8e7;
 }
