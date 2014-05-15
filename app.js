@@ -4,86 +4,55 @@
 define([
 		"require",
 		"deep-browser/index",
-		"./maps/pages.js",
+		"./js/pages.js",
+		"./js/navigation.js",
+		"deep-jquery/ajax/json",
+		"deep-jquery/ajax/html",
 		"deepjs/lib/unit",
 		"deepjs/lib/stores/collection",
 		"deepjs/lib/stores/object",
 		"deepjs/lib/schema",
 		"deep-swig/index",
-		"deep-widgets/lib/deep-try",
-		"deep-jquery/ajax/json",
-		"deep-jquery/ajax/html"
+		"deep-widgets/lib/deep-try"
 	],
-	function(require, deep, map) {
-		console.log("start app-sndbx : ", map);
+	function(require, deep, map, navigation) {
+		// ___________ base protocols
+		deep.jquery.JSON.create();
+		deep.jquery.HTML.create();
+		deep.Swig();
+		deep.jquery.set($);
+		//___________ start
+		//console.log("start app-sndbx : ", map);
 		deep.globals.pages = map;
-		var init = function() {
-			deep.jquery.set($);
-			deep.jquery.JSON.create();
-			deep.jquery.HTML.create();
-			deep.Swig();
-			//deep.ui.enhance("body");
-			console.log("app-sndbx intialised");
-
-
-			//__________________________________________ ROUTES
-			deep.route.deepLink({ /* config */ });
-
-			deep.route(map)
-				.done(function(routes) {
-					routes.init();
-				});
-
-			//___________________________________________  VERSION
-			deep.get("json::/bower_components/deepjs/package.json")
-			.done(function(s) {
-				// console.log("package : ", s)
-				$(".deepjs-version").text(s.version);
-				$(".deepjs-version-label").css("visibility", "visible").hide().fadeIn();
-			})
-			.elog();
-		};
-
-
-		//_________________________________ NAVIGATION MOVING/FIXED
-		$(function() {
-			var dom = deep.globals.dom = {
-				menu : $('#menu-container'),
-				submenu : null,
-				header : $("#header"),
-				content : null,
-				menuShift : 0,
-				pos:null,
-				reconfigureMenu:function(){
-					this.submenu = $("#submenu"),
-					this.content = $("#content"),
-					this.menuShift = dom.menu.outerHeight(true);
-					this.submenu.addClass('submenu-fixed');
-					this.pos = this.menu.offset();
-				},
-				reposition : function() {
-					var scrollTop = $(window).scrollTop();
-					if (scrollTop >= dom.pos.top)
-					{
-						if(dom.menu.hasClass('top-header')) {
-							dom.content.css("margin-top", dom.menuShift);
-							dom.menu.removeClass("top-header").addClass('top-fixed'); //.fadeIn('fast');
-						}
-						dom.submenu.css("top", (dom.menuShift) + "px");
-					} else if (scrollTop < dom.pos.top) {
-						if (dom.menu.hasClass('top-fixed')) {
-							dom.content.css("margin-top", 0);
-							dom.menu.removeClass('top-fixed').addClass("top-header"); //.fadeIn('fast');
-						}
-						dom.submenu.css("top", ((dom.pos.top - scrollTop) + dom.menuShift-1) + "px");
-					}
-				}
+		deep.route.deepLink({ /* config */ });
+		//____________________ finalise map
+		deep.utils.up({
+			_deep_sheet_:true,
+			"dq.transform::.//?how":function(node){
+				var value = node.value;
+				if(typeof value.route === 'undefined')		// default route === view.path without '/subs'
+					value.route = node.path.replace("/subs","");
+				if(typeof value.where === 'undefined')		// default where === htmlof #main
+					value.where = "dom.htmlOf::#main";
+				return deep.utils.bottom(deep.View(),value);
 			}
-			if (!dom.menu.length)
-				return;
-			dom.reconfigureMenu();
-			$(window).scroll(dom.reposition);
-			dom.reposition();
-		});
+		}, map);
+		//___________________________________________  VERSION
+		deep.get("json::/bower_components/deepjs/package.json")
+		.done(function(s) {
+			$(".deepjs-version").text(s.version);
+			$(".deepjs-version-label").css("visibility", "visible").hide().fadeIn();
+		})
+		.elog();
+		// launch init (init navigation + flatten and compile htmls map)
+		navigation.init(map);
+		var p = deep.route(map);
+		//_________________________ init route (final)
+		var init = function() {
+			p.done(function(routes) {
+				console.log("app-sndbx intialised");
+				routes.init();
+			});
+		};
 		return init;
 	});
