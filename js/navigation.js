@@ -13,15 +13,45 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep) {
 		if (last === "*" || last === "$")
 			href = href.substring(0, href.length - 1);
 		var item = $('<li class="' + liclass + '"><a href="' + href + '">' + label + '</a></li>')
-		.appendTo(menu);
+			.appendTo(menu);
 	};
 
 	return {
 		init: function(map) {
 			var $ = deep.context.$;
-			//_________________________________ NAVIGATION MOVING/FIXED
 			var dom;
+			var closure = {};
+				//__________________________________ AUTO HIGHLIGHT ANCHOR
+			//__________________________________ inspired from expressjs API doc navigation
+			function closest() {
+				if (!closure.headings)
+					return;
+				var h;
+				var top = $(window).scrollTop() + dom.menuShift;
+				var i = closure.headings.length;
+				while (i--) {
+					h = closure.headings[i];
+					if (top >= h.top - 1) return h;
+				}
+			}
+			var prev;
+			var hightlightSubmenu = function() {
+				var h = closest();
+				if (!h) return;
+
+				if (prev)
+					prev.removeClass('active');
+
+				var a = $(dom.submenu).find('a[href="#' + h.id + '"]');
+				a.addClass('active');
+				prev = a;
+			};
 			$(function() {
+
+				$(document).scroll(hightlightSubmenu);
+				//__________________________________ END AUTO HIGHLIGHT ANCHOR
+				//_________________________________ NAVIGATION MOVING/FIXED
+
 				dom = {
 					menu: $('#menu-container'),
 					menu1: $('#menu'),
@@ -36,16 +66,45 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep) {
 						this.content = $("#main");
 						this.submenu.addClass('submenu-fixed');
 						this.menuShift = dom.menu.outerHeight(true);
+						//__________________________________________________ SCROLL TO ANCHOR on click
+						this.submenu
+							.find("a")
+							.each(function() {
+								var anchor = $(this).attr("href");
+								$(this).click(function(e) {
+									e.preventDefault();
+									var offset = $(anchor).offset();
+									if (!offset)
+										return;
+									offset = Math.round(offset.top - dom.menuShift);
+									// console.log("scroll to : ", offset)
+									$('html, body').animate({
+										scrollTop: offset
+									}, 100);
+									window.location.hash = anchor.substring(1);
+									if (prev)
+										prev.removeClass('active');
+
+									prev = $(this).addClass('active');
+								});
+							});
+						//_____________ reset headings for auto-highlight
+						closure.headings = $(this.content).find('h3').map(function(i, el) {
+							return {
+								top: $(el).offset().top,
+								id: el.id
+							}
+						});
 					},
 					reposition: function() {
 						var scrollTop = $(window).scrollTop();
-						if (scrollTop >= dom.pos.top) {
+						if (scrollTop >= dom.pos.top) { // FIXED
 							if (dom.menu.hasClass('top-header')) {
 								dom.content.css("margin-top", dom.menuShift);
 								dom.menu.addClass('top-fixed').removeClass("top-header");
 							}
 							dom.submenu.css("top", (dom.menuShift) + "px");
-						} else if (scrollTop < dom.pos.top) {
+						} else if (scrollTop < dom.pos.top) { // MOVING
 							if (dom.menu.hasClass('top-fixed')) {
 								dom.content.css("margin-top", 0);
 								dom.menu.removeClass('top-fixed').addClass("top-header"); //.fadeIn('fast');
@@ -60,12 +119,15 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep) {
 				dom.reconfigureMenu();
 				$(window).scroll(dom.reposition);
 			});
-			deep.route.on("refreshed", function(event){
+			//________________________________________________ reconfigure + reset ui after route refresh
+			deep.route.on("refreshed", function(event) {
 				dom.reconfigureMenu();
 				dom.reposition();
+				hightlightSubmenu();
 			});
 			//_______________________________________________ END NAVIGATION MOVE
 			//_________________________________ NAVIGATION VIEW
+			// produce simple or double primary nav(s) directly from html map
 			map.nav = deep.View({
 				navigation: false,
 				how: function(context) {
@@ -94,7 +156,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep) {
 										liclass2 = 'active';
 									createMenuItem(menu2UL, subj, j, liclass2);
 								});
-								$(dom.menu2).show();//.fadeIn(160);
+								$(dom.menu2).show(); //.fadeIn(160);
 							} else
 								$(dom.menu2).hide();
 						}

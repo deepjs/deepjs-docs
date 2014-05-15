@@ -7,7 +7,6 @@ if (typeof define !== 'function') {
 define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 
  	return {
- 		nav:{},
  		home:{
  			route:"/$",
  			how:"html::/pages/home.html"
@@ -48,9 +47,26 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				others:{ how:"html::/pages/layer/colliders.html" }
 			}
 		},
+		context:{
+ 			how:"html::/pages/context.html"
+		},
+		protocols:{
+ 			how:"html::/pages/protocols.html"
+		},
 		ocm:{
 			route:"/ocm/$",
 			how:"<div>ocm</div>"
+		},
+		views:{
+			subs:{
+				"overview":{
+					route:"/views/$", 
+					navigation:false, 
+					how:"<div>views basics</div>"
+				},
+				advanced:{ how:"html::/pages/views/advanced.html" },
+				directives:{ how:"html::/pages/views/directives.html" },
+			}
 		},
 		tests:{
 			route:"/tests/$",
