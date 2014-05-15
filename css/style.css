@@ -32,6 +32,7 @@ body {
 #menu-container {
 	margin-bottom:20px;
 	font-weight: normal;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 #menu {
 	/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #302e25), color-stop(20%, #645953), color-stop(100%, #c7c1a5));
@@ -158,8 +159,8 @@ body {
 	left: 0;
 	z-index: 10003;
 	margin-left:35px;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
-
 
 .submenu-fixed {
 	position: fixed;
@@ -184,6 +185,8 @@ body {
 
 #submenu a {
 	color:#eee;
+	backface-visibility: visible;
+
 }
 #submenu a:hover {
 	color:#14a2c6;
@@ -225,7 +228,11 @@ body {
 	width:auto;
 	border-top: 1px solid #555;
 	background-color: #3f3b36;
-	background-image: linear-gradient(#4b4641, #3f3b36);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
+  background-image: -webkit-linear-gradient(top, #4b4641, #3f3b36);
+  background-image:    -moz-linear-gradient(top, #4b4641, #3f3b36);
+  background-image:      -o-linear-gradient(top, #4b4641, #3f3b36);
+  background-image:         linear-gradient(top bottom, #4b4641, #3f3b36);
 	height: 150px;
 	margin-top: 40px;
 	clear: both;
