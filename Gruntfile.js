@@ -49,7 +49,10 @@ module.exports = function (grunt) {
 					}
 				}
 			}
-		}/*,
+		},
+		htmllint: {
+	        all: ["./*.html", "pages/**/*.html"]
+	    }/*,
 		less: {
 		  development: {
 		    options: {
@@ -80,9 +83,10 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-requirejs');
 	grunt.loadNpmTasks('grunt-http-server');
+	grunt.loadNpmTasks('grunt-html');	// HTML VALIDATION
+
 	// Default task(s).
 	grunt.registerTask('default', ['requirejs']);
-
 	/*grunt.registerTask('default', 'Log some stuff.', function() {
 	    grunt.log.write('Logging some stuff...').ok();
 	});*/

@@ -1,0 +1,192 @@
+<div>
+			<div id="submenu">
+				<h2>code sheets</h2>
+				<div class="submenu-block">
+					<ul>
+						<li><a href="#examples-chains">chaines</a></li>
+						<li><a href="#examples-collection">collection &amp; protocol</a></li>
+						<li><a href="#examples-rest">collection &amp; restufl</a></li>
+						<li><a href="#examples-view">views</a></li>
+						<li><a href="#examples-modelisation">simple modelisation</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="content" >
+				<h3 id="examples-chains">Chain examples</h3>
+				<div class="row">
+					<div class="col-sm-12 col-md-6">
+						<p> Think about CSS... </p>
+
+<p>A css is just a list of queries (css selectors) that apply styles to matched DOM elements.</p>
+
+<p>A deep sheets is all the same : 
+A list of queries that apply something (and somehow) to matched properties in a particular object.</p>
+					</div>
+					<div class="col-sm-12 col-md-6">
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
+var sheet = {
+	_deep_sheet_:true,
+	"dq.up::.//*?test":{
+		test:123,
+		other:true
+	}
+};
+var obj = {
+	a:{
+		test:1
+	},
+	b:{
+		c:{
+			test:"hello"
+		}
+	}
+};
+deep.sheet(sheet, obj).log();
+</pre>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+
+## dq.up and dq.bottom 
+
+```javascript 
+
+// => obj : {"array":["from bottom","base entry","from up"],"a":{"test":123,"other":true},"hello":"world"}
+
+```
+
+## dq.transform
+
+Each selected value is passed as argument in provided function AND the return of this function replaces original value
+
+```javascript
+
+var sheet = {
+    "dq.transform::./*":function(input){
+        return "e"+input;
+    }
+};
+var obj = [1,2,3,4,5];
+deep(obj).sheet(sheet)
+.equal({ // .equal tests strict equality of success object(s) (matching provided object). i.e. this is the promised (success) result. i.e. this is the sheet report 
+    "dq.transform::./*": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5"
+    ]
+})
+.valuesEqual(["e1", "e2", "e3", "e4", "e5"]); // .valuesEqual tests strict equality of values holds by chain. i.e. this is the modified object (through sheets operations) holded by chain. i.e. you see that 'transform' modifiy holded object(s)
+
+```
+
+## dq.through
+
+Each selected value is passed as argument in provided function AND the return of this function DOES NOT replaces original value.
+To get results : read it in sheet application report.
+
+
+```javascript
+
+var sheet = {
+    "dq.through::./*":function(input){
+        return "e"+input;
+    }
+};
+var obj = [1,2,3,4,5];
+
+deep(obj)
+.sheet(sheet)
+.equal({
+    "dq.through::./*": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5"
+    ]
+})
+.valuesEqual([1,2,3,4,5]);   // .valuesEqual tests strict equality of values holds by chain. i.e. this is the modified object (through sheets operations) holded by chain. i.e. you see that 'through' DON'T modifiy holded object(s)
+
+```
+
+## dq.sheeter
+
+chainable sheet application handler.
+
+### example
+```javascript
+var sheet = {
+    "dq.sheeter::./*":  deep.sheeter
+                        .up({ fromUp:"tools" })
+                        .bottom({ fromBottom:"hello" })
+};
+
+var obj = {
+    a:{
+        base:"deepjs"
+    }
+};
+
+deep(obj)
+.sheet(sheet)
+.equal({
+    "dq.sheeter::./*": [
+        {
+        "fromBottom": "hello",
+        "base": "deepjs",
+        "fromUp": "tools"
+        }
+    ]
+})
+.valuesEqual( {
+    "a": {
+        "fromBottom": "hello",
+        "base": "deepjs",
+        "fromUp": "tools"
+    }
+});
+
+```
+
+### sheeter API
+
+#### up and bottom
+
+"dq.sheeter::./*":deep.sheeter.up(obj1, obj2, obj3, ...)
+
+or
+
+"dq.sheeter::./*":deep.sheeter.bottom(obj1, obj2, obj3, ...)
+
+
+#### deepLoad and load
+
+"dq.sheeter::./*":deep.sheeter.deepLoad(context, destructive)
+
+or
+
+"dq.sheeter::./*":deep.sheeter.load(context, destructive)
+    
+#### flatten
+
+"dq.sheeter::./*":deep.sheeter.flatten()
+
+Flatten selected values.
+    
+#### sheet
+
+"dq.sheeter::./*":deep.sheeter.sheet(sheet1, sheet2, ...)
+
+apply provided sheet(s) on selected values.
+
+
+[Back to tutorials](./tutorials.md)
+
+</div>

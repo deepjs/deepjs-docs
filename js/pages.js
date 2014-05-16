@@ -20,7 +20,11 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				},
 				"up-bottom":{ how:"html::/pages/layers/up-bottom.html" },
 				compositions:{ how:"html::/pages/layers/compositions.html" },
-				colliders:{ how:"html::/pages/layers/colliders.html" }
+				colliders:{ how:"html::/pages/layers/colliders.html" },
+				flatten:{ how:"html::/pages/layers/backgrounds.html" },
+				sheets:{ how:"swig::/pages/layers/sheets.html" },
+				shared:{ how:"swig::/pages/layers/sheets.html" },
+				classes:{ how:"swig::/pages/layers/classes.html" }
 			}
 		},
 		chains:{
@@ -42,9 +46,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					navigation:false, 
 					how:"<div>restful overview</div>"
 				},
-				promise:{ how:"html::/pages/chains/promises.html" },
-				deep:{ how:"html::/pages/chains/deep.html" },
-				others:{ how:"html::/pages/layer/colliders.html" }
+				collection:{ how:"html::/pages/chains/collection.html" },
+				object:{ how:"html::/pages/chains/object.html" },
+				modules:{ how:"html::/pages/layer/modules.html" }
 			}
 		},
 		context:{
@@ -54,8 +58,10 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
  			how:"html::/pages/protocols.html"
 		},
 		ocm:{
-			route:"/ocm/$",
-			how:"<div>ocm</div>"
+ 			how:"html::/pages/ocm.html"
+		},
+		schemas:{
+			how:"html::/pages/schemas.html"
 		},
 		views:{
 			subs:{
@@ -69,7 +75,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			}
 		},
 		tests:{
-			route:"/tests/$",
 			how:"html::/pages/tests.html",
 			run:function(verbose){
 				deep.Unit.run(null, { verbose: verbose?true:false })

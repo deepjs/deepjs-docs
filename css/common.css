@@ -1,25 +1,32 @@
 /* @author Gilles Coomans <gilles.coomans@gmail.com> */
 
 /*@import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather:300);*/
-@import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather+Sans);
-body {
+ @import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather+Sans);
+ body {
 	background-color :#3f3b36;
-	font-family: 'Merriweather', serif;
+	font-family:'Trykker', serif;
 }
 a:focus {
-    outline: 0;
+	outline: 0;
 }
 /*_______________________________ GLYPH ________________ */
-
-.glyphicon.small { font-size: 16px; }
-.glyphicon.bigger { font-size: 32px; }
-.glyphicon.huge { font-size: 48px; }
-.glyphicon.xxl { font-size: 140px; }
-.glyphicon.xxxl { font-size: 200px; }
-
+ .glyphicon.small {
+	font-size: 16px;
+}
+.glyphicon.bigger {
+	font-size: 32px;
+}
+.glyphicon.huge {
+	font-size: 48px;
+}
+.glyphicon.xxl {
+	font-size: 140px;
+}
+.glyphicon.xxxl {
+	font-size: 200px;
+}
 /*________________________________  VISUAL _____________________*/
-
-.bullet-title {
+ .bullet-title {
 	position: relative;
 	top:-3px;
 	color: #14a2c6;
@@ -30,83 +37,84 @@ a:focus {
 }
 .separator {
 	display: block;
-  	background: url("../img/separator.svg");
-  	background-size: 307px 42px;
+	background: url("../img/separator.svg");
+	background-size: 307px 42px;
 	margin:auto;
 	width:307px;
 	height:42px;
 }
 .separator-end {
 	display: block;
-  	background: url("../img/separator-end.svg");
-  	background-size: 500px 42px;
+	background: url("../img/separator-end.svg");
+	background-size: 500px 42px;
 	margin:auto;
 	width:500px;
 	height:42px;
 }
 .section-separator {
 	display: block;
-  	background: url("../img/section-separator-end.svg");
-  	background-size: 400px 30px;
+	background: url("../img/section-separator-end.svg");
+	background-size: 400px 30px;
 	margin:auto;
 	width:400px;
 	height:30px;
-   -moz-transform: scaleY(-1);
-    -o-transform: scaleY(-1);
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-    filter: FlipV;
-    -ms-filter: "FlipV";
-    position: relative;
-    top:-20px;
+	-moz-transform: scaleY(-1);
+	-o-transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+	transform: scaleY(-1);
+	filter: FlipV;
+	-ms-filter:"FlipV";
+	position: relative;
+	top:-20px;
 }
 .section-separator-end {
 	display: block;
-  	background: url("../img/section-separator-end.svg");
-  	background-size: 400px 30px;
+	background: url("../img/section-separator-end.svg");
+	background-size: 400px 30px;
 	margin:auto;
 	width:400px;
 	height:30px;
-	    position: relative;
-    top:20px;
+	position: relative;
+	top:20px;
 }
-
 .logo {
 	margin: 0px;
 	position:relative;
 	top:-30px;
 	text-align: center;
-	font-family: 'Lobster', cursive;
+	font-family:'Lobster', cursive;
 	font-size: 100px;
 	text-shadow: 0px 0px 8px #2c2925;
 	color:#14a2c6;
 }
-
 .logo a {
 	color: #14a2c6;
 	text-decoration: none;
 }
-
-
 h2 {
-	font-family: 'Lobster', cursive;
+	font-family:'Lobster', cursive;
 	margin-bottom:40px;
 	margin-top:30px;
 	color: #eee;
 }
-
 h3 {
-	font-family: 'Merriweather', serif;
 	margin-bottom:30px;
 	margin-top:0px;
 }
 
+h3:before {
+	content:">";
+    color: #14a2c6;
+    font-size: 14px;
+    margin-right: 15px;
+    position: relative;
+    top: -3px;
+}
 .deepjs-version {
 	font-size: 12px;
 	color: #999;
 	font-weight: bold;
 }
-
 .deepjs-version-label {
 	background-color: #37332f;
 	color: #777;
@@ -117,10 +125,6 @@ h3 {
 	border-radius: 5px;
 	text-align: center;
 }
-
-
-
-
 #copyright {
 	margin: auto;
 	text-align: center;
@@ -128,16 +132,15 @@ h3 {
 	font-size: 11px;
 	margin-top: 20px;
 }
-
 .go-further {
 	display: block;
-  	background: url("../img/round_bck.svg");
-  	background-repeat:no-repeat;
-  	background-size: 50px 50px;
+	background: url("../img/round_bck.svg");
+	background-repeat:no-repeat;
+	background-size: 50px 50px;
 	width:50px;
 	height:50px;
 	text-align: center;
-	margin:  auto;
+	margin: auto;
 	margin-top:50px;
 	padding-top: 10px;
 	padding-right: 2px;
@@ -147,15 +150,13 @@ h3 {
 	margin-bottom:100px;
 	padding-top: 6px;
 	padding-left: 5px;
-
 }
 .go-further i {
 	font-size:32px;
 	color:#14a2c6;
 }
-
 /* ______________________________ STRUCTURE ___________ */
-.section {
+ .section {
 	text-align:center;
 	margin-bottom:150px;
 	padding-top:25px;
@@ -168,21 +169,16 @@ h3 {
 }
 .instructions {
 	text-align: left;
-	
 	width:500px;
 	margin: auto;
 	margin-bottom:20px;
 	padding:50px;
-	
 	color: #111;
 	background-color: #f6efe6;
-
 	border:2px solid #676658;
-
 	-webkit-box-shadow: 0px 0px 6px #1c1c1c;
 	-moz-box-shadow: 0px 0px 6px #1c1c1c;
 	box-shadow: 0px 0px 6px #1c1c1c;
-
 	-moz-border-radius: 8px;
 	border-radius: 8px;
 }
@@ -190,18 +186,14 @@ h3 {
 	margin: auto;
 	width: 400px;
 }
-
 .instructions ul {
 	overflow: scroll;
 	clear: both;
-
 	padding: 25px;
-
 	background-color:#FFFFFF;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-
 .instructions li {
 	margin-bottom: 14px;
 	margin-left: 20px;
@@ -209,14 +201,12 @@ h3 {
 .instructions li a {
 	font-weight: bold;
 }
-
 .dp-example {
 	margin-bottom:30px;
 	padding: 0px;
 }
 .dp-box {
 	overflow: scroll;
-
 	padding: 10px;
 	margin-bottom:0px;
 	-moz-border-radius: 5px;
@@ -226,38 +216,38 @@ h3 {
 .instructions .code {
 	margin-bottom: 20px;
 }
-
 #footer {
 	margin:auto;
 	width:500px;
 	padding:70px 70px 0px 70px;
 	border-top: 1px dotted #CCC;
 	height:200px;
-
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-
+	-moz-border-radius: 6px;
+	border-radius: 6px;
 	background-color: #2c2925;
-	-webkit-box-shadow: 0 -2px 2px #333;
-	-moz-box-shadow: 0 -2px 2px #333;
-	box-shadow: 0 -2px 2px #333;
+	-webkit-box-shadow: 0 -3px 3px #333;
+	-moz-box-shadow: 0 -3px 3px #333;
+	box-shadow: 0 -3px 3px #333;
+	/*
+	-webkit-box-shadow: 0px 0px 6px #1c1c1c;
+	-moz-box-shadow: 0px 0px 6px #1c1c1c;
+	box-shadow: 0px 0px 6px #1c1c1c;
+*/
 	margin-bottom: 30px;
 }
-
 .tools-bar {
-	text-align:center;
+	text-align: center;
 	margin-top: 30px;
-	margin-bottom:70px;
+	margin-bottom: 70px;
 }
 .tools-bar a {
-	margin-left:20px;
-	margin-right:20px;
+	margin-left: 20px;
+	margin-right: 20px;
 	color: #fff;
 }
-
 .tools-bar img {
-	position:relative;
-	top:-20px;
+	position: relative;
+	top: -20px;
 }
 .tools-bar a:hover {
 	color: #fff;
@@ -265,7 +255,6 @@ h3 {
 .tools-bar a:focus {
 	color: #14a2c6;
 }
-
 #footer .tools-bar a {
 	margin-left:15px;
 	margin-right:15px;
@@ -278,12 +267,9 @@ h3 {
 	position:relative;
 	top:-12px;
 }
-
-
 .examples {
 	text-align: left;
 	width: 500px;
 	margin: auto;
 	padding: 0px;
 }
-

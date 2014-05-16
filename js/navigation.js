@@ -77,16 +77,21 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep) {
 									if (!offset)
 										return;
 									offset = Math.round(offset.top - dom.menuShift);
-									// console.log("scroll to : ", offset)
-									$('html, body').animate({
+									//console.log("scroll to : ", offset)
+									/*$('html, body').animate({
 										scrollTop: offset
-									}, 100);
+									}, 80);*/
 									window.location.hash = anchor.substring(1);
-									if (prev)
-										prev.removeClass('active');
-
-									prev = $(this).addClass('active');
-								});
+									$(window).scrollTop(offset);
+									deep(this)
+									.delay(1)
+									.done(function(node){
+										if (prev)
+											prev.removeClass('active');
+										prev = $(node).addClass('active');
+									});
+								})
+								
 							});
 						//_____________ reset headings for auto-highlight
 						closure.headings = $(this.content).find('h3').map(function(i, el) {
