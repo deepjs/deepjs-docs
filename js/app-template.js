@@ -10,7 +10,7 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 
 	return deep.View({
 		init:function(){
-			// console.log("APP TEMPLATE INIT");
+			 // console.log("APP TEMPLATE INIT");
 			var $ = deep.context.$;
 			var dom = deep.context.dom;
 			dom.header = $("#header");
@@ -37,6 +37,7 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 			var offset = parseInt(windHeight) - parseInt(footerHeight);
 			var start = dom.contentOffset = $(dom.main).offset().top;
 			$(dom.main).css('height', offset-start);
+			 // console.log("APP TEMPLATE DONE");
 		}
 	});
 });

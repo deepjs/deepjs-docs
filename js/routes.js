@@ -50,6 +50,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				wrappers:{ how:"html::/pages/restful/wrappers.html" }
 			}
 		},
+		protocols:{
+ 			how:"html::/pages/protocols.html"
+		},
 		context:{
 			subs:{
 				"overview":{
@@ -60,9 +63,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				protocols:{ how:"html::/pages/context/protocols.html" },
 				logger:{ how:"html::/pages/context/logger.html" }
 			}
-		},
-		protocols:{
- 			how:"html::/pages/protocols.html"
 		},
 		ocm:{
  			how:"html::/pages/ocm.html"

@@ -28,8 +28,8 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 	var hightlightSubmenu = function() {
 		var h = closest();
 		if (!h) return;
-		//console.log("hightlight : ", h);
 		var $ = deep.context.$, dom = deep.context.dom;
+		//console.log("hightlight : ", dom.submenu);
 		if (prev)
 			$(prev).removeClass('active');
 		prev = $(dom.submenu).find('a[href="#' + h.id + '"]').addClass('active');
@@ -49,19 +49,22 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 
 	return deep.View({
 		init: deep.compose.after(function() {
-			//console.log("subnav init");
+			// console.log("subnav init");
 			if(deep.context.concurrency)
 				return;
 			var $ = deep.context.$, dom = deep.context.dom;
 			if(!deep.context.concurrency)
 			{
+				$(dom.main).unbind("scroll", hightlightSubmenu);
+				$(window).unbind("resize", resetHeadings);
+
 				$(dom.main).scroll(hightlightSubmenu);
 				$(window).resize(resetHeadings);
 			}
 		}),
 		clean:deep.compose.after(function(){
-			var $ = deep.context.$;
-			//console.log("SUB NAV clean")
+			var $ = deep.context.$, dom = deep.context.dom;
+			// console.log("SUB NAV clean")
 			if(!deep.context.concurrency)
 			{
 				$(dom.main).unbind("scroll", hightlightSubmenu);
@@ -69,6 +72,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 			}
 		}),
 		done: deep.compose.after(function(output) {
+			// console.log("SUBMENU DONE : ", output);
 			var $ = deep.context.$, dom = deep.context.dom;
 			dom.submenu = $(output.placed);
 			//__________________________________________________ SCROLL TO ANCHOR on click
@@ -77,6 +81,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 				.each(function() {
 					var anchor = $(this).attr("href");
 					$(this).click(function(e) {
+						// console.log("CLICK ON SUBMENU : ", anchor);
 						e.preventDefault();
 						var offset = $(anchor).offset();
 						if (!offset)
@@ -88,6 +93,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 						deep(this)
 							.delay(1)
 							.done(function(node) {
+								// console.log("AUTO HIGHT LIGHT WITH DELAY");
 								if (prev)
 									prev.removeClass('active');
 								prev = $(node).addClass('active');
