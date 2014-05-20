@@ -2,7 +2,7 @@
  #header {
     padding:0px 50px 0 50px;
     background-color: #3f3b36;
-    text-align: right;
+    text-align: center;
 }
 .logo {
     /*font-family: 'Titillium Web', sans-serif;*/
@@ -41,7 +41,6 @@
     -webkit-box-shadow: 0 0 6px #1c1c1c;
     -moz-box-shadow: 0 0 6px #1c1c1c;
     box-shadow: 0 0 6px #1c1c1c;
-    z-index: 10002;
 }
 #menu2 {
     background-color: #544D47;
@@ -58,23 +57,10 @@
     -webkit-box-shadow: 0 0 6px #1c1c1c;
     -moz-box-shadow: 0 0 6px #1c1c1c;
     box-shadow: 0 0 6px #1c1c1c;
-    z-index: 10001;
     position: relative;
     top:-4px;
 }
-.top-header {
-    position: relative;
-    top:0;
-    width: 100%;
-    z-index: 10000;
-}
-.top-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10000;
-    width: 100%;
-}
+
 #menu .title {
     font-family:'Lobster', cursive;
     display: inline;
@@ -265,6 +251,7 @@ h2 {
     display: inline-block;
     margin-top: 0px;
     text-align: left;
+    margin-left:70px;
 }
 #footer .tools-bar img {
     position: relative;
@@ -303,5 +290,28 @@ button {
     height:100px;
     overflow: scroll;
 }
+       /* The default background color is #c00 */
+       .github-fork-ribbon-wrapper {
 
+        z-index: 11010;
+       }
+       .github-fork-ribbon {
+        z-index: 11010;
+       }
+        .right-bottom .github-fork-ribbon {
+            background-color: #090;
+            z-index: 11010;
+
+        }
+
+        .right .github-fork-ribbon {
+            background-color: #f80;
+            z-index: 11010;
+
+        }
+
+        .left-bottom .github-fork-ribbon {
+            background-color: #f80;
+            z-index: 11010;
+        }
 
