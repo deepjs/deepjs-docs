@@ -39,7 +39,8 @@
     "deep-jquery": "git@github.com:deepjs/deep-jquery.git#master",
     "deep-widgets": "git@github.com:deepjs/deep-widgets.git#master",
     "ace-builds": "master",
-    "highlight-js-min":"http://yandex.st/highlightjs/8.0/highlight.min.js",
-    "highlight-css-min":"https://github.com/isagalaev/highlight.js/blob/master/src/styles/github.css"
+    "highlight-js-min": "http://yandex.st/highlightjs/8.0/highlight.min.js",
+    "highlight-css-min": "https://github.com/isagalaev/highlight.js/blob/master/src/styles/github.css",
+    "github-fork-ribbon-css": "~0.1.0"
   }
 }

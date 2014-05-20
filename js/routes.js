@@ -6,7 +6,7 @@ if (typeof define !== 'function') {
 }
 define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 
- 	return {
+ 	var map = {
  		home:{
  			route:"/$",
  			how:"html::/pages/home.html"
@@ -15,7 +15,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			subs:{
 				"overview":{
 					route:"/layers/$", 
-					navigation:false, 
 					how:"<div>layers overview</div>"
 				},
 				"up-bottom":{ how:"html::/pages/layers/up-bottom.html" },
@@ -23,7 +22,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				colliders:{ how:"html::/pages/layers/colliders.html" },
 				flatten:{ how:"html::/pages/layers/backgrounds.html" },
 				sheets:{ how:"swig::/pages/layers/sheets.html" },
-				shared:{ how:"swig::/pages/layers/sheets.html" },
+				shared:{ how:"swig::/pages/layers/shared.html" },
 				classes:{ how:"swig::/pages/layers/classes.html" }
 			}
 		},
@@ -31,7 +30,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			subs:{
 				"overview":{
 					route:"/chains/$", 
-					navigation:false, 
 					how:"<div>chains overview</div>"
 				},
 				promise:{ how:"html::/pages/chains/promises.html" },
@@ -43,16 +41,25 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			subs:{
 				"overview":{
 					route:"/restful/$", 
-					navigation:false, 
 					how:"<div>restful overview</div>"
 				},
-				collection:{ how:"html::/pages/chains/collection.html" },
-				object:{ how:"html::/pages/chains/object.html" },
-				modules:{ how:"html::/pages/layer/modules.html" }
+				collection:{ how:"html::/pages/restful/collection.html" },
+				object:{ how:"html::/pages/restful/object.html" },
+				validation:{ how:"html::/pages/restful/validation.html" },
+				constraints:{ how:"html::/pages/restful/constraints.html" },
+				wrappers:{ how:"html::/pages/restful/wrappers.html" }
 			}
 		},
 		context:{
- 			how:"html::/pages/context.html"
+			subs:{
+				"overview":{
+					route:"/context/$", 
+					how:"<div>context overview</div>"
+				},
+				modes:{ how:"html::/pages/context/modes.html" },
+				protocols:{ how:"html::/pages/context/protocols.html" },
+				logger:{ how:"html::/pages/context/logger.html" }
+			}
 		},
 		protocols:{
  			how:"html::/pages/protocols.html"
@@ -67,7 +74,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			subs:{
 				"overview":{
 					route:"/views/$", 
-					navigation:false, 
 					how:"<div>views basics</div>"
 				},
 				advanced:{ how:"html::/pages/views/advanced.html" },
@@ -87,5 +93,20 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			}
 		}
 	};
+	//____________________ finalise map
+	deep.utils.up({
+		_deep_sheet_:true,
+		"dq.transform::.//?how":function(node){
+			if(node.value._deep_view_)
+				return node.value;
+			var value = node.value;
+			if(typeof value.route === 'undefined')		// default route === view.path without '/subs'
+				value.route = node.path.replace("/subs","");
+			if(typeof value.where === 'undefined')		// default where === htmlof #main
+				value.where = "dom.htmlOf::#main";
+			return deep.utils.bottom(deep.View(),value);
+		}
+	}, map);
 
+	return map;
 });

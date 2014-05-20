@@ -13,14 +13,13 @@
 		<link rel="stylesheet" type="text/css" href="./css/dp-try.css">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
-	<body>
+	<body dp-control="js::/js/app-template.js">
 		<div id="header">
-			<div class="logo">deep<span style="font-size:15px; color:#ccc;">js</span><div class="baseline">made with <em>love</em>.</div></div>
-			<p class="deepjs-version-label">current version : <span class="deepjs-version"></span></p>
+			<span class="deepjs-version-label">current version : <span class="deepjs-version"></span></span>
 		</div>
-		<div id="menu-container" class="top-header">
-			<div id="menu">
-				<div class="title"><span class="bullet-title"><i class="glyphicon glyphicon-cog small"></i></span> <span class="hidden-xs title-label">deepjs core</span></div>
+		<div id="menu">
+			<div id="menu1">
+				<div class="title"><span class="bullet-title"><i class="glyphicon glyphicon-cog small"></i></span> <span class="hidden-xs title-label">core docs</span></div>
 				<ul>
 					<!--<li><a href="#">restful&nbsp;stores</a></li>
 					<li><a href="#">deep&nbsp;chain</a></li>-->
@@ -37,16 +36,25 @@
 		<div id="main">
 		</div>
 		<div id="footer">
-			<div class="section-separator"></div>
-			<div class="tools-bar">
-				<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record bigger"></i></a>
-				<a title="core docs." href="/docs/"><i class="glyphicon glyphicon-cog bigger"></i></a>
-				<a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle bigger"></i></a>
-				<a href="https://github.com/deepjs" title="go to github.com"><img width="32" height="32" src="./img/GitHub-Mark-Light-64px.png"></a>
-				<a href="https://github.com/deepjs" title="follow us on twitter"><img width="32" height="32" src="./img/Twitter_logo_white.png"></a>
+			<div class="row">
+				
+				<div class="col-xs-12 col-sm-4">
+					<div id="copyright">This web site is powered by deepjs and is under Creative Licence. It could be forked on <a href="https://github.com/deepjs/deepjs-docs">github</a>.</div>
+				</div>
+				<div class="col-xs-12 col-sm-6" style="text-align:center;">
+					<div class="tools-bar">
+						<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record small"></i></a>
+						<a title="core docs." href="/docs/"><i class="glyphicon glyphicon-cog small"></i></a>
+						<a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle small"></i></a>
+						<a href="https://github.com/deepjs" title="go to github.com"><img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png"></a>
+						<a href="https://github.com/deepjs" title="follow us on twitter"><img width="16" height="16" src="./img/Twitter_logo_white.png"></a>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-2" style="text-align:right;">
+					<span class="logo">deep<span style="font-size:15px; color:#ccc;">js</span></span>
+				</div>
 			</div>
-			<p class="deepjs-version-label">current version : <span class="deepjs-version"></span></p>
-			<div id="copyright">All rights reserved. </div>
+			
 		</div>
 		<script src="./highlight/highlight.pack.js"></script>
 		<script src="./bower_components/jquery/jquery.min.js"></script>

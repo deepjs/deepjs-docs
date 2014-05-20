@@ -4,8 +4,9 @@
 define([
 		"require",
 		"deep-browser/index",
-		"./js/pages.js",
-		"./js/navigation.js",
+		"./js/routes.js",
+		"./js/app-template.js",
+		"./js/main-nav.js",
 		"deep-jquery/ajax/json",
 		"deep-jquery/ajax/html",
 		"deepjs/lib/unit",
@@ -15,7 +16,7 @@ define([
 		"deep-swig/index",
 		"deep-widgets/lib/deep-try"
 	],
-	function(require, deep, map, navigation) {
+	function(require, deep, map) {
 		// ___________ base protocols
 		deep.jquery.JSON.create();
 		deep.jquery.HTML.create();
@@ -23,32 +24,20 @@ define([
 		deep.jquery.set($);
 		//___________ start
 		//console.log("start app-sndbx : ", map);
-		deep.globals.pages = map;
 		deep.route.deepLink({ /* config */ });
-		//____________________ finalise map
-		deep.utils.up({
-			_deep_sheet_:true,
-			"dq.transform::.//?how":function(node){
-				var value = node.value;
-				if(typeof value.route === 'undefined')		// default route === view.path without '/subs'
-					value.route = node.path.replace("/subs","");
-				if(typeof value.where === 'undefined')		// default where === htmlof #main
-					value.where = "dom.htmlOf::#main";
-				return deep.utils.bottom(deep.View(),value);
-			}
-		}, map);
 		//___________________________________________  VERSION
+		var dom = deep.context.dom = {};
+		deep.ui.enhance("html");	// enhance dp-* already present in html
+		//
 		deep.get("json::/bower_components/deepjs/package.json")
 		.done(function(s) {
 			$(".deepjs-version").text(s.version);
 			$(".deepjs-version-label").css("visibility", "visible").hide().fadeIn();
 		})
 		.elog();
-		// launch init (init navigation + flatten and compile htmls map)
-		navigation.init(map);
-		var p = deep.route(map);
 		//_________________________ init route (final)
 		var init = function() {
+			var p = deep.route(map);	// compile html routes map
 			p.done(function(routes) {
 				console.log("app-sndbx intialised");
 				routes.init();
