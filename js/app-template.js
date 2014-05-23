@@ -11,7 +11,7 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 
 	return deep.View({
 		init:function(){
-			console.log("APP TEMPLATE INIT");
+			// console.log("APP TEMPLATE INIT");
 			var $ = deep.context.$;
 			var dom = deep.context.dom;
 			dom.header = $("#header");
@@ -25,7 +25,7 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 			}
 		},
 		clean:function (argument) {
-			console.log("APP TEMPLATE CLEAN");
+			// console.log("APP TEMPLATE CLEAN");
 			if(!deep.context.concurrency)
 			{
 				$(window).unbind("resize", this.done);
@@ -37,9 +37,10 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 			var viewPortHeight = $(window).height();
 			dom.contentOffset =  $(dom.menu).outerHeight(true)+ $(dom.header).outerHeight(true);
 			var outContent = dom.contentHeight = dom.contentOffset + $(dom.footer).outerHeight(true) + 16;
-			$(dom.main).css('height', viewPortHeight-outContent);
-			$(dom.content).css('height', viewPortHeight-outContent);
-			console.log("APP TEMPLATE DONE");
+			dom.contentHeight = viewPortHeight-outContent;
+			$(dom.main).css('height', dom.contentHeight);
+			$(dom.content).css('height', dom.contentHeight);
+			// console.log("APP TEMPLATE DONE");
 		}
 	});
 });
