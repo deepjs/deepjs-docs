@@ -28,13 +28,7 @@ define([
 		//___________________________________________  VERSION
 		var dom = deep.context.dom = {};
 		deep.ui.enhance("html");	// enhance dp-* already present in html
-		//
-		deep.get("json::/bower_components/deepjs/package.json")
-		.done(function(s) {
-			$(".deepjs-version").text(s.version);
-			$(".deepjs-version-label").css("visibility", "visible").hide().fadeIn();
-		})
-		.elog();
+
 		//_________________________ init route (final)
 		var init = function() {
 			var p = deep.route(map);	// compile html routes map
@@ -43,5 +37,24 @@ define([
 				routes.init();
 			});
 		};
+		//
+		deep.get("json::/bower_components/deepjs/package.json")
+		.done(function(s) {
+			$(".deepjs-version").text(s.version);
+			$(".deepjs-version-label").css("visibility", "visible").hide().fadeIn();
+		})
+		.elog();
+		//_______________________________________
+		$( window ).keydown(function( e ) {
+			if(e.keyCode == 82 && e.shiftKey)
+			{
+				var currentRoute = deep.route.current();
+				if(currentRoute != '/')
+					window.location.assign("/#"+currentRoute);
+				else
+					window.location.reload();
+			}
+		});
+
 		return init;
 	});

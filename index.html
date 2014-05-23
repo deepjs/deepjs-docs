@@ -3,93 +3,88 @@
 <!--  @author Gilles Coomans <gilles.coomans@gmail.com> -->
 
 <head>
-    <title>deepjs docs</title>
-    <meta charset="utf-8">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'> -->
-    <!-- <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'> -->
-    <link href='http://fonts.googleapis.com/css?family=Arvo|Convergence|Trykker' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="./highlight/styles/github.css">
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/common.css">
-    <link rel="stylesheet" type="text/css" href="./css/dp-try.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" href="bower_components/github-fork-ribbon-css/gh-fork-ribbon.css">
-    <!--[if lt IE 9]>
+	<title>deepjs docs</title>
+	<meta charset="utf-8">
+	<!-- <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'> -->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'> -->
+	<link href='http://fonts.googleapis.com/css?family=Arvo|Convergence|Trykker' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="./highlight/styles/github.css">
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/common.css">
+	<link rel="stylesheet" type="text/css" href="./css/dp-try.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" href="bower_components/github-fork-ribbon-css/gh-fork-ribbon.css">
+	<!--[if lt IE 9]>
         <link rel="stylesheet" href="gh-fork-ribbon.ie.css">
     <![endif]-->
 </head>
 
 <body dp-control="js::/js/app-template.js">
-
-    <div id="header">
-        <span class="deepjs-version-label">current version :
-            <span class="deepjs-version"></span>
-        </span>
-    </div>
-    <div id="menu">
-        <div id="menu1">
-            <div class="title">
-                <span class="bullet-title"><i class="glyphicon glyphicon-cog small"></i>
-                </span>
-                <span class="hidden-xs title-label">core docs</span>
-            </div>
-            <ul>
-                <!--<li><a href="#">restful&nbsp;stores</a></li>
+<div id="fullwrapper">
+	<div id="header">
+		<span class="deepjs-version-label"><strong style="color: #aaa;">deepjs core documentation</strong> : current version : <span class="deepjs-version"></span></span>
+		<span class="beta-warning-label" title="Some bugs may remain and structure/content could be changed continuously.">site in <strong>alpha</strong> version.</span>
+	</div>
+	<div id="menu">
+		<div id="menu1" class="menu">
+			<div class="title">
+				<span class="bullet-title"><i class="glyphicon glyphicon-cog small"></i>
+				</span>
+				<span class="hidden-sm title-label">core docs</span>
+			</div>
+			<ul>
+				<!--<li><a href="#">restful&nbsp;stores</a></li>
 					<li><a href="#">deep&nbsp;chain</a></li>-->
-            </ul>
-        </div>
-        <div id="menu2">
-            <div class="title">
-                <span class="bullet-title">&gt;&gt;</span>
-            </div>
-            <ul>
-                <!-- <li><a href="#">restful&nbsp;stores</a></li>
+			</ul>
+		</div>
+		<div id="menu2" class="menu">
+			<div class="title">
+				<span class="bullet-title">&gt;&gt;</span>
+			</div>
+			<ul>
+				<!-- <li><a href="#">restful&nbsp;stores</a></li>
 					<li><a href="#">deep&nbsp;chain</a></li> -->
-            </ul>
-        </div>
-    </div>
-    <div id="main">
-    </div>
-    <div id="footer">
-        <div class="row">
-
-            <div class="col-xs-12 col-sm-4">
-                <div id="copyright">powered by deepjs <br/> under creative licence.</div>
-            </div>
-            <div class="col-xs-12 col-sm-6" style="text-align:center;">
-                <div class="tools-bar">
-                    <a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record small"></i></a>
-                    <a title="core docs." href="/docs/"><i class="glyphicon glyphicon-cog small"></i></a>
-                    <a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle small"></i></a>
-                    <a href="https://github.com/deepjs" title="go to github.com">
-                        <img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png">
-                    </a>
-                    <a href="https://github.com/deepjs" title="follow us on twitter">
-                        <img width="16" height="16" src="./img/Twitter_logo_white.png">
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-2" style="text-align:right;">
-                <span class="logo">deep
-                    <span style="font-size:15px; color:#ccc;">js</span>
-                </span>
-            </div>
-        </div>
-
-    </div>
-    <div class="github-fork-ribbon-wrapper left-bottom">
-        <div class="github-fork-ribbon">
-            <a href="https://github.com/deepjs/deepjs-docs">Fork me on GitHub</a>
-        </div>
-    </div>
-    <script src="./highlight/highlight.pack.js"></script>
-    <script src="./bower_components/jquery/jquery.min.js"></script>
-    <script src="./bower_components/swig/dist/swig.min.js"></script>
-    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="./bower_components/jstorage/jstorage.min.js"></script>
-    <script data-main="main" src="./bower_components/requirejs/require.js"></script>
-
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+	</div>
+	<div id="footer">
+		<div class="row">
+			<div class="col-xxs-12 col-sm-4"  >
+				<div id="copyright">Under creative licence.<br/>
+				Powered by <a href="https://github.com/deepjs/deepjs">deepjs.</a></div>
+			</div>
+			<div class="col-xxs-12 col-sm-6" style="text-align:center;">
+				<div class="tools-bar">
+					<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record small"></i></a>
+					<a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle small"></i></a>
+					<a href="https://github.com/deepjs" title="go to github.com">
+						<img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png">
+					</a>
+					<a href="https://github.com/deepjs" title="follow us on twitter">
+						<img width="16" height="16" src="./img/Twitter_logo_white.png">
+					</a>
+				</div>
+			</div>
+			<div class="col-xxs-12 col-sm-2" style="text-align: right;">
+				<!-- <div class="circle"> -->
+					<span class="logo">deep<span style="font-size:15px; color:#ccc;">js</span></span>
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+	<div class="github-fork-ribbon-wrapper left-bottom">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/deepjs/deepjs-docs">Fork me on github</a>
+		</div>
+	</div>
+</div>
+<script src="./highlight/highlight.pack.js"></script>
+<script src="./bower_components/jquery/jquery.min.js"></script>
+<script src="./bower_components/swig/dist/swig.min.js"></script>
+<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./bower_components/jstorage/jstorage.min.js"></script>
+<script data-main="main" src="./bower_components/requirejs/require.js"></script>
 </body>
-
 </html>

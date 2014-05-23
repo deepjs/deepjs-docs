@@ -1,6 +1,7 @@
 /**
  * @author Gilles Coomans <gilles.coomans@gmail.com>
- *
+ * Template/Canevas controller that manage header + main + footer as an app will do (header = top bar, footer = bottom bar, main = content)
+ * It mainly set the #main height, accordingly to viewport (viewport.height - header.height - footer.height), to achieve this canevas.
  */
 
 if (typeof define !== 'function')
@@ -10,7 +11,7 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 
 	return deep.View({
 		init:function(){
-			 // console.log("APP TEMPLATE INIT");
+			console.log("APP TEMPLATE INIT");
 			var $ = deep.context.$;
 			var dom = deep.context.dom;
 			dom.header = $("#header");
@@ -24,6 +25,7 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 			}
 		},
 		clean:function (argument) {
+			console.log("APP TEMPLATE CLEAN");
 			if(!deep.context.concurrency)
 			{
 				$(window).unbind("resize", this.done);
@@ -32,12 +34,13 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 		},
 		done:function(){
 			var $ = deep.context.$, dom = deep.context.dom;
-			var windHeight = $(window).height();
-			var footerHeight = $(dom.footer).outerHeight(true);
-			var offset = parseInt(windHeight) - parseInt(footerHeight);
-			var start = dom.contentOffset = $(dom.main).offset().top;
-			$(dom.main).css('height', offset-start);
-			 // console.log("APP TEMPLATE DONE");
+			var viewPortHeight = $(window).height();
+			dom.contentOffset =  $(dom.menu).outerHeight(true)+ $(dom.header).outerHeight(true);
+			var outContent = dom.contentHeight = dom.contentOffset + $(dom.footer).outerHeight(true) + 16;
+			$(dom.main).css('height', viewPortHeight-outContent);
+			$(dom.content).css('height', viewPortHeight-outContent);
+			console.log("APP TEMPLATE DONE");
 		}
 	});
 });
+

@@ -1,16 +1,52 @@
 /* @author Gilles Coomans <gilles.coomans@gmail.com> */
+ body {
+    background-color: #414647;
+    overflow: hidden;
+    padding: 5px;
+    margin:0px;
+    /*background-image:url('/img/wall10.png');
+    background-repeat: repeat;*/
+/*    background-repeat: no-repeat;
+     background-size: 100% 700px;*/
+    /*margin-left: 5px;*/
+/*    background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
+    background-image: -webkit-linear-gradient(top, #4b4641, #3f3b36);
+    background-image: -moz-linear-gradient(top, #2E3233, #414647);
+    background-image: -o-linear-gradient(top, #4b4641, #3f3b36);
+    background-image: linear-gradient(top bottom, #4b4641, #3f3b36);*/
+ }
  #header {
     padding:0px 50px 0 50px;
     background-color: #3f3b36;
     text-align: center;
+    font-family:'Trykker', serif;
+
+}
+.circle { 
+   width: 120px;
+   height: 120px;
+   -moz-border-radius: 60px; 
+   -webkit-border-radius: 60px; 
+   border-radius: 60px;
+   float:right;
+   position: absolute;
+   top:-30px;
+   background-color: #3f3b36;
+   text-align: center;
+   right: 8px;
+    border: 3px solid #555;
+
 }
 .logo {
     /*font-family: 'Titillium Web', sans-serif;*/
-    font-size: 32px;
+    font-size: 40px;
     position:relative;
-    top:-10px;
+    top:5px;
+    right:10px;
     margin: auto;
     padding: auto;
+    padding-top: 0px;
+    line-height:33px;
 }
 #reports-container {
     display: none;
@@ -22,46 +58,24 @@
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 /*_________________ MENU _________________ */
- #menu {
+#menu {
     margin-bottom:0px;
     font-weight: normal;
     -webkit-font-smoothing: subpixel-antialiased;
 }
-#menu1 {
-    background-color: #4b4641;
+.menu {
     line-height: 20px;
     margin: auto;
-    margin-left: 30px;
-    margin-right: 30px;
     padding:10px 10px 10px;
-    color: #999999;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border-top: 1px solid #555;
     -webkit-box-shadow: 0 0 6px #1c1c1c;
     -moz-box-shadow: 0 0 6px #1c1c1c;
     box-shadow: 0 0 6px #1c1c1c;
-}
-#menu2 {
-    background-color: #544D47;
-    line-height: 15px;
-    margin: auto;
-    padding:10px 10px 10px;
-    margin-left: 35px;
-    margin-right: 35px;
-    margin-top:0;
-    color: #999999;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border-top: 1px solid #555;
-    -webkit-box-shadow: 0 0 6px #1c1c1c;
-    -moz-box-shadow: 0 0 6px #1c1c1c;
-    box-shadow: 0 0 6px #1c1c1c;
-    position: relative;
-    top:-4px;
 }
 
-#menu .title {
+.menu .title {
     font-family:'Lobster', cursive;
     display: inline;
     font-size: 16px;
@@ -70,20 +84,20 @@
     position:relative;
     top:-1px;
 }
-#menu .bullet-title {
+.menu .bullet-title {
     position:relative;
     top:2px;
     left:0;
     margin-left:10px;
 }
-#menu ul {
+.menu ul {
     padding: 0;
     display: inline;
 }
-#menu li {
+.menu li {
     /*font-family: 'Titillium Web', sans-serif;*/
     /*font-family:'Droid Sans', sans-serif;*/
-    font-family: 'Trykker', serif;
+    font-family:'Trykker', serif;
     /*font-family: 'Arvo', serif;*/
     /*font-family: 'Convergence', sans-serif;*/
     font-size: 12px;
@@ -93,34 +107,47 @@
     position:relative;
     top:-2px;
 }
-
-#menu li.active a:hover {
+.menu li.active a:hover {
     color: #ddd;
 }
-#menu li.active a {
+.menu li.active a {
     /*text-decoration: underline;*/
     background-color: #167c9f;
     -moz-border-radius: 3px;
     border-radius: 3px;
     color: #fff;
 }
-#menu li:before {
-    content:"|";
+.menu li:before {
+    content:"•";
     color: #14a2c6;
     font-size: 8px;
     margin-right: 5px;
 }
-#menu li:first-child:before {
+.menu li:first-child:before {
     content:'';
     margin-right:0;
 }
-#menu a {
+.menu a {
     color: #fff;
     text-decoration: none;
     padding: 3px 7px;
 }
-#menu a:hover {
+.menu a:hover {
     color: #29b7e4;
+}
+#menu1 {
+    background-color: #4b4641;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #999999;
+}
+#menu2 {
+    background-color: #544D47;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top:0;
+    position: relative;
+    top:-4px;
 }
 #menu2 {
     display: none;
@@ -135,18 +162,15 @@
 }
 /*_____________________________________________ SUBMENU ____________________ */
  #submenu {
-    font-family: 'Trykker', serif;
+    font-family:'Trykker', serif;
     font-size: 12px;
-    width: 220px;
-    float:left;
-    left: 0;
+    width: 200px;
     z-index: 10003;
-    margin-left:35px;
+    margin-left:5px;
     -webkit-font-smoothing: subpixel-antialiased;
-    position: fixed;
-
+    position: relative;
+    float:left;
 }
-
 .submenu-block {
     margin-bottom:20px;
     background-color: #4b4641;
@@ -202,12 +226,15 @@ h2 {
 /*_____________________________________ structure _____________________________*/
  #main {
     color: #ddd;
-    margin-left:30px;
-    margin-right:30px;
+    margin-left:20px;
+    margin-right:20px;
     font-size: 12px;
+    font-family:'Trykker', serif;
+    margin-bottom: 0px;
+    overflow: hidden;
 }
 .content {
-    padding-left:260px;
+    padding-left:30px;
     padding-right:15px;
     padding-top:7px;
     margin-bottom:30px;
@@ -216,12 +243,12 @@ h2 {
     padding-left:15px;
 }
 #footer {
-    padding-left:20px;
-    padding-right:20px;
-    padding-top: 10px;
-    margin-left:30px;
-    margin-right:30px;
-    height:40px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left:10px;
+    margin-right:10px;
     border-top: 1px solid #555;
     background-color: #45413D;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
@@ -230,34 +257,35 @@ h2 {
     background-image: -o-linear-gradient(top, #4b4641, #3f3b36);
     background-image: linear-gradient(top bottom, #4b4641, #3f3b36);
     clear: both;
-    -moz-background-clip: padding;
-    /* Firefox 3.6 */
-    -webkit-background-clip: padding;
-    /* Safari 4? Chrome 6? */
-    background-clip: padding-box;
-    /* Firefox 4, Safari 5, Opera 10, IE 9 */
     width: auto;
     height: auto;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     text-align: left;
+        -webkit-box-shadow: 0 -2px 2px #333;
+    -moz-box-shadow: 0 -2px 2px #333;
+    box-shadow: 0 -2px 2px #333;
+    min-height: 45px;
 }
 #footer .tools-bar {
     display: inline-block;
     margin: :auto;
     position: relative;
-    top: 8px;
+    top: 15px;
 }
 #copyright {
     display: inline-block;
-    margin-top: 0px;
-    text-align: left;
-    margin-left:70px;
+    margin-top: 8px;
+    margin-left:105px;
+    color: #7d736c;
+}
+#copyright a {
+    color: #29b7e4;
+    font-weight: bold;
 }
 #footer .tools-bar img {
     position: relative;
-    top: -4px;
+    top: -3px;
 }
-
 /*_________________________________________ MISC ________________________*/
  .run-core-units-verbose {
     color: #21ba03;
@@ -267,13 +295,23 @@ h2 {
 button {
     color: #222;
 }
-.deepjs-version-label {
-   position: relative;
-   top:0px;
-   padding-left: 10px;
-   padding-right: 10px;
-}
+.deepjs-version-label, .beta-warning-label {
+    background-color: #211f1c;
+    position: relative;
+    font-size: 12px;
 
+    top:-3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.beta-warning-label {
+    background-color: #6a8997;
+    font-size: 12px;
+    color: #2c5619;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
 .baseline {
     font-size: 14px;
     font-family:'Trykker', serif;
@@ -285,33 +323,53 @@ button {
 .title-label {
     margin-left:10px;
 }
-
 #main {
     height:100px;
+}
+#content{
     overflow: scroll;
 }
-       /* The default background color is #c00 */
-       .github-fork-ribbon-wrapper {
+/* The default background color is #c00 */
+ .github-fork-ribbon-wrapper {
+    z-index: 11010;
+}
+.github-fork-ribbon {
+    z-index: 11010;
+}
+.right-bottom .github-fork-ribbon {
+    background-color: #99d207;
+    z-index: 11010;
+}
+.right .github-fork-ribbon {
+    background-color: #f80;
+    z-index: 11010;
+}
+.left-bottom .github-fork-ribbon {
+    background-color: #b3b70b;
+    z-index: 11010;
+}
 
-        z-index: 11010;
-       }
-       .github-fork-ribbon {
-        z-index: 11010;
-       }
-        .right-bottom .github-fork-ribbon {
-            background-color: #090;
-            z-index: 11010;
-
-        }
-
-        .right .github-fork-ribbon {
-            background-color: #f80;
-            z-index: 11010;
-
-        }
-
-        .left-bottom .github-fork-ribbon {
-            background-color: #f80;
-            z-index: 11010;
-        }
-
+#fullwrapper {
+    /*position: absolute;*/
+    /*max-height: 768px;*/
+    max-width: 1200px;
+    margin:auto;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #3f3b36;
+    /*margin-top:10px;*/
+    height: 100%;
+    padding-top: 5px;
+    border: 1px solid #35312E;
+    margin-bottom: 1px;
+    /*-webkit-box-shadow: 0 0 6px #1c1c1c;
+    -moz-box-shadow: 0 0 6px #1c1c1c;
+    box-shadow: 0 0 6px #1c1c1c;*/
+}
+#fullwrapper .github-fork-ribbon-wrapper.left-bottom {
+    position: relative;
+    top: -150px;
+    bottom: 0px;
+    left: 0px;
+    float: left;
+}

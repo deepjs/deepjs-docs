@@ -15,7 +15,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			subs:{
 				"overview":{
 					route:"/layers/$", 
-					how:"<div>layers overview</div>"
+					how:"html::/pages/layers/overview.html"
 				},
 				"up-bottom":{ how:"html::/pages/layers/up-bottom.html" },
 				compositions:{ how:"html::/pages/layers/compositions.html" },
@@ -104,6 +104,12 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				value.route = node.path.replace("/subs","");
 			if(typeof value.where === 'undefined')		// default where === htmlof #main
 				value.where = "dom.htmlOf::#main";
+
+			deep.utils.up({ done:deep.compose.after(function(){
+				var $ = deep.context.$, dom = deep.context.dom;
+				$(dom.main).css("height", dom.contentHeight);
+				$(dom.content).css("height", dom.contentHeight);
+			}) }, value);
 			return deep.utils.bottom(deep.View(),value);
 		}
 	}, map);
