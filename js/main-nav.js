@@ -40,9 +40,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 			$(dom.menu1UL).empty();
 			Object.keys(routes).forEach(function(i) {
 				var mapi = routes[i];
-				if (mapi.navigation === false)
-					return;
+				
 				var active = false;
+				console.log("MAIN NAV : how : route : ", currentRoute, i);
 				if (currentRoute && (currentRoute[0] == i || (!currentRoute[0] && i == 'home'))) {
 					active = true;
 					// produce #menu2
@@ -64,6 +64,8 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 					} else
 						$(dom.menu2).hide();
 				}
+				if (mapi.navigation === false)
+					return;
 				createMenuItem(dom.menu1UL, mapi, i, active);
 			});
 		},

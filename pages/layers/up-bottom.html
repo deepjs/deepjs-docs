@@ -1,14 +1,14 @@
 <div>
 			<div id="submenu" dp-control="js::/js/sub-nav.js">
-				<h2>Compositions</h2>
+				<h2>up & bottom</h2>
 				<div class="submenu-block">
 					<ul>
 						<li><a href="#intro">Introduction</a></li>
-						<li><a href="#after">after</a></li>
-						<li><a href="#before">before</a></li>
-						<li><a href="#around">around</a></li>
-						<li><a href="#fail">fail</a></li>
-						<li><a href="#custom">create yours</a></li>
+						<li><a href="#up">up</a></li>
+						<li><a href="#bottom">bottom</a></li>
+						<li><a href="#array">array</a></li>
+						<li><a href="#function">function</a></li>
+						<li><a href="#a-sync">sync vs async</a></li>
 					</ul>
 				</div>
 			</div>
@@ -44,7 +44,7 @@ deep(1).log();
 
 
 			<div class="content">
-				<h3  id="after">.after()</h3>
+				<h3  id="up">.up(src, target)</h3>
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 
@@ -58,9 +58,18 @@ deep(1).log();
 					<div class="col-sm-12 col-md-6">
 						<div class="dp-example">
 <pre dp-try class="dp-box code">
-var obj1 = { a:12, b:true, c:{ d:"hello" } };
-var obj2 = { b:false }
+var obj1 = {
+	a:12,
+	b:true,
+	c:{
+		d:"hello"
+	}
+};
+var obj2 = {
+	b:false
+}
 deep.utils.up(obj2, obj1);
+
 deep(obj1).log();
 </pre>
 						</div>
@@ -69,7 +78,7 @@ deep(obj1).log();
 
 			</div>
 			<div class="content" >
-				<h3 id="before">.before()</h3>
+				<h3 id="bottom">.bottom(src, target)</h3>
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -90,7 +99,7 @@ deep(1).log();
 
 			</div>
 			<div class="content" >
-				<h3 id="around">.around()</h3>
+				<h3 id="array">Array merge</h3>
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -111,7 +120,7 @@ deep(1).log();
 
 			</div>
 			<div class="content" >
-				<h3 id="fail">.fail()</h3>
+				<h3 id="function">Functions merge</h3>
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -132,7 +141,7 @@ deep(1).log();
 
 			</div>
 			<div class="content" >
-				<h3 id="custom">Create yours</h3>
+				<h3 id="a-sync">Sync vs Async</h3>
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

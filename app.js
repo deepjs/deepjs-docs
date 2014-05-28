@@ -7,6 +7,7 @@ define([
 		"./js/routes.js",
 		"./js/app-template.js",
 		"./js/main-nav.js",
+		"./js/header.js",
 		"deep-jquery/ajax/json",
 		"deep-jquery/ajax/html",
 		"deepjs/lib/unit",
@@ -37,13 +38,7 @@ define([
 				routes.init();
 			});
 		};
-		//
-		deep.get("json::/bower_components/deepjs/package.json")
-		.done(function(s) {
-			$(".deepjs-version").text(s.version);
-			$(".deepjs-version-label").css("visibility", "visible").hide().fadeIn();
-		})
-		.elog();
+
 		//_______________________________________
 		$( window ).keydown(function( e ) {
 			if(e.keyCode == 82 && e.shiftKey)

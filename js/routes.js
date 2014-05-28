@@ -8,6 +8,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 
  	var map = {
  		home:{
+ 			navigation:false,
  			route:"/$",
  			how:"html::/pages/home.html"
  		},
@@ -21,9 +22,19 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				compositions:{ how:"html::/pages/layers/compositions.html" },
 				colliders:{ how:"html::/pages/layers/colliders.html" },
 				flatten:{ how:"html::/pages/layers/backgrounds.html" },
-				sheets:{ how:"swig::/pages/layers/sheets.html" },
 				shared:{ how:"swig::/pages/layers/shared.html" },
-				classes:{ how:"swig::/pages/layers/classes.html" }
+				classes:{ how:"swig::/pages/layers/classes.html" },
+				sheets:{ how:"swig::/pages/layers/sheets.html" }
+			}
+		},
+		queries:{
+			subs:{
+				"overview":{
+					route:"/layers/$", 
+					how:"html::/pages/layers/overview.html"
+				},
+				"deep-query":{ how:"html::/pages/layers/up-bottom.html" },
+				rql:{ how:"html::/pages/layers/compositions.html" }
 			}
 		},
 		chains:{
@@ -78,6 +89,17 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				},
 				advanced:{ how:"html::/pages/views/advanced.html" },
 				directives:{ how:"html::/pages/views/directives.html" },
+			}
+		},
+		utils:{
+			subs:{
+				"overview":{
+					route:"/utils/$", 
+					how:"<div>utils overview</div>"
+				},
+				interpret:{ how:"html::/pages/context/modes.html" },
+				parse:{ how:"html::/pages/context/protocols.html" },
+				logger:{ how:"html::/pages/context/logger.html" }
 			}
 		},
 		tests:{
