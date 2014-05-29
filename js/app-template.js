@@ -10,6 +10,9 @@ if (typeof define !== 'function')
 define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep) {
 
 	return deep.View({
+		config:{
+			enhance:false
+		},
 		init:function(){
 			// console.log("APP TEMPLATE INIT");
 			var $ = deep.context.$;

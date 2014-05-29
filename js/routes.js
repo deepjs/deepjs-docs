@@ -45,7 +45,8 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				},
 				promise:{ how:"html::/pages/chains/promises.html" },
 				deep:{ how:"html::/pages/chains/deep.html" },
-				others:{ how:"html::/pages/layer/colliders.html" }
+				rest:{ how:"html::/pages/chains/rest.html" },
+				others:{ how:"html::/pages/layer/other-chains.html" }
 			}
 		},
 		restful:{
@@ -127,11 +128,13 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			if(typeof value.where === 'undefined')		// default where === htmlof #main
 				value.where = "dom.htmlOf::#main";
 
-			deep.utils.up({ done:deep.compose.after(function(){
-				var $ = deep.context.$, dom = deep.context.dom;
-				$(dom.main).css("height", dom.contentHeight);
-				$(dom.content).css("height", dom.contentHeight);
-			}) }, value);
+			deep.utils.up({ 
+				done:deep.compose.after(function(){
+					var $ = deep.context.$, dom = deep.context.dom;
+					$(dom.main).css("height", dom.contentHeight);
+					$(dom.content).css("height", dom.contentHeight);
+				}) 
+			}, value);
 			return deep.utils.bottom(deep.View(),value);
 		}
 	}, map);

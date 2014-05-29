@@ -1,156 +1,229 @@
 <div>
-			<div id="submenu" dp-control="js::/js/sub-nav.js">
-				<h2>Compositions</h2>
-				<div class="submenu-block">
-					<ul>
-						<li><a href="#intro">Introduction</a></li>
-						<li><a href="#after">after</a></li>
-						<li><a href="#before">before</a></li>
-						<li><a href="#around">around</a></li>
-						<li><a href="#fail">fail</a></li>
-						<li><a href="#custom">create yours</a></li>
-					</ul>
-				</div>
-			</div>
-
-<div id="content">
-<!-- 			<div class="content" >
+	<div id="submenu" dp-control="js::/js/sub-nav.js">
+		<h2>Compositions</h2>
+		<div class="submenu-block">
+			<ul>
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#after">after</a><ul>
+					<li><a href="#after1">chose</a></li>
+					<li><a href="#after2">bazar</a></li>
+				</ul></li>
+				<li><a href="#before">before</a></li>
+				<li><a href="#around">around</a></li>
+				<li><a href="#fail">fail</a><ul>
+					<li><a href="#fail1">chose</a></li>
+					<li><a href="#fail2">bazar</a></li>
+				</ul></li>
+				<li><a href="#custom">create yours</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<!-- 			<div class="content" >
 			<div class="page-header">
-  <h1>Example page header <small>Subtext for header</small></h1>
-</div>
-			</div> -->
-			<div class="content" >
-				<h3 id="intro">Intro</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p><span class="label label-warning">Info</span> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
+				<h1>Example page header <small>Subtext for header</small></h1>
+			</div>
+		</div> -->
+		<div class="content" >
+			<h3 id="intro">Intro</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p><span class="label label-warning">Info</span> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep(1).log();
 </pre>
-						</div>
 					</div>
 				</div>
-
 			</div>
-
-
-
-			<div class="content">
-				<h3  id="after">.after()</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
+		</div>
+		<div class="content">
+			<h3  id="after">.after()</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
 <pre dp-try class="dp-box code">
 var obj1 = { a:12, b:true, c:{ d:"hello" } };
 var obj2 = { b:false }
 deep.utils.up(obj2, obj1);
 deep(obj1).log();
 </pre>
-						</div>
 					</div>
 				</div>
-
 			</div>
-			<div class="content" >
-				<h3 id="before">.before()</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<h4  id="after1">.after() 1</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
+<pre dp-try class="dp-box code">
+var obj1 = { a:12, b:true, c:{ d:"hello" } };
+var obj2 = { b:false }
+deep.utils.up(obj2, obj1);
+deep(obj1).log();
+</pre>
 					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
+				</div>
+			</div>
+			<h4  id="after2">.after() 2</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
+<pre dp-try class="dp-box code">
+var obj1 = { a:12, b:true, c:{ d:"hello" } };
+var obj2 = { b:false }
+deep.utils.up(obj2, obj1);
+deep(obj1).log();
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content" >
+			<h3 id="before">.before()</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep(1).log();
 </pre>
-						</div>
 					</div>
 				</div>
-
 			</div>
-			<div class="content" >
-				<h3 id="around">.around()</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
+		</div>
+		<div class="content" >
+			<h3 id="around">.around()</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep(1).log();
 </pre>
-						</div>
 					</div>
 				</div>
-
 			</div>
-			<div class="content" >
-				<h3 id="fail">.fail()</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
+		</div>
+		<div class="content" >
+			<h3 id="fail">.fail()</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep(1).log();
 </pre>
-						</div>
 					</div>
 				</div>
-
 			</div>
-			<div class="content" >
-				<h3 id="custom">Create yours</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
+			<h4 id="fail1">.fail() 1</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep(1).log();
 </pre>
-						</div>
 					</div>
 				</div>
-
 			</div>
-</div>
+			<h4 id="fail2">.fail() 2</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep(1).log();
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content" >
+			<h3 id="custom">Create yours</h3>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep(1).log();
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -22,6 +22,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 
 
 	var nav = routes.nav = deep.View({
+		config:{
+			enhance:false
+		},
 		navigation: false,
 		init:function(){			
 			var $ = deep.context.$, dom = deep.context.dom;
@@ -40,9 +43,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 			$(dom.menu1UL).empty();
 			Object.keys(routes).forEach(function(i) {
 				var mapi = routes[i];
-				
 				var active = false;
-				console.log("MAIN NAV : how : route : ", currentRoute, i);
 				if (currentRoute && (currentRoute[0] == i || (!currentRoute[0] && i == 'home'))) {
 					active = true;
 					// produce #menu2

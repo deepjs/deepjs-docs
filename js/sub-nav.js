@@ -27,22 +27,32 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 		}
 	}
 
-	var prev;
+	var prev, prevParents, prevH;
 	var hightlightSubmenu = function() {
 		var h = closest();
 		if (!h) return;
+		if(prevH && h.id == prevH.id)
+			return;
+		prevH = h;
 		var $ = deep.context.$, dom = deep.context.dom;
-		//console.log("hightlight : ", dom.submenu);
+		// console.log("hightlight : ", h);
 		if (prev)
 			$(prev).removeClass('active');
-		prev = $(dom.submenu).find('a[href="#' + h.id + '"]').addClass('active');
+		if (prevParents)
+			$(prevParents).removeClass('active');
+		prev = $(dom.submenu).find('a[href="#' + h.id + '"]').parent().addClass('active');
+		prevParents = $(prev).parents("li").addClass('active');
+		var offset = $(dom.content).scrollTop();
+		window.location.hash = h.id;
+		$(window).scrollTop(0);
+		$(dom.content).scrollTop(offset);
 	};
 
 	var resetHeadings = function(){
 		var $ = deep.context.$, dom = deep.context.dom;
 		closure.headings = [];
 		$(dom.content)
-		.find('h3')
+		.find('h3, h4')
 		.each(function(i, el) {
 			closure.headings.push({
 				top: $(el).offset().top,
@@ -52,11 +62,12 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 	}
 
 	return deep.View({
+		config:{
+			enhance:false
+		},
 		label:"sub-nav",
-		// remove:deep.compose.after(function(){
-		// 	console.log("SUBNAV REMOVED");
-		// }),
 		init: deep.compose.after(function() {
+			prevH = null;
 			console.log("subnav init");
 			var $ = deep.context.$, dom = deep.context.dom;
 			dom.content = $("#content")
@@ -97,14 +108,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 						window.location.hash = anchor.substring(1);
 						$(window).scrollTop(0);
 						$(dom.content).scrollTop(offset);
-						deep(this)
-							.delay(1)
-							.done(function(node) {
-								// console.log("AUTO HIGHT LIGHT WITH DELAY");
-								if (prev)
-									prev.removeClass('active');
-								prev = $(node).addClass('active');
-							});
 					});
 				});
 

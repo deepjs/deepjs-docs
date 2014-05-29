@@ -8,6 +8,9 @@ if (typeof define !== 'function') {
 }
 define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, View) {
 	return deep.View({
+		config:{
+			enhance:false
+		},
 		what:"json::/bower_components/deepjs/package.json",
 		how:function(context){
 			var $ = deep.context.$;
