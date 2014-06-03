@@ -19,11 +19,12 @@
     visibility: hidden;
  }
  #header {
-    padding:0px 50px 0 50px;
+    padding:0px;
     background-color: #3f3b36;
     text-align: center;
     font-family:'Trykker', serif;
     height:15px;
+    white-space:nowrap;
 }
 .circle { 
    width: 120px;
@@ -124,7 +125,7 @@
 
 .menu li.active a {
     /*text-decoration: underline;*/
-    background-color: #0487A6;
+    background-color: #0492AB;
     -moz-border-radius: 3px;
     border-radius: 3px;
     color: #fff;
