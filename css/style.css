@@ -124,7 +124,7 @@
 
 .menu li.active a {
     /*text-decoration: underline;*/
-    background-color: #1295b6;
+    background-color: #0487A6;
     -moz-border-radius: 3px;
     border-radius: 3px;
     color: #fff;
@@ -133,7 +133,7 @@
     content:"•";
     color: #14a2c6;
     font-size: 8px;
-    margin-right: 5px;
+    margin-right: 4px;
 }
 .menu li:first-child:before {
     content:'';
@@ -278,22 +278,27 @@ h2 {
     padding-bottom: 0px;
     margin-left:10px;
     margin-right:10px;
+    margin-top: 3px;
     border-top: 1px solid #555;
     background-color: #45413D;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
+    
+    /*background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
     background-image: -webkit-linear-gradient(top, #4b4641, #3f3b36);
     background-image: -moz-linear-gradient(top, #4b4641, #3f3b36);
     background-image: -o-linear-gradient(top, #4b4641, #3f3b36);
-    background-image: linear-gradient(top bottom, #4b4641, #3f3b36);
+    background-image: linear-gradient(top bottom, #4b4641, #3f3b36);*/
     clear: both;
     width: auto;
     height: auto;
     margin-bottom: 10px;
     text-align: left;
-        -webkit-box-shadow: 0 -2px 2px #333;
+    
+    -webkit-box-shadow: 0 -2px 2px #333;
     -moz-box-shadow: 0 -2px 2px #333;
     box-shadow: 0 -2px 2px #333;
-    min-height: 45px;
+    
+
+    min-height: 55px;
 }
 #footer .tools-bar {
     display: inline-block;
@@ -356,6 +361,7 @@ button {
 }
 #content{
     overflow: scroll;
+    height: 100%;
 }
 /* The default background color is #c00 */
  .github-fork-ribbon-wrapper {

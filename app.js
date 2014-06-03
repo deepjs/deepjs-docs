@@ -5,7 +5,7 @@ define([
 		"require",
 		"deep-browser/index",
 		"./js/routes.js",
-		"./js/app-template.js",
+		"./js/app-canevas.js",
 		"./js/main-nav.js",
 		"./js/header.js",
 		"deep-jquery/ajax/json",
@@ -24,28 +24,27 @@ define([
 		deep.Swig();
 		deep.jquery.set($);
 		//___________ start
-		//console.log("start app-sndbx : ", map);
 		deep.route.deepLink({ /* config */ });
-		//___________________________________________  VERSION
+		// create contextualised dom name space
 		var dom = deep.context.dom = {};
 		deep.ui.enhance("html");	// enhance dp-* already present in html
 
 		//_________________________ init route (final)
 		var init = function() {
-			var p = deep.route(map);	// compile html routes map
-			p.done(function(routes) {
-				console.log("app-sndbx intialised");
+			deep.route(map)	// compile html routes map
+			.done(function(routes) {
+				console.log("app intialised");
 				routes.init();
 			});
 		};
 
-		//_______________________________________
+		//_______________________________________ little hack to allow refresh from particular state without loosing uri in "browser only" env.
 		$( window ).keydown(function( e ) {
-			if(e.keyCode == 82 && e.shiftKey)
+			if(e.keyCode == 82 && e.shiftKey) //  SHIFT + R
 			{
-				var currentRoute = deep.route.current();
+				var currentRoute = window.location.pathname+window.location.hash;
 				if(currentRoute != '/')
-					window.location.assign("/#"+currentRoute);
+					window.location.assign("/#!"+currentRoute);
 				else
 					window.location.reload();
 			}

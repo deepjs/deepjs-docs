@@ -6,6 +6,7 @@ if (typeof define !== 'function') {
 }
 define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 
+	// all sitemap of content that is used to produce routed views tree.
  	var map = {
  		home:{
  			navigation:false,
@@ -116,23 +117,27 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			}
 		}
 	};
-	//____________________ finalise map
+	//____________________ finalise map : transform entry to deep.View and apply default behaviour/api
+	// if we done it here : it's just to keep map clear and short.
+	// for this : we simply use a deep-sheet.
 	deep.utils.up({
 		_deep_sheet_:true,
+		// for all entry in map that contain a 'how' property : we apply this transformation
 		"dq.transform::.//?how":function(node){
-			if(node.value._deep_view_)
+			if(node.value._deep_view_)	// already a view. skip.
 				return node.value;
 			var value = node.value;
 			if(typeof value.route === 'undefined')		// default route === view.path without '/subs'
 				value.route = node.path.replace("/subs","");
 			if(typeof value.where === 'undefined')		// default where === htmlof #main
 				value.where = "dom.htmlOf::#main";
-
+			
 			deep.utils.up({ 
 				done:deep.compose.after(function(){
-					var $ = deep.context.$, dom = deep.context.dom;
-					$(dom.main).css("height", dom.contentHeight);
-					$(dom.content).css("height", dom.contentHeight);
+					var $ = deep.context.$;
+					var dom = deep.context.dom;
+					dom.content = $("#content"); 
+					$(dom.main).scrollTop(0);
 				}) 
 			}, value);
 			return deep.utils.bottom(deep.View(),value);

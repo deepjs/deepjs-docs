@@ -3,114 +3,174 @@
  * TODO : still cross reference to #main : need to delegate
  * Anchor subnavigation controller : seek after h3 in #main a correspondance in #submenu ul li*[href]
  * Try to highlight menu at right entry while scrolling #main.
+ *
+ *
+ * Browser/Server behaviour and design concerns : 
+ *
+ * This controller is aimed to be used as a singleton (could only have one submenu on screen at a time)
+ * So we could use locals variables without concurrency or design problems.
  * 
+ * He has nothing to do server side. ==> dp-scope="browser"
+ *
+ *
+ * COUPLING : need #content in html and a simple ul/li/a or ul/li/ul/li/a structure to wrap
+ * 
+ * 
+ * TODO : produce navigation automaticaly based on h3, h4 from #content
  */
 
 if (typeof define !== 'function')
 	var define = require('amdefine')(module);
 
 define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, View) {
-	var closure = {};
+	// WARNING : localy declaring those vars are ennemy of concurrency. but in our case : it works. (see above)
+	var prev, prevParents, prevH, fromID, oldContentHeight, contentContainer, headings;
 
 	//__________________________________ AUTO HIGHLIGHT ANCHOR
 	//__________________________________ inspired from expressjs API doc navigation
+	//
+	// catch closest heading to top of content
 	function closest() {
-		var $ = deep.context.$, dom = deep.context.dom;
-		if (!closure.headings)
+		if (!headings)
 			return;
-		var h;
-		var top = $(dom.content).scrollTop() + dom.contentOffset +30;
-		var i = closure.headings.length;
+
+		var $ = deep.context.$, 
+			dom = deep.context.dom,
+			h,
+			top = $(dom.content).scrollTop() + dom.contentOffset +30,
+			i = headings.length;
+
 		while (i--) {
-			h = closure.headings[i];
+			h = headings[i];
 			if (top >= h.top - 25) return h;
 		}
 	}
 
-	var prev, prevParents, prevH;
-	var hightlightSubmenu = function() {
-		var h = closest();
-		if (!h) return;
-		if(prevH && h.id == prevH.id)
-			return;
-		prevH = h;
+
+	// catch all content's h3 and h4 and store their heights in local array
+	var resetHeadings = function(init){
 		var $ = deep.context.$, dom = deep.context.dom;
-		// console.log("hightlight : ", h);
+		var scrollTop = $(dom.content).scrollTop();
+		if(init)
+		{
+			headings = [];
+			$(dom.content)
+			.find('h3, h4')
+			.each(function(i, el) {
+				headings.push({
+					top: $(el).offset().top + scrollTop,
+					id: el.id,
+					el: el
+				});
+			});
+		}
+		else
+			headings.forEach(function(h){
+				h.top = $(h.el).offset().top + scrollTop;
+			});
+	};
+
+	// we need to reset headings .top property when content height has changed
+	var checkHeight = function(){
+		var $ = deep.context.$, dom = deep.context.dom;
+		var newHeight = $(contentContainer).height();
+		if( newHeight !==  oldContentHeight)
+		{
+			oldContentHeight = newHeight;
+			resetHeadings();
+		}
+	};
+
+	// just highlight (swap active) associate navigation dom entry
+	var highlight = function(h){
+		var $ = deep.context.$, dom = deep.context.dom;
 		if (prev)
 			$(prev).removeClass('active');
 		if (prevParents)
 			$(prevParents).removeClass('active');
 		prev = $(dom.submenu).find('a[href="#' + h.id + '"]').parent().addClass('active');
 		prevParents = $(prev).parents("li").addClass('active');
+	};
+
+	// highlight submenu entry with id
+	var highlightById = function(id){
+		checkHeight();
+		var h = deep.query(headings, "/*?id="+id).shift();
+		if (!h)
+			return;
+		prevH = h;
+		var $ = deep.context.$, dom = deep.context.dom;
+		var offset = Math.round(h.top - dom.contentOffset - 39);
+
+		// WARNING : work only if hashes are ont used by deep-link
+		deep.context.hash = id;
+		window.location.hash = id;
+		$(window).scrollTop(0);
+		fromID = true;
+		$(dom.content).scrollTop(offset);
+		highlight(h);
+	};
+
+	// highlight menu on position
+	var hightlightClosest = function() {
+		if(fromID)
+		{
+			fromID = false;
+			return;
+		}
+		checkHeight();
+		var h = closest();
+		if (!h) return;
+		if(prevH && h.id == prevH.id)
+			return;
+		prevH = h;
+		// console.log("hightlight : ", h);
+		highlight(h);
+		var $ = deep.context.$, dom = deep.context.dom;
 		var offset = $(dom.content).scrollTop();
-		window.location.hash = h.id;
+		window.location.hash = deep.context.hash = h.id;
 		$(window).scrollTop(0);
 		$(dom.content).scrollTop(offset);
 	};
 
-	var resetHeadings = function(){
-		var $ = deep.context.$, dom = deep.context.dom;
-		closure.headings = [];
-		$(dom.content)
-		.find('h3, h4')
-		.each(function(i, el) {
-			closure.headings.push({
-				top: $(el).offset().top,
-				id: el.id
-			});
-		});
-	}
-
 	return deep.View({
 		config:{
-			enhance:false
+			enhance:false,
+			scope:"browser"
 		},
-		label:"sub-nav",
 		init: deep.compose.after(function() {
 			prevH = null;
-			console.log("subnav init");
 			var $ = deep.context.$, dom = deep.context.dom;
-			dom.content = $("#content")
-			if(deep.context.concurrency)// you should only bind those event if you in a plein browser environnement
-				return;
-			$(dom.content).scroll(hightlightSubmenu);
-			$(window).resize(resetHeadings);
+			dom.content = $("#content");	// wee need it at different place. and to be sure to have it here and now : we catch it also here blindly.
+			contentContainer = $(dom.content).wrapInner('<div></div>').children().first();
+			// add listeners
+			$(dom.content).scroll(hightlightClosest);
 		}),
-		clean:deep.compose.after(function(){
+		clean: deep.compose.after(function(){
+			// remove listeners
 			var $ = deep.context.$, dom = deep.context.dom;
-			// console.log("SUB NAV clean")
-			if(!deep.context.concurrency) // you should only bind those event if you in a plein browser environnement
-			{
-				$(dom.content).unbind("scroll", hightlightSubmenu);
-				$(window).unbind("resize", resetHeadings);
-			}
-			this.initialised = false;
+			$(dom.content).unbind("scroll", hightlightClosest);
 		}),
 		done: deep.compose.after(function(output) {
-			// console.log("SUBMENU DONE : ", output);
 			var $ = deep.context.$, dom = deep.context.dom;
+			oldContentHeight = $(contentContainer).height();
 			dom.submenu = $(output.placed);
-			//__________________________________________________ SCROLL TO ANCHOR on click
-			resetHeadings();
-			hightlightSubmenu();
+			//__________________________________________________ highlight by location.hash or closest
+			resetHeadings(true);
+			if(deep.context.hash)
+				deep.delay(1).done(function(){ highlightById(deep.context.hash); });
+			else
+				hightlightClosest();
+			//__________________________________________________ scroll to anchor on click
 			$(dom.submenu)
 				.find("a")
 				.each(function() {
 					var anchor = $(this).attr("href");
 					$(this).click(function(e) {
-						// console.log("CLICK ON SUBMENU : ", anchor, closure.headings);
 						e.preventDefault();
-						var offset = deep.query(closure.headings, "/*?id="+anchor.substring(1)).shift();
-						if (!offset)
-							return;
-						offset = Math.round(offset.top - dom.contentOffset - 37);
-						// WARNING : work only if hashes are ont used by deep-link
-						window.location.hash = anchor.substring(1);
-						$(window).scrollTop(0);
-						$(dom.content).scrollTop(offset);
+						highlightById(anchor.substring(1));
 					});
 				});
-
 		})
 	});
 });

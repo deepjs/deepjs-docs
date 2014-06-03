@@ -69,10 +69,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 					return;
 				createMenuItem(dom.menu1UL, mapi, i, active);
 			});
-		},
-		where:function(){
-			var $ = deep.context.$, dom = deep.context.dom;
-			return dom.menu;
 		}
 	});
 	return nav;
