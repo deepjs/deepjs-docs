@@ -14,9 +14,10 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 		what:"json::/bower_components/deepjs/package.json",
 		how:function(context){
 			var $ = deep.context.$;
+			console.log("header done");
 			$(this.placed()).find(".deepjs-version").text(context.what.version);
 			if(deep.isBrowser)
-				$(this.where).find(".hidden").removeClass("hidden").hide().fadeIn();
+				$(this.placed()).find(".hidden").removeClass("hidden").hide().fadeIn();
 		}
 	});
 });
