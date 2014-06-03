@@ -42,7 +42,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 
 		while (i--) {
 			h = headings[i];
-			if (top >= h.top - 25) return h;
+			if (top >= h.top - 40) return h;
 		}
 	}
 
