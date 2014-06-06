@@ -125,7 +125,7 @@
 
 .menu li.active a {
     /*text-decoration: underline;*/
-    background-color: #0492AB;
+    background-color: #24abca;
     -moz-border-radius: 3px;
     border-radius: 3px;
     color: #fff;
@@ -283,11 +283,11 @@ h2 {
     border-top: 1px solid #555;
     background-color: #45413D;
     
-    /*background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
     background-image: -webkit-linear-gradient(top, #4b4641, #3f3b36);
     background-image: -moz-linear-gradient(top, #4b4641, #3f3b36);
     background-image: -o-linear-gradient(top, #4b4641, #3f3b36);
-    background-image: linear-gradient(top bottom, #4b4641, #3f3b36);*/
+    background-image: linear-gradient(top bottom, #4b4641, #3f3b36);
     clear: both;
     width: auto;
     height: auto;
@@ -387,7 +387,7 @@ button {
 #fullwrapper {
     /*position: absolute;*/
     /*max-height: 768px;*/
-    max-width: 1200px;
+    max-width: 1014px;
     margin:auto;
     -moz-border-radius: 10px;
     border-radius: 10px;

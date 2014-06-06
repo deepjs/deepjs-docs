@@ -24,7 +24,7 @@ if (typeof define !== 'function')
 
 define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, View) {
 	// WARNING : localy declaring those vars are ennemy of concurrency. but in our case : it works. (see above)
-	var prev, prevParents, prevH, fromID, oldContentHeight, contentContainer, headings;
+	var prev, prevParents, prevH, fromID = false, oldContentHeight, contentContainer, headings;
 
 	//__________________________________ AUTO HIGHLIGHT ANCHOR
 	//__________________________________ inspired from expressjs API doc navigation
@@ -37,11 +37,11 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 		var $ = deep.context.$, 
 			dom = deep.context.dom,
 			h,
-			top = $(dom.content).scrollTop() + dom.contentOffset +30,
+			top = $(dom.content).scrollTop() + dom.contentOffset +40,
 			i = headings.length;
-
 		while (i--) {
 			h = headings[i];
+			// console.log("closest : ", i, top, h.top, top >= h.top - 40);
 			if (top >= h.top - 40) return h;
 		}
 	}
@@ -83,6 +83,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 
 	// just highlight (swap active) associate navigation dom entry
 	var highlight = function(h){
+		// console.log("hightlight : ", h);
 		var $ = deep.context.$, dom = deep.context.dom;
 		if (prev)
 			$(prev).removeClass('active');
@@ -112,7 +113,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 	};
 
 	// highlight menu on position
-	var hightlightClosest = function() {
+	var highlightClosest = function() {
 		if(fromID)
 		{
 			fromID = false;
@@ -120,11 +121,10 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 		}
 		checkHeight();
 		var h = closest();
-		if (!h) return;
-		if(prevH && h.id == prevH.id)
+		// console.log("highlightClosest : ", h);
+		if(!h || (prevH && h.id == prevH.id))
 			return;
 		prevH = h;
-		// console.log("hightlight : ", h);
 		highlight(h);
 		var $ = deep.context.$, dom = deep.context.dom;
 		var offset = $(dom.content).scrollTop();
@@ -144,23 +144,27 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 			dom.content = $("#content");	// wee need it at different place. and to be sure to have it here and now : we catch it also here blindly.
 			contentContainer = $(dom.content).wrapInner('<div></div>').children().first();
 			// add listeners
-			$(dom.content).scroll(hightlightClosest);
+			$(dom.content).scroll(highlightClosest);
+			// console.log("sub nav init");
 		}),
 		clean: deep.compose.after(function(){
 			// remove listeners
 			var $ = deep.context.$, dom = deep.context.dom;
-			$(dom.content).unbind("scroll", hightlightClosest);
+			$(dom.content).unbind("scroll", highlightClosest);
+			// console.log("sub nav clean");
 		}),
 		done: deep.compose.after(function(output) {
 			var $ = deep.context.$, dom = deep.context.dom;
 			oldContentHeight = $(contentContainer).height();
 			dom.submenu = $(output.placed);
 			//__________________________________________________ highlight by location.hash or closest
+			// console.log("sub nav done : ", deep.context.hash);
+
 			resetHeadings(true);
 			if(deep.context.hash)
 				deep.delay(1).done(function(){ highlightById(deep.context.hash); });
 			else
-				hightlightClosest();
+				highlightClosest();
 			//__________________________________________________ scroll to anchor on click
 			$(dom.submenu)
 				.find("a")

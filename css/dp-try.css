@@ -13,6 +13,8 @@
 .code {
     -moz-border-radius: 5px;
     border-radius: 5px;
+    border:1px solid #111;
+    
 }
 .dp-try-editor {
     overflow: scroll;
@@ -25,7 +27,7 @@
     font-size: 14px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);*/
     border:1px solid #FFFFFF;
 }
 .dp-try-output {
@@ -38,6 +40,7 @@
     border:1px solid #777777;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    border:1px solid #111;
 }
 .dp-try-view {
     overflow: scroll;
@@ -49,13 +52,16 @@
     border:1px solid #7eaabb;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);*/
 }
 .dp-button-row {
     overflow: visible;
     float:left;
     width:100px;
+    padding-top:2px;
+    padding-bottom: 2px;
 }
 .dp-button-row button {
     font-size:10px;
+    margin-right:2px;
 }

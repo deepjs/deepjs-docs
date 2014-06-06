@@ -22,16 +22,16 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				"up-bottom":{ how:"html::/pages/layers/up-bottom.html" },
 				compositions:{ how:"html::/pages/layers/compositions.html" },
 				colliders:{ how:"html::/pages/layers/colliders.html" },
-				flatten:{ how:"html::/pages/layers/backgrounds.html" },
-				shared:{ how:"swig::/pages/layers/shared.html" },
-				classes:{ how:"swig::/pages/layers/classes.html" },
-				sheets:{ how:"swig::/pages/layers/sheets.html" }
+				flatten:{ how:"html::/pages/layers/flatten.html" },
+				shared:{ how:"html::/pages/layers/shared.html" },
+				classes:{ how:"html::/pages/layers/classes.html" },
+				sheets:{ how:"html::/pages/layers/sheets.html" }
 			}
 		},
 		queries:{
 			subs:{
 				"overview":{
-					route:"/layers/$", 
+					route:"/queries/$", 
 					how:"html::/pages/layers/overview.html"
 				},
 				"deep-query":{ how:"html::/pages/layers/up-bottom.html" },
@@ -50,22 +50,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				others:{ how:"html::/pages/layer/other-chains.html" }
 			}
 		},
-		restful:{
-			subs:{
-				"overview":{
-					route:"/restful/$", 
-					how:"<div>restful overview</div>"
-				},
-				collection:{ how:"html::/pages/restful/collection.html" },
-				object:{ how:"html::/pages/restful/object.html" },
-				validation:{ how:"html::/pages/restful/validation.html" },
-				constraints:{ how:"html::/pages/restful/constraints.html" },
-				wrappers:{ how:"html::/pages/restful/wrappers.html" }
-			}
-		},
-		protocols:{
- 			how:"html::/pages/protocols.html"
-		},
 		context:{
 			subs:{
 				"overview":{
@@ -77,11 +61,44 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				logger:{ how:"html::/pages/context/logger.html" }
 			}
 		},
-		ocm:{
- 			how:"html::/pages/ocm.html"
+		protocols:{
+			subs:{
+				"overview":{
+					route:"/protocols/$", 
+					how:"html::/pages/protocols/overview.html"
+				},
+				natives:{ how:"html::/pages/protocols/natives.html" },
+				"media-cache":{ label:"media cache", how:"html::/pages/protocols/cache.html" },
+				custom:{ how:"html::/pages/protocols/custom.html" }
+			}
 		},
-		schemas:{
-			how:"html::/pages/schemas.html"
+		ocm:{
+			subs:{
+				"intro":{
+					route:"/ocm/$", 
+ 					how:"html::/pages/ocm/introduction.html"
+				},
+				compilation:{ how:"html::/pages/ocm/compilation.html" },
+				classes:{ how:"html::/pages/ocm/classes.html" },
+				design:{ how:"html::/pages/ocm/design.html" },
+				delegation:{ how:"html::/pages/ocm/delegation.html" }
+			}
+		},
+		restful:{
+			subs:{
+				"overview":{
+					route:"/restful/$", 
+					how:"<div>restful overview</div>"
+				},
+				collection:{ how:"html::/pages/restful/collection.html" },
+				object:{ how:"html::/pages/restful/object.html" },
+				validation:{ how:"html::/pages/restful/validation.html" },
+				constraints:{ how:"html::/pages/restful/constraints.html" },
+				relations:{ how:"html::/pages/restful/relations.html" },
+				range:{ how:"html::/pages/restful/range.html" },
+				ocm:{ how:"html::/pages/restful/ocm.html" },
+				wrappers:{ how:"html::/pages/restful/wrappers.html" }
+			}
 		},
 		views:{
 			subs:{
@@ -89,8 +106,21 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					route:"/views/$", 
 					how:"<div>views basics</div>"
 				},
+				refresh:{ how:"html::/pages/views/refresh.html" },
+				api:{ how:"html::/pages/views/api.html" },
 				advanced:{ how:"html::/pages/views/advanced.html" },
-				directives:{ how:"html::/pages/views/directives.html" },
+				directives:{ how:"html::/pages/views/directives.html" }
+			}
+		},
+		routes:{
+			subs:{
+				"overview":{
+					route:"/routes/$", 
+					how:"<div>routes basics</div>"
+				},
+				path:{ how:"html::/pages/routes/path.html" },
+				map:{ how:"html::/pages/routes/map.html" },
+				ocm:{ how:"html::/pages/routes/ocm.html" }
 			}
 		},
 		utils:{
@@ -99,9 +129,11 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					route:"/utils/$", 
 					how:"<div>utils overview</div>"
 				},
-				interpret:{ how:"html::/pages/context/modes.html" },
-				parse:{ how:"html::/pages/context/protocols.html" },
-				logger:{ how:"html::/pages/context/logger.html" }
+				log:{ how:"html::/pages/utils/log.html" },
+				interpret:{ how:"html::/pages/utils/interpret.html" },
+				parsers:{ how:"html::/pages/utils/parsers.html" },
+				deepLoad:{ how:"html::/pages/utils/deepload.html" },
+				schema:{ how:"html::/pages/utils/schema.html" }
 			}
 		},
 		tests:{
@@ -134,6 +166,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			
 			deep.utils.up({ 
 				done:deep.compose.after(function(){
+					// console.log("content done");
 					var $ = deep.context.$;
 					var dom = deep.context.dom;
 					dom.content = $("#content"); 

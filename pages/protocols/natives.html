@@ -1,0 +1,72 @@
+<div>
+    <div id="submenu">
+        <h2>Natives protocols</h2>
+        <div class="submenu-block" dp-control="js::/js/sub-nav.js">
+            <ul>
+                <li><a href="#js">js</a>
+                </li>
+                <li><a href="#instance">instance</a>
+                </li>
+                <li><a href="#this">this</a>
+                </li>
+                <li><a href="#dummy">dummy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="content">
+        	deepjs comes with few natives protocols.
+			<h3 id="js">js</h3>
+<p>Simple protocol that use requirejs (browser side) and nodejs require (of course server side) to load ASYNCHRONOUSLY javascript ressources (AMD module).</p>
+It use natively the requirejs/require cache system.
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep("js::deepjs/lib/unit")
+.log()
+</pre></div>
+
+			<h3 id="instance">instance</h3>
+Same than js:: except that ressource need to be javascript Class (a function) that will be instanciate (with no arguments sent to constructor) before injection in promise.
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep("instance::/path/to/your/class.js")
+.log();
+</pre></div>
+
+			<h3 id="this">this</h3>
+<p>Inner inheritance. Used in backgrounds only. (see <a href="/layers/flatten">backgrounds and flatten</a>)</p>
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep({
+	a:{
+		hello:"world"
+	},
+	b:{
+		test:12
+	},
+	c:{
+		backgrounds:["this::../a", "this::/b"]
+	}
+	//...
+})
+.flatten()
+.query("./c")
+.log();  // will print : { hello:"world", test:12 }
+</pre></div>
+
+			<h3 id="dummy">dummy</h3>
+<p>Just there to make test or demo.</p>
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep("dummy::hello").log();
+</pre></div>
+			<h3 id="dq">dq</h3>
+For more details on native sheet's protocol, see [sheets](../sheets.md)
+
+        </div>
+    </div>
+</div>
+
+

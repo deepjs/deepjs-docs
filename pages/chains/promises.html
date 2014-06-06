@@ -1,0 +1,370 @@
+<div>
+    <div id="submenu">
+        <h2>Promises</h2>
+        <div class="submenu-block" dp-control="js::/js/sub-nav.js">
+            <ul>
+                <li><a href="#intro">intro</a>
+                </li>
+                <li><a href="#return-rule">Return rule</a>
+                </li>
+                <li><a href="#this">this</a>
+                </li>
+                <li><a href="#dummy">dummy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="content">
+        	<h3 id="intro">Intro</h3>
+<p>A Promise manage asynchronously (or not) success or error (its state) through chained notation.</p>
+
+<p>More exactly, a deep-promise, as all promises, is a chain handler that inject a result (a success) or an error in chained callbacks, and manage callbacks response (maybe asynchronously) and use it to define it new state, that could be forwarded to more chained callbacks.</p>
+
+<p>Fondamentaly, there is two kinds of callback familly : </p>
+
+<ul>
+<li> .done(function(success){}) : callback will only be fired if promise state is a success</li>
+<li> .fail(function(error){}) : callback will only be fired if promise state is an error</li>
+</ul>
+<p>Those two families could be used together with .then( doneCallBack, failCallBack ), which is exactly the same as doing .done(callBack).fail(callback)</p>
+
+<p>The big difference from simple callback pattern (as nodejs abuse), is that the promise continue to hold its state, long time after primary events, and provides way (when adding a new callback when needed) to get its state at any time after primary events.</p>
+
+
+<h3 id="return-rule">Callbacks Return Rule</h3>
+
+<p>if returned value is :</p>
+
+<ul>
+<li>undefined : take previous success or error (so it does not modify current promise state)</li>
+<li>an error : inject error as failure in chain (so change state to 'error')</li>
+<li>a promise : wait promise resolution to either inject its success or its error in current chain.</li>
+<li>a deep.Undefined : it will force 'undefined' injection in chain.</li>
+<li>any other type : inject it as success in chain (so if the promise was in 'error' state : it's now in 'success' state)</li>
+</ul>
+<p>if an error is thrown : from within any handle : it depends if chain catch errors (by default, it catch them).
+</p>
+<p><span class="label label-info">Remarque</span> that's true for both done and fail families. </p>
+<p>That implied that you could always catch and handles errors produced within any callbacks with a .fail(callback) placed after in chain (that will be fired as promise state is error), and then return (in the fail callback) something that's not an Error, and so reset current promise state to success.</p>
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+	
+deep.when(new Error("hello error"))
+.done(function(success){
+	// this callback will simply be ignored, as promise state is 'error'.
+	// ...
+})
+.fail(function(e){
+	// this one will be fired as promise state is 'error'
+	// but as it return nothing (so undefined), it does not modifiy promise state.
+	deep.log("error : ", e.toString());
+})
+.fail(function(e){    // also fired as promise state stills 'error'.
+	return "error handled : continue chain";
+})
+.done(function(success){ 	// this one will be fired, as state has been reseted to 'success'
+	deep.log("success : ", success);
+});
+</pre></div>
+		</div>
+        <div class="content">
+
+<h3 id="catchErrors">.catchErrors( bool )</h3>
+
+<p>set if promise catches or not errors produced within callback. promises catch them by default.</p>
+
+<h3 id="always">.always(function(success, error){})</h3>
+
+<p>will always be executed.</p>
+
+<h3 id="log">.log()</h3>
+
+<p>will always be executed.</p>
+
+if you provide no arguments :
+will log current state. (success or error)
+if you provide a list of arguments (i.e. .log(arg1, "hello", myObject, 12, ...)), it will print them as deep log would do.
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep.when(true)
+.log("hello", "john", ":");
+</pre></div>
+
+It does not modifiy promise state.
+
+<h3 id="equal">.equal( obj )</h3>
+
+Executed only if promise is in success state.
+
+Test success struct equality to obj. Useful for testcasing.
+
+If not equal, it inject a PreconditionFailed error (status 412) in promise, with equality report.
+
+If equal : it does not modifiy promise state.
+
+<h3 id="when">.when( something )</h3>
+
+Not exactly the same thing as deep.when( something ) that return a promise that waiting 'something' (you start a promise as this),
+when you use it in an existant promise chain, it will wait 'something' and take it result as current state before continuing.
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep.when( something )
+.done(function( somethingResult ))
+.when( anotherthing )
+.done(function( anotherthingResult ){
+	...
+});
+</pre></div>
+
+<h3 id="delay">.delay( ms )</h3>
+
+executed only in success state.
+Add an artifical delay in chain execution. useful for test and debug.
+
+
+<h3 id="to-context">.toContext(key, value)</h3>
+
+For painless asynchrone context management. (thanx [Kris](https://github.com/kriszyp) ! ;)
+Set in local deep.context the provided value under 'key'.
+See [asynch-context-management](./asynch-context-management.md) for more details.
+
+
+<h3 id="clog">.clog()</h3>
+
+same thing as .log() above.
+But log current context in place of promise state.
+it does not modifiy promise state.
+
+<h3 id="deferred"> Deferred</h3>
+
+How to use deferred.
+
+<h3 id="when">deep.when</h3>
+
+<h3 id="all">deep.all</h3>
+
+
+<h3 id="iterate">promises iterator</h3>
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep.iterate([
+	1,2,deep("delayed").delay(10), new Error("hhh"),4
+], 
+function(s){
+    return "e"+s;
+}, function(e){
+    return "error managed";  // try to coment or not this line 
+})
+.log(); // ==> ["e1", "e2", "edelayed", "error managed", "e4"]
+</pre></div>
+
+through chain :
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep([1,2,deep("delayed").delay(10), new Error("hhh"),4])
+.iterate(function(s){
+    return "e"+s;
+}, function(e){
+    return "error managed";
+})
+.log(); // ==> ["e1", "e2", "edelayed", "error managed", "e4"]
+</pre></div>
+
+Could be used to iterate through functions as :
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep.utils.iterate([
+	function(arg){ return deep("hello "+arg).delay(5); }, 
+	function(arg){ return deep(arg+" world").delay(8); }
+], function(s){
+    return s("deep");
+})
+.log(); // ==> ["hello deep", "deep world"]
+</pre></div>
+
+
+<h3 id="wired">wired asynch functions</h3>
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep.wired([
+	function(arg){
+	    return deep.when("arg was : "+arg).delay(5);
+	},
+	function(arg){
+	    return new Error("plaf : "+arg);
+	},
+	function(arg){
+	    return deep.when("arg 2 was : "+arg).delay(5);
+	}
+],
+"hello",
+{
+    test:1
+},
+function(s){
+    return "{" + s + "}";
+},
+function(e){
+    return "{error managed "+e.message+"}";
+})
+.log(); // => {arg 2 was : {error managed plaf : {arg was : hello}}}
+</pre></div> 
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep({
+    func1:function(arg1, arg2){
+        return ["arg11:"+arg1,"arg21:"+arg2];
+    },
+    func2:function(arg1, arg2){
+        return ["arg12:"+arg1,"arg22:"+arg2];
+    },
+    func3:function(arg1, arg2){
+        return ["arg13:"+arg1,"arg23:"+arg2];
+    }
+})
+.query("./(func.*)")
+.wired(["hello","world"])
+.log(); // => ["arg13:arg12:arg11:hello", "arg23:arg22:arg21:world"]
+</pre></div>
+
+# Promises subtilities
+
+[Back to tutorials](../tutorials.md)
+
+
+Good promised patterns are sometimes quite subtils and here is some tips to use it more correctly.
+
+## Natural linearisation
+
+Use linear promises management in place of recursive promises call.
+
+good : 
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+
+deep.when( something )
+.done(function(success){
+    // success = something
+    return something_else;
+})
+.done(function(success){
+    // success = something_else
+    return "hello";
+})
+.done(function(success){
+    // final success = "hello"
+});
+
+</pre></div>
+
+bad:
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+
+deep.when( something )
+.done(function(success){
+    // success = something
+    return deep.when( something_else )
+    .done(function(success){
+     	// success = something_else
+     	return "hello";
+	})
+})
+.done(function(success){
+     // final success = "hello"
+});
+
+</pre></div>
+
+
+## Natural conditional branching
+
+A difference between deep.when and other promises (as I know today), is that here : done, fail and always callbacks are executed in chain environnement. i.e. when you use 'this' in such callbacks, you have access to chain handler (deep.when or deep.Chain) API.
+
+The cool trick here is that when such callback are executed, current queue (i.e. the functions that was placed in chain (through chain API) and that are not consummed yet) is backup and replaced by an empty queue.
+
+This empty queue could be filled as you want, from within callbacks, using 'this' to access chain (or promise) API.
+
+When such callbacks return, the previous queue is concatened at end of new queue.
+
+The effect is that all chain API's call, from within such callbacks, are queued in front of final queue, and so will be executed before previous queued handles.
+
+From chain point of view : you have inserted new handles between existent ones.
+
+example :
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+
+
+	deep.when(true)
+	.done(function(s){
+		if(s)
+			this.done(function(s){
+				return "hello";
+			})
+		else
+			this.done(function(s){
+				return "bye";
+			});
+	})
+	.log();
+
+</pre></div>
+
+## linear promise iteration
+
+To handle iteration on collection of objects (that may (or not) be promises) without recursive calls.
+
+Based on same considerations than above.
+
+Try it in a js deep to fuly understand what's happening.
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+var toIterates = [ 1, true, deep("hello").delay(10), "world" ];
+var stopOnError = false;
+
+var done = function(s){
+	// do something with s
+	deep.log("item : ",s);
+	// instead of calling recursive function here to handle more items : 
+	// we add new handle(s) in chain that will be placed just after this one (they are inserted in front of handles queue when we use 'this' in 'done', 'fail' and 'always' chain handlers.)
+	if(toIterates.length > 0)
+	{	 
+		this.done(done);  	// fail hasn't been consummed : no need to readd it here. 
+							// Insertion of done (in chain) will be done just after this done handler
+		return toIterates.shift();
+	}
+};
+
+var fail = function(e){
+	if(!stopOnError &amp;&amp; toIterates.length > 0)
+		this.when(toIterates.shift())
+		.done(done)
+		.fail(fail);  // fail has been consummed : so we re-add it here.
+					  // Insertion of done and fail (in chain) will be done just after this fail handler
+};
+
+var iterator = deep.when(toIterates.shift())
+.done(done)   	// iteration will insert done's iteration just after this one (and while success obviously) 
+.fail(fail)   	// if something is wrong : fail will be consummed. 
+				// It could re-add a 'done' and a 'fail' handler just after this handler (before .log())
+.log("iteration ended : "); // will only be executed once, at end of iteration
+</pre></div>
+		</div>
+	</div>
+</div>
+
+
+

@@ -61,9 +61,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 								createMenuItem(dom.menu2UL, subj, j, active2);
 								count++;
 							});
-						$(dom.menu2).show(); //.fadeIn(160);
+						$(dom.menu2).show(); //.slideDown(100); //.fadeIn(160);
 					} else
-						$(dom.menu2).hide();
+						$(dom.menu2).hide();//.slideUp(100);
 				}
 				if (mapi.navigation === false)
 					return;

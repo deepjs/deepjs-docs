@@ -1,0 +1,78 @@
+<div>
+    <div id="submenu">
+        <h2>Colliders</h2>
+        <div class="submenu-block" dp-control="js::/js/sub-nav.js">
+            <ul>
+                <li><a href="#intro">Introduction</a>
+                </li>
+                <li><a href="#replace">.replace()</a>
+                </li>
+                <li><a href="#array.insertAt">.array.insertAt()</a>
+                </li>
+                <li><a href="#custom">custom</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+
+        <div class="content">
+            <h3 id="intro">Intro</h3>
+            <p>deep.collider provides way to manage fine grained collision when applying two layer together.</p>
+            <h3 id="replace">.replace()</h3>
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+
+deep({ b:[1,2,3] })
+.up({
+    b:deep.collider.replace([4,5])
+})
+.equal({ b:[4,5] })
+.log()
+</pre>
+            </div>
+
+            <h3 id="array.insertAt">.array.insertAt()</h3>
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+
+deep({ b:[1,2,3] })
+.up({
+    b:deep.collider["array.insertAt"]([4,5],2)
+})
+.equal({ b:[1,2,4,5,3] })
+.log()
+
+</pre>
+            </div>
+
+
+			<h3 id="custom">Custom collider</h3>
+
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+
+deep.collider.Collider.add("validate", function(input, schema){
+	var report = deep.validate(input, schema);
+	if(!report.valid)
+		throw deep.errors.PreconditionFail(report);
+		else deep.log("valid at collision.")
+	return input;
+});
+
+//...
+
+var a = { b:"hello" }
+
+var c = {
+    b:deep.collider.validate({ type:"number" })
+}
+
+deep.utils.up(c,a);
+</pre>
+            </div>
+        </div>
+    </div>
+</div>

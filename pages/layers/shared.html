@@ -1,0 +1,29 @@
+First, you need to know that each result obtained from an OCM (when you ask it in certain mode(s)) is totaly independant at run time from others OCM results. They are different objects that don't know each others.
+
+Sometimes, you really want to share objects between OCM instances produced in different modes. 
+Pay attention : you could get here a true multithreaded process with shared memory pattern (as deepjs could do concurrent asynch stuffs). But there is no mecanism to lock shared memory while using it. So no possible deadlock... but weird behaviours if you miss something).
+
+All you need to obtain that, something shared between OCM instances, is to set a flag _deep_shared_ in it. That's all.
+Or you could use `deep.Shared( yourValue )` that do it for you (i.e. it just return yourValue decorated with `_deep_shared_:true`).
+
+
+```javascript
+
+var obj = deep.ocm({
+	mode1:{
+		test:function(){
+			console.log("this.shared : ", this.myShared);
+		},
+		myShared:deep.Shared([1,2,3])
+	},
+	mode2:{
+		backgrounds:["this::../mode1"],
+		myShared:[4,5]
+	}
+});
+
+obj.flatten();
+
+obj("mode1").test();				// [1, 2, 3, 4, 5]
+obj("mode1").myShared.push(6,7);
+obj("mode2").test();				// [1, 2, 3, 4, 5, 6, 7]
