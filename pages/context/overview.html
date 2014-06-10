@@ -1,0 +1,48 @@
+<div>
+	<div id="submenu">
+		<h2>Overview</h2>
+		<div class="submenu-block" dp-control="js::/js/sub-nav.js">
+			<ul>
+				<li><a href="#intro">Introduction</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<div class="content">
+		<h3 id="intro">Context &amp; Concurrency</h3>
+		<p>Don't be fooled by the smallness of the navigation. This chapter is one of the most subtile and powerful and deserve big attention.</p>
+		<p> It talk about <a href="http://en.wikipedia.org/wiki/Concurrent_computing">"concurrency programming"</a> and is primordial to safe, modular and lightweight concurrency design.</p>
+
+		<p>For this, deepjs provides a single tools, called deep.context, that act as a contextualised "global" namespace (it looks like an oxymore).</p>
+
+		<p>The pattern was taken from Kris Zyp promise implementation. Thx to him...;)</p>
+
+		<p>This namespace is closely linked to promises, and could be seen as local promise's context.</p>
+		<p>The magic is that you always access this local context globally...</p>
+		<p>From anywhere just read deep.context (its an object) : it's your current <u>local</u> context. </p>
+
+		<h3 id="typical">typical content</h3>
+		<ul>
+<li>protocols</li>
+<li>ocm modes</li>
+<li>http request (server)</li>
+<li>logger</li>
+<li>jQuery reference</li>
+<li>"global" dom nodes</li>
+<li>etc</li>
+</ul>
+		<h3 id="deep-context">deep.context</h3>
+		<h3 id="toContext">.toContext</h3>
+		<h3 id="fromContext">.fromContext</h3>
+		<h3 id="clog">.clog()</h3>
+
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+

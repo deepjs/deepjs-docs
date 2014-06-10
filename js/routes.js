@@ -24,40 +24,40 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				colliders:{ how:"html::/pages/layers/colliders.html" },
 				flatten:{ how:"html::/pages/layers/flatten.html" },
 				shared:{ how:"html::/pages/layers/shared.html" },
-				classes:{ how:"html::/pages/layers/classes.html" },
-				sheets:{ how:"html::/pages/layers/sheets.html" }
+				classes:{ how:"html::/pages/layers/classes.html" }
 			}
 		},
 		queries:{
 			subs:{
 				"overview":{
 					route:"/queries/$", 
-					how:"html::/pages/layers/overview.html"
+					how:"html::/pages/queries/overview.html"
 				},
-				"deep-query":{ how:"html::/pages/layers/up-bottom.html" },
-				rql:{ how:"html::/pages/layers/compositions.html" }
+				"deep-query":{ how:"html::/pages/queries/deep-query.html" },
+				rql:{ how:"html::/pages/queries/rql.html" },
+				selectors:{ how:"html::/pages/queries/selectors.html" },
+				sheets:{ how:"html::/pages/queries/sheets.html" }
 			}
 		},
 		chains:{
 			subs:{
 				"overview":{
 					route:"/chains/$", 
-					how:"<div>chains overview</div>"
+					how:"html::/pages/chains/overview.html"
 				},
 				promise:{ how:"html::/pages/chains/promises.html" },
 				deep:{ how:"html::/pages/chains/deep.html" },
 				rest:{ how:"html::/pages/chains/rest.html" },
-				others:{ how:"html::/pages/layer/other-chains.html" }
+				patterns:{ how:"html::/pages/chains/subtilities.html" },
+				others:{ label:"other chains", how:"html::/pages/chains/other-chains.html" }
 			}
 		},
 		context:{
 			subs:{
 				"overview":{
 					route:"/context/$", 
-					how:"<div>context overview</div>"
+					how:"html::/pages/context/overview.html"
 				},
-				modes:{ how:"html::/pages/context/modes.html" },
-				protocols:{ how:"html::/pages/context/protocols.html" },
 				logger:{ how:"html::/pages/context/logger.html" }
 			}
 		},
@@ -68,16 +68,18 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					how:"html::/pages/protocols/overview.html"
 				},
 				natives:{ how:"html::/pages/protocols/natives.html" },
-				"media-cache":{ label:"media cache", how:"html::/pages/protocols/cache.html" },
-				custom:{ how:"html::/pages/protocols/custom.html" }
+				templates:{ how:"html::/pages/protocols/templates.html" },
+				nodejs:{ how:"html::/pages/protocols/nodejs.html" },
+				browser:{ how:"html::/pages/protocols/browser.html" }
 			}
 		},
 		ocm:{
 			subs:{
-				"intro":{
+				"concepts":{
 					route:"/ocm/$", 
  					how:"html::/pages/ocm/introduction.html"
 				},
+				modes:{ how:"html::/pages/ocm/modes.html" },
 				compilation:{ how:"html::/pages/ocm/compilation.html" },
 				classes:{ how:"html::/pages/ocm/classes.html" },
 				design:{ how:"html::/pages/ocm/design.html" },
@@ -95,7 +97,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				validation:{ how:"html::/pages/restful/validation.html" },
 				constraints:{ how:"html::/pages/restful/constraints.html" },
 				relations:{ how:"html::/pages/restful/relations.html" },
-				range:{ how:"html::/pages/restful/range.html" },
 				ocm:{ how:"html::/pages/restful/ocm.html" },
 				wrappers:{ how:"html::/pages/restful/wrappers.html" }
 			}
@@ -107,9 +108,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					how:"<div>views basics</div>"
 				},
 				refresh:{ how:"html::/pages/views/refresh.html" },
-				api:{ how:"html::/pages/views/api.html" },
-				advanced:{ how:"html::/pages/views/advanced.html" },
-				directives:{ how:"html::/pages/views/directives.html" }
+				"deep-jquery":{ how:"html::/pages/views/deep-jquery.html" },
+				directives:{ how:"html::/pages/views/directives.html" },
+				concurrency:{ how:"html::/pages/views/directives.html" }
 			}
 		},
 		routes:{
@@ -125,27 +126,38 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 		},
 		utils:{
 			subs:{
-				"overview":{
-					route:"/utils/$", 
-					how:"<div>utils overview</div>"
-				},
 				log:{ how:"html::/pages/utils/log.html" },
 				interpret:{ how:"html::/pages/utils/interpret.html" },
 				parsers:{ how:"html::/pages/utils/parsers.html" },
 				deepLoad:{ how:"html::/pages/utils/deepload.html" },
-				schema:{ how:"html::/pages/utils/schema.html" }
+				"json-schema":{ how:"html::/pages/utils/schema.html" },
+				nodes:{ how:"html::/pages/utils/nodes.html" },
+				errors:{ how:"html::/pages/utils/errors.html" },
+				"media-cache":{ label:"media cache", how:"html::/pages/protocols/cache.html" },
+				tests:{
+					how:"html::/pages/tests.html",
+					run:function(verbose){
+						deep.Unit.run(null, { verbose: verbose?true:false })
+						.done(function(report) {
+							console.log("report : ", report);
+							report.reports = null;
+							$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
+							.slideDown(200);
+						});
+					}
+				}
 			}
 		},
-		tests:{
-			how:"html::/pages/tests.html",
-			run:function(verbose){
-				deep.Unit.run(null, { verbose: verbose?true:false })
-				.done(function(report) {
-					console.log("report : ", report);
-					report.reports = null;
-					$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
-					.slideDown(200);
-				});
+		more:{
+			subs:{
+				"overview":{
+					route:"/more/$", 
+					how:'<div>you could install one of the 5 environnements or try online one of the 2 other sandboxes (autobahn and browser)</div>'
+				},
+				environnements:{ how:"html::/pages/more/environnements.html" },
+				sandboxes:{ how:"html::/pages/more/sandboxes.html" },
+				tutorials:{ how:"html::/pages/more/tutorials.html" },
+				discussions:{ how:"html::/pages/more/discussions.html" }
 			}
 		}
 	};

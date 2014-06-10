@@ -1,16 +1,31 @@
 <div>
 			<div id="submenu" dp-control="js::/js/sub-nav.js">
-				<h2>up & bottom</h2>
+				<h2>up &amp; bottom</h2>
 				<div class="submenu-block">
 					<ul>
 						<li><a href="#intro">Introduction</a></li>
-						<li><a href="#up">up</a></li>
-						<li><a href="#bottom">bottom</a></li>
+						<li><a href="#up">up</a>
+							<ul>
+								<li><a href="#direct-up">deep.up(...)</a></li>
+								<li><a href="#chain-up">deep(...).up(...)</a></li>
+							</ul>
+						</li>
+						<li><a href="#bottom">bottom</a>
+							<ul>
+								<li><a href="#direct-bottom">deep.bottom(...)</a></li>
+								<li><a href="#chain-bottom">deep(...).bottom(...)</a></li>
+							</ul>
+						</li>
 						<li><a href="#collisions">collisions</a></li>
 						<li><a href="#primitives">primitives</a></li>
 						<li><a href="#array">array</a></li>
 						<li><a href="#function">function</a></li>
-						<li><a href="#a-sync">sync vs async</a></li>
+						<li><a href="#compile">compile</a>
+							<ul>
+								<li><a href="#sync-compile">deep.utils.compile(...)</a></li>
+								<li><a href="#async-compile">deep.compile(...)</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -31,7 +46,7 @@
 			</div>
 
 			<div class="content">
-				<h3  id="up">.up(src, target)</h3>
+				<h3  id="up">deep.up(src, target)</h3>
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 						<p>This method apply the "src" layer by the up side on the "target" layer.</p>
@@ -51,9 +66,9 @@ var obj1 = {
 var obj2 = {
 	b:false
 }
-deep.utils.up(obj2, obj1);
+deep.up(obj2, obj1);
 
-deep(obj1).log();
+deep.log(obj1);
 </pre>
 						</div>
 					</div>
@@ -61,7 +76,7 @@ deep(obj1).log();
 
 			</div>
 			<div class="content" >
-				<h3 id="bottom">.bottom(src, target)</h3>
+				<h3 id="bottom">deep.bottom(src, target)</h3>
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 						<p>This method apply the "src" layer by the bottom side on the "target" layer.</p>
@@ -82,9 +97,9 @@ var obj2 = {
 	b:false,
 	d:"world"
 }
-deep.utils.bottom(obj2, obj1);
+deep.bottom(obj2, obj1);
 
-deep(obj1).log();
+deep.log(obj1);
 </pre>
 						</div>
 					</div>
@@ -118,9 +133,9 @@ var obj2 = {
 	a:"now a string",
 	b:false
 }
-deep.utils.up(obj2, obj1);
+deep.up(obj2, obj1);
 
-deep(obj1).log();
+deep.log(obj1);
 </pre>
 						</div>
 					</div>
@@ -143,9 +158,9 @@ var obj1 = {
 var obj2 = {
 	a:["green", "blue", false]
 }
-deep.utils.up(obj2, obj1);
+deep.up(obj2, obj1);
 
-deep(obj1).log();
+deep.log(obj1);
 </pre>
 						</div>
 					</div>
@@ -161,9 +176,9 @@ var obj1 = {
 var obj2 = {
 	a:["green", false]
 }
-deep.utils.up(obj2, obj1);
+deep.up(obj2, obj1);
 
-deep(obj1).log();
+deep.log(obj1);
 </pre>
 						</div>
 					</div>

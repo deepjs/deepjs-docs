@@ -9,6 +9,7 @@
                 </li>
                 <li><a href="#array.insertAt">.array.insertAt()</a>
                 </li>
+				<li><a href="#chainable">chainable</a></li>
                 <li><a href="#custom">custom</a>
                 </li>
             </ul>
@@ -23,7 +24,6 @@
 
             <div class="dp-example">
                 <pre dp-try class="dp-box code">
-
 deep({ b:[1,2,3] })
 .up({
     b:deep.collider.replace([4,5])
@@ -37,7 +37,6 @@ deep({ b:[1,2,3] })
 
             <div class="dp-example">
                 <pre dp-try class="dp-box code">
-
 deep({ b:[1,2,3] })
 .up({
     b:deep.collider["array.insertAt"]([4,5],2)
@@ -53,7 +52,6 @@ deep({ b:[1,2,3] })
 
             <div class="dp-example">
                 <pre dp-try class="dp-box code">
-
 deep.collider.Collider.add("validate", function(input, schema){
 	var report = deep.validate(input, schema);
 	if(!report.valid)

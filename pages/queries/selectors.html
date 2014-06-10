@@ -1,0 +1,72 @@
+<div>
+	<div id="submenu">
+		<h2>deep selectors</h2>
+		<div class="submenu-block" dp-control="js::/js/sub-nav.js">
+			<ul>
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#deep-inorder">deep.inorder()</a></li>
+				<li><a href="#deep-preorder">deep.preorder()</a></li>
+				<li><a href="#deep-firstWith">deep.firstWith()</a></li>
+				<li><a href="#deep-allWith">deep.allWith()</a></li>
+				<li><a href="#deep-arrayWith">deep.arrayWith()</a></li>
+				<li><a href="#multi-selector">multiple selectors</a></li>
+				<li><a href="#design">design</a></li>
+				<li><a href="#selector-store">selector stores</a>
+				<ul>
+					<li><a href="#firstWith-store">deep.FirstWith()</a></li>
+					<li><a href="#allWith-store">deep.AllWith()</a></li>
+					<li><a href="#arrayWith-store">deep.ArrayWith()</a></li>
+				</ul>
+				</li>
+				<li><a href="#sheets-protocols">sheets protocols</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+
+			<h3 id="intro">Intro</h3>
+					<div class="content">
+			<div class="alert alert-info"><span class="label label-info">Info</span> To use it, you need to load it.
+<pre class="dp-box code">
+require("deepjs/lib/selector");
+</pre>
+			</div>
+
+			<div class="alert alert-warning"><span class="label label-warning">Warning</span> For the moment it use dynamic function (aka new Function(...)) and so could not be runned under paranoiac environnements (as Adobe Air). More work will be done on it in a close future.</div>
+			<h3 id="deep-inorder">deep.inorder(root, testFunction, opt)</h3>
+			<h3 id="deep-preorder">deep.preorder(root, testFunction, opt)</h3>
+			<h3 id="deep-firstWith">deep.firstWith(root, selector)</h3>
+			<p>Return the first property (from root) that match selector. Does not modify initial object.</p>
+<div class="dp-example">
+                 <pre dp-try class="dp-box code">
+var r = deep.firstWith({ e:{ b:{ sel:["hello"], a:3 } } }, "a=3");
+deep.log(r); // -> [{ sel:["hello"], a:3 }]
+</pre>
+            </div>
+
+			<h3 id="deep-allWith">deep.allWith(root, selector)</h3>
+			<p>Return all properties (from root) that match selector. Does not modify initial object.</p>
+<div class="dp-example">
+                 <pre dp-try class="dp-box code">
+var r = deep.allWith({ e:{ b:{ sel:["hello"], a:3 } }, f:{ a:3 } }, "a=3");
+deep.log(r);
+</pre>
+            </div>
+			<h3 id="deep-arrayWith">deep.arrayWith(root, selector, arrayName, first)</h3>
+<div class="dp-example">
+                 <pre dp-try class="dp-box code">
+var r = deep.arrayWith({ e:{ b:{ sel:["hello"], a:3 } }, f:{ a:3 } }, "hello", "sel");
+deep.log(r);
+</pre>
+            </div>
+			<h3 id="design">design</h3>
+			<h3 id="selector-stores">selector stores</h3>
+				<h4 id="firstWith-store">deep.FirstWith()</h4>
+				<h4 id="allWith-store">deep.AllWith()</h4>
+				<h4 id="arrayWith-store">deep.ArrayWith()</h4>
+			<h3 id="sheets-protocols">sheets protocols</h3>
+		
+		</div>
+	</div>
+</div>
+

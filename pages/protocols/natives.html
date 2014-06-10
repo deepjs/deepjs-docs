@@ -1,8 +1,9 @@
 <div>
     <div id="submenu">
-        <h2>Natives protocols</h2>
+        <h2>Natives</h2>
         <div class="submenu-block" dp-control="js::/js/sub-nav.js">
             <ul>
+                <li><a href="#intro">intro</a>
                 <li><a href="#js">js</a>
                 </li>
                 <li><a href="#instance">instance</a>
@@ -10,13 +11,16 @@
                 <li><a href="#this">this</a>
                 </li>
                 <li><a href="#dummy">dummy</a>
+                <li><a href="#eval">eval</a>
+                <li><a href="#dq">dq</a>
                 </li>
             </ul>
         </div>
     </div>
     <div id="content">
         <div class="content">
-        	deepjs comes with few natives protocols.
+            <h3 id="intro">intro</h3>
+        	<p>deepjs comes with few natives protocols.</p>
 			<h3 id="js">js</h3>
 <p>Simple protocol that use requirejs (browser side) and nodejs require (of course server side) to load ASYNCHRONOUSLY javascript ressources (AMD module).</p>
 It use natively the requirejs/require cache system.
@@ -61,6 +65,12 @@ deep({
             <div class="dp-example">
                 <pre dp-try class="dp-box code">
 deep("dummy::hello").log();
+</pre></div>
+            <h3 id="eval">eval</h3>
+            <div class="alert alert-warning"><span class="label label-warning">Warning</span> Don't work in paranoiac environnements (as Adobe Air)</div>
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep("eval::true").log();
 </pre></div>
 			<h3 id="dq">dq</h3>
 For more details on native sheet's protocol, see [sheets](../sheets.md)

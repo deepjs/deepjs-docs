@@ -1,13 +1,16 @@
 <div>
 			<div id="submenu" dp-control="js::/js/sub-nav.js">
-				<h2>Sheets</h2>
+				<h2>Protocols</h2>
 				<div class="submenu-block">
 					<ul>
-						<li><a href="#examples-chains">chaines</a></li>
-						<li><a href="#examples-collection">collection &amp; protocol</a></li>
-						<li><a href="#examples-rest">collection &amp; restufl</a></li>
-						<li><a href="#examples-view">views</a></li>
-						<li><a href="#examples-modelisation">simple modelisation</a></li>
+						<li><a href="#intro">Intro</a></li>
+						<li><a href="#simple">simple</a></li>
+						<li><a href="#deep-get">deep.get</a></li>
+						<li><a href="#deep-getAll">deep.getAll</a></li>
+						<li><a href="#deep-protocol">deep.protocol</a></li>
+						<li><a href="#sub-protocol">sub-protocol</a></li>
+						<li><a href="#range">range</a></li>
+						<li><a href="#ocm">ocm</a></li>
 					</ul>
 				</div>
 			</div>
@@ -19,12 +22,31 @@
 </div>
 			</div> -->
 			<div class="content" >
+			<h3 id="intro">Service Locator aka "protocols"</h3>
+			<p>A protocol is just simple, short, abstract, string reference that refer a real provider (that provides any kind of response or action) placed in particular namespace.</p>
+			<p>You use it to hide/abstract real providers/services from your code.</p>
+			<p>For convenience, simplicity, and json compliance, it's placed, inline, in front of ressources path (or parameters or wathever). e.g. : "json::/my/json/path.json", "dom.htmlOf::#myDomID"</p>
+			<p>deepjs will retrieve those providers when needed, and acts as an "abstract service locator". (google <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">service locator</a>) </p>
 
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.protocols.myProtoc = { 
+	get:function(request, options){ 
+		return "You say '"+request+"' through myProtoc"; 
+	}
+};
+
+deep.get("myProtoc::hello world")
+.log();
+</pre>
+						</div>
+						<p>As you could see, </p>
 <h3 id="get">deep.get(...)</h3>
-
 <h3 id="getAll">deep.getAll(...)</h3>
 <h3 id="protocol">deep.protocol(...)</h3>
-<h3 id="protocol">sub-protocol</h3>
+<h3 id="subprotocol">sub-protocol</h3>
+			<p>deepjs protocols could also manage OCM for you.</p>
+
 				<div class="row">
 					<div class="col-sm-12 col-md-6">
 						<p> <span class="label label-warning">Info</span> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
