@@ -61,7 +61,7 @@ var r = deep.query(obj, "/d/e");
 deep.log('"/d/e" :\n', r);	// 'world'
 
 // From root : give me all property wich is a string
-var r = deep.query(obj, "//?_type=string"); 
+r = deep.query(obj, "//?_type=string"); 
 deep.log('\n"//?_type=string" :\n', r);	// ['hello', 'world']
 </pre>
 </div>
