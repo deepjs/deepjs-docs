@@ -24,8 +24,8 @@
 	</div>
 	<div id="content">
 
+	<div class="content">
 			<h3 id="intro">Intro</h3>
-					<div class="content">
 			<div class="alert alert-info"><span class="label label-info">Info</span> To use it, you need to load it.
 <pre class="dp-box code">
 require("deepjs/lib/selector");
@@ -40,7 +40,7 @@ require("deepjs/lib/selector");
 <div class="dp-example">
                  <pre dp-try class="dp-box code">
 var r = deep.firstWith({ e:{ b:{ sel:["hello"], a:3 } } }, "a=3");
-deep.log(r); // -> [{ sel:["hello"], a:3 }]
+deep.log(r); // -> { sel:["hello"], a:3 }
 </pre>
             </div>
 
