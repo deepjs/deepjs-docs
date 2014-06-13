@@ -16,19 +16,14 @@
                 		<li><a href="#chain-schema">schema</a></li>
                 	</ul>
                 </li>
-                <li><a href="#query-node">query node</a>
-                	<ul>
-                		<li><a href="#node-content">node content</a></li>
-                		<li><a href="#node-tools">tools</a></li>
-                	</ul>
-                </li>
-                <li><a href="#relative">relative</a></li>
                 <li><a href="#syntax">syntaxe</a>
                 	<ul>
                 		<li><a href="#start">start</a></li>
                 		<li><a href="#move">move</a></li>
-                		<li><a href="#select">select</a></li>
+                		<li><a href="#relative-move">relative move</a></li>
+                		<li><a href="#select">step selector</a></li>
                 		<li><a href="#length">@.length</a></li>
+                		<li><a href="#direct-length">length</a></li>
                 		<li><a href="#filter">filter</a></li>
                 	</ul>
                 </li>
@@ -44,13 +39,14 @@
 <ul>
 <li>use simple <strong>slash delimitted</strong> syntax, </li>
 <li>could handle <strong>regular expression</strong> for step selection, </li>
-<li>could handle <strong>RQL (for filtering)</strong> on each step selection,</li>
-<li>could be <strong>relative</strong> to where the query are placed in a object/json</li>
+<li>could handle <strong><a href="/queries/rql">RQL</a> (for filtering)</strong> on each step selection,</li>
+<li>could be <strong>relative</strong> to where the query is launched in a object/json</li>
 <li>so could handle steps toward <strong>any ancestor</strong></li>
 <li>could handle <strong>json-schema</strong> in RQL filtering</li>
+<li>that could return <strong>full descriptors</strong> of selected properties (i.e. <a href="/queries/descriptors">nodes</a>).</li>
+<li>to be a superset of URL format</li>
 </ul>
 
-<p>And above all, that could return full descriptors of selected properties (i.e. <a href="#query-node">deep_query_nodes</a>). It allow us to manage 'up' and 'bottom' (we need ancestor in many cases), schema validation, sub or ancestor query, function call with no change of context, etc...</p>
 
 <h3 id="deep-query">deep.query(obj, query, opt)</h3>
 <p>Direct syntax through deep.query.</p>
@@ -71,7 +67,7 @@ var obj = {
 var r = deep.query(obj, "/d/e"); 
 deep.log('"/d/e" :\n', r);	// 'world'
 
-// From root : give me all property wich is a string
+// From root : give me all properties wich is a string
 r = deep.query(obj, "//?_type=string"); 
 deep.log('\n"//?_type=string" :\n', r);	// ['hello', 'world']
 </pre>
@@ -79,7 +75,7 @@ deep.log('\n"//?_type=string" :\n', r);	// ['hello', 'world']
 <h4 id="full-output">opt.resultType</h4>
 <p>Optional string : possible values :</p>
 <ul>
-<li>"full" : means you want <a href="#query-node">full descriptors</a> of selected properties.</li>	
+<li>"full" : means you want <a href="/queries/descriptors">full descriptors</a> of selected properties.</li>	
 <li>anything else : you want the selected values themselves.</li>	
 </ul>
 <div class="dp-example">
@@ -93,13 +89,13 @@ var obj = {
 	}
 };
 var r = deep.query(obj, "/d/e", { resultType:"full" }); 
-deep.log(r.path+" = "+r.value);	// 'world'
+deep.log(r.path+" = "+r.value);	//   /d/e = world
 </pre>
 </div>
 <h4 id="schema">opt.schema</h4>
 <p>Optional. You could associate a schema to queried object.</p>
 <p>deepjs will try to associate correct sub-schema to selected sub-properties.</p>
-<p>You could read it in <a href="#query-node">properties descriptors</a> (see above and below).</p>
+<p>You could read it in <a href="/queries/descriptors">properties descriptors</a> (see above and below).</p>
 <div class="dp-example">
     <pre dp-try class="dp-box code">
 var obj = {
@@ -146,7 +142,7 @@ deep.log(r);	// 'world'
 
 <h3 id="chain-query">deep(obj).query(q)...</h3>
 <p>Chained call through <a href="/chains/deep">deep chain</a>.</p>
-<p>The chain holds (as the promise's success) <a href="#query-node">full descriptors</a> of selected properties.
+<p>The chain holds (as the promise's success) <a href="/queries/descriptors">full descriptors</a> of selected properties.
 <p><span class="label label-info">Return</span> : a <a href="/chains/deep">deep chain</a>.</p>
 <div class="dp-example">
     <pre dp-try class="dp-box code">
@@ -199,67 +195,6 @@ deep({
 </pre>
 </div>
 
-<h3 id="query-node">Query Node</h3>
-<p>deepjs could provides and manipulate particular descriptor that contains all informations on queried properties, and allow to manipulate associated json-schemas, paths or ancestors of those properties.</p>
-<h4 id="node-content">Node content</h4>
-    <pre class="dp-box code">
-{
-	// a bool that define it's identity. (it replace instanceOf)
-	_deep_query_node_:true,		
-
-	// the root descriptor (if the current node it's the root itself : this properties is undefined)
-	root:_deep_query_node_,
-
-	// the ancestor descriptor (if the current node it's the root itself : this properties is undefined)
-	ancestor:_deep_query_node_,
-
-	// a string that gives the property path (slash delimitted) from root.
-	path:String,
-
-	// an array providing splitted path on '/' (so String)
-	paths:[Strings],
-
-	// a string that give last part of path (the key of the property)
-	key: String,
-
-	// an schema (so an Object) if any.
-	schema:Object,
-
-	// the value of the property
-	value: *
-}
-</pre>
-
-<h4 id="node-tools">Node tools</h4>
-<p>You could find helpful tools to manipulate _deep_query_nodes <a href="/utils/nodes">there</a>.</p>
-<h3 id="relative">relative vs root</h3>
-
-<p>When you apply a query on a query-results-set (previously produced), you could navigate relatively to current(s) node(s), or restart queries from the root object.</p>
-
-<div class="dp-example">
-    <pre dp-try class="dp-box code">
-deep({
-	a:1,
-	b:true,
-	c:"hello",
-	d:{
-		e:"world"
-	}
-})
-.query("/d")	//select /d
-.log("/d =")
-
-.query("./e")		// from d : select e
-.log("\n/d/e =")
-
-.query("../../b")	// from e : select b (two levels up)
-.log("\n/b =")
-
-.query("/")			// from b (in fact : from anywhere) : get root.
-.log("\n/ =")
-
-</pre>
-</div>
 
 <h3 id="syntax">Syntaxe </h3>
 
@@ -298,20 +233,57 @@ deep({ a:{ b:{ c:"hello world" }, d:true }}).query("//").log();
 <li>../	:	go back to my parent level</li>
 </ul>
 
-<h4 id"root-itself">catch the root itself</h4>
+<!-- <h4 id"root-itself">catch the root itself</h4>
 
 <li>../! :	take my parent reference (you need to add '/' (e.g. ../!/) to select any of its properties as above))</li>
 <li>/!	:	will give you current reference</li>
+ -->
 
-<h4 id="select">step selector </h4>
+
+<h4 id="relative-move">relative vs root</h4>
+
+<p>When you apply a query on a query-results-set (previously produced), you could navigate relatively to current(s) node(s), or restart queries from the root object.</p>
+
+<div class="dp-example">
+    <pre dp-try class="dp-box code">
+deep({
+	a:1,
+	b:true,
+	c:"hello",
+	d:{
+		e:"world"
+	}
+})
+.query("/d")	//select /d
+.log("/d =")
+
+.query("./e")		// from d : select e
+.log("/d/e =")
+
+.query("../../b")	// from e : select b (two levels up)
+.log("/b =")
+
+.query("/")			// from b (in fact : from anywhere) : get root.
+.log("/ =")
+
+</pre>
+</div>
+
+<h4 id="select">step selector</h4>
 
 
-<p>any step selector is either a direct string, or an int (array index) or a regular expression, or a union of them (expressed as a coma separated list of them surrounded with square brackets).</p>
+<p>Any 'step selector' is either :</p>
+<ul>
+<li> a direct string, </li>
+<li> or an int (array index) </li>
+<li> or a regular expression, </li>
+<li> or a union of them (expressed as a coma separated list of them surrounded with square brackets).</li>
+ </ul>
 <p>You could express range of array indexes as 0:10:2 which says : take items from 0 to 10 (included) by step of two. (see examples below for optionals placement)</p>
 <p>Regular expression are always surrounded by parenthesis, and could be ended with 'g', 'i' or 'gi'.</p>
 
-<p>examples of valid selectors : </p>
-<ul>
+<p>Examples of valid selectors : </p>
+<p><ul>
 	<li>1</li>
 	<li>foo</li>
 	<li>(foo.*)</li>
@@ -319,35 +291,53 @@ deep({ a:{ b:{ c:"hello world" }, d:true }}).query("//").log();
 	<li>[:]</li>
 	<li>[1:,hello,(^prop.*)gi]</li>
 </ul>
+</p>
 
-query example :
-/foo/1/(^bar)/[::2]
-<p>Say : give me foo from root,</p>
-<p>on this, give the first items (or any property called '1'),</p>
-<p>on this, give me any property named with something that starting by 'bar',</p>
-<p>on this, get all items by step of two (if any).</p>
+<div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep({ myProp1:[1,2,3,4,5,6], myProp2:["a","b","c","d","e"]})
+.query("/myProp1/0")
+.log()
+</pre>
+            </div>
+<div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep({ myProp1:[1,2,3,4,5,6], myProp2:["a","b","c","d","e"]})
+.query("/myProp2/[:4:2]")
+.log()
+</pre>
+            </div>
+<div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep({ myProp1:[1,2,3,4,5,6], myProp2:["a","b","c","d","e"]})
+.query("/(myProp.*)/[3:]")
+.log()
+</pre>
+            </div>
+<div class="dp-example">
+                <pre dp-try class="dp-box code">
+deep({ myProp1:[1,2,3,4,5,6], myProp2:["a","b","c","d","e"]})
+.query("/[myProp1,myProp2]")
+.log()
+</pre>
+            </div>
 
-
-
-<p>All those below are equivalent and say : give me all properties or items of the last move</p>
-<ul>
-	<li>/(.*)</li>
-	<li>/*</li>
-	<li>/[]</li>
-	<li>/</li>
-</ul>
+<p>All those below are equivalent and say : give me all properties under root.</p>
 
 <div class="dp-example">
                 <pre dp-try class="dp-box code">
 deep({ a:1, b:true, c:"hello"})
 .query("/(.*)")
-.log("\n\n")
+.log()
+
 .query("/*")
-.log("\n\n")
+.log()
+
 .query("/[]")
-.log("\n\n")
+.log()
+
 .query("/")
-.log("\n\n");
+.log();
 </pre>
             </div>
 
@@ -355,26 +345,47 @@ deep({ a:1, b:true, c:"hello"})
 <h4 id="length">@.length</h4>
 
 <p>In array brackets access : you could use @.length to get the length (if any) of the parent IF IT'S AN ARRAY.</p>
-//[@.length-1]  
-<p>will give you any last array childs at any level from root.</p>
 
-//length
-<p>will give you any array length at any level from root (or any 'length' property founded in the json/object)</p>
-<p>In deep-rql : length could also give you the length of the strings.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep({ a:[1,2,3,4,5,6] })
+.query("/a/[@.length-2]")
+.log();
+</pre>
+</div>
+
+<h4 id="direct-length">length</h4>
+<p>Will give you any 'length' property founded in current level</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep({ a:[1,2,3,4,5,6], b:"hello" })
+.query("/a/length")
+.log()
+
+.query("/b/length")
+.log();
+</pre>
+</div>
 
 
 <h4 id="filter">filter</h4>
 
-<p>any RQL filter (deep-rql : see its doc for full description) could be added to any selector.</p>
+<p>any RQL filter (see <a href="/queries/rql">deep-rql</a> for full docs) could be added to any selector.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep({ a:[1,2,3,4,5,6] })
+.query("/a/*?=gt=3")
+.log();
+</pre>
+</div>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep({ a:[1,2,3,4,5,6] })
+.query("/a/*?sort(-)")
+.log();
+</pre>
+</div>
 
-/foo?=gt=12
-give me foo property from root only if it's greater than 12
-
-//address?zip=1190
-give me any adress which contains a zip equal to 1190
-
-//category?distinct()&amp;sort(-)
-give me any distinct category and sort them descendant
 
 <h3 id="examples">Examples</h3>
 

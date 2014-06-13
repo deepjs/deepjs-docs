@@ -33,10 +33,11 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					route:"/queries/$", 
 					how:"html::/pages/queries/overview.html"
 				},
-				"deep-query":{ how:"html::/pages/queries/deep-query.html" },
+				descriptors:{ how:"html::/pages/queries/nodes.html" },
+				query:{ how:"html::/pages/queries/deep-query.html" },
 				rql:{ how:"html::/pages/queries/rql.html" },
-				selectors:{ how:"html::/pages/queries/selectors.html" },
-				sheets:{ how:"html::/pages/queries/sheets.html" }
+				traversal:{ how:"html::/pages/queries/traversal.html" },
+				selectors:{ how:"html::/pages/queries/selectors.html" }
 			}
 		},
 		chains:{
@@ -86,7 +87,32 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				delegation:{ how:"html::/pages/ocm/delegation.html" }
 			}
 		},
+		sheets:{ how:"html::/pages/layers/sheets.html" },
+		utils:{
+			subs:{
+				log:{ how:"html::/pages/utils/log.html" },
+				interpret:{ how:"html::/pages/utils/interpret.html" },
+				parsers:{ how:"html::/pages/utils/parsers.html" },
+				deepLoad:{ how:"html::/pages/utils/deepload.html" },
+				"json-schema":{ how:"html::/pages/utils/schema.html" },
+				errors:{ how:"html::/pages/utils/errors.html" },
+				"media-cache":{ label:"media cache", how:"html::/pages/protocols/cache.html" },
+				tests:{
+					how:"html::/pages/tests.html",
+					run:function(verbose){
+						deep.Unit.run(null, { verbose: verbose?true:false })
+						.done(function(report) {
+							console.log("report : ", report);
+							report.reports = null;
+							$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
+							.slideDown(200);
+						});
+					}
+				}
+			}
+		},
 		restful:{
+			separated:true,
 			subs:{
 				"overview":{
 					route:"/restful/$", 
@@ -124,31 +150,8 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				ocm:{ how:"html::/pages/routes/ocm.html" }
 			}
 		},
-		utils:{
-			subs:{
-				log:{ how:"html::/pages/utils/log.html" },
-				interpret:{ how:"html::/pages/utils/interpret.html" },
-				parsers:{ how:"html::/pages/utils/parsers.html" },
-				deepLoad:{ how:"html::/pages/utils/deepload.html" },
-				"json-schema":{ how:"html::/pages/utils/schema.html" },
-				nodes:{ how:"html::/pages/utils/nodes.html" },
-				errors:{ how:"html::/pages/utils/errors.html" },
-				"media-cache":{ label:"media cache", how:"html::/pages/protocols/cache.html" },
-				tests:{
-					how:"html::/pages/tests.html",
-					run:function(verbose){
-						deep.Unit.run(null, { verbose: verbose?true:false })
-						.done(function(report) {
-							console.log("report : ", report);
-							report.reports = null;
-							$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
-							.slideDown(200);
-						});
-					}
-				}
-			}
-		},
 		more:{
+			separated:true,
 			subs:{
 				"overview":{
 					route:"/more/$", 

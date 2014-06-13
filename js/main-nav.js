@@ -10,14 +10,18 @@ if (typeof define !== 'function') {
 define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(require, deep, View, routes) {
 
 	// simple list item creator : use route as href
-	var createMenuItem = function(menu, obj, label, active) {
+	var createMenuItem = function(menu, obj, label, active, separated) {
 		var $ = deep.context.$;
 		var href = (obj.route || ('/' + label)),
 			last = href[href.length - 1];
 		if (last === "*" || last === "$")
 			href = href.substring(0, href.length - 1);
-		var item = $('<li' + (active?' class="active"':"") + '><a href="' + href + '">' + (obj.label || label) + '</a></li>')
+		var item = $('<li><a href="' + href + '">' + (obj.label || label) + '</a></li>')
 		.appendTo(menu);
+		if(active)
+			$(item).addClass("active");
+		if(separated)
+			$(item).addClass("separated");
 	};
 
 
@@ -58,7 +62,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 								var active2 = false;
 								if (currentRoute && ((!currentRoute[1] && count == 0) || currentRoute[1] == j))
 									active2 = true;
-								createMenuItem(dom.menu2UL, subj, j, active2);
+								createMenuItem(dom.menu2UL, subj, j, active2, subj.separated);
 								count++;
 							});
 						$(dom.menu2).show(); //.slideDown(100); //.fadeIn(160);
@@ -67,7 +71,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 				}
 				if (mapi.navigation === false)
 					return;
-				createMenuItem(dom.menu1UL, mapi, i, active);
+				createMenuItem(dom.menu1UL, mapi, i, active, mapi.separated);
 			});
 		}
 	});

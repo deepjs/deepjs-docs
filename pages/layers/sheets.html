@@ -3,16 +3,17 @@
 				<h2>sheets</h2>
 				<div class="submenu-block">
 					<ul>
-						<li><a href="#examples-chains">chaines</a></li>
-						<li><a href="#examples-collection">collection &amp; protocol</a></li>
-						<li><a href="#examples-rest">collection &amp; restufl</a></li>
-						<li><a href="#examples-view">views</a></li>
-						<li><a href="#examples-modelisation">simple modelisation</a></li>
+						<li><a href="#intro">Intro</a></li>
+						<li><a href="#dq-up-bottom">dq.up &amp; dq.bottom</a></li>
+						<li><a href="#sheets-backgrounds">sheets &amp; backgrounds</a></li>
+						<li><a href="#sheets-foregrounds">sheets foregrounds</a></li>
+						<li><a href="#compilation">compilation rules</a></li>
+						<li><a href="#async">async API</a></li>
 					</ul>
 				</div>
 			</div>
 
-<div id="content">
+	<div id="content">
 <!-- 			<div class="content" >
 			<div class="page-header">
   <h1>Example page header <small>Subtext for header</small></h1>
@@ -21,26 +22,45 @@
 			<div class="content" >
 				<h3 id="intro">Intro</h3>
 				<div class="alert alert-warning"><span class="label label-warning">Warning</span> deep sheets is the conjonction of <a href="/layers">layers</a>, <a href="/queries">queries</a> and <a href="/protocols">protocols</a> tools. So please read and understand those sections before reading this.</div>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p>
-Think about CSS... 
+<p>Think about CSS... and forget Cascading.</p> 
 
-A css is just a list of queries (css selection query) that apply styles to matched DOM elements.
+<p>A css is just a list of queries (css selection query) that apply styles to matched DOM elements.</p>
+<p>A deep sheets it's all the same : </p>
+<p>A list of queries (deep-queries for the moment) that apply something (and somehow) to matched javascripts properties from a particular root object.</p>
 
-A deep sheets it's all the same : 
-A list of queries (deep-queries for the moment - but we think about using also other object/json querier) 
-that apply something (and somehow) to matched javascripts properties in a particular root object.
+<h3 id="dq-up-bottom">dq.up &amp; dq.bottom</h3>
+<p>Obviously the two more important sheet's actions ar 'up' and 'bottom'.</p>
 
-## dq.up and dq.bottom 
-
-```javascript 
-
+<p>Simple example with up...</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep({ a:{ b:true } })
+.up({ 
+	_deep_sheet_:true,
+	"dq.up::/a":{
+		hello:"world"
+	}
+})
+.log()
+</pre>
+</div>
+is equivalent to :
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep({ a:{ b:true } })
+.query("/a")
+.up({
+    hello:"world"
+})
+.query("/!")
+.log()
+</pre>
+</div>
+<p>Obviously, you could have severals entries in a sheet :</p>
+            <div class="dp-example">
+                <pre dp-try class="dp-box code">
 var sheet = {
-    "dq.up::./!":{
-        hello:"world",
-        array:["from up"]
-    },
+	_deep_sheet_:true,
     "dq.bottom::./!":{
         array:["from bottom"]
     },
@@ -57,258 +77,48 @@ var obj = {
     }
 };
 
-deep.sheet(sheet, obj)
-.done(function(success){
-     console.log("result : ", JSON.stringify(success));
-})
-.equal({
-    "dq.up::./!":[{
-        "array":["from bottom","base entry","from up"],
-        "a":{"test":123,"other":true},
-        "hello":"world"
-    }],
-    "dq.bottom::./!":[{
-        "array":["from bottom","base entry","from up"],
-        "a":{"test":123,"other":true},
-        "hello":"world"
-    }],
-    "dq.up::./a":[
-        {"test":123,"other":true}
-    ]
-})
-.log();
+deep(obj).up(sheet).log();
+</pre>
+            </div>
+<h3 id="sheets-backgrounds">sheets &amp; backgrounds</h3>
+<h3 id="sheets-foregrounds">sheets foregrounds</h3>
+<h3 id="collision">collision rules</h3>
+<h3 id="async">async API</h3>
+<h4 id="transform">dq.transform</h4>
+<p>Each selected value is passed as argument in provided function AND the return of this function replaces original value</p>
 
-console.log("obj : ", JSON.stringify(obj)); // => obj : {"array":["from bottom","base entry","from up"],"a":{"test":123,"other":true},"hello":"world"}
-
-```
-
-## dq.transform
-
-Each selected value is passed as argument in provided function AND the return of this function replaces original value
-
-```javascript
-
+<div class="dp-example">
+<pre dp-try class="dp-box code">
 var sheet = {
     "dq.transform::./*":function(input){
         return "e"+input;
     }
 };
-var obj = [1,2,3,4,5];
-deep(obj).sheet(sheet)
-.equal({ // .equal tests strict equality of success object(s) (matching provided object). i.e. this is the promised (success) result. i.e. this is the sheet report 
-    "dq.transform::./*": [
-        "e1",
-        "e2",
-        "e3",
-        "e4",
-        "e5"
-    ]
-})
-.valuesEqual(["e1", "e2", "e3", "e4", "e5"]); // .valuesEqual tests strict equality of values holds by chain. i.e. this is the modified object (through sheets operations) holded by chain. i.e. you see that 'transform' modifiy holded object(s)
+deep.sheets(sheet, [1,2,3,4,5])
+.log();
+</pre>
+</div>
 
-```
-
-## dq.through
+<h4 id="through">dq.through</h4>
 
 Each selected value is passed as argument in provided function AND the return of this function DOES NOT replaces original value.
 To get results : read it in sheet application report.
 
 
-```javascript
-
+<div class="dp-example">
+<pre dp-try class="dp-box code">
 var sheet = {
     "dq.through::./*":function(input){
         return "e"+input;
     }
 };
-var obj = [1,2,3,4,5];
-
-deep(obj)
-.sheet(sheet)
-.equal({
-    "dq.through::./*": [
-        "e1",
-        "e2",
-        "e3",
-        "e4",
-        "e5"
-    ]
-})
-.valuesEqual([1,2,3,4,5]);   // .valuesEqual tests strict equality of values holds by chain. i.e. this is the modified object (through sheets operations) holded by chain. i.e. you see that 'through' DON'T modifiy holded object(s)
-
-```
-
-## dq.sheeter
-
-chainable sheet application handler.
-
-### example
-```javascript
-var sheet = {
-    "dq.sheeter::./*":  deep.sheeter
-                        .up({ fromUp:"tools" })
-                        .bottom({ fromBottom:"hello" })
-};
-
-var obj = {
-    a:{
-        base:"deepjs"
-    }
-};
-
-deep(obj)
-.sheet(sheet)
-.equal({
-    "dq.sheeter::./*": [
-        {
-        "fromBottom": "hello",
-        "base": "deepjs",
-        "fromUp": "tools"
-        }
-    ]
-})
-.valuesEqual( {
-    "a": {
-        "fromBottom": "hello",
-        "base": "deepjs",
-        "fromUp": "tools"
-    }
-});
-
-```
-
-### sheeter API
-
-#### up and bottom
-
-"dq.sheeter::./*":deep.sheeter.up(obj1, obj2, obj3, ...)
-
-or
-
-"dq.sheeter::./*":deep.sheeter.bottom(obj1, obj2, obj3, ...)
-
-
-#### deepLoad and load
-
-"dq.sheeter::./*":deep.sheeter.deepLoad(context, destructive)
-
-or
-
-"dq.sheeter::./*":deep.sheeter.load(context, destructive)
-    
-#### flatten
-
-"dq.sheeter::./*":deep.sheeter.flatten()
-
-Flatten selected values.
-    
-#### sheet
-
-"dq.sheeter::./*":deep.sheeter.sheet(sheet1, sheet2, ...)
-
-apply provided sheet(s) on selected values.
-
-
-[Back to tutorials](./tutorials.md)
-
-</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
+deep.sheets(sheet, [1,2,3,4,5])
+.log();
 </pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
+</div>
 
 
 
-			<div class="content">
-				<h3  id="examples-collection">Chain examples 2</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="content" >
-				<h3 id="examples-rest">Chain examples 3</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="content" >
-				<h3 id="examples-view">Chain examples 4</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="content" >
-				<h3 id="examples-modelisation">Chain examples 5</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
 
 			</div>
 </div>

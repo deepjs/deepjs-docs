@@ -31,6 +31,7 @@
 			<p>You'll see that this tools will be used for kind of <a href="http://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> with particular chains and providers.</p>
 			<p>And obviously, it could work hand in hand with <a href="/ocm">OCM</a>.</p>
 			<div class="alert alert-info"><span class="label label-info">Info</span> Realy different type of providers could be stored in deep.protocols, with really different types of API, from restful stores to jquery dom manipulation or sheets entry. Take things one by one and everything will still clear... ;)</div>
+			<h3 id="simple">Simple example</h3>
 
 						<div class="dp-example">
 <pre dp-try class="dp-box code">
@@ -47,9 +48,29 @@ deep.get("myProtoc::hello world")
 						<p>As you could see, deep.protocols (formally a singleton registry) is the namespace where you store your provider. You could use deep.get("myProviderName::my_request") to call it.</p>
 						<p>Basically, all what your provider needs to implement is the "get" method (in some particular case seen below, sometimes you don't need it).</p>
 
-<h3 id="get">deep.get(...)</h3>
-<h3 id="getAll">deep.getAll(...)</h3>
-<h3 id="protocol">deep.protocol(...)</h3>
+<h3 id="get">deep.get(req, opt)</h3>
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep
+.get("dummy::hello world")
+.log();
+</pre>
+						</div>
+<p>This method simply parses the provided request, retrieves the provider gived by the protocol, prepares it if necessary, and use it to get request response.</p>
+<p>Returns the loaded ressource. Or an error if something was wrong.</p>
+<p>See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' provider</p>
+<h3 id="getAll">deep.getAll([requests array], opt)</h3>
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep
+.getAll(["dummy::hello world","eval::true"])
+.log();
+</pre>
+						</div>
+<p>Same thing than before, this method simply parses provided requests, retrieves associated providers, prepares them if necessary, and use them to get requests responses.</p>
+<p>Returns an array containing the loaded ressources. Or an error if something was wrong.</p>
+<p>See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' an 'eval' providers</p>
+<h3 id="protocol">deep.protocol(name)</h3>
 <h3 id="subprotocol">sub-protocol</h3>
 			<p>deepjs protocols could also manage OCM for you.</p>
 

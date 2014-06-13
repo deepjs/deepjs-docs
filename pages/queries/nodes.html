@@ -1,0 +1,61 @@
+<div>
+    <div id="submenu">
+        <h2>node descriptor</h2>
+        <div class="submenu-block" dp-control="js::/js/sub-nav.js">
+            <ul>
+                <li><a href="#intro">introduction</a></li>
+
+        		<li><a href="#node-content">node content</a></li>
+        		<li><a href="#node-tools">tools</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="content">
+<h3 id="intro">Intro</h3>
+
+<p>deepjs queries tools work hand in hand with particular properties descriptors that contains all informations on queried/matched properties, and allow to manipulate associated json-schemas, paths or ancestors of those properties.</p>
+
+<p>For that reason, that's not fool to sart by understanding this before reading query's tools</p>
+<h3 id="node-content">Node content</h3>
+    <pre class="dp-box code">
+{
+	// a bool that define it's identity. (it replace instanceOf)
+	_deep_query_node_:true,		
+
+	// the root descriptor (if the current node it's the root itself : this properties is undefined)
+	root:_deep_query_node_,
+
+	// the ancestor descriptor (if the current node it's the root itself : this properties is undefined)
+	ancestor:_deep_query_node_,
+
+	// a string that gives the property path (slash delimitted) from root.
+	path:String,
+
+	// an array providing splitted path on '/' (so String)
+	paths:[Strings],
+
+	// a string that give last part of path (the key of the property)
+	key: String,
+
+	// a schema (so an Object) if any.
+	schema:Object,
+
+	// the value of the property
+	value: *
+}
+</pre>
+
+<h3 id="node-tools">Node tools</h3>
+<p>deepjs provides helpful tools to manipulate those descriptors.</p>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
