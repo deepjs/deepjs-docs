@@ -5,12 +5,11 @@
 					<ul>
 						<li><a href="#intro">Intro</a></li>
 						<li><a href="#simple">simple</a></li>
-						<li><a href="#deep-get">deep.get</a></li>
-						<li><a href="#deep-getAll">deep.getAll</a></li>
+						<li><a href="#get">deep.get</a></li>
+						<li><a href="#getAll">deep.getAll</a></li>
 						<li><a href="#deep-protocol">deep.protocol</a></li>
 						<li><a href="#sub-protocol">sub-protocol</a></li>
 						<li><a href="#range">range</a></li>
-						<li><a href="#ocm">ocm</a></li>
 					</ul>
 				</div>
 			</div>
@@ -57,9 +56,10 @@ deep
 </pre>
 						</div>
 <p>This method simply parses the provided request, retrieves the provider gived by the protocol, prepares it if necessary, and use it to get request response.</p>
-<p>Returns the loaded ressource. Or an error if something was wrong.</p>
+<p>Returns a promise that hold the loaded ressource. Or an error if something was wrong.</p>
+<p>If request isn't a String, or if request doesn't contain a protocol, it is returned as this</p>
 <p>See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' provider</p>
-<h3 id="getAll">deep.getAll([requests array], opt)</h3>
+<h3 id="getAll">deep.getAll([req1, req2, ...], opt)</h3>
 						<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep
@@ -69,116 +69,16 @@ deep
 						</div>
 <p>Same thing than before, this method simply parses provided requests, retrieves associated providers, prepares them if necessary, and use them to get requests responses.</p>
 <p>Returns an array containing the loaded ressources. Or an error if something was wrong.</p>
+<p>If any request isn't a String, or if this request doesn't contain a protocol, it is returned as this.</p>
 <p>See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' an 'eval' providers</p>
-<h3 id="protocol">deep.protocol(name)</h3>
-<h3 id="subprotocol">sub-protocol</h3>
-			<p>deepjs protocols could also manage OCM for you.</p>
+<h3 id="deep-protocol">deep.protocol(name)</h3>
+<p>Will retrieve protocol by name.</p>
+<p>It will seek first in deep.context.protocols, then, if nothing was found there, it will look in deep.protocols.</p>
+<p>If something was found, before return, it will look if it's an OCManager. If so, it will use OCM with default modes and return the result.</p>
+<h3 id="sub-protocol">sub-protocol</h3>
+<h3 id="range">range</h3>
 
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> <span class="label label-warning">Info</span> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-
-
-			<div class="content">
-				<h3  id="examples-collection">Chain examples 2</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="content" >
-				<h3 id="examples-rest">Chain examples 3</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="content" >
-				<h3 id="examples-view">Chain examples 4</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="content" >
-				<h3 id="examples-modelisation">Chain examples 5</h3>
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<p> ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="col-sm-12 col-md-6">
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-deep(1).log();
-</pre>
-						</div>
-					</div>
-				</div>
+			
 
 			</div>
 </div>
