@@ -1,8 +1,54 @@
 <div>
 	<div id="content">
 		<div class="content">
-			<h2>Time management</h2>
+			<h2>Chained time management</h2>
 			<h3 id="intro">Intro</h3>
+			<p>deepjs use and abuse of Chaning Pattern. First for time management - as all deepjs chained and asynchrone management is based on <a href="/chains/promise">Promises</a> - but also for syntax ergonomy.</p>
+			<p>For clarity and modularity, deepjs comes with a set of particular chains API, dedicated to specific tasks.</p>
+              <ul>
+              	<li><a href="/chains/promise">promise</a></li>
+              	<li><a href="/chains/deep">deep</a></li>
+              	<li><a href="/chains/rest">rest</a></li>
+              	<li><a href="/chains/others#fs">fs</a></li>
+              	<li><a href="/chains/others#sh">sh</a></li>
+              	<li><a href="/chains/others#ssh">ssh</a></li>
+              	<li><a href="/chains/others">...</a></li>
+              </ul>
+             <p>Each specific chain is based on Promise one and so could be seen as a "super-promise" with an extended API.</p>
+             <p>But remember that they are all based on same mecanism and behaviours.</p>
+		
+			<h3 id="identities">Identities</h3>
+
+			<p>When you manipulate such chain, you could always change the chain identity (so its API) by calling identities method. Each chain come with it's own identity method.</p>
+
+<pre class="dp-box code">
+deep.fs("/my/root")				// we start a "file system" chain (nodejs) 
+.from("myjsonfile.json")		// read a json file
+.done(function(success){		// manipulate loaded json
+	succes.myProp = "hello world";
+	//...
+})
+.rest("myService")		// we take the "restful chain" API
+.post()					// post current success (so maniplated loaded json) to myService
+.fail(function(error){
+	// handle any error produced somewhere in the chain
+});
+</pre>
+
+
+
+
+
+			states, context
+
+	     	<p>Mediator	 Defines simplified communication between classes to prevent a group of classes from referring explicitly to each other.</p>	
+	
+	       	<p>Memento	 Capture an object's internal state to be able to restore it later.</p>
+
+	       	<p>State	 Alter an object's behavior when its state changes</p>
+
+
+
 
 		</div>
 	</div>
