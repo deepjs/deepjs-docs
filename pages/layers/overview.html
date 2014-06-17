@@ -1,6 +1,14 @@
 <div>
-      Composite	 A structure of simple and composite objects which makes the total object more than just the sum of its parts.
-      Decorator	 Dynamically add alternate processing to objects.
+	<div id="submenu" dp-control="js::/js/sub-nav.js">
+		<h2>Overview</h2>
+		<div class="submenu-block">
+			<ul>
+				<li><a href="#intro">jsobjects as layers</a></li>
+				<li><a href="#tools">manipulating layers</a></li>
+				<li><a href="#collisions">collision management</a></li>
+			</ul>
+		</div>
+	</div>
 	<div id="content">
 		<div class="content" >
 			<h2>Layers</h2>
@@ -23,21 +31,20 @@
 					<p>------ schema  : 3 layers, celui du dessous = model, du milier = implement, du dessus = Aspect --------</p>
 				</div>
 			</div>
-			<h3 id="intro">Tools at your disposition for manipulating layers</h3>
+			<h3 id="tools">Tools at your disposition for manipulating layers</h3>
 			<div class="row">
 				<div class="col-sm-12 col-md-12">
 					<p>Your layers will rarely be as simple as the latest example, but don't worry, deepjs got all the tools to manipulate them as simple layers even if they are big or complexe as you want. For example, you don't have to use special tools to manipulate a complexe object that contains a complexe structure of nested object. Deepjs do the job as deep as your structure is. So you can always keep that representation of your js object structures as layers.</p>
-					<p>To manipulate those layers like simple sheets of paper, you got 3 basic commands :</p>
+					<p>To manipulate those layers like simple sheets of paper, you got 2 basic commands :</p>
 					<p>
 						<ul>
 	  						<li>up ?schema?</li> 
 							<li>bottom ?schema?</li>
-							<li>compile ?schema?</li>
 						</ul>
 					</p>
 				</div>
 			</div>
-			<h3 id="intro">Everything is about collision management</h3>
+			<h3 id="collisions">Everything is about collision management</h3>
 			<div class="row">
 				<div class="col-sm-12 col-md-12">
 					<p>When you will create landscapes with your layers, you will of course get collisions of some of your layers properties/methods. By default, it is overrided with the upper layer value/function (except for arrays).</p>
