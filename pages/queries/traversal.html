@@ -34,9 +34,9 @@
 			
 			<h4 id="options-stack">options.returnStack</h4>
 			<p>Boolean, default false. </p>
-			<p>You need to know that the two traversal methods are recursion optimised (tail.</p>
+			<p>Principally for deepjs internal use. The two traversal methods are non recusrive and could return the current stack that methods use to do the traversal.</p><p>The aim is to be able to restart traversal from the same place after stop.</p>
 			<p>If true, in place of _deep_query_node_(s), return the stack used by derecursified method. </p>
-			<p>Used internaly to restart traversal after stop. </p>
+			
 			<p>Work only if options.first == true.</p>
 			
 			<h3 id="inorder">deep.utils.inorder(root, testFunction, opt)</h3>

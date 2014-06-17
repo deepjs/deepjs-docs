@@ -33,11 +33,11 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					route:"/queries/$", 
 					how:"html::/pages/queries/overview.html"
 				},
-				descriptors:{ how:"html::/pages/queries/nodes.html" },
 				query:{ how:"html::/pages/queries/deep-query.html" },
 				rql:{ how:"html::/pages/queries/rql.html" },
 				traversal:{ how:"html::/pages/queries/traversal.html" },
-				selectors:{ how:"html::/pages/queries/selectors.html" }
+				selectors:{ how:"html::/pages/queries/selectors.html" },
+				descriptors:{ separated:true, how:"html::/pages/queries/nodes.html" }
 			}
 		},
 		chains:{
@@ -50,7 +50,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				deep:{ how:"html::/pages/chains/deep.html" },
 				rest:{ how:"html::/pages/chains/rest.html" },
 				patterns:{ how:"html::/pages/chains/subtilities.html" },
-				others:{ label:"other chains", how:"html::/pages/chains/other-chains.html" }
+				others:{ separated:true, label:"other chains", how:"html::/pages/chains/other-chains.html" }
 			}
 		},
 		context:{
@@ -69,11 +69,15 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					how:"html::/pages/protocols/overview.html"
 				},
 				natives:{ how:"html::/pages/protocols/natives.html" },
-				templates:{ how:"html::/pages/protocols/templates.html" },
+				templates:{ 
+					separated:true,
+					how:"html::/pages/protocols/templates.html"
+				},
 				nodejs:{ how:"html::/pages/protocols/nodejs.html" },
 				browser:{ how:"html::/pages/protocols/browser.html" }
 			}
 		},
+		sheets:{ how:"html::/pages/layers/sheets.html" },
 		ocm:{
 			subs:{
 				"concepts":{
@@ -83,11 +87,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				modes:{ how:"html::/pages/ocm/modes.html" },
 				compilation:{ how:"html::/pages/ocm/compilation.html" },
 				classes:{ how:"html::/pages/ocm/classes.html" },
-				design:{ how:"html::/pages/ocm/design.html" },
-				delegation:{ how:"html::/pages/ocm/delegation.html" }
+				design:{ separated:true, label:"design patterns", how:"html::/pages/ocm/design.html" },
 			}
 		},
-		sheets:{ how:"html::/pages/layers/sheets.html" },
 		utils:{
 			subs:{
 				log:{ how:"html::/pages/utils/log.html" },
@@ -124,10 +126,11 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				constraints:{ how:"html::/pages/restful/constraints.html" },
 				relations:{ how:"html::/pages/restful/relations.html" },
 				ocm:{ how:"html::/pages/restful/ocm.html" },
-				wrappers:{ how:"html::/pages/restful/wrappers.html" }
+				wrappers:{ separated:true, how:"html::/pages/restful/wrappers.html" }
 			}
 		},
 		views:{
+			separated:true,
 			subs:{
 				"overview":{
 					route:"/views/$", 

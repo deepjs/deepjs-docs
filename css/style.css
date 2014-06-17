@@ -292,17 +292,20 @@ h4:before {
  #main {
     color: #ddd;
     margin-left:20px;
-    margin-right:20px;
+    padding-right:0px;
     font-size: 12px;
     font-family:'Trykker', serif;
     margin-bottom: 0px;
     overflow: hidden;
+    height:100px;
 }
 .content {
     padding-left:30px;
     padding-right:15px;
     padding-top:7px;
     margin-bottom:30px;
+    margin-right:10px;
+
 }
 .content.full {
     padding-left:15px;
@@ -340,7 +343,8 @@ h4:before {
     display: inline-block;
     margin: auto;
     position: relative;
-    top: 15px;
+    top: 20px;
+    margin-right:20px;
 }
 #copyright {
     display: inline-block;
@@ -392,9 +396,6 @@ button {
     color:#fff;
 }
 
-#main {
-    height:100px;
-}
 #content{
     overflow: scroll;
     height: 100%;
@@ -442,4 +443,17 @@ button {
     bottom: 0px;
     left: 0px;
     float: left;
+}
+
+.label-info {
+    background-color: #64CCE6;
+}
+
+.label {
+    font-size: 85%;
+}
+
+.dp-box {
+    background-color: #e4e6dd;
+    border:1px solid #fff;
 }

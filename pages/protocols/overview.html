@@ -21,6 +21,7 @@
 </div>
 			</div> -->
 			<div class="content" >
+<!-- ______________________________________________________________________________________________ -->
 			<h3 id="intro">Service Locator aka "protocols"</h3>
 			<p>A protocol is just simple, short, abstract, string reference that refer a real provider (that provides any kind of response or action) placed in particular namespace.</p>
 			<p>You use it to hide/abstract real providers/services from your code.</p>
@@ -30,53 +31,81 @@
 			<p>You'll see that this tools will be used for kind of <a href="http://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> with particular chains and providers.</p>
 			<p>And obviously, it could work hand in hand with <a href="/ocm">OCM</a>.</p>
 			<div class="alert alert-info"><span class="label label-info">Info</span> Realy different type of providers could be stored in deep.protocols, with really different types of API, from restful stores to jquery dom manipulation or sheets entry. Take things one by one and everything will still clear... ;)</div>
+<!-- ______________________________________________________________________________________________ -->
 			<h3 id="simple">Simple example</h3>
 
 						<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep.protocols.myProtoc = { 
 	get:function(request, options){ 
-		return "You say '"+request+"' through myProtoc"; 
+		return "deepjs, made with "+request; 
 	}
 };
-
-deep.get("myProtoc::hello world")
-.log();
+//...
+deep.get("myProtoc::love").log();
 </pre>
 						</div>
 						<p>As you could see, deep.protocols (formally a singleton registry) is the namespace where you store your provider. You could use deep.get("myProviderName::my_request") to call it.</p>
-						<p>Basically, all what your provider needs to implement is the "get" method (in some particular case seen below, sometimes you don't need it).</p>
+						<p>By default, all that your provider needs to implement is the "get" method (in some particular case seen below, sometimes you don't need it).</p>
 
+<!-- ______________________________________________________________________________________________ -->
 <h3 id="get">deep.get(req, opt)</h3>
 						<div class="dp-example">
 <pre dp-try class="dp-box code">
-deep
-.get("dummy::hello world")
-.log();
+deep.get("dummy::hello world").log();
 </pre>
 						</div>
-<p>This method simply parses the provided request, retrieves the provider gived by the protocol, prepares it if necessary, and use it to get request response.</p>
+<p>(See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' provider.)</p>
+<p>This method simply parses the provided request (with deep.utils.parseRequest), retrieves the provider gived by the protocol, prepares it if necessary, and use it to get request response.</p>
 <p>Returns a promise that hold the loaded ressource. Or an error if something was wrong.</p>
-<p>If request isn't a String, or if request doesn't contain a protocol, it is returned as this</p>
-<p>See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' provider</p>
+<p>If request isn't a String, or if request doesn't contain a protocol, it is returnedwithout load.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.get({a:true}).log();
+</pre>
+						</div>
+<p>Example of deep.utils.parseRequest result.</p>
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
+var parsed = deep.utils.parseRequest("dummy::hello");
+deep.log(parsed);
+</pre>
+						</div>
+
+<!-- ______________________________________________________________________________________________ -->
 <h3 id="getAll">deep.getAll([req1, req2, ...], opt)</h3>
 						<div class="dp-example">
 <pre dp-try class="dp-box code">
 deep
-.getAll(["dummy::hello world","eval::true"])
+.getAll(["dummy::hello world","eval::true", 12, { b:"hello" }])
 .log();
 </pre>
 						</div>
+<p>(See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' and 'eval' providers.)</p>
 <p>Same thing than before, this method simply parses provided requests, retrieves associated providers, prepares them if necessary, and use them to get requests responses.</p>
 <p>Returns an array containing the loaded ressources. Or an error if something was wrong.</p>
-<p>If any request isn't a String, or if this request doesn't contain a protocol, it is returned as this.</p>
-<p>See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' an 'eval' providers</p>
+<p>If any request isn't a String, or if this request doesn't contain a protocol, it is returned 'as this'.</p>
+<!-- ______________________________________________________________________________________________ -->
+
+<h3 id="sub-protocol">sub-protocol</h3>
+<!-- ______________________________________________________________________________________________ -->
+<h3 id="range">range</h3>
+<!-- ______________________________________________________________________________________________ -->
+
 <h3 id="deep-protocol">deep.protocol(name)</h3>
-<p>Will retrieve protocol by name.</p>
+<p>Simple function that will retrieve protocol by name.</p>
+
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var provider = deep.protocol("dummy");
+deep.log(provider);
+</pre>
+</div>
+
 <p>It will seek first in deep.context.protocols, then, if nothing was found there, it will look in deep.protocols.</p>
 <p>If something was found, before return, it will look if it's an OCManager. If so, it will use OCM with default modes and return the result.</p>
-<h3 id="sub-protocol">sub-protocol</h3>
-<h3 id="range">range</h3>
+<!-- ______________________________________________________________________________________________ -->
+
 
 			
 

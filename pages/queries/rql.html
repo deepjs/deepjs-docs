@@ -47,7 +47,7 @@ deep.log(r); // -> [12]
 </pre>
             </div>
 			<h3 id="schema">_schema</h3>
-			<div class="alert alert-warning"><span class="label label-warning">Warning</span> Work only on <a href="/queries/deep-query#query-node">deep-query results set</a>.</div >
+			<div class="alert alert-warning"><span class="label label-warning">Warning</span> Work only on <a href="/queries/descriptors">queries descriptors set</a>.</div >
 <p>_schema[any_property_of_provided_schema] could be used.</p>
             <div class="dp-example">
                  <pre dp-try class="dp-box code">
@@ -66,7 +66,7 @@ deep.rql(res, "_schema.private=ne=true").forEach(function(n){
 </pre>
             </div>
 			<h3 id="depth">_depth</h3>
-			<div class="alert alert-warning"><span class="label label-warning">Warning</span> Work only on <a href="/queries/deep-query#query-node">deep-query results set</a>.</div >
+			<div class="alert alert-warning"><span class="label label-warning">Warning</span> Work only on <a href="/queries/descriptors">queries descriptors set</a>.</div >
             <div class="dp-example">
                  <pre dp-try class="dp-box code">
 var res = deep.query({ a:true, b:{ d:"world" }, c:"hello" }, "//", { resultType:"full" });

@@ -37,10 +37,10 @@
     margin-top:21px;
     margin-bottom:1px;
     background-color:#EEE;
-    border:1px solid #777777;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    border:1px solid #111;
+    border:1px solid #fff;
+    background-color: #E0ECED;
 }
 .dp-try-view {
     overflow: scroll;

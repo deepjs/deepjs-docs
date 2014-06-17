@@ -5,6 +5,15 @@
  body {
 	background-color :#3f3b36;
 }
+a {
+	color:#4fb2ce;
+}
+
+a:hover {
+	color:#fff;
+
+}
+
 a:focus {
 	outline: 0;
 }
