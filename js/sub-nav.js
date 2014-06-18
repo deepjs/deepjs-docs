@@ -24,7 +24,7 @@ if (typeof define !== 'function')
 
 define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, View) {
 	// WARNING : localy declaring those vars are ennemy of concurrency. but in our case : it works. (see above)
-	var prev, prevParents, prevH, fromID = false, oldContentHeight, contentContainer, headings;
+	var prev, prevParents, prevH, oldH, fromID = false, oldContentHeight, contentContainer, headings;
 
 	//__________________________________ AUTO HIGHLIGHT ANCHOR
 	//__________________________________ inspired from expressjs API doc navigation
@@ -91,6 +91,10 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 			$(prevParents).removeClass('active');
 		prev = $(dom.submenu).find('a[href="#' + h.id + '"]').parent().addClass('active');
 		prevParents = $(prev).parents("li").addClass('active');
+		if(oldH)
+			$(oldH.el).removeClass("active");
+		$(h.el).addClass("active");
+		oldH = h;
 	};
 
 	// highlight submenu entry with id

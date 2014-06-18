@@ -457,3 +457,38 @@ button {
     background-color: #e4e6dd;
     border:1px solid #fff;
 }
+
+.section-separator-end {
+    display: block;
+    background: url("../img/section-separator2-end.svg");
+    background-size: 400px 30px;
+    margin:auto;
+    width:400px;
+    height:30px;
+    position: relative;
+    top:20px;
+    margin-bottom: 40px;
+}
+.section-separator-small {
+    display: block;
+    background: url("../img/section-separator-small.svg");
+    background-size: 400px 30px;
+    margin:auto;
+    width:400px;
+    height:30px;
+    position: relative;
+    top:20px;
+    margin-bottom: 40px;
+}
+
+.content h3, .content h4 {
+    padding:15px;
+}
+.content h3.active, .content h4.active {
+    background-color: #565350;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-top: 1px solid #666;
+}
+
+

@@ -51,7 +51,7 @@ deep.log(r); // -> [12]
 <p>_schema[any_property_of_provided_schema] could be used.</p>
             <div class="dp-example">
                  <pre dp-try class="dp-box code">
-var res = deep.query({ a:true, b:12, c:"hello" }, "./*", { resultType:"full", schema:{
+var res = deep.query({ a:true, b:12, c:"hello" }, "./*", { fullOutput:true, schema:{
 		properties:{
 			a:{ type:"bool" },
 			b:{ type:"number" },
@@ -69,7 +69,7 @@ deep.rql(res, "_schema.private=ne=true").forEach(function(n){
 			<div class="alert alert-warning"><span class="label label-warning">Warning</span> Work only on <a href="/queries/descriptors">queries descriptors set</a>.</div >
             <div class="dp-example">
                  <pre dp-try class="dp-box code">
-var res = deep.query({ a:true, b:{ d:"world" }, c:"hello" }, "//", { resultType:"full" });
+var res = deep.query({ a:true, b:{ d:"world" }, c:"hello" }, "//", { fullOutput:true });
 
 deep.rql(res, "_depth=gt=1").forEach(function(n){
 	deep.log(n.path, " = ", n.value)

@@ -1,0 +1,105 @@
+<div>
+    <div id="submenu">
+        <h2>deep chain</h2>
+        <div class="submenu-block" dp-control="js::/js/sub-nav.js">
+            <ul>
+                <li><a href="#intro">introduction</a></li>
+                <li><a href="#start">Start</a>
+                	<ul>
+                		<li><a href="#schema">schema</a></li>
+                	</ul>
+                </li>
+                <li><a href="#query">.query(...)</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="content">
+
+<h3 id="start">Start chain.</h3>
+<h4 id="schema">deep chain and json-schema</h4>
+
+<p>You could associate a schema to object injected in a deep chain.</p>
+<p>Simply provide schema as second argument when starting such chain.</p>
+
+<div class="dp-example">
+    <pre dp-try class="dp-box code">
+deep({
+	a:1,
+	b:true,
+	c:"hello",
+	d:{
+		e:"world"
+	}
+},
+{ 
+	properties:{
+		d:{
+			properties:{
+				e:{ type:"string", required:true }
+			}
+		}
+	}
+})
+.validate() // you'll see further what's going on here.
+.log();
+</pre>
+</div>
+
+<h3 id="chain-query">deep(obj).query(q)...</h3>
+<p>Chained query call through <a href="/chains/deep">deep chain</a>. <br/>(for full documentations on chained queries and result management, see <a href="/chains/deep">deep chain docs</a>)</p>
+<p>Perfom a query on current chain success and inject query result (<a href="/queries/descriptors">full descriptors</a> of selected properties) as chain success.</p>
+<p><span class="label label-info">Return</span> : a <a href="/chains/deep">deep chain</a>.</p>
+<div class="dp-example">
+    <pre dp-try class="dp-box code">
+deep({
+	a:1,
+	b:true,
+	c:"hello",
+	d:{
+		e:"world"
+	}
+})
+// From root : Select the property 'd' then give me the property 'e' in it
+.query("/d/e")
+.log('"/d/e" :\n')		// 'world'
+
+// From root : give me all property wich is a string
+.query("//?_type=string")
+.log('\n"//?_type=string" :\n');	// ['hello', 'world']
+</pre>
+</div>
+<!-- _______________________________________________________________________ -->
+<h4 id="query-schema">query &amp; schema</h4>
+<p>deepjs will try to associate correct sub-schema to selected sub-properties (as it does with direct syntax).</p>
+
+<div class="dp-example">
+    <pre dp-try class="dp-box code">
+deep({
+	a:1,
+	b:true,
+	c:"hello",
+	d:{
+		e:"world"
+	}
+},
+{ 
+	properties:{
+		d:{
+			properties:{
+				e:{ type:"string", required:true }
+			}
+		}
+	}
+})
+.query("/d/e")
+.done(function(node){
+	return node.schema;
+})
+.log();
+</pre>
+</div>
+
+</div>
+</div>
+</div>

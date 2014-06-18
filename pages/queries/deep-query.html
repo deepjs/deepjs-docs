@@ -11,11 +11,7 @@
                 		<li><a href="#allow-straight">allow straight</a></li>
                 	</ul>
                 </li>
-                <li><a href="#chain-query">deep(...).query(...)</a>
-                	<ul>
-                		<li><a href="#chain-schema">schema</a></li>
-                	</ul>
-                </li>
+                <li><a href="#chain-query">deep(...).query(...)</a></li>
                 <li><a href="#syntax">syntaxe</a>
                 	<ul>
                 		<li><a href="#start">start</a></li>
@@ -50,6 +46,7 @@
 
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-end"></div>
 <h3 id="deep-query">deep.query(obj, query, opt)</h3>
 <p>Perfom a query on any valid js object.</p>
 <p>The return's type depends if :</p>
@@ -91,12 +88,9 @@ deep.log(r);
 </pre>
 </div>
 <!-- _______________________________________________________________________ -->
-<h4 id="full-output">opt.resultType</h4>
-<p>Optional string : possible values :</p>
-<ul>
-<li>"full" : means you want <a href="/queries/descriptors">full descriptors</a> of selected properties.</li>	
-<li>anything else : you want the selected values themselves.</li>	
-</ul>
+                <div class="section-separator-small"></div>
+<h4 id="full-output">opt.fullOutput</h4>
+<p>Optional bool : 'true' means you want <a href="/queries/descriptors">full descriptors</a> of selected properties in place of simple values.</p>
 <div class="dp-example">
     <pre dp-try class="dp-box code">
 var obj = {
@@ -107,11 +101,12 @@ var obj = {
 		e:"world"
 	}
 };
-var r = deep.query(obj, "/d/e", { resultType:"full" }); 
+var r = deep.query(obj, "/d/e", { fullOutput:true }); 
 deep.log(r.path+" = "+r.value);	//   /d/e = world
 </pre>
 </div>
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="schema">opt.schema</h4>
 <p>Optional. You could associate a schema to queried object.</p>
 <p>deepjs will try to associate correct sub-schema to selected sub-properties.</p>
@@ -135,11 +130,12 @@ var schema = {
 		}
 	}
 };
-var r = deep.query(obj, "/d/e", { resultType:"full", schema:schema }); 
+var r = deep.query(obj, "/d/e", { fullOutput:true, schema:schema }); 
 deep.log(r.path, " = ", r.value, " - schema : ", r.schema);
 </pre>
 </div>
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="allow-straight">opt.allowStraightQueries</h4>
 <p>Optional. Boolean, true by default.</p>
 <p>If true, if the query is a simple path, it will return the property itself rather than an array of results.</p>
@@ -162,8 +158,9 @@ deep.log(r);	// 'world'
 </div>
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-end"></div>
 <h3 id="chain-query">deep(obj).query(q)...</h3>
-<p>Chained query call through <a href="/chains/deep">deep chain</a>. <br/>(for full documentations on chained queries and result management, see <a href="/chains/deep">deep chain docs</a>)</p>
+<p>Chained query call through <a href="/chains/deep">deep chain</a>. <br/>(for full documentations on chained queries and result management, see <a href="/chains/deep#query">deep chain docs</a>)</p>
 <p>Perfom a query on current chain success and inject query result (<a href="/queries/descriptors">full descriptors</a> of selected properties) as chain success.</p>
 <p><span class="label label-info">Return</span> : a <a href="/chains/deep">deep chain</a>.</p>
 <div class="dp-example">
@@ -185,41 +182,9 @@ deep({
 .log('\n"//?_type=string" :\n');	// ['hello', 'world']
 </pre>
 </div>
-<!-- _______________________________________________________________________ -->
-<h4 id="chain-schema">schema</h4>
-<p>Optional. You could also associate a schema to queried object through deep's chain.</p>
-<p>Simply provide schema as second argument when starting deep's chain.</p>
-<p>deepjs will try to associate correct sub-schema to selected sub-properties (as it does with direct syntax).</p>
-
-<div class="dp-example">
-    <pre dp-try class="dp-box code">
-deep({
-	a:1,
-	b:true,
-	c:"hello",
-	d:{
-		e:"world"
-	}
-},
-{ 
-	properties:{
-		d:{
-			properties:{
-				e:{ type:"string", required:true }
-			}
-		}
-	}
-})
-.query("/d/e")
-.done(function(node){
-	return node.schema;
-})
-.log();
-</pre>
-</div>
-
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-end"></div>
 <h3 id="syntax">Syntaxe </h3>
 
 <p>A query consist of succession of steps.</p>
@@ -236,6 +201,7 @@ deep([{a:2}, {a:4}]).query("/*?a=gt=3").log();
 <p>The '?a=gt=3' is the RQL filter : we filter currents elements by selecting all elements where 'a > 3'.</p>
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="start">start (first move) </h4>
 <p>When you start a query : you could use any of those 'move' to place play-head somewhere relatively to current node.</p>
 
@@ -251,6 +217,7 @@ deep({ a:{ b:{ c:"hello world" }, d:true }}).query("//").log();
 </pre>
             </div>
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="move">move (after the first one)</h4>
 
 <ul>
@@ -267,6 +234,7 @@ deep({ a:{ b:{ c:"hello world" }, d:true }}).query("//").log();
 
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="relative-move">relative vs root</h4>
 
 <p>When you apply a query on a query-results-set (previously produced), you could navigate relatively to current(s) node(s), or restart queries from the root object.</p>
@@ -297,6 +265,7 @@ deep({
 </div>
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="select">step selector</h4>
 
 
@@ -383,6 +352,7 @@ deep({ a:1, b:true, c:"hello"})
 
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="length">@.length</h4>
 
 <p>In array brackets access : you could use @.length to get the length of the parent (only if it's an array).</p>
@@ -396,6 +366,7 @@ deep({ a:[1,2,3,4,5,6] })
 </div>
 
 <!-- _______________________________________________________________________ -->
+                <div class="section-separator-small"></div>
 <h4 id="direct-length">length</h4>
 <p>Will give you any 'length' property founded in current level</p>
 <div class="dp-example">
@@ -411,6 +382,7 @@ deep({ a:[1,2,3,4,5,6], b:"hello" })
 
 <!-- _______________________________________________________________________ -->
 
+                <div class="section-separator-small"></div>
 <h4 id="filter">filter</h4>
 
 <p>any RQL filter (see <a href="/queries/rql">deep-rql</a> for full docs) could be added to any selector.</p>

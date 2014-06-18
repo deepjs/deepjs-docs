@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="400px" height="30px" viewBox="0 0 400 30" enable-background="new 0 0 400 30" xml:space="preserve">
+<line fill="none" stroke="#B8B5A4" stroke-miterlimit="10" x1="208" y1="14.5" x2="209" y2="14.5"/>
+<g>
+	<rect x="392.573" y="14" opacity="0.1" fill="#B8B5A4" width="1.829" height="1"/>
+	<polyline opacity="0.3" fill="#B8B5A4" points="388.555,15 388.555,14 390.563,14 390.563,15 388.555,15 	"/>
+	<rect x="384.536" y="14" opacity="0.5" fill="#B8B5A4" width="2.01" height="1"/>
+	<rect x="380.519" y="14" opacity="0.7" fill="#B8B5A4" width="2.009" height="1"/>
+	<rect x="376.5" y="14" opacity="0.9" fill="#B8B5A4" width="2.009" height="1"/>
+	<path fill="none" stroke="#B8B5A4" stroke-miterlimit="10" stroke-dasharray="2.0091,2.0091" d="M209,14.5h165.5"/>
+</g>
+<g>
+	<rect x="7" y="14" opacity="0.1" fill="#B8B5A4" width="1.829" height="1"/>
+	<polyline opacity="0.3" fill="#B8B5A4" points="12.848,15 10.839,15 10.839,14 12.848,14 12.848,15 	"/>
+	<rect x="14.856" y="14" opacity="0.5" fill="#B8B5A4" width="2.01" height="1"/>
+	<rect x="18.875" y="14" opacity="0.7" fill="#B8B5A4" width="2.009" height="1"/>
+	<rect x="22.894" y="14" opacity="0.9" fill="#B8B5A4" width="2.009" height="1"/>
+	<path fill="none" stroke="#B8B5A4" stroke-miterlimit="10" stroke-dasharray="2.0091,2.0091" d="M26.902,14.5h165.5"/>
+</g>
+<g>
+	<circle fill="none" stroke="#14A2C6" stroke-miterlimit="10" stroke-dasharray="2.1541,1.077" cx="200.09" cy="14.754" r="3.09"/>
+</g>
+</svg>

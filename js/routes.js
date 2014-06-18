@@ -77,7 +77,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				browser:{ how:"html::/pages/protocols/browser.html" }
 			}
 		},
-		sheets:{ how:"html::/pages/layers/sheets.html" },
+		sheets:{ how:"html::/pages/sheets/sheets.html" },
 		ocm:{
 			subs:{
 				"concepts":{

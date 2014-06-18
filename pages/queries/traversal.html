@@ -4,6 +4,9 @@
 		<div class="submenu-block" dp-control="js::/js/sub-nav.js">
 			<ul>
 				<li><a href="#intro">introduction</a></li>
+				
+				<li><a href="#depthFirst">deep.depthFirst()</a></li>
+				<li><a href="#breadthFirst">deep.breadthFirst()</a></li>
 				<li><a href="#options">options</a>
 				<ul>
 					<li><a href="#options-first">first</a></li>
@@ -11,19 +14,74 @@
 					<li><a href="#options-stack">stack</a></li>
 				</ul>
 				</li>
-				<li><a href="#inorder">deep.inorder()</a></li>
-				<li><a href="#preorder">deep.preorder()</a></li>
 			</ul>
 		</div>
 	</div>
 	<div id="content">
 		<div class="content">
 			<h3 id="intro">Intro</h3>
-			<p>There is two functions to browse object/json structure orderedly : inorder and preorder.</p>
-			<p>Both </p>
+			<p>There is two functions to browse object/json structure orderedly : depthFirst and breadthFirst.</p>
+
 			
+				<div class="section-separator-end"></div>
+			<h3 id="depthFirst">deep.depthFirst(root, testFunction, opt)</h3>
+
+			<span class="label label-info">Returns</span> 
+			<p>if(!options.first) : return an array of <a href="/queries/descriptors">nodes descriptors</a> (empty if no match).</p>
+			<p>if(options.first) : a single <a href="/queries/descriptors">node descriptor</a> or null if no match.</p>
+			(for full options descritions see <a href="#options">options</a>.)
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
+var a = {
+	b:{
+		c:{
+			d:true
+		}
+	},
+	e:"hello",
+	f:{
+		d:true
+	}
+};
+
+var r = deep.depthFirst(a, function(v){
+	return v.d === true;
+});
+
+deep.log(deep.nodes.paths(r));
+</pre>
+						</div>
+				<div class="section-separator-end"></div>
+			<h3 id="breadthFirst">deep.breadthFirst(root, testFunction, opt)</h3>
+			<span class="label label-info">Returns</span> 
+			<p>if(!options.first) : return an array of <a href="/queries/descriptors">nodes descriptors</a> (empty if no match).</p>
+			<p>if(options.first) : a single <a href="/queries/descriptors">node descriptor</a> or null if no match.</p>
+			(for full options descritions see <a href="#options">options</a>.)
+						<div class="dp-example">
+<pre dp-try class="dp-box code">
+var a = {
+	b:{
+		c:{
+			d:true
+		}
+	},
+	e:"hello",
+	f:{
+		d:true
+	}
+};
+
+var r = deep.breadthFirst(a, function(v){
+	return v.d === true;
+});
+
+deep.log(deep.nodes.paths(r));
+</pre>
+						</div>
+			
+				<div class="section-separator-end"></div>
 			<h3 id="options">options</h3>
-			
+			<p><span class="label label-info">Remarque</span> Options are the same for both traversal methods.</p>
 			<h4 id="options-first">options.first</h4>
 			<p>Boolean, default false.</p>
 			<p>If true, stop traversal at first match, and return the matched node (null if no match).</p>
@@ -38,58 +96,6 @@
 			<p>If true, in place of _deep_query_node_(s), return the stack used by derecursified method. </p>
 			
 			<p>Work only if options.first == true.</p>
-			
-			<h3 id="inorder">deep.utils.inorder(root, testFunction, opt)</h3>
-
-			<span class="label label-info">Returns</span> 
-			<p>if(!options.first) : return an array of <a href="/queries/deep-query#query-node">property nodes</a> (empty if no match).</p>
-			<p>if(options.first) : a single <a href="/queries/deep-query#query-node">property nodes</a> or null if no match.</p>
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-var a = {
-	b:{
-		c:{
-			d:true
-		}
-	},
-	e:"hello",
-	f:{
-		d:true
-	}
-};
-
-var r = deep.utils.inorder(a, function(){
-	return this.d === true;
-});
-
-deep.log(r);
-</pre>
-						</div>
-			<h3 id="preorder">deep.utils.preorder(root, testFunction, opt)</h3>
-			<span class="label label-info">Returns</span> 
-			<p>if(!options.first) : return an array of <a href="/queries/deep-query#query-node">deep query nodes</a> (empty if no match).</p>
-			<p>if(options.first) : a single <a href="/queries/deep-query#query-node">deep query nodes</a> or null if no match.</p>
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-var a = {
-	b:{
-		c:{
-			d:true
-		}
-	},
-	e:"hello",
-	f:{
-		d:true
-	}
-};
-
-var r = deep.utils.preorder(a, function(){
-	return this.d === true;
-});
-
-deep.log(r);
-</pre>
-						</div>
 
 		</div>
 	</div>
