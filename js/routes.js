@@ -59,6 +59,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					route:"/context/$", 
 					how:"html::/pages/context/overview.html"
 				},
+				base:{ how:"html::/pages/context/base.html" },
 				logger:{ how:"html::/pages/context/logger.html" }
 			}
 		},
@@ -94,7 +95,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			subs:{
 				log:{ how:"html::/pages/utils/log.html" },
 				interpret:{ how:"html::/pages/utils/interpret.html" },
-				parsers:{ how:"html::/pages/utils/parsers.html" },
 				deepLoad:{ how:"html::/pages/utils/deepload.html" },
 				"json-schema":{ how:"html::/pages/utils/schema.html" },
 				errors:{ how:"html::/pages/utils/errors.html" },

@@ -32,12 +32,9 @@
 			<h3 id="intro">Service Locator aka "protocols"</h3>
 			<p>A protocol is just simple, short, abstract, string reference that refer to a real (but abstract) provider (that provides any kind of responses or actions) placed in particular namespace (aka deep.protocols).</p>
 			<p>You use it to hide/abstract real providers/services from your code.</p>
-			<p>For convenience, simplicity, and json compliance, it's placed, inline, in front of ressources path (or parameters or wathever). e.g. : "json::/my/json/path.json", "dom.htmlOf::#myDomID"</p>
-			<p>deepjs will retrieve those providers when needed, and acts therefor as an "abstract service locator". (google <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">service locator</a>) </p>
-
-			<p>You'll see that this tools will be used for kind of <a href="http://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> with particular chains and providers.</p>
-			<p>And obviously, it could work hand in hand with <a href="/ocm">OCM</a>.</p>
-			<div class="alert alert-info"><span class="label label-info">Info</span> Realy different type of providers could be stored in deep.protocols, with really different types of API, from restful stores to jquery dom manipulation or sheets entry. Take things one by one and everything will still clear... ;)</div>
+			<p>For convenience, simplicity, and json compliance, 'protocol' itself is placed, inline, in front of ressources (string) path (or parameters or wathever). e.g. : "json::/my/json/path.json", "dom.htmlOf::#myDomID"</p>
+			<p>deepjs will retrieve those providers/services when needed, and acts therefor as an "abstract service locator". (google <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">service locator</a>) </p>
+			<p>It allow you to have <a href="#deep-protocol">fully "environnement dependent"</a> providers/services, and so allow you to go much further than with simple, classical service locator pattern.</p>
 <!-- ______________________________________________________________________________________________ -->
                 <div class="section-separator-end"></div>
 			<h3 id="simple">Simple example</h3>
@@ -54,7 +51,7 @@ deep.get("myProtoc::love").log();
 </pre>
 						</div>
 						<p>As you could see, deep.protocols (formally a singleton registry) is the namespace where you store your provider. You could use deep.get("myProviderName::my_request") to call it.</p>
-						<p>By default, all that your provider needs to implement is the "get" method (in some particular case seen below, sometimes you don't need it).</p>
+						<p>By default, all that your provider needs to implement is the "get" method (see below for other methods).</p>
 
 <!-- ______________________________________________________________________________________________ -->
                 <div class="section-separator-end"></div>
@@ -65,7 +62,7 @@ deep.get("dummy::hello world").log();
 </pre>
 						</div>
 <p>(See <a href="/protocols/natives#intro">natives protocols</a> for information on 'dummy' provider.)</p>
-<p>This method simply parses the provided request (with deep.utils.parseRequest), retrieves the provider gived by the protocol, prepares it if necessary, and use it to get request response.</p>
+<p>This method simply parses the provided request, retrieves the provider gived by the protocol, prepares it if necessary, and use it to get request response.</p>
 <p>Returns a <a href="/chains/promise">Promise</a> that hold the loaded ressource. Or an error if something was wrong.</p>
 <p>If request isn't a String, or if request doesn't contain a protocol, it is injected without load (as this) in promise.</p>
 			<div class="row">
@@ -84,16 +81,6 @@ deep.get("hello world").log();
 						</div>
 				</div>
 			</div>
-
-
-<p>Example of deep.utils.parseRequest result.</p>
-						<div class="dp-example">
-<pre dp-try class="dp-box code">
-var parsed = deep.utils.parseRequest("dummy::hello");
-deep.log(parsed);
-</pre>
-						</div>
-
 <!-- ______________________________________________________________________________________________ -->
                 <div class="section-separator-end"></div>
 <h3 id="getAll">deep.getAll([req1, req2, ...], opt)</h3>
@@ -171,7 +158,7 @@ deep.log(provider);
                 <div class="section-separator-small"></div>
 <h4 id="ocm-protocols">OCM and protocols</h4>
 
-<p>When you place an <a href="/ocm">OCManager</a> in protocols (deep.protocols or deep.context.protocols - see below) namespaces, deep.protocol will return the response of the OCManager (depending on current modes - from deep.context or not) in place of the OCManager itself.</p>
+<p>When you place an <a href="/ocm">OCManager</a> in protocols namespaces (deep.protocols or deep.context.protocols - see below), deep.protocol will return the response of the OCManager (depending on current modes - from deep.context or not) in place of the OCManager itself.</p>
 <div class="dp-example">
 <pre dp-try class="dp-box code">
 deep.protocols.myProtoc = deep.ocm({
@@ -231,7 +218,7 @@ deep.get("myProtoc::john")
 })
 .log();
 
-deep.delay(200) // async simulation
+deep.delay(50) // async simulation
 .done(function(){
 	return deep.get("myProtoc::john");
 })
@@ -270,6 +257,12 @@ deep.get("myProtoc::powaaaa").log();
 <!-- ______________________________________________________________________________________________ -->
                 <div class="section-separator-small"></div>
 <h4 id="resumed">Resumed</h4>
+<h5 class="bloup">Ressource path format</h5>
+<p>If your provider implements a get method : you could use it through "myProvider::myRequest".</p>
+<p>If your provider implements a range method : you could use it through "myProvider(0,23)::myRequest".</p>
+<p>If your provider implements others method : you could use it through "myProvider.myMethod::myRequest".</p>
+<br/>
+<h5>Protocol retrieval</h5>
 <p>It will seek first in deep.context.protocols, then, if nothing was found there, it will look in deep.protocols.</p>
 <p>If something was found, before return, it will look if it's an OCManager. If so, it will get the result from OCManager with default modes.
 If there is an init method in the provider (after ocm check), it will fire it and wait initialisation end before returning prepared provider.</p>

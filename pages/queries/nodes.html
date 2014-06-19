@@ -8,19 +8,16 @@
         		<li><a href="#node-content">node content</a></li>
         		<li><a href="#node-tools">tools</a>
         			<ul>
-<li><a href="#root">root</a></li>
-<li><a href="#create">create</a></li>
-<li><a href="#clone">clone</a></li>
+
 <li><a href="#val">val</a></li>
-<li><a href="#values">values</a></li>
 <li><a href="#paths">paths</a></li>
 <li><a href="#schemas">schemas</a></li>
 <li><a href="#transform">transform</a> </li>
-<li><a href="#transformNodes">transformNodes</a></li>
 <li><a href="#deepLoad">deepLoad</a></li>
 <li><a href="#print">print</a></li>
-<li><a href="#stringify">stringify</a></li>
-
+<li><a href="#root">root</a></li>
+<li><a href="#create">create</a></li>
+<li><a href="#clone">clone</a></li>
         			</ul>
         		</li>
             </ul>
@@ -28,12 +25,12 @@
     </div>
     <div id="content">
         <div class="content">
-        <!-- ______________________________________________________________________________ -->
+        <!-- ___________________________________________________________________________INTRO ___ -->
 <h3 id="intro">Intro</h3>
 
 <p>deepjs queries tools work hand in hand with particular properties descriptors that contain all informations on queried/matched properties, and allow to manipulate associated json-schemas, paths or ancestors of those properties.</p>
 
-        <!-- ______________________________________________________________________________ -->
+        <!-- ______________________________________________________________________ CONTENT ________ -->
 				<div class="section-separator-end"></div>
 <h3 id="node-content">Descriptor content</h3>
     <pre dp-try class="dp-box code" editable="false">
@@ -64,12 +61,116 @@
 }
 </pre>
 
-        <!-- ______________________________________________________________________________ -->
+        <!-- _____________________________________________________________________ TOOLS _________ -->
 				<div class="section-separator-end"></div>
 <h3 id="node-tools">Node tools</h3>
-
-        <!-- ______________________________________________________________________________ -->
+<p>All deepjs node's tools are placed in deep.nodes namespace.</p>
+       
+        <!-- ______________________________________________________________________ VAL ________ -->
 				<div class="section-separator-small"></div>
+<h4 id="val">deep.nodes.val(result)</h4>
+<p>Get value(s) from queries results (descriptors set or real values).</p>
+
+<p>On an array of descriptors : return array of values</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
+deep.log(deep.nodes.val(r));
+</pre>
+</div>
+<p>On a single descriptor : return single value.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./b", { fullOutput:true });
+deep.log(deep.nodes.val(r));
+</pre>
+</div>
+<p>Anything else : return the value.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.log(deep.nodes.val("hello world"));
+deep.log(deep.nodes.val([1,2]));
+</pre>
+</div>
+        <!-- ______________________________________________________________ PATHS ________________ -->
+				<div class="section-separator-small"></div>
+<h4 id="paths">deep.nodes.paths(nodes)</h4>
+<p>Get path(s) from node(s).</p>
+<p>Always return an array.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
+deep.log(deep.nodes.paths(r));
+</pre>
+</div>
+        <!-- ____________________________________________________________ SCHEMAS __________________ -->
+				<div class="section-separator-small"></div>
+<h4 id="schemas">deep.nodes.schemas(nodes)</h4>
+<p>Get schema(s) from node(s).</p>
+<p>Always return an array.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./*", { 
+    fullOutput:true, 
+    schema:{
+        properties:{
+            a:{ type:"boolean", required:true },
+            b:{ type:"string", required:true }
+        }    
+    } 
+});
+deep.log(deep.nodes.schemas(r));
+</pre>
+</div>
+        <!-- ______________________________________________________________ TRANSFORM ________________ -->
+				<div class="section-separator-small"></div>
+<h4 id="transform">deep.nodes.transform(nodes)</h4>
+<p>Transform a node(s) value. So replace original value by the one returned by provided callback.</p>
+<p>Could work on a signle descriptors or on a array of descriptors.</p>
+<p>Return either a promise (that will return transformed value(s)) or directly the transformed value(s) if there is nothing to wait.</p>
+<p>Straight query (so single node) : </p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./a", { fullOutput:true });
+deep.nodes.transform(r, function(node){
+	return node.value+":transformed";
+});
+deep.log(deep.nodes.val(r));
+</pre>
+</div>
+<p>Full query (so array of nodes) : </p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
+deep.nodes.transform(r, function(node){
+    return node.value+":transformed";
+});
+deep.log(deep.nodes.val(r));
+</pre>
+</div>
+        <!-- ___________________________________________________________________ deepLoad ___________ -->
+				<div class="section-separator-small"></div>
+<h4 id="deepLoad">deep.nodes.deepLoad(nodes, context, destructive)</h4>
+<p>Perform a deepLoad on node(s).</p>
+<p>You should normally not use this directly.</p>
+<p>See <a href="/utils/deepLoad">deepLoad</a> for more infos.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
+deep.nodes.deepLoad(r).log();
+</pre>
+</div>
+        <!-- ______________________________________________________________________ print ________ -->
+				<div class="section-separator-small"></div>
+<h4 id="print">deep.nodes.print(result)</h4>
+<p>Print node(s).</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
+deep.nodes.print(r);
+</pre>
+</div>
+ <!-- ________________________________________________________________________ root ______ -->
 <h4 id="root">deep.nodes.root(obj, schema, opt)</h4>
 <p>Create a root node from an object and returns it. Schema is optional.</p>
 <p>(mainly used internaly by deepjs)</p>
@@ -80,119 +181,17 @@ var rootNode = deep.nodes.root({ a:true, b:12 });
 deep.log(rootNode);
 </pre>
 </div>
-        <!-- ______________________________________________________________________________ -->
+        <!-- _____________________________________________________________________ create _________ -->
 <h4 id="create">deep.nodes.create(parentNode, key)</h4>
 <p>Create a child node from a node. If parent node contains a schema, it catchs the child's schema and stores it in returned node.</p>
 <p>(mainly used internaly by deepjs)</p>
 
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
+        <!-- ______________________________________________________________________ clone ________ -->
+                <div class="section-separator-small"></div>
 <h4 id="clone">deep.nodes.clone(node)</h4>
 <p>Clone a descriptor node and returns it.</p>
 <p>(mainly used internaly by deepjs)</p>
 
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="val">val</h4>
-<p>Get value(s) from node(s).</p>
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.log(deep.nodes.val(r));
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="values">values</h4>
-<p>Get value(s) from node(s).</p>
-<p>Always return an array.</p>
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.log(deep.nodes.values(r));
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="paths">paths</h4>
-<p>Get path(s) from node(s).</p>
-<p>Always return an array.</p>
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.log(deep.nodes.paths(r));
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="schemas">schemas</h4>
-<p>Get schema(s) from node(s).</p>
-<p>Always return an array.</p>
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.log(deep.nodes.schemas(r));
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="transform">transform</h4>
-<p>Transform a single node value.</p>
-
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./a", { fullOutput:true });
-deep.nodes.transform(r, function(node){
-	return node.value+":transformed";
-})
-.log();
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="transformNodes">transformNodes</h4>
-<p>Transform a node(s) value(s).</p>
-
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.nodes.transformNodes(r, function(node){
-	return node.value+":transformed";
-})
-.log();
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="deepLoad">deepLoad</h4>
-<p>Perform a deepLoad on node(s).</p>
-<p>See <a href="/utils/deepLoad">deepLoad</a> for more infos.</p>
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.nodes.deepLoad(r).log();
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="print">print</h4>
-<p>Print node(s).</p>
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.nodes.print(r);
-</pre>
-</div>
-        <!-- ______________________________________________________________________________ -->
-				<div class="section-separator-small"></div>
-<h4 id="stringify">stringify</h4>
-<p>Stringify node(s).</p>
-<div class="dp-example">
-<pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.log(deep.nodes.stringify(r));
-</pre>
-</div>
         </div>
     </div>
 </div>

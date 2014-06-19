@@ -15,6 +15,7 @@
     background-image: -o-linear-gradient(top, #4b4641, #3f3b36);
     background-image: linear-gradient(top bottom, #4b4641, #3f3b36);*/
  }
+
  .hidden {
     visibility: hidden;
  }
@@ -489,6 +490,13 @@ button {
     -moz-border-radius: 5px;
     border-radius: 5px;
     border-top: 1px solid #666;
+}
+
+
+ 
+h5.bloup {
+    margin-top: 60px;
+    margin-bottom: 30px;
 }
 
 
