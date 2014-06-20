@@ -188,7 +188,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					var $ = deep.context.$;
 					var dom = deep.context.dom;
 					dom.content = $("#content");
-					$(dom.content).append('<div style="height:'+(dom.contentHeight-200)+'px;">&nbsp;</div>')
+					$(dom.content).append('<div style="height:'+(dom.contentHeight-150)+'px;">&nbsp;</div>')
 					$(dom.main).scrollTop(0);
 				}) 
 			}, value);
