@@ -254,10 +254,17 @@ h4 {
     font-size: 8px;
     margin-right: 10px;
 }
-
-h4:before {
+h4.active:before {
     content:">>";
     color: #14a2c6;
+    font-size: 10px;
+    margin-right: 15px;
+    position: relative;
+    top: -3px;
+}
+h4:before {
+    content:">>";
+    color: #767470;
     font-size: 10px;
     margin-right: 15px;
     position: relative;
@@ -483,13 +490,15 @@ button {
 }
 
 .content h3, .content h4 {
-    padding:15px;
+    /*padding:15px;*/
+    padding-bottom:15px;
+    margin-bottom: 20px;
 }
 .content h3.active, .content h4.active {
-    background-color: #565350;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border-top: 1px solid #666;
+    /*background-color: #565350;*/
+    /*-moz-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*border-bottom: 1px dotted #766;*/
 }
 
 
@@ -499,4 +508,38 @@ h5.bloup {
     margin-bottom: 30px;
 }
 
+
+.dpdocs-header {
+    /*border-bottom: 1px dotted #766;*/
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.dpdocs-header h2 {
+    margin-bottom: 0px;
+}
+.dpdocs-header .dpdocs-baseline:before {
+    content:"{";
+    font-size: 28px;
+    color: #14a2c6;
+    position: relative;
+    top: 4px;
+    margin-right: 10px;
+}
+.dpdocs-header .dpdocs-baseline:after {
+    content:"}";
+    font-size: 28px;
+    color: #14a2c6;
+    position: relative;
+    top: 4px;
+    margin-left: 10px;
+}
+.dpdocs-header .dpdocs-baseline {
+    font-family:'Trykker', serif;
+    margin-left: 20px;
+    font-size: 18px;
+    position: relative;
+    left: 30px;
+    color: #9b908b;
+}
 

@@ -15,8 +15,7 @@ define([
 		"deepjs/lib/stores/object",
 		"deepjs/lib/schema",
 		"deep-swig/index",
-		"deep-widgets/lib/deep-try",
-		"deepjs/lib/selector"
+		"deep-widgets/lib/deep-try"
 	],
 	function(require, deep, map) {
 		// ___________ base protocols

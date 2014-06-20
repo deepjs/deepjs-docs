@@ -28,7 +28,7 @@
         <!-- ___________________________________________________________________________INTRO ___ -->
 <h3 id="intro">Intro</h3>
 
-<p>deepjs queries tools work hand in hand with particular properties descriptors that contain all informations on queried/matched properties, and allow to manipulate associated json-schemas, paths or ancestors of those properties.</p>
+<p>All <strong>deepjs queries tools</strong> produce and work hand in hand with particular properties descriptors that contain all informations on queried/matched properties, that allow to manipulate associated json-schemas, paths or ancestors of those properties.</p>
 
         <!-- ______________________________________________________________________ CONTENT ________ -->
 				<div class="section-separator-end"></div>
@@ -125,8 +125,8 @@ deep.log(deep.nodes.schemas(r));
         <!-- ______________________________________________________________ TRANSFORM ________________ -->
 				<div class="section-separator-small"></div>
 <h4 id="transform">deep.nodes.transform(nodes)</h4>
-<p>Transform a node(s) value. So replace original value by the one returned by provided callback.</p>
-<p>Could work on a signle descriptors or on a array of descriptors.</p>
+<p>Transform node(s) value. So replace original value by the one returned by provided callback.</p>
+<p>Could work on a single descriptor or on a array of descriptors.</p>
 <p>Return either a promise (that will return transformed value(s)) or directly the transformed value(s) if there is nothing to wait.</p>
 <p>Straight query (so single node) : </p>
 <div class="dp-example">
@@ -167,7 +167,7 @@ deep.nodes.deepLoad(r).log();
 <div class="dp-example">
 <pre dp-try class="dp-box code">
 var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
-deep.nodes.print(r);
+deep.log(deep.nodes.print(r));
 </pre>
 </div>
  <!-- ________________________________________________________________________ root ______ -->

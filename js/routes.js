@@ -33,9 +33,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					route:"/queries/$", 
 					how:"html::/pages/queries/overview.html"
 				},
-				query:{ how:"html::/pages/queries/deep-query.html" },
+				query:{ separated:true, how:"html::/pages/queries/deep-query.html" },
 				rql:{ how:"html::/pages/queries/rql.html" },
-				traversal:{ how:"html::/pages/queries/traversal.html" },
+				traversal:{ separated:true, how:"html::/pages/queries/traversal.html" },
 				selectors:{ how:"html::/pages/queries/selectors.html" },
 				descriptors:{ separated:true, how:"html::/pages/queries/nodes.html" }
 			}
@@ -181,13 +181,14 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				value.route = node.path.replace("/subs","");
 			if(typeof value.where === 'undefined')		// default where === htmlof #main
 				value.where = "dom.htmlOf::#main";
-			
 			deep.utils.up({ 
 				done:deep.compose.after(function(){
 					// console.log("content done");
+					
 					var $ = deep.context.$;
 					var dom = deep.context.dom;
-					dom.content = $("#content"); 
+					dom.content = $("#content");
+					$(dom.content).append('<div style="height:'+(dom.contentHeight-200)+'px;">&nbsp;</div>')
 					$(dom.main).scrollTop(0);
 				}) 
 			}, value);

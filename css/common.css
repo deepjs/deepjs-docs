@@ -111,12 +111,36 @@ h3 {
 }
 
 h3:before {
-	content:">";
-    color: #14a2c6;
-    font-size: 14px;
+	content:"{";
+    color: #767470;
+    font-size: 40px;
     margin-right: 15px;
     position: relative;
-    top: -3px;
+    top: 7px;
+}
+h3:after {
+	content:"}";
+    color: #767470;
+    font-size: 40px;
+    margin-left: 15px;
+    position: relative;
+    top: 7px;
+}
+h3.active:before {
+	content:"{";
+    color: #14a2c6;
+    font-size: 40px;
+    margin-right: 15px;
+    position: relative;
+    top: 7px;
+}
+h3.active:after {
+	content:"}";
+    color: #14a2c6;
+    font-size: 40px;
+    margin-left: 15px;
+    position: relative;
+    top: 7px;
 }
 .deepjs-version {
 	font-size: 12px;

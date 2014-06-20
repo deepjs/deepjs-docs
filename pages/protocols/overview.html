@@ -30,11 +30,13 @@
 			<div class="content" >
 <!-- ______________________________________________________________________________________________ -->
 			<h3 id="intro">Service Locator aka "protocols"</h3>
-			<p>A protocol is just simple, short, abstract, string reference that refer to a real (but abstract) provider (that provides any kind of responses or actions) placed in particular namespace (aka deep.protocols).</p>
+			<p>A protocol is just simple, short, abstract, string reference that refer to a real (but not known in details) provider (that provides any kind of responses or actions) placed in particular namespace (aka deep.protocols).</p>
 			<p>You use it to hide/abstract real providers/services from your code.</p>
 			<p>For convenience, simplicity, and json compliance, 'protocol' itself is placed, inline, in front of ressources (string) path (or parameters or wathever). e.g. : "json::/my/json/path.json", "dom.htmlOf::#myDomID"</p>
 			<p>deepjs will retrieve those providers/services when needed, and acts therefor as an "abstract service locator". (google <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">service locator</a>) </p>
-			<p>It allow you to have <a href="#deep-protocol">fully "environnement dependent"</a> providers/services, and so allow you to go much further than with simple, classical service locator pattern.</p>
+			<p>It allow you to have <a href="#deep-protocol">fully "environnement dependent"</a> providers/services, and so allow you to go much further than with simple, classical Service Locator Pattern.</p>
+			<p>Firstly, by  managing <a href="/ocm">OCManager</a> and secondly by playing with <a href="/context">deep.context</a> for you.</p>
+			<p>You'll place there your Restful services, your ressources providers (Json, html,...) or more subtil and helpful providers that you'll learn to use.</p>
 <!-- ______________________________________________________________________________________________ -->
                 <div class="section-separator-end"></div>
 			<h3 id="simple">Simple example</h3>
@@ -50,7 +52,7 @@ deep.protocols.myProtoc = {
 deep.get("myProtoc::love").log();
 </pre>
 						</div>
-						<p>As you could see, deep.protocols (formally a singleton registry) is the namespace where you store your provider. You could use deep.get("myProviderName::my_request") to call it.</p>
+						<p>As you could see, deep.protocols (formally a singleton registry) is the main namespace where you store your provider. You could use deep.get("myProviderName::my_request") to call it.</p>
 						<p>By default, all that your provider needs to implement is the "get" method (see below for other methods).</p>
 
 <!-- ______________________________________________________________________________________________ -->
