@@ -1,58 +1,55 @@
 <div>
 	<div id="content">
 		<div class="content">
-
-<div class="dpdocs-header">
   <h2>Chained time management</h2>
+
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+<div class="dpdocs-header">
   <div class="dpdocs-baseline">At the beginning was the Promise...</div>
 </div>
-
-			
-			<p><strong>deepjs</strong> use and abuse of Chaning Pattern. Before all for time management - as all deepjs chained and asynchrone management is based on <a href="/chains/promise">Promises</a> - but also for syntax ergonomy.</p>
-
-			<h3 id="chains">and then the Chains appear.</h3>
-			<p>deepjs comes with a set of particular chains API dedicated to specific tasks.</p>
-              <ul>
-              	<li><a href="/chains/deep">deep</a> : collects all the deepjs specific API (layers &amp; queries).</li>
-              	<li><a href="/chains/rest">restful</a> : act as mediator for restful stores.</li>
-              	<li><a href="/chains/others#fs">fs</a> : manage async fs calls (nodejs).</li>
-              	<li><a href="/chains/others#sh">sh</a> : manage shell sessions and commands.</li>
-              	<li><a href="/chains/others#ssh">ssh</a> : manage SSH sessions and commands.</li>
-              	<li><a href="/chains/others">...</a></li>
-              </ul>
-             <p>Each specific chain is based on Promise and so could be seen as a "super-promise" with an extended API.</p>
-             <p>But remember that they are all based on same mecanism and behaviours.</p>
-		
-			<h3 id="identities">Identities</h3>
-
-			<p>When you manipulate such chain (including Promise), you could always change the chain's identity (so its API) by calling identities method. Each chain come with it's own identity method.</p>
-
-<pre class="dp-box code">
-deep.fs("/my/root")				// we start a "file system" chain (nodejs) 
-.from("myjsonfile.json")		// read a json file
-.done(function(success){		// manipulate loaded json
-	succes.myProp = "hello world";
-	//...
-})
-.rest("myService")		// we take the "restful chain" API
-.post()					// post current success (so maniplated loaded json) to myService
-.fail(function(error){
-	// handle any error produced somewhere in the chain
-});
+			<p><strong>deepjs</strong> uses and abuses of Chaining Pattern. Before all for time management, as all deepjs chained and asynchrone management is based on <a href="/chains/promise">Promises</a> : </p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when(/*...*/)
+.done(function(success){ /*...*/ })
+.fail(function(error){ /*...*/ })
+.log();
 </pre>
+</div>
 
+				</div>
+				<div class="col-sm-12 col-md-6">
+<div class="dpdocs-header">
+  <div class="dpdocs-baseline">...and then Chains grew.</div>
+</div>
+<p>But deepjs uses chained syntax also for ergonomy and readability : </p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep({ a:"hello" })
+.up({ b:"world" })
+.bottom({ c:function(){ return this.a + " " + this.b; } })
+.run("c")
+.log();
+</pre>
+</div>
+				</div>
 
+			</div>
 
-
-
-			states, context
-
-	     	<p>Mediator	 Defines simplified communication between classes to prevent a group of classes from referring explicitly to each other.</p>	
-	
-	       	<p>Memento	 Capture an object's internal state to be able to restore it later.</p>
-
-	       	<p>State	 Alter an object's behavior when its state changes</p>
-
+                <div class="section-separator-small"></div>
+			<p>As deepjs API and scope is really large, and could be used to implement lot of things, we have split APIs in differents chains dedicated to specific tasks : </p>
+<dl class="dl-horizontal">
+  				<dt><a href="/chains/promise">promise chain</a> </dt><dd>Base API for all chains. Base of time management.</dd>
+              	<dt><a href="/chains/deep">deepjs chain</a></dt><dd>Collects all the deepjs specific API (up/bottom, queries, run, deepLoad,...).</dd>
+              	<dt><a href="/chains/restful">restful chain</a></dt><dd>Acts as mediator for restful stores.</dt>
+              	<dt><a href="/chains/others#fs">fs chain</a></dt><dd>Manages async file system calls (nodejs).</dt>
+              	<dt><a href="/chains/others#sh">shell chain</a></dt><dd>Manages shell sessions and async commands.</dt>
+              	<dt><a href="/chains/others#ssh">ssh chain</a></dt><dd>Manages SSH sessions and async commands.</dt>
+              	<dt><a href="/chains/others">...</a></dt><dd>...</dt>
+</dl>
+             <p>Each chain is based on <a href="/chains/promise">Promise</a> and so could be seen as a "super-promise" with an extended API.</p>
+		
 
 
 

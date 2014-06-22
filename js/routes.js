@@ -15,7 +15,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
  		},
 		layers:{
 			subs:{
-				"overview":{
+				overview:{
 					route:"/layers/$", 
 					how:"html::/pages/layers/overview.html"
 				},
@@ -29,7 +29,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 		},
 		queries:{
 			subs:{
-				"overview":{
+				overview:{
 					route:"/queries/$", 
 					how:"html::/pages/queries/overview.html"
 				},
@@ -42,20 +42,21 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 		},
 		chains:{
 			subs:{
-				"overview":{
+				overview:{
 					route:"/chains/$", 
 					how:"html::/pages/chains/overview.html"
 				},
-				promise:{ how:"html::/pages/chains/promises.html" },
-				deep:{ how:"html::/pages/chains/deep.html" },
-				rest:{ how:"html::/pages/chains/rest.html" },
-				patterns:{ how:"html::/pages/chains/subtilities.html" },
+				fundamentals:{ how:"html::/pages/chains/base.html" },
+				promise:{ label:"promise API", how:"html::/pages/chains/promises.html" },
+				deferred:{ how:"html::/pages/chains/deferred.html" },
+				deep:{ separated:true, label:"deep chain", how:"html::/pages/chains/deep.html" },
+				patterns:{ separated:true, label:"usage patterns", how:"html::/pages/chains/subtilities.html" },
 				others:{ separated:true, label:"other chains", how:"html::/pages/chains/other-chains.html" }
 			}
 		},
 		context:{
 			subs:{
-				"overview":{
+				overview:{
 					route:"/context/$", 
 					how:"html::/pages/context/overview.html"
 				},
@@ -65,10 +66,11 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 		},
 		protocols:{
 			subs:{
-				"overview":{
+				overview:{
 					route:"/protocols/$", 
 					how:"html::/pages/protocols/overview.html"
 				},
+				base:{ how:"html::/pages/protocols/base.html" },
 				natives:{ how:"html::/pages/protocols/natives.html" },
 				templates:{ 
 					separated:true,
@@ -81,7 +83,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 		sheets:{ how:"html::/pages/sheets/sheets.html" },
 		ocm:{
 			subs:{
-				"concepts":{
+				concepts:{
 					route:"/ocm/$", 
  					how:"html::/pages/ocm/introduction.html"
 				},
@@ -116,7 +118,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 		restful:{
 			separated:true,
 			subs:{
-				"overview":{
+				overview:{
 					route:"/restful/$", 
 					how:"<div>restful overview</div>"
 				},
@@ -126,25 +128,26 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				constraints:{ how:"html::/pages/restful/constraints.html" },
 				relations:{ how:"html::/pages/restful/relations.html" },
 				ocm:{ how:"html::/pages/restful/ocm.html" },
+				chain:{ label:"restful chain", how:"html::/pages/restful/chain.html" },
 				wrappers:{ separated:true, how:"html::/pages/restful/wrappers.html" }
 			}
 		},
 		views:{
 			separated:true,
 			subs:{
-				"overview":{
+				overview:{
 					route:"/views/$", 
 					how:"<div>views basics</div>"
 				},
 				refresh:{ how:"html::/pages/views/refresh.html" },
-				"deep-jquery":{ how:"html::/pages/views/deep-jquery.html" },
+				"dom-protocol":{ label:"dom.xxx", how:"html::/pages/views/dom-protocol.html" },
 				directives:{ how:"html::/pages/views/directives.html" },
-				concurrency:{ how:"html::/pages/views/directives.html" }
+				concurrency:{ how:"html::/pages/views/concurrency.html" }
 			}
 		},
 		routes:{
 			subs:{
-				"overview":{
+				overview:{
 					route:"/routes/$", 
 					how:"<div>routes basics</div>"
 				},
@@ -156,7 +159,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 		more:{
 			separated:true,
 			subs:{
-				"overview":{
+				overview:{
 					route:"/more/$", 
 					how:'<div>you could install one of the 5 environnements or try online one of the 2 other sandboxes (autobahn and browser)</div>'
 				},
@@ -181,18 +184,18 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				value.route = node.path.replace("/subs","");
 			if(typeof value.where === 'undefined')		// default where === htmlof #main
 				value.where = "dom.htmlOf::#main";
-			deep.utils.up({ 
+			return deep(value)
+			.bottom(deep.View())
+			.up({ 
 				done:deep.compose.after(function(){
 					// console.log("content done");
-					
-					var $ = deep.context.$;
-					var dom = deep.context.dom;
+					var $ = deep.context.$, dom = deep.context.dom;
 					dom.content = $("#content");
-					$(dom.content).append('<div style="height:'+(dom.contentHeight-150)+'px;">&nbsp;</div>')
+					if($(dom.content).outerHeight(true)+30 > dom.contentHeight)
+						$(dom.content).append('<div style="height:'+(dom.contentHeight-150)+'px;">&nbsp;</div>')
 					$(dom.main).scrollTop(0);
 				}) 
-			}, value);
-			return deep.utils.bottom(deep.View(),value);
+			});
 		}
 	}, map);
 

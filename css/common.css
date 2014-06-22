@@ -234,8 +234,11 @@ h3.active:after {
 	font-weight: bold;
 }
 .dp-example {
-	margin-bottom:30px;
+	margin-bottom:15px;
 	padding: 0px;
+	padding-left:5px;
+	/*border-left: 1px dashed #a7a29c;*/
+	border-left: 5px solid #24abca;
 }
 .dp-box {
 	overflow: scroll;

@@ -156,7 +156,7 @@ deep.log(deep.nodes.val(r));
 <p>See <a href="/utils/deepLoad">deepLoad</a> for more infos.</p>
 <div class="dp-example">
 <pre dp-try class="dp-box code">
-var r = deep.query({ a:true, b:"hello" }, "./*", { fullOutput:true });
+var r = deep.query({ a:"eval::1+3", b:{ c:"dummy::world" } }, "./*", { fullOutput:true });
 deep.nodes.deepLoad(r).log();
 </pre>
 </div>
