@@ -4,23 +4,34 @@
 		<div class="submenu-block" dp-control="js::/js/sub-nav.js">
 			<ul>
 				<li><a href="#intro">intro</a></li>
-                <li><a href="#three-famillies">three famillies</a></li>
+                <li><a href="#explanation">explanation</a></li>
+                <li><a href="#deferred">deep.Deferred</a></li>
                 <li><a href="#when">deep.when()</a></li>
                 <li><a href="#all">deep.all()</a></li>
-                <li><a href="#return-rules">the "return" rules</a></li>
+                <li><a href="#three-famillies">three famillies</a></li>
+                <li><a href="#return-rules">the "return" rules</a>
+                <ul>
+                	<li><a href="#undefined-rule">nothing</a></li>
+                	<li><a href="#error-rule">error</a></li>
+                	<li><a href="#promise-rule">promise</a></li>
+                	<li><a href="#deep-undefined-rule">force undefined</a></li>
+                	<li><a href="#any-rule">anything else</a></li>
+                </ul>
+                </li>
 			</ul>
 		</div>
 	</div>
 	<div id="content">
 		<div class="content">
-<h3 id="intro">Introduction</h3>
+<h3 id="intro">Why Promises</h3>
 <blockquote >
 <p><em>"Servers can easily use vastly more asynchronous code-paths than a typical client-side application. Between database interactions, file I/O, HTTP requests, child processes [...], and more, server-side JavaScript can quickly become an overwhelming web of callbacks if not approached properly. Promises are a powerful tool in dealing with the complexity of composing various asynchronous actions and managing them in a coherent and encapsulated way, with reasonable flow and error handling. Most client-side modules only begin to venture into the full experience of the complex combinations of serial and parallel actions that can be commonplace on a NodeJS server, and can be smoothly handled by promises.[...]"</em></p>
 <footer>Kris Zyp, from article <cite title="Building on Persvr"><a href="http://www.sitepen.com/blog/2014/05/29/building-on-persevere/">"Building on Persvr."</a></cite></footer>
 </blockquote>
+
                 <div class="section-separator-end"></div>
         	<h3 id="explanation">Explanation by examples.</h3>
-<p>As <strong>Promise</strong> could be challenging to understand without seeing it in action : let's do this directly.</p>
+<p>As <strong>Promises</strong> could be challenging to understand without seeing it in action : let's do this directly.</p>
 
 <div class="row">
 	<div class="col-sm-12 col-md-6">
@@ -99,7 +110,7 @@ promise._start({ error:new Error("oups! error!") });
 </div>
 <p>There, only the "fail" has been fired, because the value passed through callbacks was an error.</p>
 <p>That's it... You've almost all the painting. A promise is just a queue, where you store callbacks, called linearly and selectively when a success or an error is injected.</p>
-<p>Now, you need to know... that you will never, never, <u>never create a promise like above or use directly ._start(...)</u>. Never !</p>
+<p> <span class="label label-warning">Warning</span> Now, you need to know... that you will never, never, <u>never create a promise like above or use directly ._start(...)</u>. Never !</p>
 <p>If you do so, either you're working on core tools, or you missed something. Forget it immediatly. It was just to show you the class itself (you'll never see it again...;)) and the delayed execution.</p>
                 <div class="section-separator-small"></div>
 <h3 id="deferred">deep.Deferred</h3>
@@ -216,7 +227,7 @@ deep.all(prom1, prom2, "third")
                 <div class="section-separator-small"></div>
         	<h3 id="three-famillies">3 famillies and big APIs</h3>
 
-<p>Fondamentaly, there is three kinds of callback famillies. You already know the two first ones : "done" and "fail". Stills a third one : "always".</p>
+<p>Fondamentaly, there is three callback famillies. You already know the two first ones : "done" and "fail". Stills a third one : "always".</p>
 <dl class="dl-horizontal">
 	<dt><a href="/chains/promise#done">done</a></dt><dd>Runs only if current value(s) holded by the promise is not an Error.</dd>
 	<dt><a href="/chains/promise#fail">fail</a></dt><dd>Runs only if current value(s) holded by the promise is an Error.</dd>
@@ -270,68 +281,140 @@ deep.when(new Error("bye bye!"))
 	<dt><a href="/chains/promise#always">.elog()</a></dt><dd>Fail familly : will only log current error (if any).</dd>
 </dl>
 <p>Let's take previous example and rewrite it with those new methods :</p>
-			<div class="row">
-				<div class="col-sm-12 col-md-6">
+			<!-- <div class="row">
+				<div class="col-sm-12 col-md-6"> -->
 <div class="dp-example">
 <pre dp-try class="dp-box code">
-deep.when("hello promise")
-.log("always : ")
-.slog("done : ")
-.elog("fail : ");
+deep.when("hello promise").log("always : ").slog("done : ").elog("fail : ");
 </pre>
 </div>
-   
+   <!-- 
 				</div>
-				<div class="col-sm-12 col-md-6">
+				<div class="col-sm-12 col-md-6"> -->
 <div class="dp-example">
 <pre dp-try class="dp-box code">
-deep.when(new Error("bye bye!"))
-.log("always : ")
-.slog("done : ")
-.elog("fail : ");
+deep.when(new Error("bye bye!")).log("always : ").slog("done : ").elog("fail : ");
 </pre>
 </div>
-   
+   <!-- 
 				</div>
-			</div>
-
+			</div> -->
+<p>So when you'll use methods from any deepjs chain, you should always know its familly. To have an idea, lots are "done", few are "always", and really few are "fail".</p>
 
                 <div class="section-separator-small"></div>
-<h3 id="return-rules">The "return" rules</h3>
+<h3 id="return-rules">The "callbacks return" rules</h3>
 
-<p>if returned value is :</p>
+<p>When you handle a success or an error in a callback (from any of the three famillies), the value returned by your callback is analysed and, depending on its nature, it will be seen as success or error for the next handlers.</p>
+<p>It means, by example that you could handle an error in a "fail", return something else that will be seen as success, and then continue normally.</p>
 
-<ul>
-<li>undefined : take previous success or error (so it does not modify current promise state)</li>
-<li>an error : inject error as failure in chain (so change state to 'error')</li>
-<li>a promise : wait promise resolution to either inject its success or its error in current chain.</li>
-<li>a deep.Undefined : it will force 'undefined' injection in chain.</li>
-<li>any other type : inject it as success in chain (so if the promise was in 'error' state : it's now in 'success' state)</li>
-</ul>
-<p>if an error is thrown : from within any handle : it depends if chain catch errors (by default, it catch them).
-</p>
-<p><span class="label label-info">Remarque</span> that's true for both done and fail families. </p>
-<p>That implied that you could always catch and handles errors produced within any callbacks with a .fail(callback) placed after in chain (that will be fired as promise state is error), and then return (in the fail callback) something that's not an Error, and so reset current promise state to success.</p>
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when(new Error("oups!"))
+.fail(function(error){
+	return true;		// we return something else than the error
+})
+.slog();	// success log (a 'done')
+</pre>
+</div>
+<p>In other words, you've recovered your error.</p>
 
-            <div class="dp-example">
-                <pre dp-try class="dp-box code">
-deep.when(new Error("hello error"))
-.done(function(success){
-    // this callback will simply be ignored, as promise state is 'error'.
-    // ...
+
+<p>So, the "callbacks return rules" just say how values are seen depending on there nature. 
+
+                <div class="section-separator-small"></div>
+
+<h4 id="undefined-rule">Nothing</h4>
+<p>When your callbacks returns nothing, the current "state" of the promise (i.e. its succes or its error) isn't modified.</p>
+
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when("hello")
+.done(function(s){
+	// doing nothing
 })
 .fail(function(e){
-    // this one will be fired as promise state is 'error'
-    // but as it return nothing (so undefined), it does not modifiy promise state.
-    deep.log("error : ", e.toString());
+	// doing nothing
 })
-.fail(function(e){    // also fired as promise state stills 'error'.
-    return "error handled : continue chain";
+.log();
+</pre>
+</div>
+                <div class="section-separator-small"></div>
+
+<h4 id="error-rule">An error</h4>
+<p>When your callbacks returns an error, it become the error holded by the promise.</p>
+<p><span class="label label-info">Remarque</span> it's the same thing when you throw an error.</p>
+
+
+<div class="row">
+	<div class="col-sm-12 col-md-6">
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when("hello")
+.done(function(s){
+	return new Error("oups!");
 })
-.done(function(success){    // this one will be fired, as state has been reseted to 'success'
-    deep.log("success : ", success);
-});
-</pre></div>
+.log();
+</pre>
+</div>
+
+	</div>
+	<div class="col-sm-12 col-md-6">
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when("hello")
+.done(function(s){
+	throw new Error("oups!");
+})
+.log();
+</pre>
+</div>	
+	</div>
+</div>
+                <div class="section-separator-small"></div>
+<h4 id="promise-rule">A Promise</h4>
+<p>When your callbacks returns a promise, the main promise will wait the resolution of the returned one, and then forward its success or error.</p>
+
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when("hello")
+.done(function(s){
+	return deep.when("world").delay(1000);
+})
+.log();
+</pre>
+</div>
+                <div class="section-separator-small"></div>
+
+<h4 id="deep-undefined-rule">A deep.Undefined</h4>
+<p>When you want to inject <code>undefined</code> as success, as by default undefined will be seen as nothing (see above), the way to force it is to return <code>deep.Undefined</code>.</p>
+
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when("hello")
+.done(function(s){
+	return deep.Undefined;
+})
+.log();
+</pre>
+</div>
+
+                <div class="section-separator-small"></div>
+
+<h4 id="any-rule">Anything else</h4>
+
+<p>any other type : inject it as success in chain (so if the promise was in 'error' state : it's now in 'success' state)</p>
+<p>When your callback returns anything else (any other type than those explained here), this value will be seen as "success".</p>
+
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when("hello")
+.done(function(s){
+	return "world";
+})
+.log();
+</pre>
+</div>
+
 
 		</div>
 	</div>

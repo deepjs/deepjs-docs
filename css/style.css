@@ -1,6 +1,7 @@
 /* @author Gilles Coomans <gilles.coomans@gmail.com> */
  body {
-    background-color: #414647;
+    /*background-color: #1F2223;*/
+    background-color: #393532;
     overflow: hidden;
     padding: 5px;
     margin:0px;
@@ -16,12 +17,36 @@
     background-image: linear-gradient(top bottom, #4b4641, #3f3b36);*/
  }
 
+#fullwrapper {
+    /*position: absolute;*/
+    /*max-height: 768px;*/
+    max-width: 1014px;
+    margin:auto;
+   /* -moz-border-radius: 10px;
+    border-radius: 10px;*/
+    background-color: #393532;
+    /*margin-top:10px;*/
+    height: 100%;
+    padding-top: 5px;
+    /*border: 1px dotted #35312E;*/
+    margin-bottom: 1px;
+    /*-webkit-box-shadow: 0 0 6px #1c1c1c;
+    -moz-box-shadow: 0 0 6px #1c1c1c;
+    box-shadow: 0 0 6px #1c1c1c;*/
+}
+
+::-moz-selection { color: #fff;  background: #3e8192; }
+::selection      { color: #fff;  background: #3e8192; } 
+
+h3 {
+    margin-top: 10px;
+}
+
  .hidden {
     visibility: hidden;
  }
  #header {
     padding:0px;
-    background-color: #3f3b36;
     text-align: center;
     font-family:'Trykker', serif;
     height:15px;
@@ -190,10 +215,12 @@
     font-family:'Trykker', serif;
     font-size: 12px;
     width: 200px;
-    margin-left:5px;
+    /*margin-left:5px;*/
     -webkit-font-smoothing: subpixel-antialiased;
     position: relative;
     float:left;
+    margin-right:30px;
+
 }
 .submenu-block {
     margin-bottom:20px;
@@ -329,11 +356,11 @@ h4:before {
     border-top: 1px solid #555;
     background-color: #45413D;
     
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
-    background-image: -webkit-linear-gradient(top, #4b4641, #3f3b36);
-    background-image: -moz-linear-gradient(top, #4b4641, #3f3b36);
-    background-image: -o-linear-gradient(top, #4b4641, #3f3b36);
-    background-image: linear-gradient(top bottom, #4b4641, #3f3b36);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#393532));
+    background-image: -webkit-linear-gradient(top, #4b4641, #393532);
+    background-image: -moz-linear-gradient(top, #4b4641, #393532);
+    background-image: -o-linear-gradient(top, #4b4641, #393532);
+    background-image: linear-gradient(top bottom, #4b4641, #393532);
     clear: both;
     width: auto;
     height: auto;
@@ -407,6 +434,7 @@ button {
 #content{
     overflow: scroll;
     height: 100%;
+    border-left: 1px  dotted #52534d;
 }
 /* The default background color is #c00 */
  .github-fork-ribbon-wrapper {
@@ -428,23 +456,7 @@ button {
     z-index: 11010;
 }
 
-#fullwrapper {
-    /*position: absolute;*/
-    /*max-height: 768px;*/
-    max-width: 1014px;
-    margin:auto;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    background-color: #3f3b36;
-    /*margin-top:10px;*/
-    height: 100%;
-    padding-top: 5px;
-    border: 1px solid #35312E;
-    margin-bottom: 1px;
-    /*-webkit-box-shadow: 0 0 6px #1c1c1c;
-    -moz-box-shadow: 0 0 6px #1c1c1c;
-    box-shadow: 0 0 6px #1c1c1c;*/
-}
+
 #fullwrapper .github-fork-ribbon-wrapper.left-bottom {
     position: relative;
     top: -150px;

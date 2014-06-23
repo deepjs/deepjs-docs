@@ -47,8 +47,8 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					how:"html::/pages/chains/overview.html"
 				},
 				fundamentals:{ how:"html::/pages/chains/base.html" },
-				promise:{ label:"promise API", how:"html::/pages/chains/promises.html" },
-				deferred:{ how:"html::/pages/chains/deferred.html" },
+				promise:{ label:"promise", how:"html::/pages/chains/promises.html" },
+				identities:{ how:"html::/pages/chains/identities.html" },
 				deep:{ separated:true, label:"deep chain", how:"html::/pages/chains/deep.html" },
 				patterns:{ separated:true, label:"usage patterns", how:"html::/pages/chains/subtilities.html" },
 				others:{ separated:true, label:"other chains", how:"html::/pages/chains/other-chains.html" }
@@ -80,7 +80,16 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				browser:{ how:"html::/pages/protocols/browser.html" }
 			}
 		},
-		sheets:{ how:"html::/pages/sheets/sheets.html" },
+		sheets:{
+			subs:{
+				overview:{
+					route:"/sheets/$", 
+ 					how:"html::/pages/sheets/overview.html" 
+				},
+				object:{ label:"object sheets", how:"html::/pages/sheets/object.html" },
+				dom:{ label:"dom sheets", how:"html::/pages/sheets/dom.html" }
+			}
+		},
 		ocm:{
 			subs:{
 				concepts:{

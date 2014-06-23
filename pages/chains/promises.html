@@ -3,6 +3,7 @@
         <h2>Promises</h2>
         <div class="submenu-block" dp-control="js::/js/sub-nav.js">
             <ul>
+                <li><a href="#intro">intro</a></li>
                 <li><a href="#api">API list</a></li>
                 <li><a href="#base">base</a>
                     <ul>
@@ -61,6 +62,11 @@
         <div class="content">
 
 
+<h3 id="intro">intro</h3>
+<p>You'll fin here the Promise API. If you haven't done yet, you should read - at least in diagonal - the <a href="/chains/fundamentals">"fundamentals"</a> section.</p>
+<p>If you searching about <a href="/chains/fundamentals#deferred">Deferred</a>, or <a href="/chains/fundamentals#when">when( ... )</a> and <a href="/chains/fundamentals#all">all( ... )</a>, there they are.</p>
+
+                <div class="section-separator-end"></div>
 <h3 id="api">API</h3>
 
         <h5>base</h5>
@@ -125,9 +131,42 @@
 <!-- _____________________________________________________________________________________________________________BASE________ -->
                 <div class="section-separator-end"></div>
 <h3 id="base">Base</h3>
+<p>Fundamentals methods of Promises.</p>
+                <div class="section-separator-small"></div>
+<h4 id="done">.done( function(success){} )</h4>
 
 
-<h4 id="done">.done(function(success){})</h4>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+<div class="panel panel-info">
+  <div class="panel-heading">Arguments</div>
+  <div class="panel-body">
+<dl class="dl-horizontal">
+    <dt>callback</dt><dd>The success handler.</dd>
+</dl>
+  </div>
+</div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Return</div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+                </div>
+            </div>
+
+
+<div class="dp-example">
+<pre dp-try class="dp-box code">
+deep.when("hello").done(function(s){ deep.log(s); });
+</pre>
+</div>
+
+
+
+
                 <div class="section-separator-small"></div>
 <h4 id="fail">.fail(function(error){})</h4>
                 <div class="section-separator-small"></div>
