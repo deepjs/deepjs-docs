@@ -105,9 +105,10 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 			return;
 		prevH = h;
 		var $ = deep.context.$, dom = deep.context.dom;
-		var offset = Math.round(h.top - dom.contentOffset - 39);
+		var offset = Math.round(h.top - dom.contentOffset - 0);
 
-		// WARNING : work only if hashes are ont used by deep-link
+
+		// WARNING : work only if hashes are not used by deep-link
 		deep.context.hash = id;
 		window.location.hash = id;
 		$(window).scrollTop(0);
