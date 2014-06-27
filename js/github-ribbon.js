@@ -16,13 +16,13 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 		route:"/$",
 		done:function(){
 			var $ = deep.context.$;
-			$("#ribbon-down").fadeOut("fast");
-			$("#ribbon-up").fadeIn("fast");
+			$("#ribbon-down").fadeOut();
+			$("#ribbon-up").fadeIn();
 		},
 		remove:function(){
 			var $ = deep.context.$;
-			$("#ribbon-down").fadeIn("fast");
-			$("#ribbon-up").fadeOut("fast");
+			$("#ribbon-down").fadeIn();
+			$("#ribbon-up").fadeOut();
 		}
 	});
 	return ribbon;
