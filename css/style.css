@@ -1,94 +1,172 @@
 /* @author Gilles Coomans <gilles.coomans@gmail.com> */
  body {
-    /*background-color: #1F2223;*/
     background-color: #393532;
     overflow: hidden;
     padding: 5px;
     margin:0px;
-    /*background-image:url('/img/wall10.png');
-    background-repeat: repeat;*/
-/*    background-repeat: no-repeat;
-     background-size: 100% 700px;*/
-    /*margin-left: 5px;*/
-/*    background-image: -webkit-gradient(linear, left top, left bottom, from(#4b4641), to(#3f3b36));
-    background-image: -webkit-linear-gradient(top, #4b4641, #3f3b36);
-    background-image: -moz-linear-gradient(top, #2E3233, #414647);
-    background-image: -o-linear-gradient(top, #4b4641, #3f3b36);
-    background-image: linear-gradient(top bottom, #4b4641, #3f3b36);*/
  }
-
-#fullwrapper {
-    /*position: absolute;*/
-    /*max-height: 768px;*/
-    max-width: 1014px;
-    margin:auto;
-   /* -moz-border-radius: 10px;
-    border-radius: 10px;*/
-    background-color: #393532;
-    /*margin-top:10px;*/
-    height: 100%;
-    padding-top: 5px;
-    /*border: 1px dotted #35312E;*/
-    margin-bottom: 1px;
-    /*-webkit-box-shadow: 0 0 6px #1c1c1c;
-    -moz-box-shadow: 0 0 6px #1c1c1c;
-    box-shadow: 0 0 6px #1c1c1c;*/
-}
 
 ::-moz-selection { color: #fff;  background: #3e8192; }
 ::selection      { color: #fff;  background: #3e8192; } 
 
+blockquote {
+    font-size: 13px;
+}
+button {
+    color: #222;
+}
+
+
+/*______________________________________________________________________________ headings _____________*/
+
+h1 {
+    font-family:'Lobster', cursive;
+    margin-top:0px;
+    margin-bottom:50px;
+    font-size: 100px;
+}
+
+h2 {
+    font-family:'Lobster', cursive;
+    margin-bottom:10px;
+    margin-top:20px;
+    color: #eee;
+}
+
 h3 {
     margin-top: 10px;
+    margin-bottom:30px;
 }
 h4 {
-    margin-top:20px;
+    margin-top:10px;
 }
- .hidden {
-    visibility: hidden;
- }
- #header {
+
+
+h3:before {
+    content:"{";
+    color: #767470;
+    font-size: 40px;
+    margin-right: 15px;
+    position: relative;
+    top: 7px;
+}
+h3:after {
+    content:"}";
+    color: #767470;
+    font-size: 40px;
+    margin-left: 15px;
+    position: relative;
+    top: 7px;
+}
+h3.active:before {
+    content:"{";
+    color: #14a2c6;
+    font-size: 40px;
+    margin-right: 15px;
+    position: relative;
+    top: 7px;
+}
+h3.active:after {
+    content:"}";
+    color: #14a2c6;
+    font-size: 40px;
+    margin-left: 15px;
+    position: relative;
+    top: 7px;
+}
+
+
+h4.active:before {
+    content:">>";
+    color: #14a2c6;
+    font-size: 10px;
+    margin-right: 15px;
+    position: relative;
+    top: -3px;
+}
+h4:before {
+    content:">>";
+    color: #767470;
+    font-size: 10px;
+    margin-right: 15px;
+    position: relative;
+    top: -3px;
+}
+
+.content h3, .content h4 {
+    /*padding:15px;*/
+    padding-bottom:15px;
+    margin-bottom: 20px;
+}
+
+h5.bloup {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+/*______________________________________________________________________________ STRUCTURE _____________*/
+
+#fullwrapper {
+    max-width: 1014px;
+    margin:auto;
+    background-color: #393532;
+    height: 100%;
+    padding-top: 5px;
+    margin-bottom: 1px;
+}
+
+
+#header {
     padding:0px;
-    text-align: center;
     font-family:'Trykker', serif;
-    height:15px;
+    /*height:15px;*/
     white-space:nowrap;
 }
-.circle { 
-   width: 120px;
-   height: 120px;
-   -moz-border-radius: 60px; 
-   -webkit-border-radius: 60px; 
-   border-radius: 60px;
-   float:right;
-   position: absolute;
-   top:-30px;
-   background-color: #3f3b36;
-   text-align: center;
-   right: 8px;
-    border: 3px solid #555;
+
+
+#main {
+    color: #ddd;
+    margin-left:20px;
+    padding-right:0px;
+    font-size: 12px;
+    font-family:'Trykker', serif;
+    margin-bottom: 0px;
+    overflow: hidden;
+    height:100px;
+}
+
+#content{
+    overflow: scroll;
+    height: 100%;
+}
+
+.content {
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:7px;
+    margin-bottom:30px;
+    margin-right:10px;
 
 }
-.logo {
-    /*font-family: 'Titillium Web', sans-serif;*/
-    font-size: 40px;
-    position:relative;
-    top:5px;
-    right:15px;
-    margin: auto;
-    padding: auto;
-    padding-top: 0px;
-    line-height:33px;
+.content.full {
+    padding-left:15px;
 }
-#reports-container {
-    display: none;
-    margin-left:60px;
-    margin-right:60px;
-    padding:30px;
+.content ul {
+    list-style: none;
+    padding-left: 20px;
 }
-#reports-container pre {
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+.content li:before {
+    content:"-";
+    color: #14a2c6;
+    font-size: 8px;
+    margin-right: 10px;
 }
+
+.dp-box {
+    background-color: #e4e6dd;
+    border:1px solid #fff;
+}
+
 /*_________________ MENU _________________ */
 #menu {
     margin-bottom:0px;
@@ -258,47 +336,7 @@ h4 {
     font-size: 10px;
     margin-right:5px;
 }
-h2 {
-    font-family:'Lobster', cursive;
-    margin-bottom:10px;
-    margin-top:20px;
-    color: #eee;
-}
 
-h3 {
-
-}
-
-h4 {
-    margin-top:40px;
-}
-.content ul {
-    list-style: none;
-    padding-left: 20px;
-}
-
-.content li:before {
-    content:"-";
-    color: #14a2c6;
-    font-size: 8px;
-    margin-right: 10px;
-}
-h4.active:before {
-    content:">>";
-    color: #14a2c6;
-    font-size: 10px;
-    margin-right: 15px;
-    position: relative;
-    top: -3px;
-}
-h4:before {
-    content:">>";
-    color: #767470;
-    font-size: 10px;
-    margin-right: 15px;
-    position: relative;
-    top: -3px;
-}
 #submenu a {
     color:#eee;
     text-decoration: none;
@@ -325,31 +363,11 @@ h4:before {
     border-radius: 3px;
 }
 
-/*_____________________________________ structure _____________________________*/
- #main {
-    color: #ddd;
-    margin-left:20px;
-    padding-right:0px;
-    font-size: 12px;
-    font-family:'Trykker', serif;
-    margin-bottom: 0px;
-    overflow: hidden;
-    height:100px;
-}
-.content {
-    padding-left:30px;
-    padding-right:15px;
-    padding-top:7px;
-    margin-bottom:30px;
-    margin-right:10px;
+/*______________________________________________________________________________ FOOTER _____________*/
 
-}
-.content.full {
-    padding-left:15px;
-}
 #footer {
-    padding-left:0px;
-    padding-right:0px;
+    padding-left:30px;
+    padding-right:30px;
     padding-top: 0px;
     padding-bottom: 0px;
     margin-left:10px;
@@ -375,69 +393,27 @@ h4:before {
     
 
     min-height: 55px;
+
+
+    font-family:'Lobster', cursive;
+    color:#aaa;
+    display: none;
 }
 #footer .tools-bar {
     display: inline-block;
     margin: auto;
     position: relative;
     top: 20px;
-    margin-right:20px;
+    /*margin-right:20px;*/
 }
-#copyright {
-    display: inline-block;
-    margin-top: 8px;
-    margin-left:105px;
-    color: #7d736c;
-}
-#copyright a {
-    color: #29b7e4;
-    font-weight: bold;
-}
+
 #footer .tools-bar img {
     position: relative;
     top: -3px;
 }
-/*_________________________________________ MISC ________________________*/
- .run-core-units-verbose {
-    color: #21ba03;
-    cursor: pointer;
-    cursor: hand;
-}
-button {
-    color: #222;
-}
-.deepjs-version-label, .beta-warning-label {
-    visibility: visible;
-    background-color: #211f1c;
-    position: relative;
-    font-size: 12px;
 
-    top:-6px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.beta-warning-label {
-    background-color: #b3b70b;
-    font-size: 12px;
-    color: #deedd0;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    text-align: center;
-}
-.baseline {
-    font-size: 14px;
-    font-family:'Trykker', serif;
-    color: #aaa;
-}
-.baseline em {
-    color:#fff;
-}
 
-#content{
-    overflow: scroll;
-    height: 100%;
-    border-left: 1px  dotted #52534d;
-}
+/*______________________________________________________________________________ GITHUB RIBBON _____________*/
 /* The default background color is #c00 */
  .github-fork-ribbon-wrapper {
     z-index: 11010;
@@ -453,32 +429,19 @@ button {
     background-color: #f80;
     z-index: 11010;
 }
+.left .github-fork-ribbon {
+    background-color: #b3b70b;
+    z-index: 11010;
+}
 .left-bottom .github-fork-ribbon {
     background-color: #b3b70b;
     z-index: 11010;
 }
-
-
-#fullwrapper .github-fork-ribbon-wrapper.left-bottom {
-    position: relative;
-    top: -150px;
-    bottom: 0px;
-    left: 0px;
-    float: left;
+#ribbon-up, #ribbon-down {
+    display:none;
 }
 
-.label-info {
-    background-color: #64CCE6;
-}
-
-.label {
-    font-size: 85%;
-}
-
-.dp-box {
-    background-color: #e4e6dd;
-    border:1px solid #fff;
-}
+/*______________________________________________________________________________ SEPARATOR _____________*/
 
 .section-separator-end {
     display: block;
@@ -503,24 +466,7 @@ button {
     margin-bottom: 40px;
 }
 
-.content h3, .content h4 {
-    /*padding:15px;*/
-    padding-bottom:15px;
-    margin-bottom: 20px;
-}
-.content h3.active, .content h4.active {
-    /*background-color: #565350;*/
-    /*-moz-border-radius: 5px;*/
-    /*border-radius: 5px;*/
-    /*border-bottom: 1px dotted #766;*/
-}
-
-
- 
-h5.bloup {
-    margin-top: 60px;
-    margin-bottom: 30px;
-}
+/*______________________________________________________________________________ Doc Page header _____________*/
 
 
 .dpdocs-header {
@@ -557,6 +503,89 @@ h5.bloup {
     color: #9b908b;
 }
 
-blockquote {
-    font-size: 13px;
+
+/*______________________________________________________________________________ dp-version _____________*/
+
+#dp-version {
+    display: none;
+    text-align: center;
+}
+
+.deepjs-version-label, .beta-warning-label {
+    visibility: visible;
+    background-color: #211f1c;
+    position: relative;
+    font-size: 12px;
+
+    top:-6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.beta-warning-label {
+    background-color: #b3b70b;
+    font-size: 12px;
+    color: #deedd0;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/*______________________________________________________________________________ LOGO _____________*/
+
+#dp-logo-box {
+
+    font-family:'Lobster', cursive;
+    color:#fff;
+    text-align: center;
+}
+
+.dp-headline {
+    text-align:center;
+    font-family:'Lobster', cursive;
+    color:#fff;
+    margin-top:40px;
+    margin-bottom:30px;
+}
+
+.logo {
+    /*font-family: 'Titillium Web', sans-serif;*/
+    font-size: 40px;
+    position:relative;
+    top:5px;
+    right:15px;
+    margin: auto;
+    padding: auto;
+    padding-top: 0px;
+    line-height:33px;
+}
+
+
+/*______________________________________________________________________________ TEST REPORTS _____________*/
+
+#reports-container {
+    display: none;
+    margin-left:60px;
+    margin-right:60px;
+    padding:30px;
+}
+#reports-container pre {
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+/*______________________________________________________________________________ UTILS _____________*/
+
+ .hidden {
+    visibility: hidden;
+ }
+
+/*______________________________________________________________________________ BOOTSTRAP _____________*/
+
+
+.label-info {
+    background-color: #64CCE6;
+}
+
+.label {
+    font-size: 85%;
 }

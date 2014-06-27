@@ -16,7 +16,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 			var $ = deep.context.$;
 			$(this.placed()).find(".deepjs-version").text(context.what.version);
 			if(deep.isBrowser)
-				$(this.placed()).find(".hidden").removeClass("hidden").hide().fadeIn();
+				$(this.placed()).slideDown("fast");
 		}
 	});
 });

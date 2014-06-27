@@ -11,7 +11,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
  		home:{
  			navigation:false,
  			route:"/$",
- 			how:"html::/pages/home.html"
+ 			how:'<div/>'
  		},
 		layers:{
 			subs:{

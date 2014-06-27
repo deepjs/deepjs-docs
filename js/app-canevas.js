@@ -31,11 +31,15 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 		},
 		done:function(){
 			var $ = deep.context.$, dom = deep.context.dom;
-			var viewPortHeight = $(window).height();
-			dom.contentOffset =  $(dom.menu).outerHeight(true)+ $(dom.header).outerHeight(true);
-			var outContent = dom.contentHeight = dom.contentOffset + $(dom.footer).outerHeight(true) + 16;
+			var viewPortHeight = $(window).height() -10;
+			dom.contentOffset =  104; //$("#header").outerHeight(true);
+			var footerHeight = 68;// $(dom.footer).outerHeight(true);
+			//var logoHeight = $("#dp-logo-box").outerHeight(true) ;
+			var outContent = dom.contentHeight = dom.contentOffset+ footerHeight;
 			dom.contentHeight = viewPortHeight-outContent;
+			// console.log("done app canevas : ", dom.contentOffset, footerHeight, outContent, dom.contentHeight)
 			$(dom.main).css('height', dom.contentHeight);
+			$("#up-part").css('height', viewPortHeight-footerHeight);
 			$(dom.content).css('height', dom.contentHeight);
 			// console.log("APP TEMPLATE DONE");
 		},

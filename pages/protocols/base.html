@@ -137,8 +137,8 @@ deep.log(provider);
 
 <p>But it does more than just seeking in deep.protocols. It will manage protocols contextualization for you.</p>
 <p>What does it mean ? it means that <u>protocols implementation could be totally different depending on user roles, plateform, production flags, etc.</u></p>
-<p>And deep.protocol(name) will provide you the good one automagically, and will prepare it for you (see <a href="#preparation">below</a>).</p>
-<p>Firstly if providers are OCManager, and secondly through deep.context.protocols...</p>
+<p>And deep.protocol(name) will provide you the good one automagically. Firstly if providers are OCManager, and secondly through deep.context.protocols...</p>
+<p>It will prepare it for you (see <a href="#preparation">below</a>)</p>
 <!-- ______________________________________________________________________________________________ -->
                 <div class="section-separator-small"></div>
 <h4 id="ocm-protocols">OCM and protocols</h4>
@@ -175,7 +175,7 @@ deep.get("myProtoc::John").log();
                 <div class="section-separator-small"></div>
 <h4 id="context-protocols">deep.context and protocols</h4>
 <div class="alert alert-warning"><span class="label label-warning">Warning</span> You should read <a href="/context">context docs</a> before trying to understand this.</div>
-<p>I've said until here, that there is only one namespace where store providers. That's not totally true...</p>
+<p>We've said until here, that there is only one namespace where store providers. That's not totally true...</p>
 <p>When you wan't to have a provider <u>only accessible in a certain (deep.)context</u>, you could use the deep.context.protocols namespace to store it.</p>
 <p>deep.protocol('xxx') will check first if 'xxx' is present in deep.context.protocols, before checking in deep.protocols and preparing provider.</p>
 <div class="dp-example">

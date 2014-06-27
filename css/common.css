@@ -1,6 +1,5 @@
 /* @author Gilles Coomans <gilles.coomans@gmail.com> */
 
-/*@import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather:300);*/
  @import url(http://fonts.googleapis.com/css?family=Lobster|Merriweather+Sans);
  body {
 	background-color :#3f3b36;
@@ -99,49 +98,7 @@ a:focus {
 	color: #14a2c6;
 	text-decoration: none;
 }
-h2 {
-	font-family:'Lobster', cursive;
-	margin-bottom:40px;
-	margin-top:30px;
-	color: #eee;
-}
-h3 {
-	margin-bottom:30px;
-	margin-top:20px;
-}
 
-h3:before {
-	content:"{";
-    color: #767470;
-    font-size: 40px;
-    margin-right: 15px;
-    position: relative;
-    top: 7px;
-}
-h3:after {
-	content:"}";
-    color: #767470;
-    font-size: 40px;
-    margin-left: 15px;
-    position: relative;
-    top: 7px;
-}
-h3.active:before {
-	content:"{";
-    color: #14a2c6;
-    font-size: 40px;
-    margin-right: 15px;
-    position: relative;
-    top: 7px;
-}
-h3.active:after {
-	content:"}";
-    color: #14a2c6;
-    font-size: 40px;
-    margin-left: 15px;
-    position: relative;
-    top: 7px;
-}
 .deepjs-version {
 	font-size: 12px;
 	color: #999;
@@ -278,8 +235,8 @@ h3.active:after {
 	margin-bottom: 70px;
 }
 .tools-bar a {
-	margin-left: 20px;
-	margin-right: 20px;
+	/*margin-left: 20px;
+	margin-right: 20px;*/
 	color: #fff;
 }
 .tools-bar img {
@@ -293,8 +250,8 @@ h3.active:after {
 	color: #14a2c6;
 }
 #footer .tools-bar a {
-	margin-left:15px;
-	margin-right:15px;
+/*	margin-left:15px;
+	margin-right:15px;*/
 }
 #footer .tools-bar {
 	margin-top: 0px;

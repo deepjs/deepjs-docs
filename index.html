@@ -24,55 +24,85 @@
 
 <body dp-control="js::/js/app-canevas.js" dp-scope="browser">
 <div id="fullwrapper">
-	<div id="header" dp-control="js::/js/header.js" >
-		<span class="deepjs-version-label hidden"><strong style="color: #aaa;">deepjs core documentation</strong> : current version : <span class="deepjs-version"></span></span>
-		<span class="beta-warning-label hidden" title="Some bugs may remain and structure/content could be changed continuously.">site in <strong>alpha</strong> version.</span>
-	</div>
-	<div id="menu">
-		<div id="menu1" class="menu">
-			<div class="title">
-				<a href="/"><span class="bullet-title"><i class="glyphicon glyphicon-cog small"></i>
-				</span>
-				<span class="hidden-sm hidden-xs title-label">core docs</span></a>
-			</div>
-			<ul>
-				<!--<li><a href="#">restful&nbsp;stores</a></li>
-					<li><a href="#">deep&nbsp;chain</a></li>-->
-			</ul>
+<div id="up-part">
+	<div id="header">
+		<div id="dp-logo-box">
+			<div class="dp-headline">{ tools for better programming }</div>
+
+
+			<embed dp-svg-trick src="/img/logo/home.svg" type="image/svg+xml" width="218" height="258"/>
+			<h1>deep<small>js</small></h1>
 		</div>
-		<div id="menu2" class="menu">
-			<div class="title">
-				<span class="bullet-title">&gt;&gt;</span>
+		<div id="dp-version" dp-control="js::/js/dp-version.js">
+			<span class="deepjs-version-label"><strong style="color: #aaa;">deepjs core documentation</strong> : current version : <span class="deepjs-version"></span></span>
+			<span class="beta-warning-label" title="Some bugs may remain and structure/content could be changed continuously.">site in <strong>alpha</strong> version.</span>
+		</div>
+		<div id="menu">
+			<div id="menu1" class="menu">
+				<div class="title">
+					<a href="/"><span class="bullet-title"><i class="glyphicon glyphicon-cog small"></i>
+					</span>
+					<span class="hidden-sm hidden-xs title-label">core docs</span></a>
+				</div>
+				<ul>
+					<!--<li><a href="#">restful&nbsp;stores</a></li>
+						<li><a href="#">deep&nbsp;chain</a></li>-->
+				</ul>
 			</div>
-			<ul>
-				<!-- <li><a href="#">restful&nbsp;stores</a></li>
-					<li><a href="#">deep&nbsp;chain</a></li> -->
-			</ul>
+			<div id="menu2" class="menu">
+				<div class="title">
+					<span class="bullet-title">&gt;&gt;</span>
+				</div>
+				<ul>
+					<!-- <li><a href="#">restful&nbsp;stores</a></li>
+						<li><a href="#">deep&nbsp;chain</a></li> -->
+				</ul>
+			</div>
 		</div>
 	</div>
+
 	<div id="main">
 	</div>
+</div>
 	<div id="footer">
 		<div class="row">
-			<div class="col-xs-4"  >
+			<!-- <div class="col-xs-4"  >
 				<div id="copyright">Under creative licence.<br/>
 				Powered by <a href="https://github.com/deepjs/deepjs">deepjs.</a></div>
-			</div>
-			<div class="col-xs-4" style="text-align: center;">
+			</div> -->
+			<div class="col-xs-6">
 				<!-- <div class="circle"> -->
 					<span class="logo">deep<span style="font-size:15px; color:#ccc;">js</span></span>
 				<!-- </div> -->
+					<span>{ tools for better programming }</span>
 			</div>
-			<div class="col-xs-4" style="text-align: right;">
+			<div class="col-xs-6 text-right">
 				<div class="tools-bar">
+
+
+					<div class="row">
+						<div class="col-sm-3 col-md-3">
 					<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record small"></i></a>
+						</div>
+						<div class="col-sm-3  col-md-3">
 					<a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle small"></i></a>
-					<a href="https://github.com/deepjs" title="go to github.com">
+						</div>
+						<div class="col-sm-3  col-md-3">
+						<a href="https://github.com/deepjs" title="go to github.com">
 						<img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png">
 					</a>
-					<a href="https://github.com/deepjs" title="follow us on twitter">
+						</div>
+						<div class="col-sm-3  col-md-3">
+						<a href="https://github.com/deepjs" title="follow us on twitter">
 						<img width="16" height="16" src="./img/Twitter_logo_white.png">
 					</a>
+						</div>
+					</div>
+
+
+
+					
+					
 				</div>
 			</div>
 			
@@ -80,7 +110,12 @@
 	</div>
 
 </div>
-	<div class="github-fork-ribbon-wrapper left-bottom">
+	<div id="ribbon-up" class="github-fork-ribbon-wrapper left">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/deepjs/deepjs-docs">Fork me on github</a>
+		</div>
+	</div>
+	<div id="ribbon-down" class="github-fork-ribbon-wrapper left-bottom">
 		<div class="github-fork-ribbon">
 			<a href="https://github.com/deepjs/deepjs-docs">Fork me on github</a>
 		</div>
