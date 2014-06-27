@@ -10,24 +10,19 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 	var ribbon = routes.ribbon = deep.View({
 		navigation:false,
 		config:{
-			enhance:false
+			enhance:false,
+			scope:"browser"
 		},
 		route:"/$",
 		done:function(){
-			if(deep.isBrowser)
-			{
-				var $ = deep.context.$;
-				$("#ribbon-down").fadeOut("fast");
-				$("#ribbon-up").fadeIn("fast");
-			}
+			var $ = deep.context.$;
+			$("#ribbon-down").fadeOut("fast");
+			$("#ribbon-up").fadeIn("fast");
 		},
 		remove:function(){
-			if(deep.isBrowser)
-			{
-				var $ = deep.context.$;
-				$("#ribbon-down").fadeIn("fast");
-				$("#ribbon-up").fadeOut("fast");
-			}
+			var $ = deep.context.$;
+			$("#ribbon-down").fadeIn("fast");
+			$("#ribbon-up").fadeOut("fast");
 		}
 	});
 	return ribbon;

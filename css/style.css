@@ -393,18 +393,18 @@ h5.bloup {
     
 
     min-height: 55px;
-
+    text-align: right;
 
     font-family:'Lobster', cursive;
-    color:#aaa;
+    color:#eee;
     display: none;
 }
 #footer .tools-bar {
     display: inline-block;
     margin: auto;
     position: relative;
-    top: 20px;
-    /*margin-right:20px;*/
+    top: 5px;
+    margin-left:20px;
 }
 
 #footer .tools-bar img {
@@ -412,7 +412,9 @@ h5.bloup {
     top: -3px;
 }
 
-
+#footer .tools-bar a {
+    margin-left:20px;
+}
 /*______________________________________________________________________________ GITHUB RIBBON _____________*/
 /* The default background color is #c00 */
  .github-fork-ribbon-wrapper {
@@ -509,6 +511,7 @@ h5.bloup {
 #dp-version {
     display: none;
     text-align: center;
+    height:15px;
 }
 
 .deepjs-version-label, .beta-warning-label {
@@ -542,13 +545,13 @@ h5.bloup {
 .dp-headline {
     text-align:center;
     font-family:'Lobster', cursive;
+    font-size: 18px;
     color:#fff;
     margin-top:40px;
     margin-bottom:30px;
 }
 
-.logo {
-    /*font-family: 'Titillium Web', sans-serif;*/
+#footer .logo {
     font-size: 40px;
     position:relative;
     top:5px;
@@ -557,7 +560,9 @@ h5.bloup {
     padding: auto;
     padding-top: 0px;
     line-height:33px;
+    margin-right: 25px;
 }
+
 
 
 /*______________________________________________________________________________ TEST REPORTS _____________*/

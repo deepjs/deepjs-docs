@@ -17,39 +17,28 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 			scope:"browser"
 		},
 		init:function(){
-			// console.log("APP TEMPLATE INIT");
 			var $ = deep.context.$, dom = deep.context.dom;
 			dom.header = $("#header");
 			dom.main = $("#main");
 			dom.footer = $("#footer");
 			dom.contentOffset = $(dom.main).offset().top;
-			if(!deep.context.concurrency)
-			{
-				$(window).resize(this.done);
-				deep.route.on("refreshed", this.done);
-			}
+			$(window).resize(this.done);
+			deep.route.on("refreshed", this.done);
 		},
 		done:function(){
 			var $ = deep.context.$, dom = deep.context.dom;
 			var viewPortHeight = $(window).height() -10;
-			dom.contentOffset =  104; //$("#header").outerHeight(true);
-			var footerHeight = 68;// $(dom.footer).outerHeight(true);
-			//var logoHeight = $("#dp-logo-box").outerHeight(true) ;
+			dom.contentOffset =  104;
+			var footerHeight = 68;
 			var outContent = dom.contentHeight = dom.contentOffset+ footerHeight;
 			dom.contentHeight = viewPortHeight-outContent;
-			// console.log("done app canevas : ", dom.contentOffset, footerHeight, outContent, dom.contentHeight)
-			$(dom.main).css('height', dom.contentHeight);
+			$(dom.main).css('height', dom.contentHeight+5);
 			$("#up-part").css('height', viewPortHeight-footerHeight);
-			$(dom.content).css('height', dom.contentHeight);
-			// console.log("APP TEMPLATE DONE");
+			$(dom.content).css('height', dom.contentHeight+5);
 		},
 		clean:function (argument) {
-			// console.log("APP TEMPLATE CLEAN");
-			if(!deep.context.concurrency)
-			{
-				$(window).unbind("resize", this.done);
-				deep.route.unbind("refreshed", this.done);
-			}
+			$(window).unbind("resize", this.done);
+			deep.route.unbind("refreshed", this.done);
 		}
 	});
 });
