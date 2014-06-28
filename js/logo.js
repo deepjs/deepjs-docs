@@ -15,14 +15,14 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 		route:"/$",
 		done:function(){
 			var $ = deep.context.$, dom = deep.context.dom;
-			$(this.where).slideDown("fast").find(".tools-bar").fadeIn(50);
+			$(this.where).slideDown("fast").find(".tools-bar").slideDown(100);
 			$("#footer").fadeOut("fast");
 			$("#ribbon-down").fadeOut("fast");
 			$("#ribbon-up").fadeIn("fast");
 		},
 		remove:function(){
 			var $ = deep.context.$, dom = deep.context.dom;
-			$(this.where).slideUp("fast").find(".tools-bar").fadeOut(50);
+			$(this.where).slideUp("fast").find(".tools-bar").slideUp(100);
 			$("#footer").fadeIn("fast");
 			$("#ribbon-down").fadeIn("fast");
 			$("#ribbon-up").fadeOut("fast");

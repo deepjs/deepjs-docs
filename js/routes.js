@@ -196,8 +196,15 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			return deep(value)
 			.bottom(deep.View())
 			.up({ 
+				config:{
+					//enhance:false
+				},
+				where:function(rendered){
+					var $ = deep.context.$, dom = deep.context.dom;
+					return $("#main").html(rendered).hide().fadeIn(250).children();
+				},
 				done:deep.compose.after(function(){
-					// console.log("content done");
+					console.log("content done");
 					var $ = deep.context.$, dom = deep.context.dom;
 					dom.content = $("#content");
 					if($(dom.content).outerHeight(true)+30 > dom.contentHeight)

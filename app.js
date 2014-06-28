@@ -30,7 +30,6 @@ define([
 		// create contextualised dom name space
 		var dom = deep.context.dom = {};
 		deep.ui.enhance("html");	// enhance dp-* already present in html
-
 		//_________________________ init route (final)
 		var init = function() {
 			deep.route(map)	// compile html routes map
