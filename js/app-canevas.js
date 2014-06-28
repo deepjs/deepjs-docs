@@ -18,23 +18,26 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 		},
 		init:function(){
 			var $ = deep.context.$, dom = deep.context.dom;
+			dom.fullwrapper = $("#fullwrapper");
 			dom.header = $("#header");
+			dom.uppart = $("#up-part");
+			dom.menu = $("#menu");
 			dom.main = $("#main");
 			dom.footer = $("#footer");
-			dom.contentOffset = $(dom.main).offset().top;
 			$(window).resize(this.done);
 			deep.route.on("refreshed", this.done);
 		},
 		done:function(){
 			var $ = deep.context.$, dom = deep.context.dom;
-			var viewPortHeight = $(window).height() -10;
+			var viewPortHeight = $(window).height();
 			dom.contentOffset =  104;
 			var footerHeight = 68;
 			var outContent = dom.contentHeight = dom.contentOffset+ footerHeight;
 			dom.contentHeight = viewPortHeight-outContent;
-			$(dom.main).css('height', dom.contentHeight+5);
-			$("#up-part").css('height', viewPortHeight-footerHeight);
-			$(dom.content).css('height', dom.contentHeight+5);
+			$(dom.main).css('height', dom.contentHeight);
+			$(dom.fullwrapper).css('height', viewPortHeight);
+			$(dom.uppart).css('height', viewPortHeight-footerHeight);
+			$(dom.content).css('height', dom.contentHeight);
 		},
 		clean:function (argument) {
 			$(window).unbind("resize", this.done);

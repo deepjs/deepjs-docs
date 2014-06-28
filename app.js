@@ -8,7 +8,6 @@ define([
 		"./js/app-canevas.js",
 		"./js/main-nav.js",
 		"./js/logo.js",
-		"./js/github-ribbon.js",
 		"./js/dp-version.js",
 		"deep-jquery/ajax/json",
 		"deep-jquery/ajax/html",

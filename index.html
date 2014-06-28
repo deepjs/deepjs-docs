@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--  @author Gilles Coomans <gilles.coomans@gmail.com> -->
-
+<!--  @author Gilles Coomans <gilles.coomans at gmail> -->
 <head>
 	<title>deepjs docs</title>
 	<meta charset="utf-8">
@@ -10,13 +9,12 @@
 	<meta name="author" content="Gilles Coomans">
 	<!-- <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'> -->
 	<!-- <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'> -->
-	<link href='http://fonts.googleapis.com/css?family=Arvo|Convergence|Trykker' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="bower_components/github-fork-ribbon-css/gh-fork-ribbon.css">
 	<link rel="stylesheet" href="./highlight/styles/github.css">
 	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/common.css">
 	<link rel="stylesheet" type="text/css" href="./css/dp-try.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<link rel="stylesheet" href="bower_components/github-fork-ribbon-css/gh-fork-ribbon.css">
 	<!--[if lt IE 9]>
         <link rel="stylesheet" href="gh-fork-ribbon.ie.css">
     <![endif]-->
@@ -26,11 +24,24 @@
 <div id="fullwrapper">
 <div id="up-part">
 	<div id="header">
+	<div id="ribbon-up" class="github-fork-ribbon-wrapper left">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/deepjs/deepjs-docs">Fork me on github</a>
+		</div>
+	</div>
 		<div id="dp-logo-box">
+		<ul class="tools-bar list-unstyled ">
+				<li><a title="deepjs.org" href="http://deepjs.org"><i class="glyphicon glyphicon-record small"></i></a></li>
+				<li><a href="https://github.com/deepjs" title="github deepjs organisation">
+					<img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png">
+				</a></li>
+				<li><a href="https://github.com/deepjs" title="follow us on twitter">
+					<img width="16" height="16" src="./img/Twitter_logo_white.png">
+				</a></li>
+			</ul>
 			<div class="dp-headline">{ tools for better programming }</div>
-
-
-			<embed dp-svg-trick src="/img/logo/home.svg" type="image/svg+xml" width="218" height="258"/>
+			<img src="/img/logo/home.png" width="188" height="209">
+			<!-- <embed dp-svg-trick src="/img/logo/home.svg" type="image/svg+xml" width="218" height="258"/> -->
 			<h1>deep<small>js</small></h1>
 		</div>
 		<div id="dp-version" dp-control="js::/js/dp-version.js">
@@ -65,30 +76,27 @@
 	</div>
 </div>
 	<div id="footer" >
+		<img src="/img/logo/deepjs128.png" width="32" height="32">
 		<span class="logo">deep<span style="font-size:15px; color:#ccc;">js</span></span>
-		<span>{ tools for better programming }</span>
-		<div class="tools-bar">
-			<a title="getting started." href="#getting-started"><i class="glyphicon glyphicon-record small"></i></a>
-			<a title="tutorials." href="/tutorials/"><i class="glyphicon glyphicon-play-circle small"></i></a>
-				<a href="https://github.com/deepjs" title="go to github.com">
+		<span class="dp-headline">tools for better programming</span>
+		<ul class="tools-bar list-unstyled list-inline pull-right">
+			<li><a title="deepjs.org" href="http://deepjs.org"><i class="glyphicon glyphicon-record small"></i></a></li>
+			<li><a href="https://github.com/deepjs" title="go to github.com">
 				<img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png">
-			</a>
-				<a href="https://github.com/deepjs" title="follow us on twitter">
+			</a></li>
+			<li><a href="https://github.com/deepjs" title="follow us on twitter">
 				<img width="16" height="16" src="./img/Twitter_logo_white.png">
-			</a>
+			</a></li>
+		</ul>
+	</div>
+		<div id="ribbon-down" class="github-fork-ribbon-wrapper left-bottom">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/deepjs/deepjs-docs">Fork me on github</a>
 		</div>
 	</div>
 </div>
-	<div id="ribbon-up" class="github-fork-ribbon-wrapper left">
-		<div class="github-fork-ribbon">
-			<a href="https://github.com/deepjs/deepjs-docs">Fork me on github</a>
-		</div>
-	</div>
-	<div id="ribbon-down" class="github-fork-ribbon-wrapper left-bottom">
-		<div class="github-fork-ribbon">
-			<a href="https://github.com/deepjs/deepjs-docs">Fork me on github</a>
-		</div>
-	</div>
+
+
 <script src="./highlight/highlight.pack.js"></script>
 <script src="./bower_components/jquery/jquery.min.js"></script>
 <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

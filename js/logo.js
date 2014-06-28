@@ -1,7 +1,6 @@
 /**
  * @author Gilles Coomans <gilles.coomans@gmail.com>
- * Header controller :
- * load deepjs package.version and show header smoothly
+ * Logo controller : show/hide it depending on route (logo is shown only on root url)
  */
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
@@ -14,15 +13,19 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 			scope:"browser"
 		},
 		route:"/$",
-		done:function(output){
-			var $ = deep.context.$;
-			$(this.where).slideDown("fast");
+		done:function(){
+			var $ = deep.context.$, dom = deep.context.dom;
+			$(this.where).slideDown("fast").find(".tools-bar").fadeIn(50);
 			$("#footer").fadeOut("fast");
+			$("#ribbon-down").fadeOut("fast");
+			$("#ribbon-up").fadeIn("fast");
 		},
 		remove:function(){
-			var $ = deep.context.$;
-			$(this.where).slideUp("fast");
+			var $ = deep.context.$, dom = deep.context.dom;
+			$(this.where).slideUp("fast").find(".tools-bar").fadeOut(50);
 			$("#footer").fadeIn("fast");
+			$("#ribbon-down").fadeIn("fast");
+			$("#ribbon-up").fadeOut("fast");
 		},
 		where:"#dp-logo-box"
 	});

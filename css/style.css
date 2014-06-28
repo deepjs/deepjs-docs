@@ -1,8 +1,9 @@
 /* @author Gilles Coomans <gilles.coomans@gmail.com> */
  body {
-    background-color: #393532;
+    background-color: #2d2a28;
     overflow: hidden;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin:0px;
  }
 
@@ -21,7 +22,7 @@ button {
 
 h1 {
     font-family:'Lobster', cursive;
-    margin-top:0px;
+    margin-top:20px;
     margin-bottom:50px;
     font-size: 100px;
 }
@@ -113,6 +114,8 @@ h5.bloup {
     height: 100%;
     padding-top: 5px;
     margin-bottom: 1px;
+    border-left:1px dashed #5D5854;
+    border-right:1px dashed #5D5854;
 }
 
 
@@ -145,8 +148,6 @@ h5.bloup {
     padding-right:20px;
     padding-top:7px;
     margin-bottom:30px;
-    margin-right:10px;
-
 }
 .content.full {
     padding-left:15px;
@@ -194,21 +195,24 @@ h5.bloup {
     margin-left:8px;
     position:relative;
     top:-1px;
+    padding-bottom: 5px;
+    padding-left: 0px;
 }
 .menu .title a {
     padding:0px;
+    padding-bottom: 2px;
 }
 .menu .bullet-title {
     position:relative;
     top:2px;
-    left:0px;
+    left:-3px;
     margin-left:8px;
     padding: 0px;
     margin-right: 0px;
 }
 .title-label {
     margin-left:5px;
-    margin-right:4px;
+    margin-right:8px;
 }
 .menu ul {
     padding: 0;
@@ -299,7 +303,7 @@ h5.bloup {
     -webkit-font-smoothing: subpixel-antialiased;
     position: relative;
     float:left;
-    margin-right:30px;
+    margin-right:20px;
 
 }
 .submenu-block {
@@ -366,52 +370,85 @@ h5.bloup {
 /*______________________________________________________________________________ FOOTER _____________*/
 
 #footer {
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:125px;
+    padding-right:20px;
     padding-top: 0px;
     padding-bottom: 0px;
     margin-left:10px;
     margin-right:10px;
-    margin-top: 3px;
+    margin-bottom: 10px;
+
+    clear: both;
+    width: auto;
+    height: auto;
+
+    min-height: 55px;
+
     border-top: 1px solid #555;
     background-color: #45413D;
-    
     background-image: -webkit-gradient(linear, left top, left bottom, from(#47423E), to(#393532));
     background-image: -webkit-linear-gradient(top, #47423E, #393532);
     background-image: -moz-linear-gradient(top, #47423E, #393532);
     background-image: -o-linear-gradient(top, #47423E, #393532);
     background-image: linear-gradient(top bottom, #47423E, #393532);
-    clear: both;
-    width: auto;
-    height: auto;
-    margin-bottom: 10px;
-    text-align: left;
-    
+
     -webkit-box-shadow: 0 -2px 2px #333;
     -moz-box-shadow: 0 -2px 2px #333;
     box-shadow: 0 -2px 2px #333;
     
-
-    min-height: 55px;
-    text-align: right;
-
+    text-align: left;
     font-family:'Lobster', cursive;
     color:#eee;
+
     display: none;
 }
-#footer .tools-bar {
-    display: inline-block;
-    margin: auto;
+
+#footer img {
     position: relative;
-    top: 5px;
-    margin-left:20px;
+    top:-3px;
+}
+/*______________________________________________________________________________ tools-bar _____________*/
+
+
+
+
+.tools-bar {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom:0px;
+}
+.tools-bar a {
+    /*margin-left: 20px;
+    margin-right: 20px;*/
+    color: #fff;
+}
+.tools-bar a:hover {
+    color: #fff;
+}
+.tools-bar a:focus {
+    color: #14a2c6;
 }
 
+#dp-logo-box .tools-bar {
+    display: none;
+    position: absolute;
+    /*left: 20px;*/
+    /*right:20px;*/
+    top:165px;
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+#footer .tools-bar {
+    display: inline;
+    margin-left:20px;
+    position: relative;
+    top: 20px;
+}
 #footer .tools-bar img {
     position: relative;
     top: -3px;
 }
-
 #footer .tools-bar a {
     margin-left:20px;
 }
@@ -440,7 +477,14 @@ h5.bloup {
     z-index: 11010;
 }
 #ribbon-up, #ribbon-down {
-    display:none;
+    display: none;
+}
+.github-fork-ribbon-wrapper.left {
+    left: auto;
+}
+
+.github-fork-ribbon-wrapper.left-bottom {
+    left: auto;
 }
 
 /*______________________________________________________________________________ SEPARATOR _____________*/
@@ -540,30 +584,48 @@ h5.bloup {
     font-family:'Lobster', cursive;
     color:#fff;
     text-align: center;
+    color:#64CCE6;
+}
+
+#dp-logo-box small {
+    color:#eee;
 }
 
 .dp-headline {
     text-align:center;
     font-family:'Lobster', cursive;
-    font-size: 18px;
+    font-size: 20px;
     color:#fff;
     margin-top:40px;
-    margin-bottom:30px;
+    margin-bottom:50px;
+}
+
+#footer .dp-headline {
+    font-size: 14px;
+    position: relative;
+    top:-1px;
+    margin-left: 10px;
 }
 
 #footer .logo {
-    font-size: 40px;
-    position:relative;
-    top:5px;
-    right:15px;
+    font-size: 32px;
     margin: auto;
     padding: auto;
     padding-top: 0px;
-    line-height:33px;
-    margin-right: 25px;
+    margin-right: 15px;
+    margin-left: 15px;
+    font-family:'Lobster', cursive;
+    text-shadow: 0px 0px 8px #2c2925;
+    color:#64CCE6;
+    position: relative;
+    top:2px;
 }
 
 
+#footer .logo a {
+    color: #14a2c6;
+    text-decoration: none;
+}
 
 /*______________________________________________________________________________ TEST REPORTS _____________*/
 

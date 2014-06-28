@@ -179,17 +179,17 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			}
 		}
 	};
-	//____________________ finalise map : transform entry to deep.View and apply default behaviour/api
+	//____________________ finalise map : transform entries to deep.View and apply default behaviour/api
 	// if we done it here : it's just to keep map clear and short.
 	// for this : we simply use a deep-sheet.
-	deep.utils.up({
+	return deep.up({
 		_deep_sheet_:true,
 		// for all entry in map that contain a 'how' property : we apply this transformation
 		"dq.transform::.//?how":function(node){
 			if(node.value._deep_view_)	// already a view. skip.
 				return node.value;
 			var value = node.value;
-			if(typeof value.route === 'undefined')		// default route === view.path without '/subs'
+			if(typeof value.route === 'undefined')		// default route === view path without '/subs'
 				value.route = node.path.replace("/subs","");
 			if(typeof value.where === 'undefined')		// default where === htmlof #main
 				value.where = "dom.htmlOf::#main";
@@ -207,6 +207,4 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			});
 		}
 	}, map);
-
-	return map;
 });
