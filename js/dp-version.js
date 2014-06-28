@@ -13,10 +13,12 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 		},
 		what:"json::/bower_components/deepjs/package.json",
 		how:function(context){
+			// console.log("context dp-version : ", context);
 			var $ = deep.context.$;
-			$(this.placed()).find(".deepjs-version").text(context.what.version);
+			console.log("version ? : ", $(context.placed).find(".deepjs-version"));
+			$(context.placed).find(".deepjs-version").text(context.what.version);
 			if(deep.isBrowser)
-				$(this.placed()).slideDown("fast");
+				$(context.placed).slideDown("fast");
 		}
 	});
 });
