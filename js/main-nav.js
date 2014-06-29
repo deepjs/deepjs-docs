@@ -24,7 +24,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 			$(item).addClass("separated");
 	};
 
-
 	var nav = routes.nav = deep.View({
 		config:{
 			enhance:false

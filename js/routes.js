@@ -117,7 +117,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 						.done(function(report) {
 							console.log("report : ", report);
 							report.reports = null;
-							$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
+							deep.context.$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
 							.slideDown(200);
 						});
 					}
@@ -197,7 +197,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				config:{
 					//enhance:false
 				},
-				// we add 
+				// we add a flash effect (fadeIn on dom insertion)
 				where:function(rendered){
 					var $ = deep.context.$;
 					return $("#main").html(rendered).hide().fadeIn(250).children();
