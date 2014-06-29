@@ -191,16 +191,15 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 			var value = node.value;
 			if(typeof value.route === 'undefined')		// default route === view path without '/subs'
 				value.route = node.path.replace("/subs","");
-			if(typeof value.where === 'undefined')		// default where === htmlof #main
-				value.where = "dom.htmlOf::#main";
 			return deep(value)
 			.bottom(deep.View())
 			.up({ 
 				config:{
 					//enhance:false
 				},
+				// we add 
 				where:function(rendered){
-					var $ = deep.context.$, dom = deep.context.dom;
+					var $ = deep.context.$;
 					return $("#main").html(rendered).hide().fadeIn(250).children();
 				},
 				done:deep.compose.after(function(){

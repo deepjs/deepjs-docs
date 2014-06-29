@@ -111,9 +111,9 @@ h5.bloup {
     max-width: 1014px;
     margin:auto;
     background-color: #393532;
-    height: 100%;
+    height: 2000px;
     padding-top: 5px;
-    margin-bottom: 1px;
+    /*margin-bottom: 1px;*/
     border-left:1px dashed #5D5854;
     border-right:1px dashed #5D5854;
 }
@@ -141,6 +141,7 @@ h5.bloup {
 #content{
     overflow: scroll;
     height: 100%;
+    padding-right: 20px;
 }
 
 .content {
@@ -585,11 +586,12 @@ h5.bloup {
     font-family:'Lobster', cursive;
     color:#fff;
     text-align: center;
-    color:#64CCE6;
+    color:#1FAECE;
 }
 
 #dp-logo-box small {
     color:#eee;
+    font-size: 40px;
 }
 
 .dp-headline {
