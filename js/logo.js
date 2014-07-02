@@ -1,6 +1,7 @@
 /**
  * @author Gilles Coomans <gilles.coomans@gmail.com>
  * Logo controller : show/hide it depending on route (logo is shown only on root url)
+ * Show/hide other ui stuffs.
  */
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);

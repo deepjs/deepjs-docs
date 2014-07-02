@@ -1,7 +1,7 @@
 <div>
     <div id="submenu">
         <h2>Promises</h2>
-        <div class="submenu-block" dp-control="js::/js/sub-nav.js">
+        <div class="submenu-block dp-enhance" dp-control="js::/js/sub-nav.js">
             <ul>
                 <li><a href="#intro">intro</a></li>
                 <li><a href="#api">API list</a></li>
@@ -135,31 +135,18 @@
                 <div class="section-separator-small"></div>
 <h4 id="done">.done( function(success){} )</h4>
 
-
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-<div class="panel panel-info">
-  <div class="panel-heading">Arguments</div>
-  <div class="panel-body">
-<dl class="dl-horizontal">
-    <dt>callback</dt><dd>The success handler.</dd>
-</dl>
-  </div>
+<div class="dp-enhance" dp-api-description >
+    <dl rel="args" class="dl-horizontal">
+        <dt>callback</dt><dd>The success handler.</dd>
+    </dl>
+    <div rel="returns">
+        the current chain handler. 
+    </div>
 </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-<div class="panel panel-default">
-  <div class="panel-heading">Return</div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
-                </div>
-            </div>
 
 
 <div class="dp-example">
-<pre dp-try class="dp-box code">
+<pre class="dp-enhance dp-box code" dp-try>
 deep.when("hello").done(function(s){ deep.log(s); });
 </pre>
 </div>
@@ -187,7 +174,7 @@ if you provide no arguments :
 will log current state. (success or error)
 if you provide a list of arguments (i.e. .log(arg1, "hello", myObject, 12, ...)), it will print them as deep log would do.
             <div class="dp-example">
-                <pre dp-try class="dp-box code">
+                <pre class="dp-enhance dp-box code" dp-try>
 deep.when(true)
 .log("hello", "john", ":");
 </pre></div>
@@ -276,7 +263,7 @@ Not exactly the same thing as deep.when( something ) that return a promise that 
 when you use it in an existant promise chain, it will wait 'something' and take it result as current state before continuing.
 
             <div class="dp-example">
-                <pre dp-try class="dp-box code">
+                <pre class="dp-enhance dp-box code" dp-try>
 deep.when( something )
 .done(function( somethingResult ))
 .when( anotherthing )

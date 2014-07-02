@@ -35,55 +35,34 @@ h2 {
 }
 
 h3 {
-    margin-top: 10px;
-    margin-bottom:30px;
+    margin-top: 20px;
+    margin-bottom:40px;
+    /*text-align: center;*/
 }
 h4 {
-    margin-top:10px;
+    margin-top:30px;
 }
-
 
 h3:before {
-    content:"{";
+    content:"--";
     color: #767470;
-    font-size: 40px;
+    font-size: 24px;
     margin-right: 15px;
-    position: relative;
-    top: 7px;
 }
 h3:after {
-    content:"}";
+    content:"--";
     color: #767470;
-    font-size: 40px;
+    font-size: 24px;
     margin-left: 15px;
-    position: relative;
-    top: 7px;
 }
 h3.active:before {
-    content:"{";
     color: #14a2c6;
-    font-size: 40px;
-    margin-right: 15px;
-    position: relative;
-    top: 7px;
 }
 h3.active:after {
-    content:"}";
     color: #14a2c6;
-    font-size: 40px;
-    margin-left: 15px;
-    position: relative;
-    top: 7px;
 }
-
-
 h4.active:before {
-    content:">>";
     color: #14a2c6;
-    font-size: 10px;
-    margin-right: 15px;
-    position: relative;
-    top: -3px;
 }
 h4:before {
     content:">>";
@@ -96,8 +75,6 @@ h4:before {
 
 .content h3, .content h4 {
     /*padding:15px;*/
-    padding-bottom:15px;
-    margin-bottom: 20px;
 }
 
 h5.bloup {
@@ -418,6 +395,8 @@ h5.bloup {
     text-align: center;
     margin-top: 0px;
     margin-bottom:0px;
+    display: inline;
+    position: relative;
 }
 .tools-bar a {
     /*margin-left: 20px;
@@ -425,29 +404,38 @@ h5.bloup {
     color: #fff;
 }
 .tools-bar a:hover {
-    color: #fff;
+    color: #aaa;
 }
 .tools-bar a:focus {
     color: #14a2c6;
 }
 
-#dp-logo-box .tools-bar {
-    /*display: none;*/
-    position: absolute;
-    /*left: 20px;*/
-    /*right:20px;*/
-    top:165px;
-    line-height: 40px;
-    margin-left: 20px;
+#subheader {
+    padding-right: 20px;
+    padding-left: 20px;
+
+    font-size: 11px;
+    color: #aaa;
+    height:15px;
+}
+
+#subheader .tools-bar {
+    top: -7px;
+
 }
 
 #footer .tools-bar {
-    display: inline;
     margin-left:20px;
-    position: relative;
     top: 20px;
 }
-#footer .tools-bar img {
+#subheader  .tools-bar img {
+    position: relative;
+    top: -3px;
+}
+#subheader  .tools-bar a {
+   margin-right:25px;
+}
+.tools-bar img {
     position: relative;
     top: -3px;
 }
@@ -643,12 +631,35 @@ h5.bloup {
 }
 
 
-/*______________________________________________________________________________ UTILS _____________*/
+/*______________________________________________________________________________ deepjs-web _____________*/
 
- .hidden {
-    visibility: hidden;
- }
+#deepjs-web {
+    margin-right: 20px;
+    position: absolute;
+    text-align: right;
+    top: 5px;
+    width:100%;
+}
+#john {
+    position: relative;
+    right: 5px;
+}
 
+
+
+/*______________________________________________________________________________ dp-api-description  _____________*/
+
+.dp-api-description {
+    border-top: 1px dashed #fff;
+    border-bottom: 1px dashed #fff;
+}
+
+.dp-api-description dt {
+    width:100px;
+}
+.dp-api-description dd {
+    margin-left:120px;
+}
 /*______________________________________________________________________________ BOOTSTRAP _____________*/
 
 

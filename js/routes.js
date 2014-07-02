@@ -51,7 +51,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				identities:{ how:"html::/pages/chains/identities.html" },
 				deep:{ separated:true, label:"deep chain", how:"html::/pages/chains/deep.html" },
 				patterns:{ separated:true, label:"usage patterns", how:"html::/pages/chains/subtilities.html" },
-				others:{ separated:true, label:"other chains", how:"html::/pages/chains/other-chains.html" }
+				others:{ separated:true, label:"other chains", how:"html::/pages/chains/others.html" }
 			}
 		},
 		context:{
@@ -113,11 +113,12 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 				tests:{
 					how:"html::/pages/tests.html",
 					run:function(verbose){
+						var  $ = deep.context.$;
 						deep.Unit.run(null, { verbose: verbose?true:false })
 						.done(function(report) {
 							console.log("report : ", report);
 							report.reports = null;
-							deep.context.$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
+							$("#reports-container").html("<div>Tests result : <pre class='dp-box'>" + JSON.stringify(report, null, ' ') + '</pre></div>')
 							.slideDown(200);
 						});
 					}
@@ -203,7 +204,6 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function (require, deep) {
 					return $("#main").html(rendered).hide().fadeIn(250).children();
 				},
 				done:deep.compose.after(function(){
-					console.log("content done");
 					var $ = deep.context.$, dom = deep.context.dom;
 					dom.content = $("#content");
 					if($(dom.content).outerHeight(true)+30 > dom.contentHeight)

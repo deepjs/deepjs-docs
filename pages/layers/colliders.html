@@ -1,7 +1,7 @@
 <div>
     <div id="submenu">
         <h2>Colliders</h2>
-        <div class="submenu-block" dp-control="js::/js/sub-nav.js">
+        <div class="submenu-block dp-enhance" dp-control="js::/js/sub-nav.js">
             <ul>
                 <li><a href="#intro">deep.collider</a></li>
                 <li><a href="#replace">.replace()</a></li>
@@ -30,7 +30,7 @@
 				</div>
 				<div class="col-sm-12 col-md-12">
 					<div class="dp-example">
-<pre dp-try class="dp-box code">
+<pre class="dp-enhance dp-box code" dp-try>
 deep({ b:[1,2,3] })
 .up({
     b:deep.collider.replace([4,5])
@@ -50,7 +50,7 @@ deep({ b:[1,2,3] })
 				</div>
 				<div class="col-sm-12 col-md-12">
 					<div class="dp-example">
-<pre dp-try class="dp-box code">
+<pre class="dp-enhance dp-box code" dp-try>
 deep({ b:[1,2,3] })
 .up({
     b:deep.collider["array.insertAt"](["hello"],2)
@@ -71,7 +71,7 @@ deep({ b:[1,2,3] })
 				</div>
 				<div class="col-sm-12 col-md-12">
 					<div class="dp-example">
-<pre dp-try class="dp-box code">
+<pre class="dp-enhance dp-box code" dp-try>
 deep.collider.Collider.add("sum", function(input, value){
 	return input + value;
 });
@@ -94,7 +94,7 @@ deep(a).up(b).log();
 				</div>
 				<div class="col-sm-12 col-md-12">
 					<div class="dp-example">
-<pre dp-try class="dp-box code">
+<pre class="dp-enhance dp-box code" dp-try>
 example of 2 or more chained colliders
 </pre>
 					</div>

@@ -1,7 +1,7 @@
 <div>
 	<div id="submenu">
 		<h2>deep selectors</h2>
-		<div class="submenu-block" dp-control="js::/js/sub-nav.js">
+		<div class="submenu-block dp-enhance" dp-control="js::/js/sub-nav.js">
 			<ul>
 				<li><a href="#intro">Introduction</a></li>
 				<li><a href="#example">example</a></li>
@@ -13,7 +13,7 @@
 
 	<div class="content">
 			<h3 id="intro">Intro</h3>
-			<p><strong>deep-selectors</strong> try to add same kind of selection capabilities than css classes do and provide for that a really simple DSL and its really fast parser that return an array of test functions for <a href="/queries/traversal">traversal methods</a>.</p>
+			<p><strong>deep-selectors</strong> provides a really simple DSL and its really fast parser that return an array of test functions for <a href="/queries/traversal">traversal methods</a>.</p>
 			<p>Both traversal methods accept as second argument a string selector. It will be parsed before use in traversal.</p>
 
 			<div class="alert alert-warning"><span class="label label-warning">Warning</span> For the moment it use dynamic function (aka new Function(...)) and so could not be runned under paranoiac environnements (as Adobe Air). More work will be done on it in a close future.</div>
@@ -21,7 +21,7 @@
 			<div class="section-separator-end"></div>
 			<h3 id="example">example</h3>
 			<div class="dp-example">
-<pre dp-try class="dp-box code">
+<pre class="dp-enhance dp-box code" dp-try>
 var r = deep.depthFirst({
 	a:{
 		b:12

@@ -17,7 +17,8 @@ define([
 		"deepjs/lib/schema",
 		"deep-swig/index",
 		"deep-widgets/lib/deep-try",
-		"deep-widgets/lib/dp-svg-trick"
+		"deep-widgets/lib/dp-svg-trick",
+		"deep-widgets/lib/dp-api-description"
 	],
 	function(require, deep, map) {
 		// ___________ base protocols

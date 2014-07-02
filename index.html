@@ -20,9 +20,26 @@
     <![endif]-->
 </head>
 
-<body dp-control="js::/js/app-canevas.js" dp-scope="browser">
+<body dp-control="js::/js/app-canevas.js" class="dp-enhance" dp-scope="browser">
 <div id="fullwrapper">
 <div id="up-part">
+
+<!-- <div  id="deepjs-web">
+	<div class="btn-group">
+	  	<button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	    	deepjs web <span class="caret"></span>
+	  	</button>
+	  	<ul class="dropdown-menu" role="menu">
+			<li><a title="deepjs.org" href="http://deepjs.org"><i class="glyphicon glyphicon-record small"></i> deepjs.org</a></li>
+			<li><a href="https://github.com/deepjs" title="github deepjs organisation">
+				<img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png"> deepjs on github
+			</a></li>
+			<li><a href="https://github.com/deepjs" title="follow us on twitter">
+				<img width="16" height="16" src="./img/Twitter_logo_white.png"> follow us
+			</a></li>
+	  	</ul>
+	</div>
+</div> -->
 	<div id="header">
 	<div id="ribbon-up" class="github-fork-ribbon-wrapper left">
 		<div class="github-fork-ribbon">
@@ -30,23 +47,25 @@
 		</div>
 	</div>
 		<div id="dp-logo-box">
-		<ul class="tools-bar list-unstyled ">
-				<li><a title="deepjs.org" href="http://deepjs.org"><i class="glyphicon glyphicon-record small"></i></a></li>
-				<li><a href="https://github.com/deepjs" title="github deepjs organisation">
-					<img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png">
-				</a></li>
-				<li><a href="https://github.com/deepjs" title="follow us on twitter">
-					<img width="16" height="16" src="./img/Twitter_logo_white.png">
-				</a></li>
-			</ul>
+
 			<div class="dp-headline">tools for better programming</div>
 			<img src="/img/logo/home.png" width="188" height="209">
 			<!-- <embed dp-svg-trick src="/img/logo/home.svg" type="image/svg+xml" width="218" height="258"/> -->
 			<h1>deep<small>js</small></h1>
 		</div>
-		<div style="height:15px">
-		<div id="dp-version" dp-control="js::/js/dp-version.js">
-			<span class="deepjs-version-label"><strong style="color: #aaa;">deepjs core documentation</strong> : current version : <span class="deepjs-version"></span></span>
+		<div id="subheader">
+
+<!-- 			<ul class="tools-bar list-unstyled list-inline pull-right">
+				<li><a title="deepjs.org" href="http://deepjs.org"><i class="glyphicon glyphicon-record small"></i> deepjs.org</a></li>
+				<li><a href="https://github.com/deepjs" title="github deepjs organisation">
+					<img width="16" height="16" src="./img/GitHub-Mark-Light-64px.png"> deepjs on github
+				</a></li>
+				<li><a href="https://github.com/deepjs" title="follow us on twitter">
+					<img width="16" height="16" src="./img/Twitter_logo_white.png"> follow us
+				</a></li>
+			</ul> -->
+		<div id="dp-version" class="dp-enhance" dp-control="js::/js/dp-version.js">
+			<span class="deepjs-version-label"><strong style="color: #aaa;">deepjs core documentation</strong> : <span class="deepjs-version"></span></span>
 			<span class="beta-warning-label" title="Some bugs may remain and structure/content could be changed continuously.">site in <strong>alpha</strong> version.</span>
 		</div>
 		</div>
