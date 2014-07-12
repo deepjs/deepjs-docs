@@ -1,4 +1,5 @@
 {
-	"title":"A JSON file",
-	"description":"this is a simple json."
+	"names":"cedric",
+	"zip":1952,
+	"hello":"cediric"
 }

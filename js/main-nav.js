@@ -7,7 +7,7 @@
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(require, deep, View, routes) {
+define(["require", "deepjs/deep", "deepjs/lib/view", "deepjs/documentation/routes"], function(require, deep, View, routes) {
 
 	// simple list item creator : use route as href
 	var createMenuItem = function(menu, obj, label, active, separated) {
@@ -72,6 +72,9 @@ define(["require", "deepjs/deep", "deepjs/lib/view", "./routes.js"], function(re
 					return;
 				createMenuItem(dom.menu1UL, mapi, i, active, mapi.separated);
 			});
+		},
+		where:function(){
+			return deep.context.dom.menu;
 		}
 	});
 	return nav;

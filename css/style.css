@@ -44,13 +44,13 @@ h4 {
 }
 
 h3:before {
-    content:"--";
+    content:"{";
     color: #767470;
     font-size: 24px;
     margin-right: 15px;
 }
 h3:after {
-    content:"--";
+    content:"}";
     color: #767470;
     font-size: 24px;
     margin-left: 15px;
@@ -116,9 +116,12 @@ h5.bloup {
 }
 
 #content{
-    overflow: scroll;
+overflow-y: scroll;
+overflow-x: hidden;
     height: 100%;
     padding-right: 20px;
+
+
 }
 
 .content {
@@ -144,6 +147,7 @@ h5.bloup {
 .dp-box {
     background-color: #e4e6dd;
     border:1px solid #fff;
+    overflow: auto;
 }
 
 /*_________________ MENU _________________ */
@@ -542,17 +546,23 @@ h5.bloup {
 
 /*______________________________________________________________________________ dp-version _____________*/
 
+.deepjs-version {
+    color: #fff;
+
+}
 #dp-version {
     display: none;
     text-align: center;
     height:15px;
+    margin-top:4px;
 }
 
 .deepjs-version-label, .beta-warning-label {
     visibility: visible;
-    background-color: #211f1c;
+    background-color: #485663;
     position: relative;
     font-size: 12px;
+    color: #ddd;
 
     top:-6px;
     padding-left: 10px;
@@ -649,11 +659,46 @@ h5.bloup {
 
 /*______________________________________________________________________________ dp-api-description  _____________*/
 
-.dp-api-description {
-    border-top: 1px dashed #fff;
-    border-bottom: 1px dashed #fff;
+.dp-api-description .dp-api-block {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /*border: 1px dashed #64CCE6;*/
+    /*margin-bottom: 20px;
+    margin-top: 20px;*/
+    padding: 10px;
+    /*min-height: 60px;*/
+    background-color: #eee;
+    /*margin-top:2px;*/
+    margin-bottom:10px;
+    color:#333;
 }
+.dp-api-description {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
 
+    padding-top:5px;
+    padding-bottom:0px;
+    padding-left:0px;
+    padding-right:0px;
+
+
+    /*border-bottom: 1px dotted #64CCE6;*/
+    border-top: 1px solid #666;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #544D47;
+
+}
+.dp-api-col {
+    padding-left:5px;
+    padding-right:5px;
+    margin-bottom: 0px;
+}
+.dp-api-description dl {
+    margin-bottom: 0px;
+}
 .dp-api-description dt {
     width:100px;
 }
@@ -670,3 +715,23 @@ h5.bloup {
 .label {
     font-size: 85%;
 }
+
+
+
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+

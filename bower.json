@@ -41,6 +41,7 @@
     "ace-builds": "master",
     "highlight-js-min": "http://yandex.st/highlightjs/8.0/highlight.min.js",
     "highlight-css-min": "https://github.com/isagalaev/highlight.js/blob/master/src/styles/github.css",
-    "github-fork-ribbon-css": "~0.1.0"
+    "github-fork-ribbon-css": "~0.1.0",
+    "perfect-scrollbar": "~0.4.10"
   }
 }

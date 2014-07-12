@@ -18,10 +18,9 @@
  * 
  * TODO : produce navigation automaticaly based on h3, h4 from #content
  */
-
-if (typeof define !== 'function')
+if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
-
+}
 define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, View) {
 	// WARNING : localy declaring those vars are ennemy of concurrency. but in our case : it works. (see above)
 	var prev, prevParents, prevH, oldH, fromID = false, oldContentHeight, contentContainer, headings;

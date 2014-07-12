@@ -6,10 +6,10 @@
  * Warning : as it's done now : there is another coupling with #content (that is in #main and refered by dom.content for optimisation): it's just a trick to get correct scroll for this dom entry.
  */
 
-if (typeof define !== 'function')
+if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
-
-define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep) {
+}
+define(["require", "deepjs/deep", "deepjs/lib/view", "deep-routes/browser"], function(require, deep) {
 
 	return deep.View({
 		config:{
@@ -37,7 +37,8 @@ define(["require", "deepjs/deep", "deep-routes/browser"], function(require, deep
 			$(dom.main).css('height', dom.contentHeight);
 			$(dom.fullwrapper).css('height', viewPortHeight);
 			$(dom.uppart).css('height', viewPortHeight-footerHeight);
-			$(dom.content).css('height', dom.contentHeight);
+			if(dom.content)
+				$(dom.content).css('height', dom.contentHeight);//.perfectScrollbar('update');
 		},
 		clean:function (argument) {
 			$(window).unbind("resize", this.done);

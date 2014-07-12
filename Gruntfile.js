@@ -93,19 +93,22 @@ module.exports = function (grunt) {
 				options: {
 					//appDir:".",
 					baseUrl: './',
-					name: 'app',
-					out: './app.min.js',
-					enforceDefine: false,
+					name: 'main',
+					out: './main.min.js',
+					findNestedDependencies: true,
 					wrap: true,
+					enforceDefine:true,
 					paths: {
-						'deepjs': './libs/deepjs',
-						'deep-routes': './libs/deep-routes',
-						'rql': './libs/rql',
-						'deep-jquery': './libs/deep-jquery',
-						'deep-browser': './libs/deep-browser',
-						'deep-swig': './libs/deep-swig',
-						'deep-local-storage': './libs/deep-local-storage',
-						'deep-data-bind': './libs/deep-data-bind'
+						'deepjs': './bower_components/deepjs',
+						'rql': './bower_components/rql',
+						'deep-routes': './bower_components/deep-routes',
+						'deep-jquery': './bower_components/deep-jquery',
+						'deep-browser': './bower_components/deep-browser',
+						'deep-swig': './bower_components/deep-swig',
+						'deep-local-storage': './bower_components/deep-local-storage',
+						'deep-widgets': './bower_components/deep-widgets'
+						// 'ace-builds': './bower_components/ace-builds',
+						//'deep-data-bind': './bower_components/deep-data-bind'
 					}
 				}
 			}
