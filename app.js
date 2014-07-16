@@ -29,7 +29,7 @@ define([
 		// html enhancement directives
 		"deep-widgets/lib/deep-try",
 		"deep-widgets/lib/dp-svg-trick",
-		"deep-widgets/lib/dp-api-description"
+		"./directives/dp-api-description.js"
 	],
 	function(require, deep, map) {
 		// ___________ base protocols
@@ -101,12 +101,9 @@ define([
 			// init contextualised jquery reference
 			deep.jquery.set($);
 			// enhance dp-* already present in html
-			// console.profile("first enhance")
 			deep.ui.enhance({}, "html");	
-			// console.profileEnd("first enhance")
 			// compile html routes map
 			deep.route(map)
-			//.delay(100)	
 			.done(function(routes) {
 				console.log("app intialised");
 				routes.init();
