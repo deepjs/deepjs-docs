@@ -9,7 +9,7 @@
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep", "deepjs/lib/view", "deep-routes/browser"], function(require, deep) {
+define(["require", "deepjs/deep", "deepjs/lib/views/view", "deep-routes/browser"], function(require, deep) {
 
 	return deep.View({
 		config:{

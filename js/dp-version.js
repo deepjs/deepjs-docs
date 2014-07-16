@@ -6,7 +6,7 @@
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, View) {
+define(["require", "deepjs/deep", "deepjs/lib/views/view"], function(require, deep, View) {
 	return deep.View({
 		config:{
 			enhance:false
@@ -15,7 +15,7 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 		how:function(context){
 			// console.log("context dp-version : ", context);
 			var $ = deep.context.$;
-			console.log("version ? : ", $(context.placed).find(".deepjs-version"));
+			// console.log("version ? : ", $(context.placed).find(".deepjs-version"));
 			$(context.placed).find(".deepjs-version").text(context.what.version);
 			if(deep.isBrowser)
 				$(context.placed).slideDown("fast");

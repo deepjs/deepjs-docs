@@ -7,7 +7,7 @@
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep", "deepjs/lib/view", "deepjs/documentation/routes"], function(require, deep, View, routes) {
+define(["require", "deepjs/deep", "deepjs/lib/views/view", "deepjs/documentation/routes"], function(require, deep, View, routes) {
 
 	// simple list item creator : use route as href
 	var createMenuItem = function(menu, obj, label, active, separated) {

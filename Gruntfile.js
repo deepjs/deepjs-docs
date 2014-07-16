@@ -2,8 +2,8 @@
 module.exports = function (grunt) {
 
 
-	require('deep-shell');
-
+	//require('deep-shell');
+/*
 	grunt.registerTask('gitify', 'Making git repository of node or bower dependencies.', function() {
 		var done = this.async();
 		grunt.log.writeln('Grunt Gitify task start.');
@@ -55,7 +55,7 @@ module.exports = function (grunt) {
 			done(false);
 		});
 	});
-
+*/
 	// Project configuration.
 	grunt.initConfig({
 		gitify: {

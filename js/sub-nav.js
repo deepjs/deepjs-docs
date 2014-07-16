@@ -21,7 +21,7 @@
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, View) {
+define(["require", "deepjs/deep", "deepjs/lib/views/view"], function(require, deep, View) {
 	// WARNING : localy declaring those vars are ennemy of concurrency. but in our case : it works. (see above)
 	var prev, prevParents, prevH, oldH, fromID = false, oldContentHeight, contentContainer, headings;
 
@@ -131,10 +131,10 @@ define(["require", "deepjs/deep", "deepjs/lib/view"], function(require, deep, Vi
 		prevH = h;
 		highlight(h);
 		var $ = deep.context.$, dom = deep.context.dom;
-		var offset = $(dom.content).scrollTop();
-		window.location.hash = deep.context.hash = h.id;
-		$(window).scrollTop(0);
-		$(dom.content).scrollTop(offset);
+		//var offset = $(dom.content).scrollTop();
+		//window.location.hash = deep.context.hash = h.id;
+		//$(window).scrollTop(0);
+		//$(dom.content).scrollTop(offset);
 	};
 
 	return deep.View({

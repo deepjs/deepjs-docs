@@ -24,7 +24,7 @@ define([
 		"deepjs/lib/schema",
 		"deepjs/lib/restful/collection",
 		"deepjs/lib/restful/chain",
-		"deepjs/lib/dom-sheeter",
+		"deepjs/lib/views/dom-sheeter",
 		// "deepjs/lib/stores/object",
 		// html enhancement directives
 		"deep-widgets/lib/deep-try",
@@ -48,7 +48,7 @@ define([
 		//____________________ finalise map : transform entries to deep.View and apply default behaviour/api
 		// if we done it here : it's just to keep map clear and short.
 		// for this : we simply use a deep-sheet.
-		deep.up({
+		deep.sheet({
 			_deep_sheet_:true,
 			// for all entry in map that contain a 'how' property : we apply this transformation
 			"dq::.//?how":deep.sheet.transform(function(node){
@@ -63,7 +63,7 @@ define([
 						// place as html of #main. add fadeIn effect on dom insertion. don't forget to return inserted node.
 						var node = $("#main").html(rendered).children();
 						if(deep.isBrowser)
-							$(node).hide().fadeIn(250).children();
+							$(node).hide().delay(100).fadeIn(250);
 						return node;
 					};
 				return deep(value)
@@ -101,9 +101,12 @@ define([
 			// init contextualised jquery reference
 			deep.jquery.set($);
 			// enhance dp-* already present in html
-			deep.ui.enhance("html");	
+			// console.profile("first enhance")
+			deep.ui.enhance({}, "html");	
+			// console.profileEnd("first enhance")
 			// compile html routes map
-			deep.route(map)	
+			deep.route(map)
+			//.delay(100)	
 			.done(function(routes) {
 				console.log("app intialised");
 				routes.init();
