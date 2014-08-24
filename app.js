@@ -6,9 +6,12 @@ if (typeof define !== 'function') {
  */
 define([
 		"require",
-		"deepjs/deep",
+		"deep-browser/index",
+		"deepjs/lib/schema",
 		// routes from deepjs documentation folder
 		"deepjs/documentation/routes",
+		"deep-marked/index",
+		"deep-marked/lib/clients/jq-ajax",
 		// site specific
 		"./js/app-canevas.js",
 		"./js/main-nav.js",
@@ -16,35 +19,36 @@ define([
 		"./js/logo.js",
 		"./js/dp-version.js",
 		// ressources providers
-		"deep-jquery/ajax/json",
-		"deep-jquery/ajax/html",
-		"deep-swig/index",
+		"deep-jquery/lib/ajax/json",
+		"deep-jquery/lib/ajax/html",
+		"deep-swig/lib/jq-ajax",
 		// load extra from core (not loaded by default)
 		"deepjs/lib/unit",
-		"deepjs/lib/schema",
-		"deepjs/lib/restful/collection",
-		"deepjs/lib/restful/chain",
-		"deepjs/lib/views/dom-sheeter",
-		// "deepjs/lib/stores/object",
+		"deep-restful/index",
+		"deep-restful/lib/collection",
 		// html enhancement directives
 		"deep-widgets/lib/deep-try",
 		"deep-widgets/lib/dp-svg-trick",
 		"./directives/dp-api-description.js"
 	],
-	function(require, deep, map) {
-		// ___________ base protocols
-		deep.jquery.JSON.create();	// default json::
-		deep.jquery.HTML.create();	// default html::
-		deep.Swig();				// default swig:: 
+	function(require, dp, Validator, map, dpmarked) {
+		deep = dp;	// place deep in globals.
+		// ___________ base protocols/clients
+		deep.jquery.ajax.json();	// default json::
+		deep.jquery.ajax.html();	// default html::
+		deep.swig.jqajax();			// default swig:: 
+		deep.marked.jqajax();		// default marked::
 		// define "docs::" (html provider) protocol to point to deepjs/documentation
-		deep.jquery.HTML.create("docs", "/bower_components/deepjs/documentation");
+		deep.jquery.ajax.html("docs", "/bower_components/deepjs/documentation");
 
 		// create contextualised dom name space
-		var dom = deep.context.dom = {};
+		var dom = deep.context('dom', {});
 		// configure deep-link
 		deep.route.deepLink({ });	// deep-link config
 
-
+		// bind deepjs/lib/schema to Schema Validator
+		deep.Validator.set(Validator);
+		
 		//____________________ finalise map : transform entries to deep.View and apply default behaviour/api
 		// if we done it here : it's just to keep map clear and short.
 		// for this : we simply use a deep-sheet.
@@ -59,7 +63,7 @@ define([
 					value.route = node.path.replace("/subs","");
 				if(!value.where)	// add default "where"
 					value.where = function(rendered){
-						var $ = deep.context.$;
+						var $ = deep.$();
 						// place as html of #main. add fadeIn effect on dom insertion. don't forget to return inserted node.
 						var node = $("#main").html(rendered).children();
 						if(deep.isBrowser)
@@ -71,7 +75,7 @@ define([
 				.up({ 
 					// adding 'done' behaviour
 					done:deep.compose.after(function(){
-						var $ = deep.context.$, dom = deep.context.dom;
+						var $ = deep.$(), dom = deep.context('dom');
 						dom.content = $("#content");
 						if(!deep.isBrowser)
 							return;

@@ -4,7 +4,7 @@
 require.config({
 	baseUrl: "/bower_components"
 });
-require([/*"deepjs/ie-hacks", "deepjs/json2",*/ "deep-browser/index", "app.js"], 
+require([/*"deepjs/ie-hacks", "deepjs/json2",*/, "app.js"], 
 function(/*ace, ieHacks, json2,*/ deep, app) {
 	app($);
 });

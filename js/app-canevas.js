@@ -9,7 +9,7 @@
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep", "deepjs/lib/views/view", "deep-routes/browser"], function(require, deep) {
+define(["require", "deepjs/deep", "deep-views/lib/view", "deep-routes/browser"], function(require, deep) {
 
 	return deep.View({
 		config:{
@@ -17,7 +17,7 @@ define(["require", "deepjs/deep", "deepjs/lib/views/view", "deep-routes/browser"
 			scope:"browser"
 		},
 		init:function(){
-			var $ = deep.context.$, dom = deep.context.dom;
+			var $ = deep.$(), dom = deep.context('dom');
 			dom.fullwrapper = $("#fullwrapper");
 			dom.header = $("#header");
 			dom.uppart = $("#up-part");
@@ -28,7 +28,7 @@ define(["require", "deepjs/deep", "deepjs/lib/views/view", "deep-routes/browser"
 			deep.route.on("refreshed", this.done);
 		},
 		done:function(){
-			var $ = deep.context.$, dom = deep.context.dom;
+			var $ = deep.$(), dom = deep.context('dom');
 			var viewPortHeight = $(window).height();
 			dom.contentOffset =  104;
 			var footerHeight = 68;
@@ -41,7 +41,7 @@ define(["require", "deepjs/deep", "deepjs/lib/views/view", "deep-routes/browser"
 				$(dom.content).css('height', dom.contentHeight);//.perfectScrollbar('update');
 		},
 		clean:function (argument) {
-			$(window).unbind("resize", this.done);
+			deep.$(window).unbind("resize", this.done);
 			deep.route.unbind("refreshed", this.done);
 		}
 	});

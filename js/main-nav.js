@@ -7,11 +7,11 @@
 if (typeof define !== 'function') {
 	var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep", "deepjs/lib/views/view", "deepjs/documentation/routes"], function(require, deep, View, routes) {
+define(["require", "deepjs/deep", "deep-views/lib/view", "deepjs/documentation/routes"], function(require, deep, View, routes) {
 
 	// simple list item creator : use route as href
 	var createMenuItem = function(menu, obj, label, active, separated) {
-		var $ = deep.context.$;
+		var $ = deep.$();
 		var href = (obj.route || ('/' + label)),
 			last = href[href.length - 1];
 		if (last === "*" || last === "$")
@@ -30,7 +30,7 @@ define(["require", "deepjs/deep", "deepjs/lib/views/view", "deepjs/documentation
 		},
 		navigation: false,
 		init:function(){			
-			var $ = deep.context.$, dom = deep.context.dom;
+			var $ = deep.$(), dom = deep.context('dom');
 			// save dom node references in context.dom.
 			// for optimisation.
 			dom.menu = $("#menu");
@@ -40,7 +40,7 @@ define(["require", "deepjs/deep", "deepjs/lib/views/view", "deepjs/documentation
 		},
 		how: function(context) {
 			// create single or double nav from routes-map. use current route to define which is active.
-			var $ = deep.context.$, dom = deep.context.dom, currentRoute;
+			var $ = deep.$(), dom = deep.context('dom'), currentRoute;
 			if(context && context.route)
 				currentRoute = context.route.route;
 			$(dom.menu1UL).empty();
@@ -74,7 +74,7 @@ define(["require", "deepjs/deep", "deepjs/lib/views/view", "deepjs/documentation
 			});
 		},
 		where:function(){
-			return deep.context.dom.menu;
+			return deep.context('dom').menu;
 		}
 	});
 	return nav;
