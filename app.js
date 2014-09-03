@@ -12,6 +12,7 @@ define([
 		"deepjs/documentation/routes",
 		"deep-marked/index",
 		"deep-marked/lib/clients/jq-ajax",
+		"./sheets/map-transfo.js",
 		// site specific
 		"./js/app-canevas.js",
 		"./js/main-nav.js",
@@ -21,6 +22,7 @@ define([
 		// ressources providers
 		"deep-jquery/lib/ajax/json",
 		"deep-jquery/lib/ajax/html",
+		"deep-jquery/lib/ajax/xml",
 		"deep-swig/lib/jq-ajax",
 		// load extra from core (not loaded by default)
 		"deepjs/lib/unit",
@@ -31,11 +33,12 @@ define([
 		"deep-widgets/lib/dp-svg-trick",
 		"./directives/dp-api-description.js"
 	],
-	function(require, dp, Validator, map, dpmarked) {
+	function(require, dp, Validator, map, dpmarked, markedClient, transfo) {
 		deep = dp;	// place deep in globals.
 		// ___________ base protocols/clients
 		deep.jquery.ajax.json();	// default json::
 		deep.jquery.ajax.html();	// default html::
+		deep.jquery.ajax.xml();	// default html::
 		deep.swig.jqajax();			// default swig:: 
 		deep.marked.jqajax();		// default marked::
 		// define "docs::" (html provider) protocol to point to deepjs/documentation
@@ -52,40 +55,7 @@ define([
 		//____________________ finalise map : transform entries to deep.View and apply default behaviour/api
 		// if we done it here : it's just to keep map clear and short.
 		// for this : we simply use a deep-sheet.
-		deep.sheet({
-			_deep_sheet_:true,
-			// for all entry in map that contain a 'how' property : we apply this transformation
-			"dq::.//?how":deep.sheet.transform(function(node){
-				if(node.value._deep_view_)	// already a view. skip.
-					return node.value;
-				var value = node.value;
-				if(typeof value.route === 'undefined')		// default route === view path without '/subs'
-					value.route = node.path.replace("/subs","");
-				if(!value.where)	// add default "where"
-					value.where = function(rendered){
-						var $ = deep.$();
-						// place as html of #main. add fadeIn effect on dom insertion. don't forget to return inserted node.
-						var node = $("#main").html(rendered).children();
-						if(deep.isBrowser)
-							$(node).hide().delay(100).fadeIn(250);
-						return node;
-					};
-				return deep(value)
-				.bottom(deep.View())
-				.up({ 
-					// adding 'done' behaviour
-					done:deep.compose.after(function(){
-						var $ = deep.$(), dom = deep.context('dom');
-						dom.content = $("#content");
-						if(!deep.isBrowser)
-							return;
-						if($(dom.content).outerHeight(true)+30 > dom.contentHeight)
-							$(dom.content).append('<div style="height:'+(dom.contentHeight-150)+'px;">&nbsp;</div>')
-						$(dom.main).scrollTop(0);
-					})
-				});
-			})
-		}, map);
+		deep.sheet(transfo, map);
 
 		//___ little hack to allow refresh from particular state without loosing uri in "browser only" env.
 		// i.e. when there is no "Search Engine friendly mecanism" associate to this single page app (server side).
