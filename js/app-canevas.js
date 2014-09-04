@@ -2,8 +2,6 @@
  * @author Gilles Coomans <gilles.coomans@gmail.com>
  * Template/Canevas controller that manage header + main + footer as an app will do (header = top bar, footer = bottom bar, main = content)
  * It mainly set the #main height, accordingly to viewport (viewport.height - header.height - footer.height), to achieve this canevas.
- *
- * Warning : as it's done now : there is another coupling with #content (that is in #main and refered by dom.content for optimisation): it's just a trick to get correct scroll for this dom entry.
  */
 
 if (typeof define !== 'function') {

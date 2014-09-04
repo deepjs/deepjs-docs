@@ -25,21 +25,20 @@ define(["require", "deepjs/deep"], function(require, deep){
 						$(node).hide().delay(100).fadeIn(250);
 					return node;
 				};
-				
-			return deep(value)
-			.bottom(deep.View())
-			.up({ 
-				// adding 'done' behaviour
-				done:deep.compose.after(function(){
-					var $ = deep.$(), dom = deep.context('dom');
-					dom.content = $("#content");
-					if(!deep.isBrowser)
-						return;
-					if($(dom.content).outerHeight(true)+30 > dom.contentHeight)
-						$(dom.content).append('<div style="height:'+(dom.contentHeight-150)+'px;">&nbsp;</div>')
-					$(dom.main).scrollTop(0);
-				})
-			});
+			return value;
+		})
+		.bottom("instance::deep-views/lib/view")
+		.up({ 
+			// adding 'done' behaviour
+			done:deep.compose.after(function(){
+				var $ = deep.$(), dom = deep.context('dom');
+				dom.content = $("#content");
+				if(!deep.isBrowser)
+					return;
+				if($(dom.content).outerHeight(true)+30 > dom.contentHeight)
+					$(dom.content).append('<div style="height:'+(dom.contentHeight-150)+'px;">&nbsp;</div>')
+				$(dom.main).scrollTop(0);
+			})
 		})
 	};
 });
