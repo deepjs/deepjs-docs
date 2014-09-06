@@ -6,7 +6,7 @@
 if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
-define(["require", "deepjs/deep"], function(require, deep){
+define(["require", "deepjs/deep", "deep-views/lib/view"], function(require, deep){
 	return {
 		_deep_sheet_:true,
 		// for all entry in map that contain a 'how' property : we apply this transformation
@@ -27,7 +27,7 @@ define(["require", "deepjs/deep"], function(require, deep){
 				};
 			return value;
 		})
-		.bottom("instance::deep-views/lib/view")
+		.bottom(deep.View())
 		.up({ 
 			// adding 'done' behaviour
 			done:deep.compose.after(function(){

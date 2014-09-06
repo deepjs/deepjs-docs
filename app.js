@@ -56,7 +56,7 @@ define([
 		
 		//____________________ finalise routes map : (applied sheet comes from /sheets/map-transfo.js)
 		// transform entries to deep.View and apply default behaviour/api.
-		deep.sheet(transfo, map);
+		deep.sheet(map, transfo);
 
 		//___ little hack for developpement that allow refresh from particular ui state 
 		// without loosing uri in "browser only" env.
@@ -77,10 +77,10 @@ define([
 			// init contextualised jquery reference
 			deep.jquery.set($);
 			// enhance current html in index
-			deep.sheet({
+			deep.sheet(document, {
 				"dom::body":deep.domsheet.enhance("control", "js::/js/app-canevas.js"),
 				"dom::#dp-version":deep.domsheet.enhance("control", "js::/js/dp-version.js")
-			}, document);
+			});
 			// compile html routes map
 			deep.route(map)
 			.done(function(routes) {
